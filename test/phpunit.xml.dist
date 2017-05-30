@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit bootstrap="../vendor/autoload.php"
+         colors="true"
+         processIsolation="false"
+         stopOnFailure="false"
+         syntaxCheck="false"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true">
+    <php>
+        <env name="USERNAME" value=""/>
+        <env name="APIKEY" value=""/>
+        <env name="DEBUG" value="false"/>
+    </php>
+    <testsuites>
+        <testsuite name="Kubernetes\Test\">
+            <file>ClientTest.php</file>
+            <file>AuthenticationTest.php</file>
+        </testsuite>
+        <testsuite name="Kubernetes\Test\Model\">
+            <directory suffix=".php">./Model</directory>
+        </testsuite>
+        <testsuite name="Kubernetes\Test\API\">
+            <directory suffix=".php">./API</directory>
+        </testsuite>
+    </testsuites>
+
+    <filter>
+        <whitelist>
+            <directory suffix=".php">../src</directory>
+            <exclude>
+                <directory>../vendor</directory>
+                <directory>../test</directory>
+            </exclude>
+        </whitelist>
+    </filter>
+</phpunit>

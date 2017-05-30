@@ -1,0 +1,35 @@
+<?php
+/*
+ * This file is part of Kubernete Client.
+ *
+ * (c) Allan Sun <allan.sun@bricre.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+namespace Kubernetes\API;
+
+
+use Kubernetes\Model\Tag\Group;
+use Kubernetes\Model\Tag\Version;
+
+class StorageClass extends AbstractAPI
+{
+
+    protected $group = Group::STORAGE;
+
+    protected $version = Version::V1;
+
+    protected $apiPostfix = 'storageclasses';
+
+    protected $isStatusFunctionAvailable = false;
+
+    /**
+     * @return string
+     */
+    protected function getApiPrefix()
+    {
+        return 'apis/storage.k8s.io/v1/storageclasses';
+    }
+}
