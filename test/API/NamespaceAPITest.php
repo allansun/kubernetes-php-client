@@ -44,4 +44,10 @@ class NamespaceAPITest extends AbstractTest
         $response = $this->API->delete($this->k8sNamespace);
         $this->assertInstanceOf(Model::class, $response);
     }
+
+    public function testList(){
+        $response = $this->API->list();
+
+        $this->assertObjectHasAttribute('kind',$response);
+    }
 }

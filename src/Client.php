@@ -76,7 +76,7 @@ class Client
         $HandlerStack->push(
             GuzzleHttp\Middleware::log(
                 Logger::getInstance()->getLogger(),
-                new GuzzleHttp\MessageFormatter('{req_body} - {res_body}')
+                new GuzzleHttp\MessageFormatter('URI:{uri} - Request:{req_body} - Response:{res_body}')
             )
 
         );
