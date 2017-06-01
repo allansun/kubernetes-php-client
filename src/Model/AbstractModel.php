@@ -35,14 +35,6 @@ abstract class AbstractModel
     }
 
     /**
-     * @return array
-     */
-    public function getArrayCopy()
-    {
-        return ModelHydrator::getInstance()->extract($this);
-    }
-
-    /**
      * @param $data
      *
      * @return object
@@ -55,6 +47,14 @@ abstract class AbstractModel
     public function toJson()
     {
         return \json_encode($this->getArrayCopy());
+    }
+
+    /**
+     * @return array
+     */
+    public function getArrayCopy()
+    {
+        return ModelHydrator::getInstance()->extract($this);
     }
 
     /**
@@ -85,24 +85,6 @@ abstract class AbstractModel
     }
 
     /**
-     * @param $class
-     * @param $value
-     *
-     * @return AbstractModel
-     */
-    private function __createModelPropertyValue($class = null, $value)
-    {
-        if ($class) {
-            if ($value instanceof \StdClass) {
-                $value = get_object_vars($value);
-            }
-            $value = new $class($value);
-        }
-
-        return $value;
-    }
-
-    /**
      * @param mixed $propertyValue
      *
      * @return bool
@@ -120,6 +102,24 @@ abstract class AbstractModel
         }
 
         return true;
+    }
+
+    /**
+     * @param $class
+     * @param $value
+     *
+     * @return AbstractModel
+     */
+    private function __createModelPropertyValue($class = null, $value)
+    {
+        if ($class) {
+            if ($value instanceof \StdClass) {
+                $value = get_object_vars($value);
+            }
+            $value = new $class($value);
+        }
+
+        return $value;
     }
 
 }

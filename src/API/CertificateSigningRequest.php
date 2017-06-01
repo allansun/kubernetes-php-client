@@ -14,7 +14,7 @@ namespace Kubernetes\API;
 use Kubernetes\Model\Tag\Group;
 use Kubernetes\Model\Tag\Version;
 
-class CertificateSigningRequest  extends AbstractAPI
+class CertificateSigningRequest extends AbstractAPI
 {
 
     protected $group = Group::CERTIFICATES;

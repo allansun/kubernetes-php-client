@@ -11,7 +11,7 @@
 namespace Kubernetes\Model;
 
 
-class ContainerStatus
+class ContainerStatus extends AbstractModel
 {
 
     /**

@@ -42,7 +42,7 @@ class Probe extends AbstractModel
      * Number of seconds after the container has started before liveness probes are initiated.
      * More info: http://kubernetes.io/docs/user-guide/pod-states#container-probes
      */
-    public $initialDelaySeconds ;
+    public $initialDelaySeconds;
 
     /**
      * @var integer

@@ -11,7 +11,7 @@
 namespace Kubernetes\Model;
 
 
-class ReplicationControllerStatus
+class ReplicationControllerStatus extends AbstractModel
 {
 
     /**

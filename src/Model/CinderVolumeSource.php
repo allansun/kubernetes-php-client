@@ -33,7 +33,8 @@ class CinderVolumeSource extends AbstractModel
     /**
      * @var boolean
      *
-     * Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. More info: http://releases.k8s.io/HEAD/examples/mysql-cinder-pd/README.md
+     * Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. More
+     * info: http://releases.k8s.io/HEAD/examples/mysql-cinder-pd/README.md
      */
     public $readOnly = false;
 

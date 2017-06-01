@@ -64,18 +64,6 @@ class LocalSubjectAccessReview extends AbstractModel
     }
 
     /**
-     * @param string $kind
-     *
-     * @return self
-     */
-    public function setKind($kind)
-    {
-        $this->kind = $this->_createPropertyValue($kind, string::class, false);
-
-        return $this;
-    }
-
-    /**
      * @param SubjectAccessReviewSpec $spec
      *
      * @return self
@@ -83,6 +71,18 @@ class LocalSubjectAccessReview extends AbstractModel
     public function setSpec($spec)
     {
         $this->spec = $this->_createPropertyValue($spec, SubjectAccessReviewSpec::class, false);
+
+        return $this;
+    }
+
+    /**
+     * @param SubjectAccessReviewStatus $status
+     *
+     * @return self
+     */
+    public function setStatus($status)
+    {
+        $this->status = $this->_createPropertyValue($status, SubjectAccessReviewStatus::class, false);
 
         return $this;
     }

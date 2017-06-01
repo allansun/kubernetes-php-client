@@ -39,7 +39,7 @@ class APIResource extends AbstractModel
      *
      * namespaced indicates if a resource is namespaced or not.
      */
-    public $namespaced ;
+    public $namespaced;
 
     /**
      * @var string[]

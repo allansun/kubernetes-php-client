@@ -14,7 +14,7 @@ namespace Kubernetes\API;
 use Kubernetes\Model\Tag\Group;
 use Kubernetes\Model\Tag\Version;
 
-class SelfSubjectAccessReview  extends AbstractAPI
+class SelfSubjectAccessReview extends AbstractAPI
 {
 
     protected $group = Group::AUTHORIZATION;

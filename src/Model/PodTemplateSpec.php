@@ -16,7 +16,7 @@ class PodTemplateSpec extends AbstractModel
     /**
      * @var ObjectMeta
      */
-    public $metadata ;
+    public $metadata;
 
     /**
      * @var PodSpec

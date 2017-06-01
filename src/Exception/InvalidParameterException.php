@@ -16,8 +16,8 @@ class InvalidParameterException extends AbstractException
     /**
      * InvalidParameterException constructor.
      *
-     * @param string $key
-     * @param null|string   $value
+     * @param string      $key
+     * @param null|string $value
      */
     public function __construct($key, $value = null)
     {

@@ -21,7 +21,7 @@ class VolumeMount extends AbstractModel
      * @var string
      * Path within the container at which the volume should be mounted. Must not contain ':'.
      */
-    public $mountPath ;
+    public $mountPath;
 
     /**
      * @var string

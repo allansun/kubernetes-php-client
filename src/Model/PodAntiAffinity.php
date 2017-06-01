@@ -30,7 +30,7 @@ class PodAntiAffinity extends AbstractModel
      * "weight" to the sum if the node has pods which matches the corresponding podAffinityTerm;
      * the node(s) with the highest sum are the most preferred.
      */
-    public $preferredDuringSchedulingIgnoredDuringExecution ;
+    public $preferredDuringSchedulingIgnoredDuringExecution;
 
     /**
      * @var PodAffinityTerm[]

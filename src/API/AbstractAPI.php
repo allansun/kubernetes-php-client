@@ -88,6 +88,40 @@ abstract class AbstractAPI
     }
 
     /**
+     * @param AbstractModel $model
+     * @param array         $queryParameters
+     *
+     * @return AbstractModel|\StdClass
+     */
+    public function create(AbstractModel $model, $queryParameters = [])
+    {
+        $this->checkFunctionAvailability(self::FUNCTION_WRITE);
+
+        return $this->parseRseponse(
+            $this->client->request('POST',
+                "/{$this->getApiPrefix()}/namespaces/{$this->namespace}/{$this->apiPostfix}",
+                [
+                    'query' => $queryParameters,
+                    'json'  => $model->getArrayCopy()
+                ]
+            )
+        );
+    }
+
+    /**
+     * @param $function
+     *
+     * @throws ProhibitedOperationException
+     */
+    private function checkFunctionAvailability($function)
+    {
+        $availabilityProperty = 'is' . ucfirst($function) . 'FunctionAvailable';
+        if (!property_exists(self::class, $availabilityProperty) || $this->$availabilityProperty !== true) {
+            throw new ProhibitedOperationException($function);
+        }
+    }
+
+    /**
      * @param \StdClass $response
      *
      * @return AbstractModel|\StdClass|
@@ -121,27 +155,6 @@ abstract class AbstractAPI
     }
 
     /**
-     * @param AbstractModel $model
-     * @param array         $queryParameters
-     *
-     * @return AbstractModel|\StdClass
-     */
-    public function create(AbstractModel $model, $queryParameters = [])
-    {
-        $this->checkFunctionAvailability(self::FUNCTION_WRITE);
-
-        return $this->parseRseponse(
-            $this->client->request('POST',
-                "/{$this->getApiPrefix()}/namespaces/{$this->namespace}/{$this->apiPostfix}",
-                [
-                    'query' => $queryParameters,
-                    'json'  => $model->getArrayCopy()
-                ]
-            )
-        );
-    }
-
-    /**
      * @param               $name
      * @param AbstractModel $model
      * @param array         $queryParameters
@@ -162,7 +175,6 @@ abstract class AbstractAPI
             )
         );
     }
-
 
     /**
      * @param       $name
@@ -405,18 +417,5 @@ abstract class AbstractAPI
                 ]
             )
         );
-    }
-
-    /**
-     * @param $function
-     *
-     * @throws ProhibitedOperationException
-     */
-    private function checkFunctionAvailability($function)
-    {
-        $availabilityProperty = 'is' . ucfirst($function) . 'FunctionAvailable';
-        if (!property_exists(self::class, $availabilityProperty) || $this->$availabilityProperty !== true) {
-            throw new ProhibitedOperationException($function);
-        }
     }
 }

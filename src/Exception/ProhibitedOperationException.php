@@ -17,6 +17,8 @@ class ProhibitedOperationException extends AbstractException
 
     /**
      * ProhibitedActionException constructor.
+     *
+     * @param null|string $action
      */
     public function __construct($action = null)
     {

@@ -35,6 +35,19 @@ class Logger
     }
 
     /**
+     * This function is only intended to be used in unit test
+     * You do not normally need to call it
+     *
+     * @return Logger
+     */
+    static public function reInitiate()
+    {
+        static::$instance = null;
+
+        return self::getInstance();
+    }
+
+    /**
      * @return Logger
      */
     static public function getInstance()
@@ -84,18 +97,5 @@ class Logger
         $this->logger = $logger;
 
         return $this;
-    }
-
-    /**
-     * This function is only intended to be used in unit test
-     * You do not normally need to call it
-     *
-     * @return Logger
-     */
-    static public function reInitiate()
-    {
-        static::$instance = null;
-
-        return self::getInstance();
     }
 }

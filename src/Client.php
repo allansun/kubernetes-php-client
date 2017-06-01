@@ -87,28 +87,6 @@ class Client
     }
 
     /**
-     * @param                    $method
-     * @param                    $uri
-     * @param array              $options
-     *
-     * @return \StdClass|string
-     * @throws ResponseException
-     */
-    public function request($method, $uri, $options = [])
-    {
-        $json     = null;
-        $options  = array_merge($this->defaultOptions, $options);
-        $res      = $this->guzzle->request($method, $uri, $options);
-        $contents = (string)$res->getBody();
-        if ($res->getHeader('content-type')[0] == 'application/json') {
-            return json_decode($contents);
-        } else {
-            return $contents;
-        }
-
-    }
-
-    /**
      * @param string               $master
      * @param array|Authentication $authenticationInfo
      *
@@ -132,6 +110,28 @@ class Client
         } else {
             throw new CommonException('Must run Client::configure() first!');
         }
+    }
+
+    /**
+     * @param                    $method
+     * @param                    $uri
+     * @param array              $options
+     *
+     * @return \StdClass|string
+     * @throws ResponseException
+     */
+    public function request($method, $uri, $options = [])
+    {
+        $json     = null;
+        $options  = array_merge($this->defaultOptions, $options);
+        $res      = $this->guzzle->request($method, $uri, $options);
+        $contents = (string)$res->getBody();
+        if ($res->getHeader('content-type')[0] == 'application/json') {
+            return json_decode($contents);
+        } else {
+            return $contents;
+        }
+
     }
 
     /**

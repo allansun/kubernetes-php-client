@@ -12,7 +12,8 @@ namespace Kubernetes\Model;
 
 
 /**
- * A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+ * A label selector requirement is a selector that contains values, a key, and an operator that relates the key and
+ * values.
  *
  * @package Kubernetes\Model
  */

@@ -25,7 +25,7 @@ use Kubernetes\Exception\InvalidParameterException;
  * @property string       $username
  * @property string       $password
  *
- * @see http://docs.guzzlephp.org/en/latest/request-options.html#cert
+ * @see     http://docs.guzzlephp.org/en/latest/request-options.html#cert
  */
 class Authentication
 {
@@ -47,7 +47,16 @@ class Authentication
     public function __construct(array $options = [])
     {
         foreach ($options as $key => $value) {
-            $this->__set($key,$value);
+            $this->__set($key, $value);
+        }
+    }
+
+    public function __get($name)
+    {
+        if (property_exists(self::class, $name)) {
+            return $this->$name;
+        } else {
+            throw new CommonException(sprintf('Unkown property [%s]', $name));
         }
     }
 
@@ -63,15 +72,6 @@ class Authentication
             throw new InvalidParameterException($name, $value);
         }
 
-    }
-
-    public function __get($name)
-    {
-        if (property_exists(self::class, $name)) {
-            return $this->$name;
-        } else {
-            throw new CommonException(sprintf('Unkown property [%s]', $name));
-        }
     }
 
     /**

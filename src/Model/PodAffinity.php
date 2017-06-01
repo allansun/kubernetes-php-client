@@ -76,5 +76,5 @@ class PodAffinity extends AbstractModel
         return $this;
     }
 
-    
+
 }

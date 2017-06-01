@@ -73,7 +73,7 @@ class ModelHydrator implements HydrationInterface, ExtractionInterface
 
             return $result;
         }
-        
+
         if (is_array($object)) {
             foreach ($object as $key => &$value) {
                 $value = $this->extract($value);

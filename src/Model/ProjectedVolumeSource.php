@@ -25,7 +25,7 @@ class ProjectedVolumeSource extends AbstractModel
      * This might be in conflict with other options that affect the file mode, like fsGroup, and
      * the result can be other mode bits set.
      */
-    public $defaultMode ;
+    public $defaultMode;
 
     /**
      * @var VolumeProjection[]

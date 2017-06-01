@@ -11,7 +11,7 @@
 namespace Kubernetes\Model;
 
 
-class StatefulSetSpec
+class StatefulSetSpec extends AbstractModel
 {
     /**
      * @var integer

@@ -14,7 +14,7 @@ namespace Kubernetes\API;
 use Kubernetes\Model\Tag\Group;
 use Kubernetes\Model\Tag\Version;
 
-class PersistentVolumeClaim  extends AbstractAPI
+class PersistentVolumeClaim extends AbstractAPI
 {
 
     protected $group = Group::CORE;
