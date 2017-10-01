@@ -23,4 +23,5 @@ class Service extends AbstractAPI
 
     protected $apiPostfix = 'services';
 
+    protected $apiPrefix = 'api';
 }
