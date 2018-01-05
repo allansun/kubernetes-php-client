@@ -92,6 +92,8 @@ abstract class AbstractAPI
      * @param array         $queryParameters
      *
      * @return AbstractModel|\StdClass
+     * @throws ProhibitedOperationException
+     * @throws \Kubernetes\Exception\ResponseException
      */
     public function create(AbstractModel $model, $queryParameters = [])
     {
@@ -161,7 +163,7 @@ abstract class AbstractAPI
      *
      * @return AbstractModel|\StdClass|
      */
-    public function replace($name, AbstractModel $model, $queryParameters = [])
+    public function replace($name, $model, $queryParameters = [])
     {
         $this->checkFunctionAvailability(self::FUNCTION_WRITE);
 

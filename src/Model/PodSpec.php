@@ -263,4 +263,16 @@ class PodSpec extends AbstractModel
     }
 
 
+    /**
+     * @param Container $Container
+     *
+     * @return $this
+     */
+    public function addContainer(Container $Container)
+    {
+        $this->containers[] = $Container;
+
+        return $this;
+    }
+
 }

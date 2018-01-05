@@ -11,6 +11,7 @@
 namespace Kubernetes\API;
 
 
+use Kubernetes\Exception\ProhibitedOperationException;
 use Kubernetes\Model\Tag\Group;
 use Kubernetes\Model\Tag\Version;
 
@@ -24,4 +25,16 @@ class Service extends AbstractAPI
     protected $apiPostfix = 'services';
 
     protected $apiPrefix = 'api';
+
+    /**
+     * @param array $queryParameters
+     *
+     * @throws ProhibitedOperationException
+     */
+    public function deleteCollection($queryParameters = [])
+    {
+        throw new ProhibitedOperationException();
+    }
+
+
 }

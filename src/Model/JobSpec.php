@@ -40,7 +40,7 @@ class JobSpec extends AbstractModel
     public $selector;
 
     /**
-     * @var PodTemplate
+     * @var PodTemplateSpec
      */
     public $template;
 
@@ -57,13 +57,13 @@ class JobSpec extends AbstractModel
     }
 
     /**
-     * @param PodTemplate $template
+     * @param PodTemplateSpec $template
      *
      * @return self
      */
     public function setTemplate($template)
     {
-        $this->template = $this->_createPropertyValue($template, PodTemplate::class, false);
+        $this->template = $this->_createPropertyValue($template, PodTemplateSpec::class, false);
 
         return $this;
     }

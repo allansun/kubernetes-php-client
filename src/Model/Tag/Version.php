@@ -16,5 +16,6 @@ final class Version
     const V1 = 'v1';
     const V1ALPHA1 = 'v1alpha1';
     const V1BETA1 = 'v1beta1';
+    const V1BETA2 = 'v1beta2';
     const V2ALPHA1 = 'v2alpha1';
 }

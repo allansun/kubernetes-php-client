@@ -13,6 +13,7 @@ namespace Kubernetes;
 use GuzzleHttp;
 use Kubernetes\Exception\CommonException;
 use Kubernetes\Exception\ResponseException;
+use Psr\Log\LogLevel;
 
 class Client
 {
@@ -29,7 +30,15 @@ class Client
     /**
      * @var GuzzleHttp\Client
      */
-    private $guzzle;
+    protected $guzzle;
+
+    protected $caCert;
+    protected $clientCert;
+    protected $clientKey;
+    protected $token;
+    protected $username;
+    protected $password;
+    protected $master;
 
     /**
      * Client constructor.
@@ -76,9 +85,16 @@ class Client
         $HandlerStack->push(
             GuzzleHttp\Middleware::log(
                 Logger::getInstance()->getLogger(),
-                new GuzzleHttp\MessageFormatter('URI:{uri} - Request:{req_body} - Response:{res_body}')
+                new GuzzleHttp\MessageFormatter('{method} Response: {res_body}'),
+                LogLevel::DEBUG
             )
-
+        );
+        $HandlerStack->push(
+            GuzzleHttp\Middleware::log(
+                Logger::getInstance()->getLogger(),
+                new GuzzleHttp\MessageFormatter('{method}:{uri} - Request: {req_body}'),
+                LogLevel::DEBUG
+            )
         );
         $this->defaultOptions['handler'] = $HandlerStack;
 

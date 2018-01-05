@@ -26,7 +26,7 @@ class Deployment extends AbstractModel
      * Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values.
      * More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#resources
      */
-    public $apiVersion = Group::APPS . '/' . Version::V1BETA1;
+    public $apiVersion = Group::APPS . '/' . Version::V1BETA2;
 
     /**
      * @var string

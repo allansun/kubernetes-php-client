@@ -24,4 +24,7 @@ class Secret extends AbstractAPI
     protected $apiPostfix = 'secrets';
 
     protected $isStatusFunctionAvailable = false;
+
+    protected $apiPrefix = 'api';
+
 }

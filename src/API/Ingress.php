@@ -19,9 +19,9 @@ class Ingress extends AbstractAPI
 
     protected $group = Group::CORE;
 
-    protected $version = Version::V1BETA1;
+    protected $version = 'extensions/' . Version::V1BETA1;
 
     protected $apiPostfix = 'ingresses';
 
-
+    protected $apiPrefix = 'apis';
 }

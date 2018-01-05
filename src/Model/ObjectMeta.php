@@ -168,5 +168,31 @@ class ObjectMeta extends AbstractModel
         return $this;
     }
 
+    /**
+     * @param $key
+     * @param $value
+     *
+     * @return self
+     */
+    public function addLabel($key, $value)
+    {
+        $this->labels[$key] = $value;
+
+        return $this;
+    }
+
+    /**
+     * @param array $labels
+     *
+     * @return $this
+     */
+    public function addLabels($labels)
+    {
+        foreach ($labels as $key => $value) {
+            $this->addLabel($key, $value);
+        }
+
+        return $this;
+    }
 
 }

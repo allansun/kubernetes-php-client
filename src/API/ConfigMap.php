@@ -24,4 +24,6 @@ class ConfigMap extends AbstractAPI
     protected $apiPostfix = 'configmaps';
 
     protected $isStatusFunctionAvailable = false;
+
+    protected $apiPrefix = 'api';
 }

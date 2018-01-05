@@ -21,7 +21,7 @@ class Ingress extends AbstractModel
      * Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values.
      * More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#resources
      */
-    public $apiVersion = Version::V1BETA1;
+    public $apiVersion = 'extensions/' . Version::V1BETA1;
 
     /**
      * @var string
