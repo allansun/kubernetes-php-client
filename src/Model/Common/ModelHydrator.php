@@ -66,7 +66,7 @@ class ModelHydrator implements HydrationInterface, ExtractionInterface
 
             foreach ($result as $key => &$value) {
                 $value = $this->extract($value);
-                if (is_null($value) || 0 === count($value)) {
+                if (empty($value)) {
                     unset($result[$key]);
                 }
             }
