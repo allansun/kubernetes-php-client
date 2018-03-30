@@ -18,4 +18,21 @@ namespace Kubernetes\Model;
  */
 class Patch extends AbstractModel
 {
+    private $data;
+
+    public function exchangeArray($data)
+    {
+        $this->data = $data;
+    }
+
+    public function toJson()
+    {
+        return json_encode($data);
+    }
+
+    public function getArrayCopy()
+    {
+        return $this->data;
+    }
+
 }
