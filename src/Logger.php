@@ -12,6 +12,7 @@ namespace Kubernetes;
 
 use Monolog\Handler\StreamHandler;
 use Psr\Log\LoggerInterface;
+use Psr\Log\NullLogger;
 
 class Logger
 {
@@ -21,7 +22,7 @@ class Logger
     static private $instance;
 
     /**
-     * @var LoggerInterface|\Monolog\Logger
+     * @var LoggerInterface
      */
     private $logger;
 
@@ -30,8 +31,7 @@ class Logger
      */
     private function __construct()
     {
-        $this->logger = new \Monolog\Logger('Kubernetes');
-        $this->logger->pushHandler(new StreamHandler('php://stdout'));
+        $this->logger = new NullLogger('Kubernetes');
     }
 
     /**
