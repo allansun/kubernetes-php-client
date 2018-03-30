@@ -51,6 +51,24 @@ class ServiceSpec extends AbstractModel
 
     /**
      * @var string
+     * externalTrafficPolicy denotes if this Service desires to route external traffic to node-local or cluster-wide
+     * endpoints. "Local" preserves the client source IP and avoids a second hop for LoadBalancer and Nodeport type
+     * services, but risks potentially imbalanced traffic spreading. "Cluster" obscures the client source IP and may
+     * cause a second hop to another node, but should have good overall load-spreading.
+     */
+    public $externalTrafficPolicy;
+
+    /**
+     * @var string
+     * healthCheckNodePort specifies the healthcheck nodePort for the service. If not specified, HealthCheckNodePort is
+     * created by the service api backend with the allocated nodePort. Will use user-specified nodePort value if
+     * specified by the client. Only effects when Type is set to LoadBalancer and ExternalTrafficPolicy is set to
+     * Local.
+     */
+    public $healthCheckNodePort;
+
+    /**
+     * @var string
      * Only applies to Service Type: LoadBalancer LoadBalancer will get created with the IP specified in this field.
      * This feature depends on whether the underlying cloud-provider supports specifying the loadBalancerIP when a load
      * balancer is created. This field will be ignored if the cloud-provider does not support the feature.
