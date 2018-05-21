@@ -17,9 +17,9 @@ use Kubernetes\Model\Tag\Version;
 class DaemonSet extends AbstractAPI
 {
 
-    protected $group = Group::EXTENSIONS;
+    protected $group = Group::APPS;
 
-    protected $version = Version::V1BETA1;
+    protected $version = Version::V1;
 
     protected $apiPostfix = 'daemonsets';
 }

@@ -10,7 +10,7 @@
 
 namespace Kubernetes\Model;
 
-
+use Kubernetes\Model\Tag\Group;
 use Kubernetes\Model\Tag\Version;
 
 class DaemonSet extends AbstractModel
@@ -21,7 +21,7 @@ class DaemonSet extends AbstractModel
      * Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values.
      * More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#resources
      */
-    public $apiVersion = Version::V1BETA1;
+    public $apiVersion = Group::APPS . '/' . Version::V1;
 
     /**
      * @var string

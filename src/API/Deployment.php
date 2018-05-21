@@ -20,7 +20,7 @@ class Deployment extends AbstractAPI
 
     protected $group = Group::APPS;
 
-    protected $version = Version::V1BETA2;
+    protected $version = Version::V1;
 
     protected $apiPostfix = 'deployments';
 
