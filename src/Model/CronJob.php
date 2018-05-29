@@ -11,6 +11,7 @@
 namespace Kubernetes\Model;
 
 
+use Kubernetes\Model\Tag\Group;
 use Kubernetes\Model\Tag\Version;
 
 class CronJob extends AbstractModel
@@ -21,7 +22,7 @@ class CronJob extends AbstractModel
      * Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values.
      * More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#resources
      */
-    public $apiVersion = Version::V2ALPHA1;
+    public $apiVersion = Group::BATCH . '/' . Version::V1BETA1;
 
     /**
      * @var string

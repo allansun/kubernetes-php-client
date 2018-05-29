@@ -19,7 +19,7 @@ class CronJob extends AbstractAPI
 
     protected $group = Group::BATCH;
 
-    protected $version = Version::V2ALPHA1;
+    protected $version = Version::V1BETA1;
 
     protected $apiPostfix = 'cronjobs';
 }
