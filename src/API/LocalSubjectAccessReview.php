@@ -1,29 +1,53 @@
 <?php
-/*
- * This file is part of Kubernete Client.
- *
- * (c) Allan Sun <allan.sun@bricre.com>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
 
 namespace Kubernetes\API;
 
+use \Kubernetes\Model\Io\K8s\Api\Authorization\V1\LocalSubjectAccessReview as LocalSubjectAccessReview;
+use \Kubernetes\Model\Io\K8s\Api\Authorization\V1beta1\LocalSubjectAccessReview as LocalSubjectAccessReview;
 
-use Kubernetes\Model\Tag\Group;
-use Kubernetes\Model\Tag\Version;
-
-class LocalSubjectAccessReview extends AbstractAPI
+class LocalSubjectAccessReview extends \Kubernetes\AbstractAPI
 {
 
-    protected $group = Group::AUTHORIZATION;
+    /**
+     * create a LocalSubjectAccessReview
+     *
+     * @param string $namespace
+     * @param LocalSubjectAccessReview $Model
+     * @return LocalSubjectAccessReview|mixed
+     */
+    public function create(string $namespace = 'default', \LocalSubjectAccessReview $Model)
+    {
+        return $this->parseResponse(
+        	$this->client->request('post',
+        		"/apis/authorization.k8s.io/v1/namespaces/{$namespace}/localsubjectaccessreviews"
+        		,[
+        			'json' => $Model->getArrayCopy(),
+        		]
+        	)
+        	, 'createAuthorizationV1NamespacedLocalSubjectAccessReview'
+        );
+    }
 
-    protected $version = Version::V1;
+    /**
+     * create a LocalSubjectAccessReview
+     *
+     * @param string $namespace
+     * @param LocalSubjectAccessReview $Model
+     * @return LocalSubjectAccessReview|mixed
+     */
+    public function createAuthorizationV1beta1(string $namespace = 'default', \LocalSubjectAccessReview $Model)
+    {
+        return $this->parseResponse(
+        	$this->client->request('post',
+        		"/apis/authorization.k8s.io/v1beta1/namespaces/{$namespace}/localsubjectaccessreviews"
+        		,[
+        			'json' => $Model->getArrayCopy(),
+        		]
+        	)
+        	, 'createAuthorizationV1beta1NamespacedLocalSubjectAccessReview'
+        );
+    }
 
-    protected $apiPostfix = 'localsubjectaccessreviews';
 
-    protected $isStatusFunctionAvailable = false;
-
-    protected $isReadFunctionAvailable = false;
 }
+

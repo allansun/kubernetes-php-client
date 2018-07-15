@@ -1,27 +1,651 @@
 <?php
-/*
- * This file is part of Kubernete Client.
- *
- * (c) Allan Sun <allan.sun@bricre.com>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
 
 namespace Kubernetes\API;
 
+use \Kubernetes\Model\Io\K8s\Api\Rbac\V1\ClusterRoleBindingList as ClusterRoleBindingList;
+use \Kubernetes\Model\Io\K8s\Api\Rbac\V1\ClusterRoleBinding as ClusterRoleBinding;
+use \Kubernetes\Model\Io\K8s\Api\Rbac\V1alpha1\ClusterRoleBindingList as ClusterRoleBindingList;
+use \Kubernetes\Model\Io\K8s\Api\Rbac\V1alpha1\ClusterRoleBinding as ClusterRoleBinding;
+use \Kubernetes\Model\Io\K8s\Api\Rbac\V1beta1\ClusterRoleBindingList as ClusterRoleBindingList;
+use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions as DeleteOptions;
+use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Status as Status;
+use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch as Patch;
+use \Kubernetes\Model\Io\K8s\Api\Rbac\V1beta1\ClusterRoleBinding as ClusterRoleBinding;
+use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\WatchEvent as WatchEvent;
 
-use Kubernetes\Model\Tag\Group;
-use Kubernetes\Model\Tag\Version;
-
-class ClusterRoleBinding extends AbstractAPI
+class ClusterRoleBinding extends \Kubernetes\AbstractAPI
 {
 
-    protected $group = Group::RBAC;
+    /**
+     * list or watch objects of kind ClusterRoleBinding
+     *
+     * @configkey continue	string
+     * @configkey fieldSelector	string
+     * @configkey includeUninitialized	boolean
+     * @configkey labelSelector	string
+     * @configkey limit	integer
+     * @configkey resourceVersion	string
+     * @configkey timeoutSeconds	integer
+     * @configkey watch	boolean
+     * @configkey continue	string
+     * @configkey fieldSelector	string
+     * @configkey includeUninitialized	boolean
+     * @configkey labelSelector	string
+     * @configkey limit	integer
+     * @configkey resourceVersion	string
+     * @configkey timeoutSeconds	integer
+     * @configkey watch	boolean
+     * @param array $queries
+     * @return ClusterRoleBindingList|mixed
+     */
+    public function listRbacAuthorizationV1(array $queries)
+    {
+        return $this->parseResponse(
+        	$this->client->request('get',
+        		"/apis/rbac.authorization.k8s.io/v1/clusterrolebindings"
+        		,[
+        			'query' => $queries,
+        		]
+        	)
+        	, 'listRbacAuthorizationV1ClusterRoleBinding'
+        );
+    }
 
-    protected $version = Version::V1BETA1;
+    /**
+     * create a ClusterRoleBinding
+     *
+     * @param ClusterRoleBinding $Model
+     * @return ClusterRoleBinding|mixed
+     */
+    public function createRbacAuthorizationV1(\ClusterRoleBinding $Model)
+    {
+        return $this->parseResponse(
+        	$this->client->request('post',
+        		"/apis/rbac.authorization.k8s.io/v1/clusterrolebindings"
+        		,[
+        			'json' => $Model->getArrayCopy(),
+        		]
+        	)
+        	, 'createRbacAuthorizationV1ClusterRoleBinding'
+        );
+    }
 
-    protected $apiPostfix = 'clusterrolebindings';
+    /**
+     * delete collection of ClusterRoleBinding
+     *
+     * @configkey continue	string
+     * @configkey fieldSelector	string
+     * @configkey includeUninitialized	boolean
+     * @configkey labelSelector	string
+     * @configkey limit	integer
+     * @configkey resourceVersion	string
+     * @configkey timeoutSeconds	integer
+     * @configkey watch	boolean
+     * @configkey continue	string
+     * @configkey fieldSelector	string
+     * @configkey includeUninitialized	boolean
+     * @configkey labelSelector	string
+     * @configkey limit	integer
+     * @configkey resourceVersion	string
+     * @configkey timeoutSeconds	integer
+     * @configkey watch	boolean
+     * @param array $queries
+     * @return Status|mixed
+     */
+    public function deleteRbacAuthorizationV1Collection(array $queries)
+    {
+        return $this->parseResponse(
+        	$this->client->request('delete',
+        		"/apis/rbac.authorization.k8s.io/v1/clusterrolebindings"
+        		,[
+        			'query' => $queries,
+        		]
+        	)
+        	, 'deleteRbacAuthorizationV1CollectionClusterRoleBinding'
+        );
+    }
 
-    protected $isStatusFunctionAvailable = false;
+    /**
+     * read the specified ClusterRoleBinding
+     *
+     * @param $name
+     * @return ClusterRoleBinding|mixed
+     */
+    public function readRbacAuthorizationV1($name)
+    {
+        return $this->parseResponse(
+        	$this->client->request('get',
+        		"/apis/rbac.authorization.k8s.io/v1/clusterrolebindings/{$name}"
+        		,[
+        		]
+        	)
+        	, 'readRbacAuthorizationV1ClusterRoleBinding'
+        );
+    }
+
+    /**
+     * replace the specified ClusterRoleBinding
+     *
+     * @param $name
+     * @param ClusterRoleBinding $Model
+     * @return ClusterRoleBinding|mixed
+     */
+    public function replaceRbacAuthorizationV1($name, \ClusterRoleBinding $Model)
+    {
+        return $this->parseResponse(
+        	$this->client->request('put',
+        		"/apis/rbac.authorization.k8s.io/v1/clusterrolebindings/{$name}"
+        		,[
+        			'json' => $Model->getArrayCopy(),
+        		]
+        	)
+        	, 'replaceRbacAuthorizationV1ClusterRoleBinding'
+        );
+    }
+
+    /**
+     * delete a ClusterRoleBinding
+     *
+     * @configkey gracePeriodSeconds	integer
+     * @configkey orphanDependents	boolean
+     * @configkey propagationPolicy	string
+     * @configkey gracePeriodSeconds	integer
+     * @configkey orphanDependents	boolean
+     * @configkey propagationPolicy	string
+     * @param $name
+     * @param DeleteOptions $Model
+     * @param array $queries
+     * @return Status|mixed
+     */
+    public function deleteRbacAuthorizationV1($name, \DeleteOptions $Model, array $queries)
+    {
+        return $this->parseResponse(
+        	$this->client->request('delete',
+        		"/apis/rbac.authorization.k8s.io/v1/clusterrolebindings/{$name}"
+        		,[
+        			'json' => $Model->getArrayCopy(),
+        			'query' => $queries,
+        		]
+        	)
+        	, 'deleteRbacAuthorizationV1ClusterRoleBinding'
+        );
+    }
+
+    /**
+     * partially update the specified ClusterRoleBinding
+     *
+     * @param $name
+     * @param Patch $Model
+     * @return ClusterRoleBinding|mixed
+     */
+    public function patchRbacAuthorizationV1($name, \Patch $Model)
+    {
+        return $this->parseResponse(
+        	$this->client->request('patch',
+        		"/apis/rbac.authorization.k8s.io/v1/clusterrolebindings/{$name}"
+        		,[
+        			'json' => $Model->getArrayCopy(),
+        		]
+        	)
+        	, 'patchRbacAuthorizationV1ClusterRoleBinding'
+        );
+    }
+
+    /**
+     * watch individual changes to a list of ClusterRoleBinding
+     *
+     * @return WatchEvent|mixed
+     */
+    public function watchRbacAuthorizationV1List()
+    {
+        return $this->parseResponse(
+        	$this->client->request('get',
+        		"/apis/rbac.authorization.k8s.io/v1/watch/clusterrolebindings"
+        		,[
+        		]
+        	)
+        	, 'watchRbacAuthorizationV1ClusterRoleBindingList'
+        );
+    }
+
+    /**
+     * watch changes to an object of kind ClusterRoleBinding
+     *
+     * @param $name
+     * @return WatchEvent|mixed
+     */
+    public function watchRbacAuthorizationV1($name)
+    {
+        return $this->parseResponse(
+        	$this->client->request('get',
+        		"/apis/rbac.authorization.k8s.io/v1/watch/clusterrolebindings/{$name}"
+        		,[
+        		]
+        	)
+        	, 'watchRbacAuthorizationV1ClusterRoleBinding'
+        );
+    }
+
+    /**
+     * list or watch objects of kind ClusterRoleBinding
+     *
+     * @configkey continue	string
+     * @configkey fieldSelector	string
+     * @configkey includeUninitialized	boolean
+     * @configkey labelSelector	string
+     * @configkey limit	integer
+     * @configkey resourceVersion	string
+     * @configkey timeoutSeconds	integer
+     * @configkey watch	boolean
+     * @configkey continue	string
+     * @configkey fieldSelector	string
+     * @configkey includeUninitialized	boolean
+     * @configkey labelSelector	string
+     * @configkey limit	integer
+     * @configkey resourceVersion	string
+     * @configkey timeoutSeconds	integer
+     * @configkey watch	boolean
+     * @param array $queries
+     * @return ClusterRoleBindingList|mixed
+     */
+    public function listRbacAuthorizationV1alpha1(array $queries)
+    {
+        return $this->parseResponse(
+        	$this->client->request('get',
+        		"/apis/rbac.authorization.k8s.io/v1alpha1/clusterrolebindings"
+        		,[
+        			'query' => $queries,
+        		]
+        	)
+        	, 'listRbacAuthorizationV1alpha1ClusterRoleBinding'
+        );
+    }
+
+    /**
+     * create a ClusterRoleBinding
+     *
+     * @param ClusterRoleBinding $Model
+     * @return ClusterRoleBinding|mixed
+     */
+    public function createRbacAuthorizationV1alpha1(\ClusterRoleBinding $Model)
+    {
+        return $this->parseResponse(
+        	$this->client->request('post',
+        		"/apis/rbac.authorization.k8s.io/v1alpha1/clusterrolebindings"
+        		,[
+        			'json' => $Model->getArrayCopy(),
+        		]
+        	)
+        	, 'createRbacAuthorizationV1alpha1ClusterRoleBinding'
+        );
+    }
+
+    /**
+     * delete collection of ClusterRoleBinding
+     *
+     * @configkey continue	string
+     * @configkey fieldSelector	string
+     * @configkey includeUninitialized	boolean
+     * @configkey labelSelector	string
+     * @configkey limit	integer
+     * @configkey resourceVersion	string
+     * @configkey timeoutSeconds	integer
+     * @configkey watch	boolean
+     * @configkey continue	string
+     * @configkey fieldSelector	string
+     * @configkey includeUninitialized	boolean
+     * @configkey labelSelector	string
+     * @configkey limit	integer
+     * @configkey resourceVersion	string
+     * @configkey timeoutSeconds	integer
+     * @configkey watch	boolean
+     * @param array $queries
+     * @return Status|mixed
+     */
+    public function deleteRbacAuthorizationV1alpha1Collection(array $queries)
+    {
+        return $this->parseResponse(
+        	$this->client->request('delete',
+        		"/apis/rbac.authorization.k8s.io/v1alpha1/clusterrolebindings"
+        		,[
+        			'query' => $queries,
+        		]
+        	)
+        	, 'deleteRbacAuthorizationV1alpha1CollectionClusterRoleBinding'
+        );
+    }
+
+    /**
+     * read the specified ClusterRoleBinding
+     *
+     * @param $name
+     * @return ClusterRoleBinding|mixed
+     */
+    public function readRbacAuthorizationV1alpha1($name)
+    {
+        return $this->parseResponse(
+        	$this->client->request('get',
+        		"/apis/rbac.authorization.k8s.io/v1alpha1/clusterrolebindings/{$name}"
+        		,[
+        		]
+        	)
+        	, 'readRbacAuthorizationV1alpha1ClusterRoleBinding'
+        );
+    }
+
+    /**
+     * replace the specified ClusterRoleBinding
+     *
+     * @param $name
+     * @param ClusterRoleBinding $Model
+     * @return ClusterRoleBinding|mixed
+     */
+    public function replaceRbacAuthorizationV1alpha1($name, \ClusterRoleBinding $Model)
+    {
+        return $this->parseResponse(
+        	$this->client->request('put',
+        		"/apis/rbac.authorization.k8s.io/v1alpha1/clusterrolebindings/{$name}"
+        		,[
+        			'json' => $Model->getArrayCopy(),
+        		]
+        	)
+        	, 'replaceRbacAuthorizationV1alpha1ClusterRoleBinding'
+        );
+    }
+
+    /**
+     * delete a ClusterRoleBinding
+     *
+     * @configkey gracePeriodSeconds	integer
+     * @configkey orphanDependents	boolean
+     * @configkey propagationPolicy	string
+     * @configkey gracePeriodSeconds	integer
+     * @configkey orphanDependents	boolean
+     * @configkey propagationPolicy	string
+     * @param $name
+     * @param DeleteOptions $Model
+     * @param array $queries
+     * @return Status|mixed
+     */
+    public function deleteRbacAuthorizationV1alpha1($name, \DeleteOptions $Model, array $queries)
+    {
+        return $this->parseResponse(
+        	$this->client->request('delete',
+        		"/apis/rbac.authorization.k8s.io/v1alpha1/clusterrolebindings/{$name}"
+        		,[
+        			'json' => $Model->getArrayCopy(),
+        			'query' => $queries,
+        		]
+        	)
+        	, 'deleteRbacAuthorizationV1alpha1ClusterRoleBinding'
+        );
+    }
+
+    /**
+     * partially update the specified ClusterRoleBinding
+     *
+     * @param $name
+     * @param Patch $Model
+     * @return ClusterRoleBinding|mixed
+     */
+    public function patchRbacAuthorizationV1alpha1($name, \Patch $Model)
+    {
+        return $this->parseResponse(
+        	$this->client->request('patch',
+        		"/apis/rbac.authorization.k8s.io/v1alpha1/clusterrolebindings/{$name}"
+        		,[
+        			'json' => $Model->getArrayCopy(),
+        		]
+        	)
+        	, 'patchRbacAuthorizationV1alpha1ClusterRoleBinding'
+        );
+    }
+
+    /**
+     * watch individual changes to a list of ClusterRoleBinding
+     *
+     * @return WatchEvent|mixed
+     */
+    public function watchRbacAuthorizationV1alpha1List()
+    {
+        return $this->parseResponse(
+        	$this->client->request('get',
+        		"/apis/rbac.authorization.k8s.io/v1alpha1/watch/clusterrolebindings"
+        		,[
+        		]
+        	)
+        	, 'watchRbacAuthorizationV1alpha1ClusterRoleBindingList'
+        );
+    }
+
+    /**
+     * watch changes to an object of kind ClusterRoleBinding
+     *
+     * @param $name
+     * @return WatchEvent|mixed
+     */
+    public function watchRbacAuthorizationV1alpha1($name)
+    {
+        return $this->parseResponse(
+        	$this->client->request('get',
+        		"/apis/rbac.authorization.k8s.io/v1alpha1/watch/clusterrolebindings/{$name}"
+        		,[
+        		]
+        	)
+        	, 'watchRbacAuthorizationV1alpha1ClusterRoleBinding'
+        );
+    }
+
+    /**
+     * list or watch objects of kind ClusterRoleBinding
+     *
+     * @configkey continue	string
+     * @configkey fieldSelector	string
+     * @configkey includeUninitialized	boolean
+     * @configkey labelSelector	string
+     * @configkey limit	integer
+     * @configkey resourceVersion	string
+     * @configkey timeoutSeconds	integer
+     * @configkey watch	boolean
+     * @configkey continue	string
+     * @configkey fieldSelector	string
+     * @configkey includeUninitialized	boolean
+     * @configkey labelSelector	string
+     * @configkey limit	integer
+     * @configkey resourceVersion	string
+     * @configkey timeoutSeconds	integer
+     * @configkey watch	boolean
+     * @param array $queries
+     * @return ClusterRoleBindingList|mixed
+     */
+    public function listRbacAuthorizationV1beta1(array $queries)
+    {
+        return $this->parseResponse(
+        	$this->client->request('get',
+        		"/apis/rbac.authorization.k8s.io/v1beta1/clusterrolebindings"
+        		,[
+        			'query' => $queries,
+        		]
+        	)
+        	, 'listRbacAuthorizationV1beta1ClusterRoleBinding'
+        );
+    }
+
+    /**
+     * create a ClusterRoleBinding
+     *
+     * @param ClusterRoleBinding $Model
+     * @return ClusterRoleBinding|mixed
+     */
+    public function createRbacAuthorizationV1beta1(\ClusterRoleBinding $Model)
+    {
+        return $this->parseResponse(
+        	$this->client->request('post',
+        		"/apis/rbac.authorization.k8s.io/v1beta1/clusterrolebindings"
+        		,[
+        			'json' => $Model->getArrayCopy(),
+        		]
+        	)
+        	, 'createRbacAuthorizationV1beta1ClusterRoleBinding'
+        );
+    }
+
+    /**
+     * delete collection of ClusterRoleBinding
+     *
+     * @configkey continue	string
+     * @configkey fieldSelector	string
+     * @configkey includeUninitialized	boolean
+     * @configkey labelSelector	string
+     * @configkey limit	integer
+     * @configkey resourceVersion	string
+     * @configkey timeoutSeconds	integer
+     * @configkey watch	boolean
+     * @configkey continue	string
+     * @configkey fieldSelector	string
+     * @configkey includeUninitialized	boolean
+     * @configkey labelSelector	string
+     * @configkey limit	integer
+     * @configkey resourceVersion	string
+     * @configkey timeoutSeconds	integer
+     * @configkey watch	boolean
+     * @param array $queries
+     * @return Status|mixed
+     */
+    public function deleteRbacAuthorizationV1beta1Collection(array $queries)
+    {
+        return $this->parseResponse(
+        	$this->client->request('delete',
+        		"/apis/rbac.authorization.k8s.io/v1beta1/clusterrolebindings"
+        		,[
+        			'query' => $queries,
+        		]
+        	)
+        	, 'deleteRbacAuthorizationV1beta1CollectionClusterRoleBinding'
+        );
+    }
+
+    /**
+     * read the specified ClusterRoleBinding
+     *
+     * @param $name
+     * @return ClusterRoleBinding|mixed
+     */
+    public function readRbacAuthorizationV1beta1($name)
+    {
+        return $this->parseResponse(
+        	$this->client->request('get',
+        		"/apis/rbac.authorization.k8s.io/v1beta1/clusterrolebindings/{$name}"
+        		,[
+        		]
+        	)
+        	, 'readRbacAuthorizationV1beta1ClusterRoleBinding'
+        );
+    }
+
+    /**
+     * replace the specified ClusterRoleBinding
+     *
+     * @param $name
+     * @param ClusterRoleBinding $Model
+     * @return ClusterRoleBinding|mixed
+     */
+    public function replaceRbacAuthorizationV1beta1($name, \ClusterRoleBinding $Model)
+    {
+        return $this->parseResponse(
+        	$this->client->request('put',
+        		"/apis/rbac.authorization.k8s.io/v1beta1/clusterrolebindings/{$name}"
+        		,[
+        			'json' => $Model->getArrayCopy(),
+        		]
+        	)
+        	, 'replaceRbacAuthorizationV1beta1ClusterRoleBinding'
+        );
+    }
+
+    /**
+     * delete a ClusterRoleBinding
+     *
+     * @configkey gracePeriodSeconds	integer
+     * @configkey orphanDependents	boolean
+     * @configkey propagationPolicy	string
+     * @configkey gracePeriodSeconds	integer
+     * @configkey orphanDependents	boolean
+     * @configkey propagationPolicy	string
+     * @param $name
+     * @param DeleteOptions $Model
+     * @param array $queries
+     * @return Status|mixed
+     */
+    public function deleteRbacAuthorizationV1beta1($name, \DeleteOptions $Model, array $queries)
+    {
+        return $this->parseResponse(
+        	$this->client->request('delete',
+        		"/apis/rbac.authorization.k8s.io/v1beta1/clusterrolebindings/{$name}"
+        		,[
+        			'json' => $Model->getArrayCopy(),
+        			'query' => $queries,
+        		]
+        	)
+        	, 'deleteRbacAuthorizationV1beta1ClusterRoleBinding'
+        );
+    }
+
+    /**
+     * partially update the specified ClusterRoleBinding
+     *
+     * @param $name
+     * @param Patch $Model
+     * @return ClusterRoleBinding|mixed
+     */
+    public function patchRbacAuthorizationV1beta1($name, \Patch $Model)
+    {
+        return $this->parseResponse(
+        	$this->client->request('patch',
+        		"/apis/rbac.authorization.k8s.io/v1beta1/clusterrolebindings/{$name}"
+        		,[
+        			'json' => $Model->getArrayCopy(),
+        		]
+        	)
+        	, 'patchRbacAuthorizationV1beta1ClusterRoleBinding'
+        );
+    }
+
+    /**
+     * watch individual changes to a list of ClusterRoleBinding
+     *
+     * @return WatchEvent|mixed
+     */
+    public function watchRbacAuthorizationV1beta1List()
+    {
+        return $this->parseResponse(
+        	$this->client->request('get',
+        		"/apis/rbac.authorization.k8s.io/v1beta1/watch/clusterrolebindings"
+        		,[
+        		]
+        	)
+        	, 'watchRbacAuthorizationV1beta1ClusterRoleBindingList'
+        );
+    }
+
+    /**
+     * watch changes to an object of kind ClusterRoleBinding
+     *
+     * @param $name
+     * @return WatchEvent|mixed
+     */
+    public function watchRbacAuthorizationV1beta1($name)
+    {
+        return $this->parseResponse(
+        	$this->client->request('get',
+        		"/apis/rbac.authorization.k8s.io/v1beta1/watch/clusterrolebindings/{$name}"
+        		,[
+        		]
+        	)
+        	, 'watchRbacAuthorizationV1beta1ClusterRoleBinding'
+        );
+    }
+
+
 }
+

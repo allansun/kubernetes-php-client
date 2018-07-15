@@ -1,29 +1,48 @@
 <?php
-/*
- * This file is part of Kubernete Client.
- *
- * (c) Allan Sun <allan.sun@bricre.com>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
 
 namespace Kubernetes\API;
 
+use \Kubernetes\Model\Io\K8s\Api\Core\V1\ComponentStatusList as ComponentStatusList;
+use \Kubernetes\Model\Io\K8s\Api\Core\V1\ComponentStatus as ComponentStatus;
 
-use Kubernetes\Model\Tag\Group;
-use Kubernetes\Model\Tag\Version;
-
-class ComponentStatus extends AbstractAPI
+class ComponentStatus extends \Kubernetes\AbstractAPI
 {
 
-    protected $group = Group::CORE;
+    /**
+     * list objects of kind ComponentStatus
+     *
+     * @return ComponentStatusList|mixed
+     */
+    public function list()
+    {
+        return $this->parseResponse(
+        	$this->client->request('get',
+        		"/api/v1/componentstatuses"
+        		,[
+        		]
+        	)
+        	, 'listCoreV1ComponentStatus'
+        );
+    }
 
-    protected $version = Version::V1;
+    /**
+     * read the specified ComponentStatus
+     *
+     * @param $name
+     * @return ComponentStatus|mixed
+     */
+    public function read($name)
+    {
+        return $this->parseResponse(
+        	$this->client->request('get',
+        		"/api/v1/componentstatuses/{$name}"
+        		,[
+        		]
+        	)
+        	, 'readCoreV1ComponentStatus'
+        );
+    }
 
-    protected $apiPostfix = 'componentstatuses';
 
-    protected $isStatusFunctionAvailable = false;
-
-    protected $isWriteFunctionAvailable = false;
 }
+

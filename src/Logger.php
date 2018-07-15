@@ -10,7 +10,6 @@
 
 namespace Kubernetes;
 
-use Monolog\Handler\StreamHandler;
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
 
@@ -31,7 +30,7 @@ class Logger
      */
     private function __construct()
     {
-        $this->logger = new NullLogger('Kubernetes');
+        $this->logger = new NullLogger();
     }
 
     /**

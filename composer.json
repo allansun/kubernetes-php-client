@@ -15,16 +15,17 @@
     }
   ],
   "require": {
-    "php": ">=7",
+    "php": ">=7.1",
     "guzzlehttp/guzzle": "~6.0",
-    "monolog/monolog": "@stable",
-    "zendframework/zend-eventmanager": "^3.1",
-    "zendframework/zend-hydrator": "^2.2",
-    "zendframework/zend-filter": "^2.7",
-    "zendframework/zend-servicemanager": "^3.3"
+    "monolog/monolog": "@stable"
   },
   "require-dev": {
-    "phpunit/phpunit": "~6.1"
+    "phpunit/phpunit": "~7",
+    "allansun/openapi-parser": "dev-master",
+    "zendframework/zend-code": "3.3.*",
+    "symfony/console": "4.1.*",
+    "mattketmo/camel": "^1.1",
+    "symfony/filesystem":"4.1.*"
   },
   "autoload": {
     "psr-4": {
@@ -33,8 +34,15 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "Kubernetes\\Test\\": "test"
+      "Kubernetes\\Test\\": "test",
+      "CodeGenerator\\": "dev_src"
     }
+  },
+  "archive": {
+    "exclude": [
+      "openapi",
+      "bin"
+    ]
   },
   "minimum-stability": "dev",
   "prefer-stable": true

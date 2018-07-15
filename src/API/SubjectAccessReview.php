@@ -1,29 +1,51 @@
 <?php
-/*
- * This file is part of Kubernete Client.
- *
- * (c) Allan Sun <allan.sun@bricre.com>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
 
 namespace Kubernetes\API;
 
+use \Kubernetes\Model\Io\K8s\Api\Authorization\V1\SubjectAccessReview as SubjectAccessReview;
+use \Kubernetes\Model\Io\K8s\Api\Authorization\V1beta1\SubjectAccessReview as SubjectAccessReview;
 
-use Kubernetes\Model\Tag\Group;
-use Kubernetes\Model\Tag\Version;
-
-class SubjectAccessReview extends AbstractAPI
+class SubjectAccessReview extends \Kubernetes\AbstractAPI
 {
 
-    protected $group = Group::AUTHORIZATION;
+    /**
+     * create a SubjectAccessReview
+     *
+     * @param SubjectAccessReview $Model
+     * @return SubjectAccessReview|mixed
+     */
+    public function create(\SubjectAccessReview $Model)
+    {
+        return $this->parseResponse(
+        	$this->client->request('post',
+        		"/apis/authorization.k8s.io/v1/subjectaccessreviews"
+        		,[
+        			'json' => $Model->getArrayCopy(),
+        		]
+        	)
+        	, 'createAuthorizationV1SubjectAccessReview'
+        );
+    }
 
-    protected $version = Version::V1;
+    /**
+     * create a SubjectAccessReview
+     *
+     * @param SubjectAccessReview $Model
+     * @return SubjectAccessReview|mixed
+     */
+    public function createAuthorizationV1beta1(\SubjectAccessReview $Model)
+    {
+        return $this->parseResponse(
+        	$this->client->request('post',
+        		"/apis/authorization.k8s.io/v1beta1/subjectaccessreviews"
+        		,[
+        			'json' => $Model->getArrayCopy(),
+        		]
+        	)
+        	, 'createAuthorizationV1beta1SubjectAccessReview'
+        );
+    }
 
-    protected $apiPostfix = 'subjectaccessreviews';
 
-    protected $isStatusFunctionAvailable = false;
-
-    protected $isReadFunctionAvailable = false;
 }
+

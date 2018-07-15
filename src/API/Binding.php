@@ -1,29 +1,53 @@
 <?php
-/*
- * This file is part of Kubernete Client.
- *
- * (c) Allan Sun <allan.sun@bricre.com>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
 
 namespace Kubernetes\API;
 
+use \Kubernetes\Model\Io\K8s\Api\Core\V1\Binding as Binding;
 
-use Kubernetes\Model\Tag\Group;
-use Kubernetes\Model\Tag\Version;
-
-class Binding extends AbstractAPI
+class Binding extends \Kubernetes\AbstractAPI
 {
 
-    protected $group = Group::CORE;
+    /**
+     * create a Binding
+     *
+     * @param string $namespace
+     * @param Binding $Model
+     * @return Binding|mixed
+     */
+    public function create(string $namespace = 'default', \Binding $Model)
+    {
+        return $this->parseResponse(
+        	$this->client->request('post',
+        		"/api/v1/namespaces/{$namespace}/bindings"
+        		,[
+        			'json' => $Model->getArrayCopy(),
+        		]
+        	)
+        	, 'createCoreV1NamespacedBinding'
+        );
+    }
 
-    protected $version = Version::V1;
+    /**
+     * create binding of a Pod
+     *
+     * @param string $namespace
+     * @param $name
+     * @param Binding $Model
+     * @return Binding|mixed
+     */
+    public function createPod(string $namespace = 'default', $name, \Binding $Model)
+    {
+        return $this->parseResponse(
+        	$this->client->request('post',
+        		"/api/v1/namespaces/{$namespace}/pods/{$name}/binding"
+        		,[
+        			'json' => $Model->getArrayCopy(),
+        		]
+        	)
+        	, 'createCoreV1NamespacedPodBinding'
+        );
+    }
 
-    protected $apiPostfix = 'bindings';
 
-    protected $isStatusFunctionAvailable = false;
-
-    protected $isReadFunctionAvailable = false;
 }
+

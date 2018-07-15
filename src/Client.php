@@ -12,7 +12,6 @@ namespace Kubernetes;
 
 use GuzzleHttp;
 use Kubernetes\Exception\CommonException;
-use Kubernetes\Exception\ResponseException;
 use Psr\Log\LogLevel;
 
 class Client
@@ -92,7 +91,7 @@ class Client
         $HandlerStack->push(
             GuzzleHttp\Middleware::log(
                 Logger::getInstance()->getLogger(),
-                new GuzzleHttp\MessageFormatter('{method}:{uri} - Request: {req_body}'),
+                new GuzzleHttp\MessageFormatter('{method} : {uri} - Request: {req_body}'),
                 LogLevel::DEBUG
             )
         );
@@ -133,21 +132,14 @@ class Client
      * @param                    $uri
      * @param array              $options
      *
-     * @return \StdClass|string
-     * @throws ResponseException
+     * @return mixed|\Psr\Http\Message\ResponseInterface
      */
     public function request($method, $uri, $options = [])
     {
-        $json     = null;
-        $options  = array_merge($this->defaultOptions, $options);
-        $res      = $this->guzzle->request($method, $uri, $options);
-        $contents = (string)$res->getBody();
-        if ($res->getHeader('content-type')[0] == 'application/json') {
-            return json_decode($contents);
-        } else {
-            return $contents;
-        }
+        $json    = null;
+        $options = array_merge($this->defaultOptions, $options);
 
+        return $this->guzzle->request($method, $uri, $options);
     }
 
     /**
