@@ -685,6 +685,279 @@ class Pod extends \Kubernetes\AbstractAPI
     }
 
     /**
+     * proxy GET requests to Pod
+     *
+     * @param $namespace
+     * @param $name
+     * @return string|mixed
+     */
+    public function proxyGET($namespace = 'default', $name)
+    {
+        return $this->parseResponse(
+        	$this->client->request('get',
+        		"/api/v1/proxy/namespaces/{$namespace}/pods/{$name}"
+        		,[
+        		]
+        	)
+        	, 'proxyCoreV1GETNamespacedPod'
+        );
+    }
+
+    /**
+     * proxy PUT requests to Pod
+     *
+     * @param $namespace
+     * @param $name
+     * @return string|mixed
+     */
+    public function proxyPUT($namespace = 'default', $name)
+    {
+        return $this->parseResponse(
+        	$this->client->request('put',
+        		"/api/v1/proxy/namespaces/{$namespace}/pods/{$name}"
+        		,[
+        		]
+        	)
+        	, 'proxyCoreV1PUTNamespacedPod'
+        );
+    }
+
+    /**
+     * proxy POST requests to Pod
+     *
+     * @param $namespace
+     * @param $name
+     * @return string|mixed
+     */
+    public function proxyPOST($namespace = 'default', $name)
+    {
+        return $this->parseResponse(
+        	$this->client->request('post',
+        		"/api/v1/proxy/namespaces/{$namespace}/pods/{$name}"
+        		,[
+        		]
+        	)
+        	, 'proxyCoreV1POSTNamespacedPod'
+        );
+    }
+
+    /**
+     * proxy DELETE requests to Pod
+     *
+     * @param $namespace
+     * @param $name
+     * @return string|mixed
+     */
+    public function proxyDELETE($namespace = 'default', $name)
+    {
+        return $this->parseResponse(
+        	$this->client->request('delete',
+        		"/api/v1/proxy/namespaces/{$namespace}/pods/{$name}"
+        		,[
+        		]
+        	)
+        	, 'proxyCoreV1DELETENamespacedPod'
+        );
+    }
+
+    /**
+     * proxy OPTIONS requests to Pod
+     *
+     * @param $namespace
+     * @param $name
+     * @return string|mixed
+     */
+    public function proxyOPTIONS($namespace = 'default', $name)
+    {
+        return $this->parseResponse(
+        	$this->client->request('options',
+        		"/api/v1/proxy/namespaces/{$namespace}/pods/{$name}"
+        		,[
+        		]
+        	)
+        	, 'proxyCoreV1OPTIONSNamespacedPod'
+        );
+    }
+
+    /**
+     * proxy HEAD requests to Pod
+     *
+     * @param $namespace
+     * @param $name
+     * @return string|mixed
+     */
+    public function proxyHEAD($namespace = 'default', $name)
+    {
+        return $this->parseResponse(
+        	$this->client->request('head',
+        		"/api/v1/proxy/namespaces/{$namespace}/pods/{$name}"
+        		,[
+        		]
+        	)
+        	, 'proxyCoreV1HEADNamespacedPod'
+        );
+    }
+
+    /**
+     * proxy PATCH requests to Pod
+     *
+     * @param $namespace
+     * @param $name
+     * @return string|mixed
+     */
+    public function proxyPATCH($namespace = 'default', $name)
+    {
+        return $this->parseResponse(
+        	$this->client->request('patch',
+        		"/api/v1/proxy/namespaces/{$namespace}/pods/{$name}"
+        		,[
+        		]
+        	)
+        	, 'proxyCoreV1PATCHNamespacedPod'
+        );
+    }
+
+    /**
+     * proxy GET requests to Pod
+     *
+     * @param $namespace
+     * @param $name
+     * @param $path
+     * @return string|mixed
+     */
+    public function proxyGETWithPath($namespace = 'default', $name, $path)
+    {
+        return $this->parseResponse(
+        	$this->client->request('get',
+        		"/api/v1/proxy/namespaces/{$namespace}/pods/{$name}/{$path}"
+        		,[
+        		]
+        	)
+        	, 'proxyCoreV1GETNamespacedPodWithPath'
+        );
+    }
+
+    /**
+     * proxy PUT requests to Pod
+     *
+     * @param $namespace
+     * @param $name
+     * @param $path
+     * @return string|mixed
+     */
+    public function proxyPUTWithPath($namespace = 'default', $name, $path)
+    {
+        return $this->parseResponse(
+        	$this->client->request('put',
+        		"/api/v1/proxy/namespaces/{$namespace}/pods/{$name}/{$path}"
+        		,[
+        		]
+        	)
+        	, 'proxyCoreV1PUTNamespacedPodWithPath'
+        );
+    }
+
+    /**
+     * proxy POST requests to Pod
+     *
+     * @param $namespace
+     * @param $name
+     * @param $path
+     * @return string|mixed
+     */
+    public function proxyPOSTWithPath($namespace = 'default', $name, $path)
+    {
+        return $this->parseResponse(
+        	$this->client->request('post',
+        		"/api/v1/proxy/namespaces/{$namespace}/pods/{$name}/{$path}"
+        		,[
+        		]
+        	)
+        	, 'proxyCoreV1POSTNamespacedPodWithPath'
+        );
+    }
+
+    /**
+     * proxy DELETE requests to Pod
+     *
+     * @param $namespace
+     * @param $name
+     * @param $path
+     * @return string|mixed
+     */
+    public function proxyDELETEWithPath($namespace = 'default', $name, $path)
+    {
+        return $this->parseResponse(
+        	$this->client->request('delete',
+        		"/api/v1/proxy/namespaces/{$namespace}/pods/{$name}/{$path}"
+        		,[
+        		]
+        	)
+        	, 'proxyCoreV1DELETENamespacedPodWithPath'
+        );
+    }
+
+    /**
+     * proxy OPTIONS requests to Pod
+     *
+     * @param $namespace
+     * @param $name
+     * @param $path
+     * @return string|mixed
+     */
+    public function proxyOPTIONSWithPath($namespace = 'default', $name, $path)
+    {
+        return $this->parseResponse(
+        	$this->client->request('options',
+        		"/api/v1/proxy/namespaces/{$namespace}/pods/{$name}/{$path}"
+        		,[
+        		]
+        	)
+        	, 'proxyCoreV1OPTIONSNamespacedPodWithPath'
+        );
+    }
+
+    /**
+     * proxy HEAD requests to Pod
+     *
+     * @param $namespace
+     * @param $name
+     * @param $path
+     * @return string|mixed
+     */
+    public function proxyHEADWithPath($namespace = 'default', $name, $path)
+    {
+        return $this->parseResponse(
+        	$this->client->request('head',
+        		"/api/v1/proxy/namespaces/{$namespace}/pods/{$name}/{$path}"
+        		,[
+        		]
+        	)
+        	, 'proxyCoreV1HEADNamespacedPodWithPath'
+        );
+    }
+
+    /**
+     * proxy PATCH requests to Pod
+     *
+     * @param $namespace
+     * @param $name
+     * @param $path
+     * @return string|mixed
+     */
+    public function proxyPATCHWithPath($namespace = 'default', $name, $path)
+    {
+        return $this->parseResponse(
+        	$this->client->request('patch',
+        		"/api/v1/proxy/namespaces/{$namespace}/pods/{$name}/{$path}"
+        		,[
+        		]
+        	)
+        	, 'proxyCoreV1PATCHNamespacedPodWithPath'
+        );
+    }
+
+    /**
      * watch individual changes to a list of Pod
      *
      * @param $namespace

@@ -9,16 +9,6 @@ class MetricStatus extends \Kubernetes\AbstractModel
 {
 
     /**
-     * external refers to a global metric that is not associated with any Kubernetes
-     * object. It allows autoscaling based on information coming from components
-     * running outside of cluster (for example length of queue in cloud messaging
-     * service, or QPS from loadbalancer running outside of cluster).
-     *
-     * @var ExternalMetricStatus
-     */
-    public $external = null;
-
-    /**
      * object refers to a metric describing a single kubernetes object (for example,
      * hits-per-second on an Ingress object).
      *
@@ -47,8 +37,7 @@ class MetricStatus extends \Kubernetes\AbstractModel
     public $resource = null;
 
     /**
-     * type is the type of metric source.  It will be one of "Object", "Pods" or
-     * "Resource", each corresponds to a matching field in the object.
+     * type is the type of metric source.  It will match one of the fields below.
      *
      * @var string
      */

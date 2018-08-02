@@ -788,43 +788,6 @@ class ResponseTypes
         'getApiregistrationAPIGroup' => [
             '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\APIGroup',
         ],
-        'getApiregistrationV1APIResources' => [
-            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\APIResourceList',
-        ],
-        'listApiregistrationV1APIService' => [
-            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Kube_aggregator\\Pkg\\Apis\\Apiregistration\\V1\\APIServiceList',
-        ],
-        'createApiregistrationV1APIService' => [
-            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Kube_aggregator\\Pkg\\Apis\\Apiregistration\\V1\\APIService',
-            '201.' => '\\Kubernetes\\Model\\Io\\K8s\\Kube_aggregator\\Pkg\\Apis\\Apiregistration\\V1\\APIService',
-            '202.' => '\\Kubernetes\\Model\\Io\\K8s\\Kube_aggregator\\Pkg\\Apis\\Apiregistration\\V1\\APIService',
-        ],
-        'deleteApiregistrationV1CollectionAPIService' => [
-            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\Status',
-        ],
-        'readApiregistrationV1APIService' => [
-            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Kube_aggregator\\Pkg\\Apis\\Apiregistration\\V1\\APIService',
-        ],
-        'replaceApiregistrationV1APIService' => [
-            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Kube_aggregator\\Pkg\\Apis\\Apiregistration\\V1\\APIService',
-            '201.' => '\\Kubernetes\\Model\\Io\\K8s\\Kube_aggregator\\Pkg\\Apis\\Apiregistration\\V1\\APIService',
-        ],
-        'deleteApiregistrationV1APIService' => [
-            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\Status',
-        ],
-        'patchApiregistrationV1APIService' => [
-            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Kube_aggregator\\Pkg\\Apis\\Apiregistration\\V1\\APIService',
-        ],
-        'replaceApiregistrationV1APIServiceStatus' => [
-            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Kube_aggregator\\Pkg\\Apis\\Apiregistration\\V1\\APIService',
-            '201.' => '\\Kubernetes\\Model\\Io\\K8s\\Kube_aggregator\\Pkg\\Apis\\Apiregistration\\V1\\APIService',
-        ],
-        'watchApiregistrationV1APIServiceList' => [
-            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\WatchEvent',
-        ],
-        'watchApiregistrationV1APIService' => [
-            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\WatchEvent',
-        ],
         'getApiregistrationV1beta1APIResources' => [
             '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\APIResourceList',
         ],
@@ -2308,30 +2271,6 @@ class ResponseTypes
         'listPolicyV1beta1PodDisruptionBudgetForAllNamespaces' => [
             '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Policy\\V1beta1\\PodDisruptionBudgetList',
         ],
-        'listPolicyV1beta1PodSecurityPolicy' => [
-            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Policy\\V1beta1\\PodSecurityPolicyList',
-        ],
-        'createPolicyV1beta1PodSecurityPolicy' => [
-            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Policy\\V1beta1\\PodSecurityPolicy',
-            '201.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Policy\\V1beta1\\PodSecurityPolicy',
-            '202.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Policy\\V1beta1\\PodSecurityPolicy',
-        ],
-        'deletePolicyV1beta1CollectionPodSecurityPolicy' => [
-            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\Status',
-        ],
-        'readPolicyV1beta1PodSecurityPolicy' => [
-            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Policy\\V1beta1\\PodSecurityPolicy',
-        ],
-        'replacePolicyV1beta1PodSecurityPolicy' => [
-            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Policy\\V1beta1\\PodSecurityPolicy',
-            '201.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Policy\\V1beta1\\PodSecurityPolicy',
-        ],
-        'deletePolicyV1beta1PodSecurityPolicy' => [
-            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\Status',
-        ],
-        'patchPolicyV1beta1PodSecurityPolicy' => [
-            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Policy\\V1beta1\\PodSecurityPolicy',
-        ],
         'watchPolicyV1beta1NamespacedPodDisruptionBudgetList' => [
             '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\WatchEvent',
         ],
@@ -2339,12 +2278,6 @@ class ResponseTypes
             '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\WatchEvent',
         ],
         'watchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces' => [
-            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\WatchEvent',
-        ],
-        'watchPolicyV1beta1PodSecurityPolicyList' => [
-            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\WatchEvent',
-        ],
-        'watchPolicyV1beta1PodSecurityPolicy' => [
             '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\WatchEvent',
         ],
         'getRbacAuthorizationAPIGroup' => [
@@ -2929,40 +2862,10 @@ class ResponseTypes
         'patchStorageV1beta1StorageClass' => [
             '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Storage\\V1beta1\\StorageClass',
         ],
-        'listStorageV1beta1VolumeAttachment' => [
-            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Storage\\V1beta1\\VolumeAttachmentList',
-        ],
-        'createStorageV1beta1VolumeAttachment' => [
-            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Storage\\V1beta1\\VolumeAttachment',
-            '201.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Storage\\V1beta1\\VolumeAttachment',
-            '202.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Storage\\V1beta1\\VolumeAttachment',
-        ],
-        'deleteStorageV1beta1CollectionVolumeAttachment' => [
-            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\Status',
-        ],
-        'readStorageV1beta1VolumeAttachment' => [
-            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Storage\\V1beta1\\VolumeAttachment',
-        ],
-        'replaceStorageV1beta1VolumeAttachment' => [
-            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Storage\\V1beta1\\VolumeAttachment',
-            '201.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Storage\\V1beta1\\VolumeAttachment',
-        ],
-        'deleteStorageV1beta1VolumeAttachment' => [
-            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\Status',
-        ],
-        'patchStorageV1beta1VolumeAttachment' => [
-            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Storage\\V1beta1\\VolumeAttachment',
-        ],
         'watchStorageV1beta1StorageClassList' => [
             '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\WatchEvent',
         ],
         'watchStorageV1beta1StorageClass' => [
-            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\WatchEvent',
-        ],
-        'watchStorageV1beta1VolumeAttachmentList' => [
-            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\WatchEvent',
-        ],
-        'watchStorageV1beta1VolumeAttachment' => [
             '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\WatchEvent',
         ],
         'getCodeVersion' => [

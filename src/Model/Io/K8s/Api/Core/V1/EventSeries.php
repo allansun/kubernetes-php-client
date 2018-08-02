@@ -4,7 +4,7 @@ namespace Kubernetes\Model\Io\K8s\Api\Core\V1;
 
 /**
  * EventSeries contain information on series of events, i.e. thing that was/is
- * happening continuously for some time.
+ * happening continously for some time.
  */
 class EventSeries extends \Kubernetes\AbstractModel
 {
@@ -17,7 +17,7 @@ class EventSeries extends \Kubernetes\AbstractModel
     public $count = null;
 
     /**
-     * Time of the last occurrence observed
+     * Time of the last occurence observed
      *
      * @var \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\MicroTime
      */

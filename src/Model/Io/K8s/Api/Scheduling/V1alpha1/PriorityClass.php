@@ -29,11 +29,7 @@ class PriorityClass extends \Kubernetes\AbstractModel
 
     /**
      * globalDefault specifies whether this PriorityClass should be considered as the
-     * default priority for pods that do not have any priority class. Only one
-     * PriorityClass can be marked as `globalDefault`. However, if more than one
-     * PriorityClasses exists with their `globalDefault` field set to true, the
-     * smallest value of such global default PriorityClasses will be used as the
-     * default priority.
+     * default priority for pods that do not have any priority class.
      *
      * @var boolean
      */
@@ -51,7 +47,7 @@ class PriorityClass extends \Kubernetes\AbstractModel
 
     /**
      * Standard object's metadata. More info:
-     * https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+     * http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#metadata
      *
      * @var \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\ObjectMeta
      */

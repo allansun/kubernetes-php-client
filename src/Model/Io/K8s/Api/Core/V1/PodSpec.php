@@ -42,7 +42,8 @@ class PodSpec extends \Kubernetes\AbstractModel
 
     /**
      * Specifies the DNS parameters of a pod. Parameters specified here will be merged
-     * to the generated DNS configuration based on DNSPolicy.
+     * to the generated DNS configuration based on DNSPolicy. This is an alpha feature
+     * introduced in v1.9 and CustomPodDNS feature gate must be enabled to use it.
      *
      * @var PodDNSConfig
      */
@@ -53,7 +54,9 @@ class PodSpec extends \Kubernetes\AbstractModel
      * 'ClusterFirstWithHostNet', 'ClusterFirst', 'Default' or 'None'. DNS parameters
      * given in DNSConfig will be merged with the policy selected with DNSPolicy. To
      * have DNS options set along with hostNetwork, you have to specify DNS policy
-     * explicitly to 'ClusterFirstWithHostNet'.
+     * explicitly to 'ClusterFirstWithHostNet'. Note that 'None' policy is an alpha
+     * feature introduced in v1.9 and CustomPodDNS feature gate must be enabled to use
+     * it.
      *
      * @var string
      */
@@ -157,11 +160,10 @@ class PodSpec extends \Kubernetes\AbstractModel
     public $priority = null;
 
     /**
-     * If specified, indicates the pod's priority. "system-node-critical" and
-     * "system-cluster-critical" are two special keywords which indicate the highest
-     * priorities with the former being the highest priority. Any other name must be
-     * defined by creating a PriorityClass object with that name. If not specified, the
-     * pod priority will be default or zero if there is no default.
+     * If specified, indicates the pod's priority. "SYSTEM" is a special keyword which
+     * indicates the highest priority. Any other name must be defined by creating a
+     * PriorityClass object with that name. If not specified, the pod priority will be
+     * default or zero if there is no default.
      *
      * @var string
      */
@@ -209,18 +211,6 @@ class PodSpec extends \Kubernetes\AbstractModel
      * @var string
      */
     public $serviceAccountName = null;
-
-    /**
-     * Share a single process namespace between all of the containers in a pod. When
-     * this is set containers will be able to view and signal processes from other
-     * containers in the same pod, and the first process in each container will not be
-     * assigned PID 1. HostPID and ShareProcessNamespace cannot both be set. Optional:
-     * Default to false. This field is alpha-level and is honored only by servers that
-     * enable the PodShareProcessNamespace feature.
-     *
-     * @var boolean
-     */
-    public $shareProcessNamespace = null;
 
     /**
      * If specified, the fully qualified Pod hostname will be

@@ -75,7 +75,7 @@ class PersistentVolumeSpec extends \Kubernetes\AbstractModel
     public $claimRef = null;
 
     /**
-     * CSI represents storage that handled by an external CSI driver (Beta feature).
+     * CSI represents storage that handled by an external CSI driver
      *
      * @var CSIPersistentVolumeSource
      */
@@ -93,7 +93,7 @@ class PersistentVolumeSpec extends \Kubernetes\AbstractModel
      * FlexVolume represents a generic volume resource that is provisioned/attached
      * using an exec based plugin.
      *
-     * @var FlexPersistentVolumeSource
+     * @var FlexVolumeSource
      */
     public $flexVolume = null;
 
@@ -167,20 +167,10 @@ class PersistentVolumeSpec extends \Kubernetes\AbstractModel
     public $nfs = null;
 
     /**
-     * NodeAffinity defines constraints that limit what nodes this volume can be
-     * accessed from. This field influences the scheduling of pods that use this
-     * volume.
-     *
-     * @var VolumeNodeAffinity
-     */
-    public $nodeAffinity = null;
-
-    /**
      * What happens to a persistent volume when released from its claim. Valid options
-     * are Retain (default for manually created PersistentVolumes), Delete (default for
-     * dynamically provisioned PersistentVolumes), and Recycle (deprecated). Recycle
-     * must be supported by the volume plugin underlying this PersistentVolume. More
-     * info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#reclaiming
+     * are Retain (default) and Recycle. Recycling must be supported by the volume
+     * plugin underlying this persistent volume. More info:
+     * https://kubernetes.io/docs/concepts/storage/persistent-volumes#reclaiming
      *
      * @var string
      */

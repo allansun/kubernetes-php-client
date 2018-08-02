@@ -4,7 +4,6 @@ namespace Kubernetes\API;
 
 use \Kubernetes\Model\Io\K8s\Api\Core\V1\ServiceList as ServiceList;
 use \Kubernetes\Model\Io\K8s\Api\Core\V1\Service as TheService;
-use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions as DeleteOptions;
 use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Status as Status;
 use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch as Patch;
 use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\WatchEvent as WatchEvent;
@@ -117,26 +116,16 @@ class Service extends \Kubernetes\AbstractAPI
     /**
      * delete a Service
      *
-     * @configkey gracePeriodSeconds	integer
-     * @configkey orphanDependents	boolean
-     * @configkey propagationPolicy	string
-     * @configkey gracePeriodSeconds	integer
-     * @configkey orphanDependents	boolean
-     * @configkey propagationPolicy	string
      * @param $namespace
      * @param $name
-     * @param DeleteOptions $Model
-     * @param array $queries
      * @return Status|mixed
      */
-    public function delete($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries = [])
+    public function delete($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('delete',
         		"/api/v1/namespaces/{$namespace}/services/{$name}"
         		,[
-        			'json' => $Model->getArrayCopy(),
-        			'query' => $queries,
         		]
         	)
         	, 'deleteCoreV1NamespacedService'
@@ -495,6 +484,279 @@ class Service extends \Kubernetes\AbstractAPI
         		]
         	)
         	, 'patchCoreV1NamespacedServiceStatus'
+        );
+    }
+
+    /**
+     * proxy GET requests to Service
+     *
+     * @param $namespace
+     * @param $name
+     * @return string|mixed
+     */
+    public function proxyGET($namespace = 'default', $name)
+    {
+        return $this->parseResponse(
+        	$this->client->request('get',
+        		"/api/v1/proxy/namespaces/{$namespace}/services/{$name}"
+        		,[
+        		]
+        	)
+        	, 'proxyCoreV1GETNamespacedService'
+        );
+    }
+
+    /**
+     * proxy PUT requests to Service
+     *
+     * @param $namespace
+     * @param $name
+     * @return string|mixed
+     */
+    public function proxyPUT($namespace = 'default', $name)
+    {
+        return $this->parseResponse(
+        	$this->client->request('put',
+        		"/api/v1/proxy/namespaces/{$namespace}/services/{$name}"
+        		,[
+        		]
+        	)
+        	, 'proxyCoreV1PUTNamespacedService'
+        );
+    }
+
+    /**
+     * proxy POST requests to Service
+     *
+     * @param $namespace
+     * @param $name
+     * @return string|mixed
+     */
+    public function proxyPOST($namespace = 'default', $name)
+    {
+        return $this->parseResponse(
+        	$this->client->request('post',
+        		"/api/v1/proxy/namespaces/{$namespace}/services/{$name}"
+        		,[
+        		]
+        	)
+        	, 'proxyCoreV1POSTNamespacedService'
+        );
+    }
+
+    /**
+     * proxy DELETE requests to Service
+     *
+     * @param $namespace
+     * @param $name
+     * @return string|mixed
+     */
+    public function proxyDELETE($namespace = 'default', $name)
+    {
+        return $this->parseResponse(
+        	$this->client->request('delete',
+        		"/api/v1/proxy/namespaces/{$namespace}/services/{$name}"
+        		,[
+        		]
+        	)
+        	, 'proxyCoreV1DELETENamespacedService'
+        );
+    }
+
+    /**
+     * proxy OPTIONS requests to Service
+     *
+     * @param $namespace
+     * @param $name
+     * @return string|mixed
+     */
+    public function proxyOPTIONS($namespace = 'default', $name)
+    {
+        return $this->parseResponse(
+        	$this->client->request('options',
+        		"/api/v1/proxy/namespaces/{$namespace}/services/{$name}"
+        		,[
+        		]
+        	)
+        	, 'proxyCoreV1OPTIONSNamespacedService'
+        );
+    }
+
+    /**
+     * proxy HEAD requests to Service
+     *
+     * @param $namespace
+     * @param $name
+     * @return string|mixed
+     */
+    public function proxyHEAD($namespace = 'default', $name)
+    {
+        return $this->parseResponse(
+        	$this->client->request('head',
+        		"/api/v1/proxy/namespaces/{$namespace}/services/{$name}"
+        		,[
+        		]
+        	)
+        	, 'proxyCoreV1HEADNamespacedService'
+        );
+    }
+
+    /**
+     * proxy PATCH requests to Service
+     *
+     * @param $namespace
+     * @param $name
+     * @return string|mixed
+     */
+    public function proxyPATCH($namespace = 'default', $name)
+    {
+        return $this->parseResponse(
+        	$this->client->request('patch',
+        		"/api/v1/proxy/namespaces/{$namespace}/services/{$name}"
+        		,[
+        		]
+        	)
+        	, 'proxyCoreV1PATCHNamespacedService'
+        );
+    }
+
+    /**
+     * proxy GET requests to Service
+     *
+     * @param $namespace
+     * @param $name
+     * @param $path
+     * @return string|mixed
+     */
+    public function proxyGETWithPath($namespace = 'default', $name, $path)
+    {
+        return $this->parseResponse(
+        	$this->client->request('get',
+        		"/api/v1/proxy/namespaces/{$namespace}/services/{$name}/{$path}"
+        		,[
+        		]
+        	)
+        	, 'proxyCoreV1GETNamespacedServiceWithPath'
+        );
+    }
+
+    /**
+     * proxy PUT requests to Service
+     *
+     * @param $namespace
+     * @param $name
+     * @param $path
+     * @return string|mixed
+     */
+    public function proxyPUTWithPath($namespace = 'default', $name, $path)
+    {
+        return $this->parseResponse(
+        	$this->client->request('put',
+        		"/api/v1/proxy/namespaces/{$namespace}/services/{$name}/{$path}"
+        		,[
+        		]
+        	)
+        	, 'proxyCoreV1PUTNamespacedServiceWithPath'
+        );
+    }
+
+    /**
+     * proxy POST requests to Service
+     *
+     * @param $namespace
+     * @param $name
+     * @param $path
+     * @return string|mixed
+     */
+    public function proxyPOSTWithPath($namespace = 'default', $name, $path)
+    {
+        return $this->parseResponse(
+        	$this->client->request('post',
+        		"/api/v1/proxy/namespaces/{$namespace}/services/{$name}/{$path}"
+        		,[
+        		]
+        	)
+        	, 'proxyCoreV1POSTNamespacedServiceWithPath'
+        );
+    }
+
+    /**
+     * proxy DELETE requests to Service
+     *
+     * @param $namespace
+     * @param $name
+     * @param $path
+     * @return string|mixed
+     */
+    public function proxyDELETEWithPath($namespace = 'default', $name, $path)
+    {
+        return $this->parseResponse(
+        	$this->client->request('delete',
+        		"/api/v1/proxy/namespaces/{$namespace}/services/{$name}/{$path}"
+        		,[
+        		]
+        	)
+        	, 'proxyCoreV1DELETENamespacedServiceWithPath'
+        );
+    }
+
+    /**
+     * proxy OPTIONS requests to Service
+     *
+     * @param $namespace
+     * @param $name
+     * @param $path
+     * @return string|mixed
+     */
+    public function proxyOPTIONSWithPath($namespace = 'default', $name, $path)
+    {
+        return $this->parseResponse(
+        	$this->client->request('options',
+        		"/api/v1/proxy/namespaces/{$namespace}/services/{$name}/{$path}"
+        		,[
+        		]
+        	)
+        	, 'proxyCoreV1OPTIONSNamespacedServiceWithPath'
+        );
+    }
+
+    /**
+     * proxy HEAD requests to Service
+     *
+     * @param $namespace
+     * @param $name
+     * @param $path
+     * @return string|mixed
+     */
+    public function proxyHEADWithPath($namespace = 'default', $name, $path)
+    {
+        return $this->parseResponse(
+        	$this->client->request('head',
+        		"/api/v1/proxy/namespaces/{$namespace}/services/{$name}/{$path}"
+        		,[
+        		]
+        	)
+        	, 'proxyCoreV1HEADNamespacedServiceWithPath'
+        );
+    }
+
+    /**
+     * proxy PATCH requests to Service
+     *
+     * @param $namespace
+     * @param $name
+     * @param $path
+     * @return string|mixed
+     */
+    public function proxyPATCHWithPath($namespace = 'default', $name, $path)
+    {
+        return $this->parseResponse(
+        	$this->client->request('patch',
+        		"/api/v1/proxy/namespaces/{$namespace}/services/{$name}/{$path}"
+        		,[
+        		]
+        	)
+        	, 'proxyCoreV1PATCHNamespacedServiceWithPath'
         );
     }
 

@@ -10,14 +10,6 @@ class CustomResourceDefinitionNames extends \Kubernetes\AbstractModel
 {
 
     /**
-     * Categories is a list of grouped resources custom resources belong to (e.g.
-     * 'all')
-     *
-     * @var string[]
-     */
-    public $categories = null;
-
-    /**
      * Kind is the serialized kind of the resource.  It is normally CamelCase and
      * singular.
      *

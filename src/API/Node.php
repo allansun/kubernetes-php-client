@@ -511,6 +511,265 @@ class Node extends \Kubernetes\AbstractAPI
     }
 
     /**
+     * proxy GET requests to Node
+     *
+     * @param $name
+     * @return string|mixed
+     */
+    public function proxyGET($name)
+    {
+        return $this->parseResponse(
+        	$this->client->request('get',
+        		"/api/v1/proxy/nodes/{$name}"
+        		,[
+        		]
+        	)
+        	, 'proxyCoreV1GETNode'
+        );
+    }
+
+    /**
+     * proxy PUT requests to Node
+     *
+     * @param $name
+     * @return string|mixed
+     */
+    public function proxyPUT($name)
+    {
+        return $this->parseResponse(
+        	$this->client->request('put',
+        		"/api/v1/proxy/nodes/{$name}"
+        		,[
+        		]
+        	)
+        	, 'proxyCoreV1PUTNode'
+        );
+    }
+
+    /**
+     * proxy POST requests to Node
+     *
+     * @param $name
+     * @return string|mixed
+     */
+    public function proxyPOST($name)
+    {
+        return $this->parseResponse(
+        	$this->client->request('post',
+        		"/api/v1/proxy/nodes/{$name}"
+        		,[
+        		]
+        	)
+        	, 'proxyCoreV1POSTNode'
+        );
+    }
+
+    /**
+     * proxy DELETE requests to Node
+     *
+     * @param $name
+     * @return string|mixed
+     */
+    public function proxyDELETE($name)
+    {
+        return $this->parseResponse(
+        	$this->client->request('delete',
+        		"/api/v1/proxy/nodes/{$name}"
+        		,[
+        		]
+        	)
+        	, 'proxyCoreV1DELETENode'
+        );
+    }
+
+    /**
+     * proxy OPTIONS requests to Node
+     *
+     * @param $name
+     * @return string|mixed
+     */
+    public function proxyOPTIONS($name)
+    {
+        return $this->parseResponse(
+        	$this->client->request('options',
+        		"/api/v1/proxy/nodes/{$name}"
+        		,[
+        		]
+        	)
+        	, 'proxyCoreV1OPTIONSNode'
+        );
+    }
+
+    /**
+     * proxy HEAD requests to Node
+     *
+     * @param $name
+     * @return string|mixed
+     */
+    public function proxyHEAD($name)
+    {
+        return $this->parseResponse(
+        	$this->client->request('head',
+        		"/api/v1/proxy/nodes/{$name}"
+        		,[
+        		]
+        	)
+        	, 'proxyCoreV1HEADNode'
+        );
+    }
+
+    /**
+     * proxy PATCH requests to Node
+     *
+     * @param $name
+     * @return string|mixed
+     */
+    public function proxyPATCH($name)
+    {
+        return $this->parseResponse(
+        	$this->client->request('patch',
+        		"/api/v1/proxy/nodes/{$name}"
+        		,[
+        		]
+        	)
+        	, 'proxyCoreV1PATCHNode'
+        );
+    }
+
+    /**
+     * proxy GET requests to Node
+     *
+     * @param $name
+     * @param $path
+     * @return string|mixed
+     */
+    public function proxyGETWithPath($name, $path)
+    {
+        return $this->parseResponse(
+        	$this->client->request('get',
+        		"/api/v1/proxy/nodes/{$name}/{$path}"
+        		,[
+        		]
+        	)
+        	, 'proxyCoreV1GETNodeWithPath'
+        );
+    }
+
+    /**
+     * proxy PUT requests to Node
+     *
+     * @param $name
+     * @param $path
+     * @return string|mixed
+     */
+    public function proxyPUTWithPath($name, $path)
+    {
+        return $this->parseResponse(
+        	$this->client->request('put',
+        		"/api/v1/proxy/nodes/{$name}/{$path}"
+        		,[
+        		]
+        	)
+        	, 'proxyCoreV1PUTNodeWithPath'
+        );
+    }
+
+    /**
+     * proxy POST requests to Node
+     *
+     * @param $name
+     * @param $path
+     * @return string|mixed
+     */
+    public function proxyPOSTWithPath($name, $path)
+    {
+        return $this->parseResponse(
+        	$this->client->request('post',
+        		"/api/v1/proxy/nodes/{$name}/{$path}"
+        		,[
+        		]
+        	)
+        	, 'proxyCoreV1POSTNodeWithPath'
+        );
+    }
+
+    /**
+     * proxy DELETE requests to Node
+     *
+     * @param $name
+     * @param $path
+     * @return string|mixed
+     */
+    public function proxyDELETEWithPath($name, $path)
+    {
+        return $this->parseResponse(
+        	$this->client->request('delete',
+        		"/api/v1/proxy/nodes/{$name}/{$path}"
+        		,[
+        		]
+        	)
+        	, 'proxyCoreV1DELETENodeWithPath'
+        );
+    }
+
+    /**
+     * proxy OPTIONS requests to Node
+     *
+     * @param $name
+     * @param $path
+     * @return string|mixed
+     */
+    public function proxyOPTIONSWithPath($name, $path)
+    {
+        return $this->parseResponse(
+        	$this->client->request('options',
+        		"/api/v1/proxy/nodes/{$name}/{$path}"
+        		,[
+        		]
+        	)
+        	, 'proxyCoreV1OPTIONSNodeWithPath'
+        );
+    }
+
+    /**
+     * proxy HEAD requests to Node
+     *
+     * @param $name
+     * @param $path
+     * @return string|mixed
+     */
+    public function proxyHEADWithPath($name, $path)
+    {
+        return $this->parseResponse(
+        	$this->client->request('head',
+        		"/api/v1/proxy/nodes/{$name}/{$path}"
+        		,[
+        		]
+        	)
+        	, 'proxyCoreV1HEADNodeWithPath'
+        );
+    }
+
+    /**
+     * proxy PATCH requests to Node
+     *
+     * @param $name
+     * @param $path
+     * @return string|mixed
+     */
+    public function proxyPATCHWithPath($name, $path)
+    {
+        return $this->parseResponse(
+        	$this->client->request('patch',
+        		"/api/v1/proxy/nodes/{$name}/{$path}"
+        		,[
+        		]
+        	)
+        	, 'proxyCoreV1PATCHNodeWithPath'
+        );
+    }
+
+    /**
      * watch individual changes to a list of Node
      *
      * @return WatchEvent|mixed

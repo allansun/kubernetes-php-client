@@ -31,15 +31,6 @@ class CustomResourceDefinitionSpec extends \Kubernetes\AbstractModel
     public $scope = null;
 
     /**
-     * Subresources describes the subresources for CustomResources This field is
-     * alpha-level and should only be sent to servers that enable subresources via the
-     * CustomResourceSubresources feature gate.
-     *
-     * @var CustomResourceSubresources
-     */
-    public $subresources = null;
-
-    /**
      * Validation describes the validation methods for CustomResources
      *
      * @var CustomResourceValidation

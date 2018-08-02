@@ -52,20 +52,6 @@ class PodStatus extends \Kubernetes\AbstractModel
     public $message = null;
 
     /**
-     * nominatedNodeName is set only when this pod preempts other pods on the node, but
-     * it cannot be scheduled right away as preemption victims receive their graceful
-     * termination periods. This field does not guarantee that the pod will be
-     * scheduled on this node. Scheduler may decide to place the pod elsewhere if other
-     * nodes become available sooner. Scheduler may also decide to give the resources
-     * on this node to a higher priority pod that is created after preemption. As a
-     * result, this field may be different than PodSpec.nodeName when the pod is
-     * scheduled.
-     *
-     * @var string
-     */
-    public $nominatedNodeName = null;
-
-    /**
      * Current condition of the pod. More info:
      * https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#pod-phase
      *
@@ -84,7 +70,7 @@ class PodStatus extends \Kubernetes\AbstractModel
     /**
      * The Quality of Service (QOS) classification assigned to the pod based on
      * resource requirements See PodQOSClass type for available QOS classes More info:
-     * https://git.k8s.io/community/contributors/design-proposals/node/resource-qos.md
+     * https://github.com/kubernetes/kubernetes/blob/master/docs/design/resource-qos.md
      *
      * @var string
      */

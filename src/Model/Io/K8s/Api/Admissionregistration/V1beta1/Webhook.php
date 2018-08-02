@@ -80,12 +80,7 @@ class Webhook extends \Kubernetes\AbstractModel
 
     /**
      * Rules describes what operations on what resources/subresources the webhook cares
-     * about. The webhook cares about an operation if it matches _any_ Rule. However,
-     * in order to prevent ValidatingAdmissionWebhooks and MutatingAdmissionWebhooks
-     * from putting the cluster in a state which cannot be recovered from without
-     * completely disabling the plugin, ValidatingAdmissionWebhooks and
-     * MutatingAdmissionWebhooks are never called on admission requests for
-     * ValidatingWebhookConfiguration and MutatingWebhookConfiguration objects.
+     * about. The webhook cares about an operation if it matches _any_ Rule.
      *
      * @var RuleWithOperations[]
      */

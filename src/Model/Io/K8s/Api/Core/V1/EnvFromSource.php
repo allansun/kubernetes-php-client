@@ -16,7 +16,7 @@ class EnvFromSource extends \Kubernetes\AbstractModel
     public $configMapRef = null;
 
     /**
-     * An optional identifier to prepend to each key in the ConfigMap. Must be a
+     * An optional identifer to prepend to each key in the ConfigMap. Must be a
      * C_IDENTIFIER.
      *
      * @var string

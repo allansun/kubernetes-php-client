@@ -4,7 +4,7 @@ namespace Kubernetes\Model\Io\K8s\Api\Events\V1beta1;
 
 /**
  * EventSeries contain information on series of events, i.e. thing that was/is
- * happening continuously for some time.
+ * happening continously for some time.
  */
 class EventSeries extends \Kubernetes\AbstractModel
 {
