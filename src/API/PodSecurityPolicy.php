@@ -36,7 +36,7 @@ class PodSecurityPolicy extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return PodSecurityPolicyList|mixed
      */
-    public function list(array $queries)
+    public function list(array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -90,7 +90,7 @@ class PodSecurityPolicy extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteCollection(array $queries)
+    public function deleteCollection(array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -114,7 +114,7 @@ class PodSecurityPolicy extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return ThePodSecurityPolicy|mixed
      */
-    public function read($name, array $queries)
+    public function read($name, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -161,7 +161,7 @@ class PodSecurityPolicy extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return Status|mixed
      */
-    public function delete($name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries)
+    public function delete($name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -252,7 +252,7 @@ class PodSecurityPolicy extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return PodSecurityPolicyListV1beta1|mixed
      */
-    public function listPolicyV1beta1(array $queries)
+    public function listPolicyV1beta1(array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -306,7 +306,7 @@ class PodSecurityPolicy extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteCollectionPolicyV1beta1(array $queries)
+    public function deleteCollectionPolicyV1beta1(array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -330,7 +330,7 @@ class PodSecurityPolicy extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return ThePodSecurityPolicyV1beta1|mixed
      */
-    public function readPolicyV1beta1($name, array $queries)
+    public function readPolicyV1beta1($name, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -377,7 +377,7 @@ class PodSecurityPolicy extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return Status|mixed
      */
-    public function deletePolicyV1beta1($name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries)
+    public function deletePolicyV1beta1($name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('delete',

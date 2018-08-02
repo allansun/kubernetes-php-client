@@ -186,7 +186,7 @@ class API extends AbstractClassFile
                 if ($Parameter->schema) {
                     $parameters[] =
                         new ParameterGenerator('Model'
-                            ,'\\Kubernetes\\Model\\' . Utility::convertRefToClass($Parameter->schema->_ref)
+                            , '\\Kubernetes\\Model\\' . Utility::convertRefToClass($Parameter->schema->_ref)
                         );
                 }
             } else {
@@ -195,7 +195,7 @@ class API extends AbstractClassFile
         }
 
         if (1 <= count($queryParameters)) {
-            $parameters[] = new ParameterGenerator('queries', 'array');
+            $parameters[] = new ParameterGenerator('queries', 'array', []);
         }
 
         return [$parameters, $queryParameters];

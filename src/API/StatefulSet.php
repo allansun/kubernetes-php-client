@@ -39,7 +39,7 @@ class StatefulSet extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return StatefulSetList|mixed
      */
-    public function list($namespace = 'default', array $queries)
+    public function list($namespace = 'default', array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -95,7 +95,7 @@ class StatefulSet extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteCollection($namespace = 'default', array $queries)
+    public function deleteCollection($namespace = 'default', array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -120,7 +120,7 @@ class StatefulSet extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return TheStatefulSet|mixed
      */
-    public function read($namespace = 'default', $name, array $queries)
+    public function read($namespace = 'default', $name, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -169,7 +169,7 @@ class StatefulSet extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return Status|mixed
      */
-    public function delete($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries)
+    public function delete($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -359,7 +359,7 @@ class StatefulSet extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return StatefulSetListV1beta1|mixed
      */
-    public function listAppsV1beta1($namespace = 'default', array $queries)
+    public function listAppsV1beta1($namespace = 'default', array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -415,7 +415,7 @@ class StatefulSet extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteCollectionAppsV1beta1($namespace = 'default', array $queries)
+    public function deleteCollectionAppsV1beta1($namespace = 'default', array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -440,7 +440,7 @@ class StatefulSet extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return TheStatefulSetV1beta1|mixed
      */
-    public function readAppsV1beta1($namespace = 'default', $name, array $queries)
+    public function readAppsV1beta1($namespace = 'default', $name, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -489,7 +489,7 @@ class StatefulSet extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteAppsV1beta1($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries)
+    public function deleteAppsV1beta1($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -679,7 +679,7 @@ class StatefulSet extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return StatefulSetListV1beta2|mixed
      */
-    public function listAppsV1beta2($namespace = 'default', array $queries)
+    public function listAppsV1beta2($namespace = 'default', array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -735,7 +735,7 @@ class StatefulSet extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteCollectionAppsV1beta2($namespace = 'default', array $queries)
+    public function deleteCollectionAppsV1beta2($namespace = 'default', array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -760,7 +760,7 @@ class StatefulSet extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return TheStatefulSetV1beta2|mixed
      */
-    public function readAppsV1beta2($namespace = 'default', $name, array $queries)
+    public function readAppsV1beta2($namespace = 'default', $name, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -809,7 +809,7 @@ class StatefulSet extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteAppsV1beta2($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries)
+    public function deleteAppsV1beta2($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('delete',

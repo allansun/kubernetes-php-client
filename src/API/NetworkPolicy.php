@@ -37,7 +37,7 @@ class NetworkPolicy extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return NetworkPolicyList|mixed
      */
-    public function list($namespace = 'default', array $queries)
+    public function list($namespace = 'default', array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -93,7 +93,7 @@ class NetworkPolicy extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteCollection($namespace = 'default', array $queries)
+    public function deleteCollection($namespace = 'default', array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -118,7 +118,7 @@ class NetworkPolicy extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return TheNetworkPolicy|mixed
      */
-    public function read($namespace = 'default', $name, array $queries)
+    public function read($namespace = 'default', $name, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -167,7 +167,7 @@ class NetworkPolicy extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return Status|mixed
      */
-    public function delete($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries)
+    public function delete($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -296,7 +296,7 @@ class NetworkPolicy extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return NetworkPolicyListV1|mixed
      */
-    public function listNetworkingV1($namespace = 'default', array $queries)
+    public function listNetworkingV1($namespace = 'default', array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -352,7 +352,7 @@ class NetworkPolicy extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteCollectionNetworkingV1($namespace = 'default', array $queries)
+    public function deleteCollectionNetworkingV1($namespace = 'default', array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -377,7 +377,7 @@ class NetworkPolicy extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return TheNetworkPolicyV1|mixed
      */
-    public function readNetworkingV1($namespace = 'default', $name, array $queries)
+    public function readNetworkingV1($namespace = 'default', $name, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -426,7 +426,7 @@ class NetworkPolicy extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteNetworkingV1($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries)
+    public function deleteNetworkingV1($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('delete',

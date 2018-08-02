@@ -35,7 +35,7 @@ class Service extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return ServiceList|mixed
      */
-    public function list($namespace = 'default', array $queries)
+    public function list($namespace = 'default', array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -80,7 +80,7 @@ class Service extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return TheService|mixed
      */
-    public function read($namespace = 'default', $name, array $queries)
+    public function read($namespace = 'default', $name, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -129,7 +129,7 @@ class Service extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return Status|mixed
      */
-    public function delete($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries)
+    public function delete($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('delete',

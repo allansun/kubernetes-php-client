@@ -54,7 +54,7 @@ class CronJob extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return CronJobList|mixed
      */
-    public function list($namespace = 'default', array $queries)
+    public function list($namespace = 'default', array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -110,7 +110,7 @@ class CronJob extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteCollection($namespace = 'default', array $queries)
+    public function deleteCollection($namespace = 'default', array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -135,7 +135,7 @@ class CronJob extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return TheCronJob|mixed
      */
-    public function read($namespace = 'default', $name, array $queries)
+    public function read($namespace = 'default', $name, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -184,7 +184,7 @@ class CronJob extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return Status|mixed
      */
-    public function delete($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries)
+    public function delete($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -374,7 +374,7 @@ class CronJob extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return CronJobListV2alpha1|mixed
      */
-    public function listBatchV2alpha1($namespace = 'default', array $queries)
+    public function listBatchV2alpha1($namespace = 'default', array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -430,7 +430,7 @@ class CronJob extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteCollectionBatchV2alpha1($namespace = 'default', array $queries)
+    public function deleteCollectionBatchV2alpha1($namespace = 'default', array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -455,7 +455,7 @@ class CronJob extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return TheCronJobV2alpha1|mixed
      */
-    public function readBatchV2alpha1($namespace = 'default', $name, array $queries)
+    public function readBatchV2alpha1($namespace = 'default', $name, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -504,7 +504,7 @@ class CronJob extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteBatchV2alpha1($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries)
+    public function deleteBatchV2alpha1($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('delete',

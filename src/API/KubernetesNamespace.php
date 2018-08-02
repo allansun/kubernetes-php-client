@@ -34,7 +34,7 @@ class KubernetesNamespace extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return NamespaceList|mixed
      */
-    public function list(array $queries)
+    public function list(array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -77,7 +77,7 @@ class KubernetesNamespace extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return TheKubernetesNamespace|mixed
      */
-    public function read($name, array $queries)
+    public function read($name, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -124,7 +124,7 @@ class KubernetesNamespace extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return Status|mixed
      */
-    public function delete($name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries)
+    public function delete($name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('delete',

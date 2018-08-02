@@ -36,7 +36,7 @@ class APIService extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return APIServiceList|mixed
      */
-    public function list(array $queries)
+    public function list(array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -90,7 +90,7 @@ class APIService extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteCollection(array $queries)
+    public function deleteCollection(array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -114,7 +114,7 @@ class APIService extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return TheAPIService|mixed
      */
-    public function read($name, array $queries)
+    public function read($name, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -161,7 +161,7 @@ class APIService extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return Status|mixed
      */
-    public function delete($name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries)
+    public function delete($name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -272,7 +272,7 @@ class APIService extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return APIServiceListV1beta1|mixed
      */
-    public function listApiregistrationV1beta1(array $queries)
+    public function listApiregistrationV1beta1(array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -326,7 +326,7 @@ class APIService extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteCollectionApiregistrationV1beta1(array $queries)
+    public function deleteCollectionApiregistrationV1beta1(array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -350,7 +350,7 @@ class APIService extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return TheAPIServiceV1beta1|mixed
      */
-    public function readApiregistrationV1beta1($name, array $queries)
+    public function readApiregistrationV1beta1($name, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -397,7 +397,7 @@ class APIService extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteApiregistrationV1beta1($name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries)
+    public function deleteApiregistrationV1beta1($name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('delete',

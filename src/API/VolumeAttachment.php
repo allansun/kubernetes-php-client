@@ -36,7 +36,7 @@ class VolumeAttachment extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return VolumeAttachmentList|mixed
      */
-    public function list(array $queries)
+    public function list(array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -90,7 +90,7 @@ class VolumeAttachment extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteCollection(array $queries)
+    public function deleteCollection(array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -114,7 +114,7 @@ class VolumeAttachment extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return TheVolumeAttachment|mixed
      */
-    public function read($name, array $queries)
+    public function read($name, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -161,7 +161,7 @@ class VolumeAttachment extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return Status|mixed
      */
-    public function delete($name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries)
+    public function delete($name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -252,7 +252,7 @@ class VolumeAttachment extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return VolumeAttachmentListV1beta1|mixed
      */
-    public function listStorageV1beta1(array $queries)
+    public function listStorageV1beta1(array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -306,7 +306,7 @@ class VolumeAttachment extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteCollectionStorageV1beta1(array $queries)
+    public function deleteCollectionStorageV1beta1(array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -330,7 +330,7 @@ class VolumeAttachment extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return TheVolumeAttachmentV1beta1|mixed
      */
-    public function readStorageV1beta1($name, array $queries)
+    public function readStorageV1beta1($name, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -377,7 +377,7 @@ class VolumeAttachment extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteStorageV1beta1($name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries)
+    public function deleteStorageV1beta1($name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('delete',

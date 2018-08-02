@@ -38,7 +38,7 @@ class ClusterRole extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return ClusterRoleList|mixed
      */
-    public function listRbacAuthorizationV1(array $queries)
+    public function listRbacAuthorizationV1(array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -92,7 +92,7 @@ class ClusterRole extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteRbacAuthorizationV1Collection(array $queries)
+    public function deleteRbacAuthorizationV1Collection(array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -157,7 +157,7 @@ class ClusterRole extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteRbacAuthorizationV1($name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries)
+    public function deleteRbacAuthorizationV1($name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -248,7 +248,7 @@ class ClusterRole extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return ClusterRoleListV1alpha1|mixed
      */
-    public function listRbacAuthorizationV1alpha1(array $queries)
+    public function listRbacAuthorizationV1alpha1(array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -302,7 +302,7 @@ class ClusterRole extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteRbacAuthorizationV1alpha1Collection(array $queries)
+    public function deleteRbacAuthorizationV1alpha1Collection(array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -367,7 +367,7 @@ class ClusterRole extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteRbacAuthorizationV1alpha1($name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries)
+    public function deleteRbacAuthorizationV1alpha1($name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -458,7 +458,7 @@ class ClusterRole extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return ClusterRoleListV1beta1|mixed
      */
-    public function listRbacAuthorizationV1beta1(array $queries)
+    public function listRbacAuthorizationV1beta1(array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -512,7 +512,7 @@ class ClusterRole extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteRbacAuthorizationV1beta1Collection(array $queries)
+    public function deleteRbacAuthorizationV1beta1Collection(array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -577,7 +577,7 @@ class ClusterRole extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteRbacAuthorizationV1beta1($name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries)
+    public function deleteRbacAuthorizationV1beta1($name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('delete',

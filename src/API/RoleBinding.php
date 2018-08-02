@@ -39,7 +39,7 @@ class RoleBinding extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return RoleBindingList|mixed
      */
-    public function listRbacAuthorizationV1($namespace = 'default', array $queries)
+    public function listRbacAuthorizationV1($namespace = 'default', array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -95,7 +95,7 @@ class RoleBinding extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteRbacAuthorizationV1Collection($namespace = 'default', array $queries)
+    public function deleteRbacAuthorizationV1Collection($namespace = 'default', array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -163,7 +163,7 @@ class RoleBinding extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteRbacAuthorizationV1($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries)
+    public function deleteRbacAuthorizationV1($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -292,7 +292,7 @@ class RoleBinding extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return RoleBindingListV1alpha1|mixed
      */
-    public function listRbacAuthorizationV1alpha1($namespace = 'default', array $queries)
+    public function listRbacAuthorizationV1alpha1($namespace = 'default', array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -348,7 +348,7 @@ class RoleBinding extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteRbacAuthorizationV1alpha1Collection($namespace = 'default', array $queries)
+    public function deleteRbacAuthorizationV1alpha1Collection($namespace = 'default', array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -416,7 +416,7 @@ class RoleBinding extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteRbacAuthorizationV1alpha1($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries)
+    public function deleteRbacAuthorizationV1alpha1($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -545,7 +545,7 @@ class RoleBinding extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return RoleBindingListV1beta1|mixed
      */
-    public function listRbacAuthorizationV1beta1($namespace = 'default', array $queries)
+    public function listRbacAuthorizationV1beta1($namespace = 'default', array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -601,7 +601,7 @@ class RoleBinding extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteRbacAuthorizationV1beta1Collection($namespace = 'default', array $queries)
+    public function deleteRbacAuthorizationV1beta1Collection($namespace = 'default', array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -669,7 +669,7 @@ class RoleBinding extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteRbacAuthorizationV1beta1($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries)
+    public function deleteRbacAuthorizationV1beta1($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('delete',

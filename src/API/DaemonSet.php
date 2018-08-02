@@ -56,7 +56,7 @@ class DaemonSet extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return DaemonSetList|mixed
      */
-    public function list($namespace = 'default', array $queries)
+    public function list($namespace = 'default', array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -112,7 +112,7 @@ class DaemonSet extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteCollection($namespace = 'default', array $queries)
+    public function deleteCollection($namespace = 'default', array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -137,7 +137,7 @@ class DaemonSet extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return TheDaemonSet|mixed
      */
-    public function read($namespace = 'default', $name, array $queries)
+    public function read($namespace = 'default', $name, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -186,7 +186,7 @@ class DaemonSet extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return Status|mixed
      */
-    public function delete($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries)
+    public function delete($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -376,7 +376,7 @@ class DaemonSet extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return DaemonSetListV1beta2|mixed
      */
-    public function listAppsV1beta2($namespace = 'default', array $queries)
+    public function listAppsV1beta2($namespace = 'default', array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -432,7 +432,7 @@ class DaemonSet extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteCollectionAppsV1beta2($namespace = 'default', array $queries)
+    public function deleteCollectionAppsV1beta2($namespace = 'default', array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -457,7 +457,7 @@ class DaemonSet extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return TheDaemonSetV1beta2|mixed
      */
-    public function readAppsV1beta2($namespace = 'default', $name, array $queries)
+    public function readAppsV1beta2($namespace = 'default', $name, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -506,7 +506,7 @@ class DaemonSet extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteAppsV1beta2($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries)
+    public function deleteAppsV1beta2($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -696,7 +696,7 @@ class DaemonSet extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return DaemonSetListV1beta1|mixed
      */
-    public function listExtensionsV1beta1($namespace = 'default', array $queries)
+    public function listExtensionsV1beta1($namespace = 'default', array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -752,7 +752,7 @@ class DaemonSet extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteCollectionExtensionsV1beta1($namespace = 'default', array $queries)
+    public function deleteCollectionExtensionsV1beta1($namespace = 'default', array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -777,7 +777,7 @@ class DaemonSet extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return TheDaemonSetV1beta1|mixed
      */
-    public function readExtensionsV1beta1($namespace = 'default', $name, array $queries)
+    public function readExtensionsV1beta1($namespace = 'default', $name, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -826,7 +826,7 @@ class DaemonSet extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteExtensionsV1beta1($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries)
+    public function deleteExtensionsV1beta1($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('delete',
