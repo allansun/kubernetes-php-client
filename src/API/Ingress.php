@@ -3,10 +3,10 @@
 namespace Kubernetes\API;
 
 use \Kubernetes\Model\Io\K8s\Api\Extensions\V1beta1\IngressList as IngressList;
-use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions as DeleteOptions;
+use \Kubernetes\Model\Io\K8s\Api\Extensions\V1beta1\Ingress as TheIngress;
 use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Status as Status;
+use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions as DeleteOptions;
 use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch as Patch;
-use \Kubernetes\Model\Io\K8s\Api\Extensions\V1beta1\Ingress as Ingress;
 use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\WatchEvent as WatchEvent;
 
 class Ingress extends \Kubernetes\AbstractAPI
@@ -48,11 +48,11 @@ class Ingress extends \Kubernetes\AbstractAPI
      * @configkey resourceVersion	string
      * @configkey timeoutSeconds	integer
      * @configkey watch	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param array $queries
      * @return IngressList|mixed
      */
-    public function list(string $namespace = 'default', array $queries)
+    public function list($namespace = 'default', array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -68,11 +68,11 @@ class Ingress extends \Kubernetes\AbstractAPI
     /**
      * create an Ingress
      *
-     * @param string $namespace
-     * @param Ingress $Model
-     * @return Ingress|mixed
+     * @param $namespace
+     * @param TheIngress $Model
+     * @return TheIngress|mixed
      */
-    public function create(string $namespace = 'default', \Ingress $Model)
+    public function create($namespace = 'default', \Kubernetes\Model\Io\K8s\Api\Extensions\V1beta1\Ingress $Model)
     {
         return $this->parseResponse(
         	$this->client->request('post',
@@ -104,11 +104,11 @@ class Ingress extends \Kubernetes\AbstractAPI
      * @configkey resourceVersion	string
      * @configkey timeoutSeconds	integer
      * @configkey watch	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteCollection(string $namespace = 'default', array $queries)
+    public function deleteCollection($namespace = 'default', array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -128,12 +128,12 @@ class Ingress extends \Kubernetes\AbstractAPI
      * @configkey export	boolean
      * @configkey exact	boolean
      * @configkey export	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param array $queries
-     * @return Ingress|mixed
+     * @return TheIngress|mixed
      */
-    public function read(string $namespace = 'default', $name, array $queries)
+    public function read($namespace = 'default', $name, array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -149,12 +149,12 @@ class Ingress extends \Kubernetes\AbstractAPI
     /**
      * replace the specified Ingress
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @param Ingress $Model
-     * @return Ingress|mixed
+     * @param TheIngress $Model
+     * @return TheIngress|mixed
      */
-    public function replace(string $namespace = 'default', $name, \Ingress $Model)
+    public function replace($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Api\Extensions\V1beta1\Ingress $Model)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -176,13 +176,13 @@ class Ingress extends \Kubernetes\AbstractAPI
      * @configkey gracePeriodSeconds	integer
      * @configkey orphanDependents	boolean
      * @configkey propagationPolicy	string
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param DeleteOptions $Model
      * @param array $queries
      * @return Status|mixed
      */
-    public function delete(string $namespace = 'default', $name, \DeleteOptions $Model, array $queries)
+    public function delete($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -199,12 +199,12 @@ class Ingress extends \Kubernetes\AbstractAPI
     /**
      * partially update the specified Ingress
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param Patch $Model
-     * @return Ingress|mixed
+     * @return TheIngress|mixed
      */
-    public function patch(string $namespace = 'default', $name, \Patch $Model)
+    public function patch($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model)
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -220,11 +220,11 @@ class Ingress extends \Kubernetes\AbstractAPI
     /**
      * read status of the specified Ingress
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @return Ingress|mixed
+     * @return TheIngress|mixed
      */
-    public function readStatus(string $namespace = 'default', $name)
+    public function readStatus($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -239,12 +239,12 @@ class Ingress extends \Kubernetes\AbstractAPI
     /**
      * replace status of the specified Ingress
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @param Ingress $Model
-     * @return Ingress|mixed
+     * @param TheIngress $Model
+     * @return TheIngress|mixed
      */
-    public function replaceStatus(string $namespace = 'default', $name, \Ingress $Model)
+    public function replaceStatus($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Api\Extensions\V1beta1\Ingress $Model)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -260,12 +260,12 @@ class Ingress extends \Kubernetes\AbstractAPI
     /**
      * partially update status of the specified Ingress
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param Patch $Model
-     * @return Ingress|mixed
+     * @return TheIngress|mixed
      */
-    public function patchStatus(string $namespace = 'default', $name, \Patch $Model)
+    public function patchStatus($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model)
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -298,10 +298,10 @@ class Ingress extends \Kubernetes\AbstractAPI
     /**
      * watch individual changes to a list of Ingress
      *
-     * @param string $namespace
+     * @param $namespace
      * @return WatchEvent|mixed
      */
-    public function watchList(string $namespace = 'default')
+    public function watchList($namespace = 'default')
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -316,11 +316,11 @@ class Ingress extends \Kubernetes\AbstractAPI
     /**
      * watch changes to an object of kind Ingress
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @return WatchEvent|mixed
      */
-    public function watch(string $namespace = 'default', $name)
+    public function watch($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('get',

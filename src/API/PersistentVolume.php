@@ -3,10 +3,10 @@
 namespace Kubernetes\API;
 
 use \Kubernetes\Model\Io\K8s\Api\Core\V1\PersistentVolumeList as PersistentVolumeList;
-use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions as DeleteOptions;
+use \Kubernetes\Model\Io\K8s\Api\Core\V1\PersistentVolume as ThePersistentVolume;
 use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Status as Status;
+use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions as DeleteOptions;
 use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch as Patch;
-use \Kubernetes\Model\Io\K8s\Api\Core\V1\PersistentVolume as PersistentVolume;
 use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\WatchEvent as WatchEvent;
 
 class PersistentVolume extends \Kubernetes\AbstractAPI
@@ -50,10 +50,10 @@ class PersistentVolume extends \Kubernetes\AbstractAPI
     /**
      * create a PersistentVolume
      *
-     * @param PersistentVolume $Model
-     * @return PersistentVolume|mixed
+     * @param ThePersistentVolume $Model
+     * @return ThePersistentVolume|mixed
      */
-    public function create(\PersistentVolume $Model)
+    public function create(\Kubernetes\Model\Io\K8s\Api\Core\V1\PersistentVolume $Model)
     {
         return $this->parseResponse(
         	$this->client->request('post',
@@ -110,7 +110,7 @@ class PersistentVolume extends \Kubernetes\AbstractAPI
      * @configkey export	boolean
      * @param $name
      * @param array $queries
-     * @return PersistentVolume|mixed
+     * @return ThePersistentVolume|mixed
      */
     public function read($name, array $queries)
     {
@@ -129,10 +129,10 @@ class PersistentVolume extends \Kubernetes\AbstractAPI
      * replace the specified PersistentVolume
      *
      * @param $name
-     * @param PersistentVolume $Model
-     * @return PersistentVolume|mixed
+     * @param ThePersistentVolume $Model
+     * @return ThePersistentVolume|mixed
      */
-    public function replace($name, \PersistentVolume $Model)
+    public function replace($name, \Kubernetes\Model\Io\K8s\Api\Core\V1\PersistentVolume $Model)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -159,7 +159,7 @@ class PersistentVolume extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return Status|mixed
      */
-    public function delete($name, \DeleteOptions $Model, array $queries)
+    public function delete($name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -178,9 +178,9 @@ class PersistentVolume extends \Kubernetes\AbstractAPI
      *
      * @param $name
      * @param Patch $Model
-     * @return PersistentVolume|mixed
+     * @return ThePersistentVolume|mixed
      */
-    public function patch($name, \Patch $Model)
+    public function patch($name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model)
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -197,7 +197,7 @@ class PersistentVolume extends \Kubernetes\AbstractAPI
      * read status of the specified PersistentVolume
      *
      * @param $name
-     * @return PersistentVolume|mixed
+     * @return ThePersistentVolume|mixed
      */
     public function readStatus($name)
     {
@@ -215,10 +215,10 @@ class PersistentVolume extends \Kubernetes\AbstractAPI
      * replace status of the specified PersistentVolume
      *
      * @param $name
-     * @param PersistentVolume $Model
-     * @return PersistentVolume|mixed
+     * @param ThePersistentVolume $Model
+     * @return ThePersistentVolume|mixed
      */
-    public function replaceStatus($name, \PersistentVolume $Model)
+    public function replaceStatus($name, \Kubernetes\Model\Io\K8s\Api\Core\V1\PersistentVolume $Model)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -236,9 +236,9 @@ class PersistentVolume extends \Kubernetes\AbstractAPI
      *
      * @param $name
      * @param Patch $Model
-     * @return PersistentVolume|mixed
+     * @return ThePersistentVolume|mixed
      */
-    public function patchStatus($name, \Patch $Model)
+    public function patchStatus($name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model)
     {
         return $this->parseResponse(
         	$this->client->request('patch',

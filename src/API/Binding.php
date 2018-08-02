@@ -2,7 +2,7 @@
 
 namespace Kubernetes\API;
 
-use \Kubernetes\Model\Io\K8s\Api\Core\V1\Binding as Binding;
+use \Kubernetes\Model\Io\K8s\Api\Core\V1\Binding as TheBinding;
 
 class Binding extends \Kubernetes\AbstractAPI
 {
@@ -10,11 +10,11 @@ class Binding extends \Kubernetes\AbstractAPI
     /**
      * create a Binding
      *
-     * @param string $namespace
-     * @param Binding $Model
-     * @return Binding|mixed
+     * @param $namespace
+     * @param TheBinding $Model
+     * @return TheBinding|mixed
      */
-    public function create(string $namespace = 'default', \Binding $Model)
+    public function create($namespace = 'default', \Kubernetes\Model\Io\K8s\Api\Core\V1\Binding $Model)
     {
         return $this->parseResponse(
         	$this->client->request('post',
@@ -30,12 +30,12 @@ class Binding extends \Kubernetes\AbstractAPI
     /**
      * create binding of a Pod
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @param Binding $Model
-     * @return Binding|mixed
+     * @param TheBinding $Model
+     * @return TheBinding|mixed
      */
-    public function createPod(string $namespace = 'default', $name, \Binding $Model)
+    public function createPod($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Api\Core\V1\Binding $Model)
     {
         return $this->parseResponse(
         	$this->client->request('post',

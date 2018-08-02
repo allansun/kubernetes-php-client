@@ -2,8 +2,8 @@
 
 namespace Kubernetes\API;
 
-use \Kubernetes\Model\Io\K8s\Api\Authorization\V1\SelfSubjectAccessReview as SelfSubjectAccessReview;
-use \Kubernetes\Model\Io\K8s\Api\Authorization\V1beta1\SelfSubjectAccessReview as SelfSubjectAccessReview;
+use \Kubernetes\Model\Io\K8s\Api\Authorization\V1\SelfSubjectAccessReview as TheSelfSubjectAccessReview;
+use \Kubernetes\Model\Io\K8s\Api\Authorization\V1beta1\SelfSubjectAccessReview as TheSelfSubjectAccessReviewV1beta1;
 
 class SelfSubjectAccessReview extends \Kubernetes\AbstractAPI
 {
@@ -11,10 +11,10 @@ class SelfSubjectAccessReview extends \Kubernetes\AbstractAPI
     /**
      * create a SelfSubjectAccessReview
      *
-     * @param SelfSubjectAccessReview $Model
-     * @return SelfSubjectAccessReview|mixed
+     * @param TheSelfSubjectAccessReview $Model
+     * @return TheSelfSubjectAccessReview|mixed
      */
-    public function create(\SelfSubjectAccessReview $Model)
+    public function create(\Kubernetes\Model\Io\K8s\Api\Authorization\V1\SelfSubjectAccessReview $Model)
     {
         return $this->parseResponse(
         	$this->client->request('post',
@@ -30,10 +30,10 @@ class SelfSubjectAccessReview extends \Kubernetes\AbstractAPI
     /**
      * create a SelfSubjectAccessReview
      *
-     * @param SelfSubjectAccessReview $Model
-     * @return SelfSubjectAccessReview|mixed
+     * @param TheSelfSubjectAccessReviewV1beta1 $Model
+     * @return TheSelfSubjectAccessReviewV1beta1|mixed
      */
-    public function createAuthorizationV1beta1(\SelfSubjectAccessReview $Model)
+    public function createAuthorizationV1beta1(\Kubernetes\Model\Io\K8s\Api\Authorization\V1beta1\SelfSubjectAccessReview $Model)
     {
         return $this->parseResponse(
         	$this->client->request('post',

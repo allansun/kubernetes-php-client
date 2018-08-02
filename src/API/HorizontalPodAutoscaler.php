@@ -3,13 +3,13 @@
 namespace Kubernetes\API;
 
 use \Kubernetes\Model\Io\K8s\Api\Autoscaling\V1\HorizontalPodAutoscalerList as HorizontalPodAutoscalerList;
-use \Kubernetes\Model\Io\K8s\Api\Autoscaling\V1\HorizontalPodAutoscaler as HorizontalPodAutoscaler;
-use \Kubernetes\Model\Io\K8s\Api\Autoscaling\V2beta1\HorizontalPodAutoscalerList as HorizontalPodAutoscalerList;
-use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions as DeleteOptions;
+use \Kubernetes\Model\Io\K8s\Api\Autoscaling\V1\HorizontalPodAutoscaler as TheHorizontalPodAutoscaler;
 use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Status as Status;
+use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions as DeleteOptions;
 use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch as Patch;
-use \Kubernetes\Model\Io\K8s\Api\Autoscaling\V2beta1\HorizontalPodAutoscaler as HorizontalPodAutoscaler;
 use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\WatchEvent as WatchEvent;
+use \Kubernetes\Model\Io\K8s\Api\Autoscaling\V2beta1\HorizontalPodAutoscalerList as HorizontalPodAutoscalerListV2beta1;
+use \Kubernetes\Model\Io\K8s\Api\Autoscaling\V2beta1\HorizontalPodAutoscaler as TheHorizontalPodAutoscalerV2beta1;
 
 class HorizontalPodAutoscaler extends \Kubernetes\AbstractAPI
 {
@@ -50,11 +50,11 @@ class HorizontalPodAutoscaler extends \Kubernetes\AbstractAPI
      * @configkey resourceVersion	string
      * @configkey timeoutSeconds	integer
      * @configkey watch	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param array $queries
      * @return HorizontalPodAutoscalerList|mixed
      */
-    public function list(string $namespace = 'default', array $queries)
+    public function list($namespace = 'default', array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -70,11 +70,11 @@ class HorizontalPodAutoscaler extends \Kubernetes\AbstractAPI
     /**
      * create a HorizontalPodAutoscaler
      *
-     * @param string $namespace
-     * @param HorizontalPodAutoscaler $Model
-     * @return HorizontalPodAutoscaler|mixed
+     * @param $namespace
+     * @param TheHorizontalPodAutoscaler $Model
+     * @return TheHorizontalPodAutoscaler|mixed
      */
-    public function create(string $namespace = 'default', \HorizontalPodAutoscaler $Model)
+    public function create($namespace = 'default', \Kubernetes\Model\Io\K8s\Api\Autoscaling\V1\HorizontalPodAutoscaler $Model)
     {
         return $this->parseResponse(
         	$this->client->request('post',
@@ -106,11 +106,11 @@ class HorizontalPodAutoscaler extends \Kubernetes\AbstractAPI
      * @configkey resourceVersion	string
      * @configkey timeoutSeconds	integer
      * @configkey watch	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteCollection(string $namespace = 'default', array $queries)
+    public function deleteCollection($namespace = 'default', array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -130,12 +130,12 @@ class HorizontalPodAutoscaler extends \Kubernetes\AbstractAPI
      * @configkey export	boolean
      * @configkey exact	boolean
      * @configkey export	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param array $queries
-     * @return HorizontalPodAutoscaler|mixed
+     * @return TheHorizontalPodAutoscaler|mixed
      */
-    public function read(string $namespace = 'default', $name, array $queries)
+    public function read($namespace = 'default', $name, array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -151,12 +151,12 @@ class HorizontalPodAutoscaler extends \Kubernetes\AbstractAPI
     /**
      * replace the specified HorizontalPodAutoscaler
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @param HorizontalPodAutoscaler $Model
-     * @return HorizontalPodAutoscaler|mixed
+     * @param TheHorizontalPodAutoscaler $Model
+     * @return TheHorizontalPodAutoscaler|mixed
      */
-    public function replace(string $namespace = 'default', $name, \HorizontalPodAutoscaler $Model)
+    public function replace($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Api\Autoscaling\V1\HorizontalPodAutoscaler $Model)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -178,13 +178,13 @@ class HorizontalPodAutoscaler extends \Kubernetes\AbstractAPI
      * @configkey gracePeriodSeconds	integer
      * @configkey orphanDependents	boolean
      * @configkey propagationPolicy	string
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param DeleteOptions $Model
      * @param array $queries
      * @return Status|mixed
      */
-    public function delete(string $namespace = 'default', $name, \DeleteOptions $Model, array $queries)
+    public function delete($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -201,12 +201,12 @@ class HorizontalPodAutoscaler extends \Kubernetes\AbstractAPI
     /**
      * partially update the specified HorizontalPodAutoscaler
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param Patch $Model
-     * @return HorizontalPodAutoscaler|mixed
+     * @return TheHorizontalPodAutoscaler|mixed
      */
-    public function patch(string $namespace = 'default', $name, \Patch $Model)
+    public function patch($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model)
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -222,11 +222,11 @@ class HorizontalPodAutoscaler extends \Kubernetes\AbstractAPI
     /**
      * read status of the specified HorizontalPodAutoscaler
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @return HorizontalPodAutoscaler|mixed
+     * @return TheHorizontalPodAutoscaler|mixed
      */
-    public function readStatus(string $namespace = 'default', $name)
+    public function readStatus($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -241,12 +241,12 @@ class HorizontalPodAutoscaler extends \Kubernetes\AbstractAPI
     /**
      * replace status of the specified HorizontalPodAutoscaler
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @param HorizontalPodAutoscaler $Model
-     * @return HorizontalPodAutoscaler|mixed
+     * @param TheHorizontalPodAutoscaler $Model
+     * @return TheHorizontalPodAutoscaler|mixed
      */
-    public function replaceStatus(string $namespace = 'default', $name, \HorizontalPodAutoscaler $Model)
+    public function replaceStatus($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Api\Autoscaling\V1\HorizontalPodAutoscaler $Model)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -262,12 +262,12 @@ class HorizontalPodAutoscaler extends \Kubernetes\AbstractAPI
     /**
      * partially update status of the specified HorizontalPodAutoscaler
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param Patch $Model
-     * @return HorizontalPodAutoscaler|mixed
+     * @return TheHorizontalPodAutoscaler|mixed
      */
-    public function patchStatus(string $namespace = 'default', $name, \Patch $Model)
+    public function patchStatus($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model)
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -300,10 +300,10 @@ class HorizontalPodAutoscaler extends \Kubernetes\AbstractAPI
     /**
      * watch individual changes to a list of HorizontalPodAutoscaler
      *
-     * @param string $namespace
+     * @param $namespace
      * @return WatchEvent|mixed
      */
-    public function watchList(string $namespace = 'default')
+    public function watchList($namespace = 'default')
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -318,11 +318,11 @@ class HorizontalPodAutoscaler extends \Kubernetes\AbstractAPI
     /**
      * watch changes to an object of kind HorizontalPodAutoscaler
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @return WatchEvent|mixed
      */
-    public function watch(string $namespace = 'default', $name)
+    public function watch($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -337,7 +337,7 @@ class HorizontalPodAutoscaler extends \Kubernetes\AbstractAPI
     /**
      * list or watch objects of kind HorizontalPodAutoscaler
      *
-     * @return HorizontalPodAutoscalerList|mixed
+     * @return HorizontalPodAutoscalerListV2beta1|mixed
      */
     public function listForAllNamespacesAutoscalingV2beta1()
     {
@@ -370,11 +370,11 @@ class HorizontalPodAutoscaler extends \Kubernetes\AbstractAPI
      * @configkey resourceVersion	string
      * @configkey timeoutSeconds	integer
      * @configkey watch	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param array $queries
-     * @return HorizontalPodAutoscalerList|mixed
+     * @return HorizontalPodAutoscalerListV2beta1|mixed
      */
-    public function listAutoscalingV2beta1(string $namespace = 'default', array $queries)
+    public function listAutoscalingV2beta1($namespace = 'default', array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -390,11 +390,11 @@ class HorizontalPodAutoscaler extends \Kubernetes\AbstractAPI
     /**
      * create a HorizontalPodAutoscaler
      *
-     * @param string $namespace
-     * @param HorizontalPodAutoscaler $Model
-     * @return HorizontalPodAutoscaler|mixed
+     * @param $namespace
+     * @param TheHorizontalPodAutoscalerV2beta1 $Model
+     * @return TheHorizontalPodAutoscalerV2beta1|mixed
      */
-    public function createAutoscalingV2beta1(string $namespace = 'default', \HorizontalPodAutoscaler $Model)
+    public function createAutoscalingV2beta1($namespace = 'default', \Kubernetes\Model\Io\K8s\Api\Autoscaling\V2beta1\HorizontalPodAutoscaler $Model)
     {
         return $this->parseResponse(
         	$this->client->request('post',
@@ -426,11 +426,11 @@ class HorizontalPodAutoscaler extends \Kubernetes\AbstractAPI
      * @configkey resourceVersion	string
      * @configkey timeoutSeconds	integer
      * @configkey watch	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteCollectionAutoscalingV2beta1(string $namespace = 'default', array $queries)
+    public function deleteCollectionAutoscalingV2beta1($namespace = 'default', array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -450,12 +450,12 @@ class HorizontalPodAutoscaler extends \Kubernetes\AbstractAPI
      * @configkey export	boolean
      * @configkey exact	boolean
      * @configkey export	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param array $queries
-     * @return HorizontalPodAutoscaler|mixed
+     * @return TheHorizontalPodAutoscalerV2beta1|mixed
      */
-    public function readAutoscalingV2beta1(string $namespace = 'default', $name, array $queries)
+    public function readAutoscalingV2beta1($namespace = 'default', $name, array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -471,12 +471,12 @@ class HorizontalPodAutoscaler extends \Kubernetes\AbstractAPI
     /**
      * replace the specified HorizontalPodAutoscaler
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @param HorizontalPodAutoscaler $Model
-     * @return HorizontalPodAutoscaler|mixed
+     * @param TheHorizontalPodAutoscalerV2beta1 $Model
+     * @return TheHorizontalPodAutoscalerV2beta1|mixed
      */
-    public function replaceAutoscalingV2beta1(string $namespace = 'default', $name, \HorizontalPodAutoscaler $Model)
+    public function replaceAutoscalingV2beta1($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Api\Autoscaling\V2beta1\HorizontalPodAutoscaler $Model)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -498,13 +498,13 @@ class HorizontalPodAutoscaler extends \Kubernetes\AbstractAPI
      * @configkey gracePeriodSeconds	integer
      * @configkey orphanDependents	boolean
      * @configkey propagationPolicy	string
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param DeleteOptions $Model
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteAutoscalingV2beta1(string $namespace = 'default', $name, \DeleteOptions $Model, array $queries)
+    public function deleteAutoscalingV2beta1($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -521,12 +521,12 @@ class HorizontalPodAutoscaler extends \Kubernetes\AbstractAPI
     /**
      * partially update the specified HorizontalPodAutoscaler
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param Patch $Model
-     * @return HorizontalPodAutoscaler|mixed
+     * @return TheHorizontalPodAutoscalerV2beta1|mixed
      */
-    public function patchAutoscalingV2beta1(string $namespace = 'default', $name, \Patch $Model)
+    public function patchAutoscalingV2beta1($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model)
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -542,11 +542,11 @@ class HorizontalPodAutoscaler extends \Kubernetes\AbstractAPI
     /**
      * read status of the specified HorizontalPodAutoscaler
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @return HorizontalPodAutoscaler|mixed
+     * @return TheHorizontalPodAutoscalerV2beta1|mixed
      */
-    public function readStatusAutoscalingV2beta1(string $namespace = 'default', $name)
+    public function readStatusAutoscalingV2beta1($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -561,12 +561,12 @@ class HorizontalPodAutoscaler extends \Kubernetes\AbstractAPI
     /**
      * replace status of the specified HorizontalPodAutoscaler
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @param HorizontalPodAutoscaler $Model
-     * @return HorizontalPodAutoscaler|mixed
+     * @param TheHorizontalPodAutoscalerV2beta1 $Model
+     * @return TheHorizontalPodAutoscalerV2beta1|mixed
      */
-    public function replaceStatusAutoscalingV2beta1(string $namespace = 'default', $name, \HorizontalPodAutoscaler $Model)
+    public function replaceStatusAutoscalingV2beta1($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Api\Autoscaling\V2beta1\HorizontalPodAutoscaler $Model)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -582,12 +582,12 @@ class HorizontalPodAutoscaler extends \Kubernetes\AbstractAPI
     /**
      * partially update status of the specified HorizontalPodAutoscaler
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param Patch $Model
-     * @return HorizontalPodAutoscaler|mixed
+     * @return TheHorizontalPodAutoscalerV2beta1|mixed
      */
-    public function patchStatusAutoscalingV2beta1(string $namespace = 'default', $name, \Patch $Model)
+    public function patchStatusAutoscalingV2beta1($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model)
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -620,10 +620,10 @@ class HorizontalPodAutoscaler extends \Kubernetes\AbstractAPI
     /**
      * watch individual changes to a list of HorizontalPodAutoscaler
      *
-     * @param string $namespace
+     * @param $namespace
      * @return WatchEvent|mixed
      */
-    public function watchListAutoscalingV2beta1(string $namespace = 'default')
+    public function watchListAutoscalingV2beta1($namespace = 'default')
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -638,11 +638,11 @@ class HorizontalPodAutoscaler extends \Kubernetes\AbstractAPI
     /**
      * watch changes to an object of kind HorizontalPodAutoscaler
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @return WatchEvent|mixed
      */
-    public function watchAutoscalingV2beta1(string $namespace = 'default', $name)
+    public function watchAutoscalingV2beta1($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('get',

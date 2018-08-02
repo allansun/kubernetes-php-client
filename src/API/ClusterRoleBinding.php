@@ -3,15 +3,15 @@
 namespace Kubernetes\API;
 
 use \Kubernetes\Model\Io\K8s\Api\Rbac\V1\ClusterRoleBindingList as ClusterRoleBindingList;
-use \Kubernetes\Model\Io\K8s\Api\Rbac\V1\ClusterRoleBinding as ClusterRoleBinding;
-use \Kubernetes\Model\Io\K8s\Api\Rbac\V1alpha1\ClusterRoleBindingList as ClusterRoleBindingList;
-use \Kubernetes\Model\Io\K8s\Api\Rbac\V1alpha1\ClusterRoleBinding as ClusterRoleBinding;
-use \Kubernetes\Model\Io\K8s\Api\Rbac\V1beta1\ClusterRoleBindingList as ClusterRoleBindingList;
-use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions as DeleteOptions;
+use \Kubernetes\Model\Io\K8s\Api\Rbac\V1\ClusterRoleBinding as TheClusterRoleBinding;
 use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Status as Status;
+use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions as DeleteOptions;
 use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch as Patch;
-use \Kubernetes\Model\Io\K8s\Api\Rbac\V1beta1\ClusterRoleBinding as ClusterRoleBinding;
 use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\WatchEvent as WatchEvent;
+use \Kubernetes\Model\Io\K8s\Api\Rbac\V1alpha1\ClusterRoleBindingList as ClusterRoleBindingListV1alpha1;
+use \Kubernetes\Model\Io\K8s\Api\Rbac\V1alpha1\ClusterRoleBinding as TheClusterRoleBindingV1alpha1;
+use \Kubernetes\Model\Io\K8s\Api\Rbac\V1beta1\ClusterRoleBindingList as ClusterRoleBindingListV1beta1;
+use \Kubernetes\Model\Io\K8s\Api\Rbac\V1beta1\ClusterRoleBinding as TheClusterRoleBindingV1beta1;
 
 class ClusterRoleBinding extends \Kubernetes\AbstractAPI
 {
@@ -54,10 +54,10 @@ class ClusterRoleBinding extends \Kubernetes\AbstractAPI
     /**
      * create a ClusterRoleBinding
      *
-     * @param ClusterRoleBinding $Model
-     * @return ClusterRoleBinding|mixed
+     * @param TheClusterRoleBinding $Model
+     * @return TheClusterRoleBinding|mixed
      */
-    public function createRbacAuthorizationV1(\ClusterRoleBinding $Model)
+    public function createRbacAuthorizationV1(\Kubernetes\Model\Io\K8s\Api\Rbac\V1\ClusterRoleBinding $Model)
     {
         return $this->parseResponse(
         	$this->client->request('post',
@@ -109,7 +109,7 @@ class ClusterRoleBinding extends \Kubernetes\AbstractAPI
      * read the specified ClusterRoleBinding
      *
      * @param $name
-     * @return ClusterRoleBinding|mixed
+     * @return TheClusterRoleBinding|mixed
      */
     public function readRbacAuthorizationV1($name)
     {
@@ -127,10 +127,10 @@ class ClusterRoleBinding extends \Kubernetes\AbstractAPI
      * replace the specified ClusterRoleBinding
      *
      * @param $name
-     * @param ClusterRoleBinding $Model
-     * @return ClusterRoleBinding|mixed
+     * @param TheClusterRoleBinding $Model
+     * @return TheClusterRoleBinding|mixed
      */
-    public function replaceRbacAuthorizationV1($name, \ClusterRoleBinding $Model)
+    public function replaceRbacAuthorizationV1($name, \Kubernetes\Model\Io\K8s\Api\Rbac\V1\ClusterRoleBinding $Model)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -157,7 +157,7 @@ class ClusterRoleBinding extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteRbacAuthorizationV1($name, \DeleteOptions $Model, array $queries)
+    public function deleteRbacAuthorizationV1($name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -176,9 +176,9 @@ class ClusterRoleBinding extends \Kubernetes\AbstractAPI
      *
      * @param $name
      * @param Patch $Model
-     * @return ClusterRoleBinding|mixed
+     * @return TheClusterRoleBinding|mixed
      */
-    public function patchRbacAuthorizationV1($name, \Patch $Model)
+    public function patchRbacAuthorizationV1($name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model)
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -246,7 +246,7 @@ class ClusterRoleBinding extends \Kubernetes\AbstractAPI
      * @configkey timeoutSeconds	integer
      * @configkey watch	boolean
      * @param array $queries
-     * @return ClusterRoleBindingList|mixed
+     * @return ClusterRoleBindingListV1alpha1|mixed
      */
     public function listRbacAuthorizationV1alpha1(array $queries)
     {
@@ -264,10 +264,10 @@ class ClusterRoleBinding extends \Kubernetes\AbstractAPI
     /**
      * create a ClusterRoleBinding
      *
-     * @param ClusterRoleBinding $Model
-     * @return ClusterRoleBinding|mixed
+     * @param TheClusterRoleBindingV1alpha1 $Model
+     * @return TheClusterRoleBindingV1alpha1|mixed
      */
-    public function createRbacAuthorizationV1alpha1(\ClusterRoleBinding $Model)
+    public function createRbacAuthorizationV1alpha1(\Kubernetes\Model\Io\K8s\Api\Rbac\V1alpha1\ClusterRoleBinding $Model)
     {
         return $this->parseResponse(
         	$this->client->request('post',
@@ -319,7 +319,7 @@ class ClusterRoleBinding extends \Kubernetes\AbstractAPI
      * read the specified ClusterRoleBinding
      *
      * @param $name
-     * @return ClusterRoleBinding|mixed
+     * @return TheClusterRoleBindingV1alpha1|mixed
      */
     public function readRbacAuthorizationV1alpha1($name)
     {
@@ -337,10 +337,10 @@ class ClusterRoleBinding extends \Kubernetes\AbstractAPI
      * replace the specified ClusterRoleBinding
      *
      * @param $name
-     * @param ClusterRoleBinding $Model
-     * @return ClusterRoleBinding|mixed
+     * @param TheClusterRoleBindingV1alpha1 $Model
+     * @return TheClusterRoleBindingV1alpha1|mixed
      */
-    public function replaceRbacAuthorizationV1alpha1($name, \ClusterRoleBinding $Model)
+    public function replaceRbacAuthorizationV1alpha1($name, \Kubernetes\Model\Io\K8s\Api\Rbac\V1alpha1\ClusterRoleBinding $Model)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -367,7 +367,7 @@ class ClusterRoleBinding extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteRbacAuthorizationV1alpha1($name, \DeleteOptions $Model, array $queries)
+    public function deleteRbacAuthorizationV1alpha1($name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -386,9 +386,9 @@ class ClusterRoleBinding extends \Kubernetes\AbstractAPI
      *
      * @param $name
      * @param Patch $Model
-     * @return ClusterRoleBinding|mixed
+     * @return TheClusterRoleBindingV1alpha1|mixed
      */
-    public function patchRbacAuthorizationV1alpha1($name, \Patch $Model)
+    public function patchRbacAuthorizationV1alpha1($name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model)
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -456,7 +456,7 @@ class ClusterRoleBinding extends \Kubernetes\AbstractAPI
      * @configkey timeoutSeconds	integer
      * @configkey watch	boolean
      * @param array $queries
-     * @return ClusterRoleBindingList|mixed
+     * @return ClusterRoleBindingListV1beta1|mixed
      */
     public function listRbacAuthorizationV1beta1(array $queries)
     {
@@ -474,10 +474,10 @@ class ClusterRoleBinding extends \Kubernetes\AbstractAPI
     /**
      * create a ClusterRoleBinding
      *
-     * @param ClusterRoleBinding $Model
-     * @return ClusterRoleBinding|mixed
+     * @param TheClusterRoleBindingV1beta1 $Model
+     * @return TheClusterRoleBindingV1beta1|mixed
      */
-    public function createRbacAuthorizationV1beta1(\ClusterRoleBinding $Model)
+    public function createRbacAuthorizationV1beta1(\Kubernetes\Model\Io\K8s\Api\Rbac\V1beta1\ClusterRoleBinding $Model)
     {
         return $this->parseResponse(
         	$this->client->request('post',
@@ -529,7 +529,7 @@ class ClusterRoleBinding extends \Kubernetes\AbstractAPI
      * read the specified ClusterRoleBinding
      *
      * @param $name
-     * @return ClusterRoleBinding|mixed
+     * @return TheClusterRoleBindingV1beta1|mixed
      */
     public function readRbacAuthorizationV1beta1($name)
     {
@@ -547,10 +547,10 @@ class ClusterRoleBinding extends \Kubernetes\AbstractAPI
      * replace the specified ClusterRoleBinding
      *
      * @param $name
-     * @param ClusterRoleBinding $Model
-     * @return ClusterRoleBinding|mixed
+     * @param TheClusterRoleBindingV1beta1 $Model
+     * @return TheClusterRoleBindingV1beta1|mixed
      */
-    public function replaceRbacAuthorizationV1beta1($name, \ClusterRoleBinding $Model)
+    public function replaceRbacAuthorizationV1beta1($name, \Kubernetes\Model\Io\K8s\Api\Rbac\V1beta1\ClusterRoleBinding $Model)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -577,7 +577,7 @@ class ClusterRoleBinding extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteRbacAuthorizationV1beta1($name, \DeleteOptions $Model, array $queries)
+    public function deleteRbacAuthorizationV1beta1($name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -596,9 +596,9 @@ class ClusterRoleBinding extends \Kubernetes\AbstractAPI
      *
      * @param $name
      * @param Patch $Model
-     * @return ClusterRoleBinding|mixed
+     * @return TheClusterRoleBindingV1beta1|mixed
      */
-    public function patchRbacAuthorizationV1beta1($name, \Patch $Model)
+    public function patchRbacAuthorizationV1beta1($name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model)
     {
         return $this->parseResponse(
         	$this->client->request('patch',

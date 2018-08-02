@@ -2,11 +2,11 @@
 
 namespace Kubernetes\API;
 
-use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions as DeleteOptions;
-use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Status as Status;
-use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch as Patch;
-use \Kubernetes\Model\Io\K8s\Api\Core\V1\Pod as Pod;
 use \Kubernetes\Model\Io\K8s\Api\Core\V1\PodList as PodList;
+use \Kubernetes\Model\Io\K8s\Api\Core\V1\Pod as ThePod;
+use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Status as Status;
+use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions as DeleteOptions;
+use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch as Patch;
 use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\WatchEvent as WatchEvent;
 
 class Pod extends \Kubernetes\AbstractAPI
@@ -31,11 +31,11 @@ class Pod extends \Kubernetes\AbstractAPI
      * @configkey resourceVersion	string
      * @configkey timeoutSeconds	integer
      * @configkey watch	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param array $queries
      * @return PodList|mixed
      */
-    public function list(string $namespace = 'default', array $queries)
+    public function list($namespace = 'default', array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -51,11 +51,11 @@ class Pod extends \Kubernetes\AbstractAPI
     /**
      * create a Pod
      *
-     * @param string $namespace
-     * @param Pod $Model
-     * @return Pod|mixed
+     * @param $namespace
+     * @param ThePod $Model
+     * @return ThePod|mixed
      */
-    public function create(string $namespace = 'default', \Pod $Model)
+    public function create($namespace = 'default', \Kubernetes\Model\Io\K8s\Api\Core\V1\Pod $Model)
     {
         return $this->parseResponse(
         	$this->client->request('post',
@@ -87,11 +87,11 @@ class Pod extends \Kubernetes\AbstractAPI
      * @configkey resourceVersion	string
      * @configkey timeoutSeconds	integer
      * @configkey watch	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteCollection(string $namespace = 'default', array $queries)
+    public function deleteCollection($namespace = 'default', array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -111,12 +111,12 @@ class Pod extends \Kubernetes\AbstractAPI
      * @configkey export	boolean
      * @configkey exact	boolean
      * @configkey export	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param array $queries
-     * @return Pod|mixed
+     * @return ThePod|mixed
      */
-    public function read(string $namespace = 'default', $name, array $queries)
+    public function read($namespace = 'default', $name, array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -132,12 +132,12 @@ class Pod extends \Kubernetes\AbstractAPI
     /**
      * replace the specified Pod
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @param Pod $Model
-     * @return Pod|mixed
+     * @param ThePod $Model
+     * @return ThePod|mixed
      */
-    public function replace(string $namespace = 'default', $name, \Pod $Model)
+    public function replace($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Api\Core\V1\Pod $Model)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -159,13 +159,13 @@ class Pod extends \Kubernetes\AbstractAPI
      * @configkey gracePeriodSeconds	integer
      * @configkey orphanDependents	boolean
      * @configkey propagationPolicy	string
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param DeleteOptions $Model
      * @param array $queries
      * @return Status|mixed
      */
-    public function delete(string $namespace = 'default', $name, \DeleteOptions $Model, array $queries)
+    public function delete($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -182,12 +182,12 @@ class Pod extends \Kubernetes\AbstractAPI
     /**
      * partially update the specified Pod
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param Patch $Model
-     * @return Pod|mixed
+     * @return ThePod|mixed
      */
-    public function patch(string $namespace = 'default', $name, \Patch $Model)
+    public function patch($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model)
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -203,11 +203,11 @@ class Pod extends \Kubernetes\AbstractAPI
     /**
      * connect GET requests to attach of Pod
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @return string|mixed
      */
-    public function connectGetAttach(string $namespace = 'default', $name)
+    public function connectGetAttach($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -222,11 +222,11 @@ class Pod extends \Kubernetes\AbstractAPI
     /**
      * connect POST requests to attach of Pod
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @return string|mixed
      */
-    public function connectPostAttach(string $namespace = 'default', $name)
+    public function connectPostAttach($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('post',
@@ -241,11 +241,11 @@ class Pod extends \Kubernetes\AbstractAPI
     /**
      * connect GET requests to exec of Pod
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @return string|mixed
      */
-    public function connectGetExec(string $namespace = 'default', $name)
+    public function connectGetExec($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -260,11 +260,11 @@ class Pod extends \Kubernetes\AbstractAPI
     /**
      * connect POST requests to exec of Pod
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @return string|mixed
      */
-    public function connectPostExec(string $namespace = 'default', $name)
+    public function connectPostExec($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('post',
@@ -279,11 +279,11 @@ class Pod extends \Kubernetes\AbstractAPI
     /**
      * read log of the specified Pod
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @return string|mixed
      */
-    public function readLog(string $namespace = 'default', $name)
+    public function readLog($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -298,11 +298,11 @@ class Pod extends \Kubernetes\AbstractAPI
     /**
      * connect GET requests to portforward of Pod
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @return string|mixed
      */
-    public function connectGetPortforward(string $namespace = 'default', $name)
+    public function connectGetPortforward($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -317,11 +317,11 @@ class Pod extends \Kubernetes\AbstractAPI
     /**
      * connect POST requests to portforward of Pod
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @return string|mixed
      */
-    public function connectPostPortforward(string $namespace = 'default', $name)
+    public function connectPostPortforward($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('post',
@@ -336,11 +336,11 @@ class Pod extends \Kubernetes\AbstractAPI
     /**
      * connect GET requests to proxy of Pod
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @return string|mixed
      */
-    public function connectGetProxy(string $namespace = 'default', $name)
+    public function connectGetProxy($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -355,11 +355,11 @@ class Pod extends \Kubernetes\AbstractAPI
     /**
      * connect PUT requests to proxy of Pod
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @return string|mixed
      */
-    public function connectPutProxy(string $namespace = 'default', $name)
+    public function connectPutProxy($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -374,11 +374,11 @@ class Pod extends \Kubernetes\AbstractAPI
     /**
      * connect POST requests to proxy of Pod
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @return string|mixed
      */
-    public function connectPostProxy(string $namespace = 'default', $name)
+    public function connectPostProxy($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('post',
@@ -393,11 +393,11 @@ class Pod extends \Kubernetes\AbstractAPI
     /**
      * connect DELETE requests to proxy of Pod
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @return string|mixed
      */
-    public function connectDeleteProxy(string $namespace = 'default', $name)
+    public function connectDeleteProxy($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -412,11 +412,11 @@ class Pod extends \Kubernetes\AbstractAPI
     /**
      * connect OPTIONS requests to proxy of Pod
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @return string|mixed
      */
-    public function connectOptionsProxy(string $namespace = 'default', $name)
+    public function connectOptionsProxy($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('options',
@@ -431,11 +431,11 @@ class Pod extends \Kubernetes\AbstractAPI
     /**
      * connect HEAD requests to proxy of Pod
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @return string|mixed
      */
-    public function connectHeadProxy(string $namespace = 'default', $name)
+    public function connectHeadProxy($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('head',
@@ -450,11 +450,11 @@ class Pod extends \Kubernetes\AbstractAPI
     /**
      * connect PATCH requests to proxy of Pod
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @return string|mixed
      */
-    public function connectPatchProxy(string $namespace = 'default', $name)
+    public function connectPatchProxy($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -469,12 +469,12 @@ class Pod extends \Kubernetes\AbstractAPI
     /**
      * connect GET requests to proxy of Pod
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param $path
      * @return string|mixed
      */
-    public function connectGetProxyWithPath(string $namespace = 'default', $name, $path)
+    public function connectGetProxyWithPath($namespace = 'default', $name, $path)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -489,12 +489,12 @@ class Pod extends \Kubernetes\AbstractAPI
     /**
      * connect PUT requests to proxy of Pod
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param $path
      * @return string|mixed
      */
-    public function connectPutProxyWithPath(string $namespace = 'default', $name, $path)
+    public function connectPutProxyWithPath($namespace = 'default', $name, $path)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -509,12 +509,12 @@ class Pod extends \Kubernetes\AbstractAPI
     /**
      * connect POST requests to proxy of Pod
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param $path
      * @return string|mixed
      */
-    public function connectPostProxyWithPath(string $namespace = 'default', $name, $path)
+    public function connectPostProxyWithPath($namespace = 'default', $name, $path)
     {
         return $this->parseResponse(
         	$this->client->request('post',
@@ -529,12 +529,12 @@ class Pod extends \Kubernetes\AbstractAPI
     /**
      * connect DELETE requests to proxy of Pod
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param $path
      * @return string|mixed
      */
-    public function connectDeleteProxyWithPath(string $namespace = 'default', $name, $path)
+    public function connectDeleteProxyWithPath($namespace = 'default', $name, $path)
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -549,12 +549,12 @@ class Pod extends \Kubernetes\AbstractAPI
     /**
      * connect OPTIONS requests to proxy of Pod
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param $path
      * @return string|mixed
      */
-    public function connectOptionsProxyWithPath(string $namespace = 'default', $name, $path)
+    public function connectOptionsProxyWithPath($namespace = 'default', $name, $path)
     {
         return $this->parseResponse(
         	$this->client->request('options',
@@ -569,12 +569,12 @@ class Pod extends \Kubernetes\AbstractAPI
     /**
      * connect HEAD requests to proxy of Pod
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param $path
      * @return string|mixed
      */
-    public function connectHeadProxyWithPath(string $namespace = 'default', $name, $path)
+    public function connectHeadProxyWithPath($namespace = 'default', $name, $path)
     {
         return $this->parseResponse(
         	$this->client->request('head',
@@ -589,12 +589,12 @@ class Pod extends \Kubernetes\AbstractAPI
     /**
      * connect PATCH requests to proxy of Pod
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param $path
      * @return string|mixed
      */
-    public function connectPatchProxyWithPath(string $namespace = 'default', $name, $path)
+    public function connectPatchProxyWithPath($namespace = 'default', $name, $path)
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -609,11 +609,11 @@ class Pod extends \Kubernetes\AbstractAPI
     /**
      * read status of the specified Pod
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @return Pod|mixed
+     * @return ThePod|mixed
      */
-    public function readStatus(string $namespace = 'default', $name)
+    public function readStatus($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -628,12 +628,12 @@ class Pod extends \Kubernetes\AbstractAPI
     /**
      * replace status of the specified Pod
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @param Pod $Model
-     * @return Pod|mixed
+     * @param ThePod $Model
+     * @return ThePod|mixed
      */
-    public function replaceStatus(string $namespace = 'default', $name, \Pod $Model)
+    public function replaceStatus($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Api\Core\V1\Pod $Model)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -649,12 +649,12 @@ class Pod extends \Kubernetes\AbstractAPI
     /**
      * partially update status of the specified Pod
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param Patch $Model
-     * @return Pod|mixed
+     * @return ThePod|mixed
      */
-    public function patchStatus(string $namespace = 'default', $name, \Patch $Model)
+    public function patchStatus($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model)
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -687,10 +687,10 @@ class Pod extends \Kubernetes\AbstractAPI
     /**
      * watch individual changes to a list of Pod
      *
-     * @param string $namespace
+     * @param $namespace
      * @return WatchEvent|mixed
      */
-    public function watchList(string $namespace = 'default')
+    public function watchList($namespace = 'default')
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -705,11 +705,11 @@ class Pod extends \Kubernetes\AbstractAPI
     /**
      * watch changes to an object of kind Pod
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @return WatchEvent|mixed
      */
-    public function watch(string $namespace = 'default', $name)
+    public function watch($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('get',

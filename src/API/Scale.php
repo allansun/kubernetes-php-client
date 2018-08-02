@@ -2,11 +2,11 @@
 
 namespace Kubernetes\API;
 
-use \Kubernetes\Model\Io\K8s\Api\Autoscaling\V1\Scale as Scale;
-use \Kubernetes\Model\Io\K8s\Api\Apps\V1beta1\Scale as Scale;
-use \Kubernetes\Model\Io\K8s\Api\Apps\V1beta2\Scale as Scale;
+use \Kubernetes\Model\Io\K8s\Api\Autoscaling\V1\Scale as TheScale;
 use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch as Patch;
-use \Kubernetes\Model\Io\K8s\Api\Extensions\V1beta1\Scale as Scale;
+use \Kubernetes\Model\Io\K8s\Api\Apps\V1beta1\Scale as TheScaleV1beta1;
+use \Kubernetes\Model\Io\K8s\Api\Apps\V1beta2\Scale as TheScaleV1beta2;
+use \Kubernetes\Model\Io\K8s\Api\Extensions\V1beta1\Scale as TheScaleV1beta1Extensions;
 
 class Scale extends \Kubernetes\AbstractAPI
 {
@@ -14,11 +14,11 @@ class Scale extends \Kubernetes\AbstractAPI
     /**
      * read scale of the specified ReplicationController
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @return Scale|mixed
+     * @return TheScale|mixed
      */
-    public function readReplicationController(string $namespace = 'default', $name)
+    public function readReplicationController($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -33,12 +33,12 @@ class Scale extends \Kubernetes\AbstractAPI
     /**
      * replace scale of the specified ReplicationController
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @param Scale $Model
-     * @return Scale|mixed
+     * @param TheScale $Model
+     * @return TheScale|mixed
      */
-    public function replaceReplicationController(string $namespace = 'default', $name, \Scale $Model)
+    public function replaceReplicationController($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Api\Autoscaling\V1\Scale $Model)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -54,12 +54,12 @@ class Scale extends \Kubernetes\AbstractAPI
     /**
      * partially update scale of the specified ReplicationController
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param Patch $Model
-     * @return Scale|mixed
+     * @return TheScale|mixed
      */
-    public function patchReplicationController(string $namespace = 'default', $name, \Patch $Model)
+    public function patchReplicationController($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model)
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -75,11 +75,11 @@ class Scale extends \Kubernetes\AbstractAPI
     /**
      * read scale of the specified Deployment
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @return Scale|mixed
+     * @return TheScale|mixed
      */
-    public function readDeployment(string $namespace = 'default', $name)
+    public function readDeployment($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -94,12 +94,12 @@ class Scale extends \Kubernetes\AbstractAPI
     /**
      * replace scale of the specified Deployment
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @param Scale $Model
-     * @return Scale|mixed
+     * @param TheScale $Model
+     * @return TheScale|mixed
      */
-    public function replaceDeployment(string $namespace = 'default', $name, \Scale $Model)
+    public function replaceDeployment($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Api\Autoscaling\V1\Scale $Model)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -115,12 +115,12 @@ class Scale extends \Kubernetes\AbstractAPI
     /**
      * partially update scale of the specified Deployment
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param Patch $Model
-     * @return Scale|mixed
+     * @return TheScale|mixed
      */
-    public function patchDeployment(string $namespace = 'default', $name, \Patch $Model)
+    public function patchDeployment($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model)
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -136,11 +136,11 @@ class Scale extends \Kubernetes\AbstractAPI
     /**
      * read scale of the specified ReplicaSet
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @return Scale|mixed
+     * @return TheScale|mixed
      */
-    public function readReplicaSet(string $namespace = 'default', $name)
+    public function readReplicaSet($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -155,12 +155,12 @@ class Scale extends \Kubernetes\AbstractAPI
     /**
      * replace scale of the specified ReplicaSet
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @param Scale $Model
-     * @return Scale|mixed
+     * @param TheScale $Model
+     * @return TheScale|mixed
      */
-    public function replaceReplicaSet(string $namespace = 'default', $name, \Scale $Model)
+    public function replaceReplicaSet($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Api\Autoscaling\V1\Scale $Model)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -176,12 +176,12 @@ class Scale extends \Kubernetes\AbstractAPI
     /**
      * partially update scale of the specified ReplicaSet
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param Patch $Model
-     * @return Scale|mixed
+     * @return TheScale|mixed
      */
-    public function patchReplicaSet(string $namespace = 'default', $name, \Patch $Model)
+    public function patchReplicaSet($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model)
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -197,11 +197,11 @@ class Scale extends \Kubernetes\AbstractAPI
     /**
      * read scale of the specified StatefulSet
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @return Scale|mixed
+     * @return TheScale|mixed
      */
-    public function readStatefulSet(string $namespace = 'default', $name)
+    public function readStatefulSet($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -216,12 +216,12 @@ class Scale extends \Kubernetes\AbstractAPI
     /**
      * replace scale of the specified StatefulSet
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @param Scale $Model
-     * @return Scale|mixed
+     * @param TheScale $Model
+     * @return TheScale|mixed
      */
-    public function replaceStatefulSet(string $namespace = 'default', $name, \Scale $Model)
+    public function replaceStatefulSet($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Api\Autoscaling\V1\Scale $Model)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -237,12 +237,12 @@ class Scale extends \Kubernetes\AbstractAPI
     /**
      * partially update scale of the specified StatefulSet
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param Patch $Model
-     * @return Scale|mixed
+     * @return TheScale|mixed
      */
-    public function patchStatefulSet(string $namespace = 'default', $name, \Patch $Model)
+    public function patchStatefulSet($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model)
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -258,11 +258,11 @@ class Scale extends \Kubernetes\AbstractAPI
     /**
      * read scale of the specified Deployment
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @return Scale|mixed
+     * @return TheScaleV1beta1|mixed
      */
-    public function readDeploymentAppsV1beta1(string $namespace = 'default', $name)
+    public function readDeploymentAppsV1beta1($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -277,12 +277,12 @@ class Scale extends \Kubernetes\AbstractAPI
     /**
      * replace scale of the specified Deployment
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @param Scale $Model
-     * @return Scale|mixed
+     * @param TheScaleV1beta1 $Model
+     * @return TheScaleV1beta1|mixed
      */
-    public function replaceDeploymentAppsV1beta1(string $namespace = 'default', $name, \Scale $Model)
+    public function replaceDeploymentAppsV1beta1($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Api\Apps\V1beta1\Scale $Model)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -298,12 +298,12 @@ class Scale extends \Kubernetes\AbstractAPI
     /**
      * partially update scale of the specified Deployment
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param Patch $Model
-     * @return Scale|mixed
+     * @return TheScaleV1beta1|mixed
      */
-    public function patchDeploymentAppsV1beta1(string $namespace = 'default', $name, \Patch $Model)
+    public function patchDeploymentAppsV1beta1($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model)
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -319,11 +319,11 @@ class Scale extends \Kubernetes\AbstractAPI
     /**
      * read scale of the specified StatefulSet
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @return Scale|mixed
+     * @return TheScaleV1beta1|mixed
      */
-    public function readStatefulSetAppsV1beta1(string $namespace = 'default', $name)
+    public function readStatefulSetAppsV1beta1($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -338,12 +338,12 @@ class Scale extends \Kubernetes\AbstractAPI
     /**
      * replace scale of the specified StatefulSet
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @param Scale $Model
-     * @return Scale|mixed
+     * @param TheScaleV1beta1 $Model
+     * @return TheScaleV1beta1|mixed
      */
-    public function replaceStatefulSetAppsV1beta1(string $namespace = 'default', $name, \Scale $Model)
+    public function replaceStatefulSetAppsV1beta1($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Api\Apps\V1beta1\Scale $Model)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -359,12 +359,12 @@ class Scale extends \Kubernetes\AbstractAPI
     /**
      * partially update scale of the specified StatefulSet
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param Patch $Model
-     * @return Scale|mixed
+     * @return TheScaleV1beta1|mixed
      */
-    public function patchStatefulSetAppsV1beta1(string $namespace = 'default', $name, \Patch $Model)
+    public function patchStatefulSetAppsV1beta1($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model)
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -380,11 +380,11 @@ class Scale extends \Kubernetes\AbstractAPI
     /**
      * read scale of the specified Deployment
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @return Scale|mixed
+     * @return TheScaleV1beta2|mixed
      */
-    public function readDeploymentAppsV1beta2(string $namespace = 'default', $name)
+    public function readDeploymentAppsV1beta2($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -399,12 +399,12 @@ class Scale extends \Kubernetes\AbstractAPI
     /**
      * replace scale of the specified Deployment
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @param Scale $Model
-     * @return Scale|mixed
+     * @param TheScaleV1beta2 $Model
+     * @return TheScaleV1beta2|mixed
      */
-    public function replaceDeploymentAppsV1beta2(string $namespace = 'default', $name, \Scale $Model)
+    public function replaceDeploymentAppsV1beta2($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Api\Apps\V1beta2\Scale $Model)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -420,12 +420,12 @@ class Scale extends \Kubernetes\AbstractAPI
     /**
      * partially update scale of the specified Deployment
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param Patch $Model
-     * @return Scale|mixed
+     * @return TheScaleV1beta2|mixed
      */
-    public function patchDeploymentAppsV1beta2(string $namespace = 'default', $name, \Patch $Model)
+    public function patchDeploymentAppsV1beta2($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model)
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -441,11 +441,11 @@ class Scale extends \Kubernetes\AbstractAPI
     /**
      * read scale of the specified ReplicaSet
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @return Scale|mixed
+     * @return TheScaleV1beta2|mixed
      */
-    public function readReplicaSetAppsV1beta2(string $namespace = 'default', $name)
+    public function readReplicaSetAppsV1beta2($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -460,12 +460,12 @@ class Scale extends \Kubernetes\AbstractAPI
     /**
      * replace scale of the specified ReplicaSet
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @param Scale $Model
-     * @return Scale|mixed
+     * @param TheScaleV1beta2 $Model
+     * @return TheScaleV1beta2|mixed
      */
-    public function replaceReplicaSetAppsV1beta2(string $namespace = 'default', $name, \Scale $Model)
+    public function replaceReplicaSetAppsV1beta2($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Api\Apps\V1beta2\Scale $Model)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -481,12 +481,12 @@ class Scale extends \Kubernetes\AbstractAPI
     /**
      * partially update scale of the specified ReplicaSet
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param Patch $Model
-     * @return Scale|mixed
+     * @return TheScaleV1beta2|mixed
      */
-    public function patchReplicaSetAppsV1beta2(string $namespace = 'default', $name, \Patch $Model)
+    public function patchReplicaSetAppsV1beta2($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model)
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -502,11 +502,11 @@ class Scale extends \Kubernetes\AbstractAPI
     /**
      * read scale of the specified StatefulSet
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @return Scale|mixed
+     * @return TheScaleV1beta2|mixed
      */
-    public function readStatefulSetAppsV1beta2(string $namespace = 'default', $name)
+    public function readStatefulSetAppsV1beta2($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -521,12 +521,12 @@ class Scale extends \Kubernetes\AbstractAPI
     /**
      * replace scale of the specified StatefulSet
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @param Scale $Model
-     * @return Scale|mixed
+     * @param TheScaleV1beta2 $Model
+     * @return TheScaleV1beta2|mixed
      */
-    public function replaceStatefulSetAppsV1beta2(string $namespace = 'default', $name, \Scale $Model)
+    public function replaceStatefulSetAppsV1beta2($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Api\Apps\V1beta2\Scale $Model)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -542,12 +542,12 @@ class Scale extends \Kubernetes\AbstractAPI
     /**
      * partially update scale of the specified StatefulSet
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param Patch $Model
-     * @return Scale|mixed
+     * @return TheScaleV1beta2|mixed
      */
-    public function patchStatefulSetAppsV1beta2(string $namespace = 'default', $name, \Patch $Model)
+    public function patchStatefulSetAppsV1beta2($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model)
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -563,11 +563,11 @@ class Scale extends \Kubernetes\AbstractAPI
     /**
      * read scale of the specified Deployment
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @return Scale|mixed
+     * @return TheScaleV1beta1Extensions|mixed
      */
-    public function readDeploymentExtensionsV1beta1(string $namespace = 'default', $name)
+    public function readDeploymentExtensionsV1beta1($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -582,12 +582,12 @@ class Scale extends \Kubernetes\AbstractAPI
     /**
      * replace scale of the specified Deployment
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @param Scale $Model
-     * @return Scale|mixed
+     * @param TheScaleV1beta1Extensions $Model
+     * @return TheScaleV1beta1Extensions|mixed
      */
-    public function replaceDeploymentExtensionsV1beta1(string $namespace = 'default', $name, \Scale $Model)
+    public function replaceDeploymentExtensionsV1beta1($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Api\Extensions\V1beta1\Scale $Model)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -603,12 +603,12 @@ class Scale extends \Kubernetes\AbstractAPI
     /**
      * partially update scale of the specified Deployment
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param Patch $Model
-     * @return Scale|mixed
+     * @return TheScaleV1beta1Extensions|mixed
      */
-    public function patchDeploymentExtensionsV1beta1(string $namespace = 'default', $name, \Patch $Model)
+    public function patchDeploymentExtensionsV1beta1($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model)
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -624,11 +624,11 @@ class Scale extends \Kubernetes\AbstractAPI
     /**
      * read scale of the specified ReplicaSet
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @return Scale|mixed
+     * @return TheScaleV1beta1Extensions|mixed
      */
-    public function readReplicaSetExtensionsV1beta1(string $namespace = 'default', $name)
+    public function readReplicaSetExtensionsV1beta1($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -643,12 +643,12 @@ class Scale extends \Kubernetes\AbstractAPI
     /**
      * replace scale of the specified ReplicaSet
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @param Scale $Model
-     * @return Scale|mixed
+     * @param TheScaleV1beta1Extensions $Model
+     * @return TheScaleV1beta1Extensions|mixed
      */
-    public function replaceReplicaSetExtensionsV1beta1(string $namespace = 'default', $name, \Scale $Model)
+    public function replaceReplicaSetExtensionsV1beta1($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Api\Extensions\V1beta1\Scale $Model)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -664,12 +664,12 @@ class Scale extends \Kubernetes\AbstractAPI
     /**
      * partially update scale of the specified ReplicaSet
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param Patch $Model
-     * @return Scale|mixed
+     * @return TheScaleV1beta1Extensions|mixed
      */
-    public function patchReplicaSetExtensionsV1beta1(string $namespace = 'default', $name, \Patch $Model)
+    public function patchReplicaSetExtensionsV1beta1($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model)
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -685,11 +685,11 @@ class Scale extends \Kubernetes\AbstractAPI
     /**
      * read scale of the specified ReplicationControllerDummy
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @return Scale|mixed
+     * @return TheScaleV1beta1Extensions|mixed
      */
-    public function readReplicationControllerDummy(string $namespace = 'default', $name)
+    public function readReplicationControllerDummy($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -704,12 +704,12 @@ class Scale extends \Kubernetes\AbstractAPI
     /**
      * replace scale of the specified ReplicationControllerDummy
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @param Scale $Model
-     * @return Scale|mixed
+     * @param TheScaleV1beta1Extensions $Model
+     * @return TheScaleV1beta1Extensions|mixed
      */
-    public function replaceReplicationControllerDummy(string $namespace = 'default', $name, \Scale $Model)
+    public function replaceReplicationControllerDummy($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Api\Extensions\V1beta1\Scale $Model)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -725,12 +725,12 @@ class Scale extends \Kubernetes\AbstractAPI
     /**
      * partially update scale of the specified ReplicationControllerDummy
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param Patch $Model
-     * @return Scale|mixed
+     * @return TheScaleV1beta1Extensions|mixed
      */
-    public function patchReplicationControllerDummy(string $namespace = 'default', $name, \Patch $Model)
+    public function patchReplicationControllerDummy($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model)
     {
         return $this->parseResponse(
         	$this->client->request('patch',

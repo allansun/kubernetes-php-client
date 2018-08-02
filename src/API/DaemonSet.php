@@ -3,15 +3,15 @@
 namespace Kubernetes\API;
 
 use \Kubernetes\Model\Io\K8s\Api\Apps\V1\DaemonSetList as DaemonSetList;
-use \Kubernetes\Model\Io\K8s\Api\Apps\V1\DaemonSet as DaemonSet;
-use \Kubernetes\Model\Io\K8s\Api\Apps\V1beta2\DaemonSetList as DaemonSetList;
-use \Kubernetes\Model\Io\K8s\Api\Apps\V1beta2\DaemonSet as DaemonSet;
-use \Kubernetes\Model\Io\K8s\Api\Extensions\V1beta1\DaemonSetList as DaemonSetList;
-use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions as DeleteOptions;
+use \Kubernetes\Model\Io\K8s\Api\Apps\V1\DaemonSet as TheDaemonSet;
 use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Status as Status;
+use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions as DeleteOptions;
 use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch as Patch;
-use \Kubernetes\Model\Io\K8s\Api\Extensions\V1beta1\DaemonSet as DaemonSet;
 use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\WatchEvent as WatchEvent;
+use \Kubernetes\Model\Io\K8s\Api\Apps\V1beta2\DaemonSetList as DaemonSetListV1beta2;
+use \Kubernetes\Model\Io\K8s\Api\Apps\V1beta2\DaemonSet as TheDaemonSetV1beta2;
+use \Kubernetes\Model\Io\K8s\Api\Extensions\V1beta1\DaemonSetList as DaemonSetListV1beta1;
+use \Kubernetes\Model\Io\K8s\Api\Extensions\V1beta1\DaemonSet as TheDaemonSetV1beta1;
 
 class DaemonSet extends \Kubernetes\AbstractAPI
 {
@@ -52,11 +52,11 @@ class DaemonSet extends \Kubernetes\AbstractAPI
      * @configkey resourceVersion	string
      * @configkey timeoutSeconds	integer
      * @configkey watch	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param array $queries
      * @return DaemonSetList|mixed
      */
-    public function list(string $namespace = 'default', array $queries)
+    public function list($namespace = 'default', array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -72,11 +72,11 @@ class DaemonSet extends \Kubernetes\AbstractAPI
     /**
      * create a DaemonSet
      *
-     * @param string $namespace
-     * @param DaemonSet $Model
-     * @return DaemonSet|mixed
+     * @param $namespace
+     * @param TheDaemonSet $Model
+     * @return TheDaemonSet|mixed
      */
-    public function create(string $namespace = 'default', \DaemonSet $Model)
+    public function create($namespace = 'default', \Kubernetes\Model\Io\K8s\Api\Apps\V1\DaemonSet $Model)
     {
         return $this->parseResponse(
         	$this->client->request('post',
@@ -108,11 +108,11 @@ class DaemonSet extends \Kubernetes\AbstractAPI
      * @configkey resourceVersion	string
      * @configkey timeoutSeconds	integer
      * @configkey watch	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteCollection(string $namespace = 'default', array $queries)
+    public function deleteCollection($namespace = 'default', array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -132,12 +132,12 @@ class DaemonSet extends \Kubernetes\AbstractAPI
      * @configkey export	boolean
      * @configkey exact	boolean
      * @configkey export	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param array $queries
-     * @return DaemonSet|mixed
+     * @return TheDaemonSet|mixed
      */
-    public function read(string $namespace = 'default', $name, array $queries)
+    public function read($namespace = 'default', $name, array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -153,12 +153,12 @@ class DaemonSet extends \Kubernetes\AbstractAPI
     /**
      * replace the specified DaemonSet
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @param DaemonSet $Model
-     * @return DaemonSet|mixed
+     * @param TheDaemonSet $Model
+     * @return TheDaemonSet|mixed
      */
-    public function replace(string $namespace = 'default', $name, \DaemonSet $Model)
+    public function replace($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Api\Apps\V1\DaemonSet $Model)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -180,13 +180,13 @@ class DaemonSet extends \Kubernetes\AbstractAPI
      * @configkey gracePeriodSeconds	integer
      * @configkey orphanDependents	boolean
      * @configkey propagationPolicy	string
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param DeleteOptions $Model
      * @param array $queries
      * @return Status|mixed
      */
-    public function delete(string $namespace = 'default', $name, \DeleteOptions $Model, array $queries)
+    public function delete($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -203,12 +203,12 @@ class DaemonSet extends \Kubernetes\AbstractAPI
     /**
      * partially update the specified DaemonSet
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param Patch $Model
-     * @return DaemonSet|mixed
+     * @return TheDaemonSet|mixed
      */
-    public function patch(string $namespace = 'default', $name, \Patch $Model)
+    public function patch($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model)
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -224,11 +224,11 @@ class DaemonSet extends \Kubernetes\AbstractAPI
     /**
      * read status of the specified DaemonSet
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @return DaemonSet|mixed
+     * @return TheDaemonSet|mixed
      */
-    public function readStatus(string $namespace = 'default', $name)
+    public function readStatus($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -243,12 +243,12 @@ class DaemonSet extends \Kubernetes\AbstractAPI
     /**
      * replace status of the specified DaemonSet
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @param DaemonSet $Model
-     * @return DaemonSet|mixed
+     * @param TheDaemonSet $Model
+     * @return TheDaemonSet|mixed
      */
-    public function replaceStatus(string $namespace = 'default', $name, \DaemonSet $Model)
+    public function replaceStatus($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Api\Apps\V1\DaemonSet $Model)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -264,12 +264,12 @@ class DaemonSet extends \Kubernetes\AbstractAPI
     /**
      * partially update status of the specified DaemonSet
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param Patch $Model
-     * @return DaemonSet|mixed
+     * @return TheDaemonSet|mixed
      */
-    public function patchStatus(string $namespace = 'default', $name, \Patch $Model)
+    public function patchStatus($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model)
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -302,10 +302,10 @@ class DaemonSet extends \Kubernetes\AbstractAPI
     /**
      * watch individual changes to a list of DaemonSet
      *
-     * @param string $namespace
+     * @param $namespace
      * @return WatchEvent|mixed
      */
-    public function watchList(string $namespace = 'default')
+    public function watchList($namespace = 'default')
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -320,11 +320,11 @@ class DaemonSet extends \Kubernetes\AbstractAPI
     /**
      * watch changes to an object of kind DaemonSet
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @return WatchEvent|mixed
      */
-    public function watch(string $namespace = 'default', $name)
+    public function watch($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -339,7 +339,7 @@ class DaemonSet extends \Kubernetes\AbstractAPI
     /**
      * list or watch objects of kind DaemonSet
      *
-     * @return DaemonSetList|mixed
+     * @return DaemonSetListV1beta2|mixed
      */
     public function listForAllNamespacesAppsV1beta2()
     {
@@ -372,11 +372,11 @@ class DaemonSet extends \Kubernetes\AbstractAPI
      * @configkey resourceVersion	string
      * @configkey timeoutSeconds	integer
      * @configkey watch	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param array $queries
-     * @return DaemonSetList|mixed
+     * @return DaemonSetListV1beta2|mixed
      */
-    public function listAppsV1beta2(string $namespace = 'default', array $queries)
+    public function listAppsV1beta2($namespace = 'default', array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -392,11 +392,11 @@ class DaemonSet extends \Kubernetes\AbstractAPI
     /**
      * create a DaemonSet
      *
-     * @param string $namespace
-     * @param DaemonSet $Model
-     * @return DaemonSet|mixed
+     * @param $namespace
+     * @param TheDaemonSetV1beta2 $Model
+     * @return TheDaemonSetV1beta2|mixed
      */
-    public function createAppsV1beta2(string $namespace = 'default', \DaemonSet $Model)
+    public function createAppsV1beta2($namespace = 'default', \Kubernetes\Model\Io\K8s\Api\Apps\V1beta2\DaemonSet $Model)
     {
         return $this->parseResponse(
         	$this->client->request('post',
@@ -428,11 +428,11 @@ class DaemonSet extends \Kubernetes\AbstractAPI
      * @configkey resourceVersion	string
      * @configkey timeoutSeconds	integer
      * @configkey watch	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteCollectionAppsV1beta2(string $namespace = 'default', array $queries)
+    public function deleteCollectionAppsV1beta2($namespace = 'default', array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -452,12 +452,12 @@ class DaemonSet extends \Kubernetes\AbstractAPI
      * @configkey export	boolean
      * @configkey exact	boolean
      * @configkey export	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param array $queries
-     * @return DaemonSet|mixed
+     * @return TheDaemonSetV1beta2|mixed
      */
-    public function readAppsV1beta2(string $namespace = 'default', $name, array $queries)
+    public function readAppsV1beta2($namespace = 'default', $name, array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -473,12 +473,12 @@ class DaemonSet extends \Kubernetes\AbstractAPI
     /**
      * replace the specified DaemonSet
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @param DaemonSet $Model
-     * @return DaemonSet|mixed
+     * @param TheDaemonSetV1beta2 $Model
+     * @return TheDaemonSetV1beta2|mixed
      */
-    public function replaceAppsV1beta2(string $namespace = 'default', $name, \DaemonSet $Model)
+    public function replaceAppsV1beta2($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Api\Apps\V1beta2\DaemonSet $Model)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -500,13 +500,13 @@ class DaemonSet extends \Kubernetes\AbstractAPI
      * @configkey gracePeriodSeconds	integer
      * @configkey orphanDependents	boolean
      * @configkey propagationPolicy	string
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param DeleteOptions $Model
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteAppsV1beta2(string $namespace = 'default', $name, \DeleteOptions $Model, array $queries)
+    public function deleteAppsV1beta2($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -523,12 +523,12 @@ class DaemonSet extends \Kubernetes\AbstractAPI
     /**
      * partially update the specified DaemonSet
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param Patch $Model
-     * @return DaemonSet|mixed
+     * @return TheDaemonSetV1beta2|mixed
      */
-    public function patchAppsV1beta2(string $namespace = 'default', $name, \Patch $Model)
+    public function patchAppsV1beta2($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model)
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -544,11 +544,11 @@ class DaemonSet extends \Kubernetes\AbstractAPI
     /**
      * read status of the specified DaemonSet
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @return DaemonSet|mixed
+     * @return TheDaemonSetV1beta2|mixed
      */
-    public function readStatusAppsV1beta2(string $namespace = 'default', $name)
+    public function readStatusAppsV1beta2($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -563,12 +563,12 @@ class DaemonSet extends \Kubernetes\AbstractAPI
     /**
      * replace status of the specified DaemonSet
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @param DaemonSet $Model
-     * @return DaemonSet|mixed
+     * @param TheDaemonSetV1beta2 $Model
+     * @return TheDaemonSetV1beta2|mixed
      */
-    public function replaceStatusAppsV1beta2(string $namespace = 'default', $name, \DaemonSet $Model)
+    public function replaceStatusAppsV1beta2($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Api\Apps\V1beta2\DaemonSet $Model)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -584,12 +584,12 @@ class DaemonSet extends \Kubernetes\AbstractAPI
     /**
      * partially update status of the specified DaemonSet
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param Patch $Model
-     * @return DaemonSet|mixed
+     * @return TheDaemonSetV1beta2|mixed
      */
-    public function patchStatusAppsV1beta2(string $namespace = 'default', $name, \Patch $Model)
+    public function patchStatusAppsV1beta2($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model)
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -622,10 +622,10 @@ class DaemonSet extends \Kubernetes\AbstractAPI
     /**
      * watch individual changes to a list of DaemonSet
      *
-     * @param string $namespace
+     * @param $namespace
      * @return WatchEvent|mixed
      */
-    public function watchListAppsV1beta2(string $namespace = 'default')
+    public function watchListAppsV1beta2($namespace = 'default')
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -640,11 +640,11 @@ class DaemonSet extends \Kubernetes\AbstractAPI
     /**
      * watch changes to an object of kind DaemonSet
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @return WatchEvent|mixed
      */
-    public function watchAppsV1beta2(string $namespace = 'default', $name)
+    public function watchAppsV1beta2($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -659,7 +659,7 @@ class DaemonSet extends \Kubernetes\AbstractAPI
     /**
      * list or watch objects of kind DaemonSet
      *
-     * @return DaemonSetList|mixed
+     * @return DaemonSetListV1beta1|mixed
      */
     public function listForAllNamespacesExtensionsV1beta1()
     {
@@ -692,11 +692,11 @@ class DaemonSet extends \Kubernetes\AbstractAPI
      * @configkey resourceVersion	string
      * @configkey timeoutSeconds	integer
      * @configkey watch	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param array $queries
-     * @return DaemonSetList|mixed
+     * @return DaemonSetListV1beta1|mixed
      */
-    public function listExtensionsV1beta1(string $namespace = 'default', array $queries)
+    public function listExtensionsV1beta1($namespace = 'default', array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -712,11 +712,11 @@ class DaemonSet extends \Kubernetes\AbstractAPI
     /**
      * create a DaemonSet
      *
-     * @param string $namespace
-     * @param DaemonSet $Model
-     * @return DaemonSet|mixed
+     * @param $namespace
+     * @param TheDaemonSetV1beta1 $Model
+     * @return TheDaemonSetV1beta1|mixed
      */
-    public function createExtensionsV1beta1(string $namespace = 'default', \DaemonSet $Model)
+    public function createExtensionsV1beta1($namespace = 'default', \Kubernetes\Model\Io\K8s\Api\Extensions\V1beta1\DaemonSet $Model)
     {
         return $this->parseResponse(
         	$this->client->request('post',
@@ -748,11 +748,11 @@ class DaemonSet extends \Kubernetes\AbstractAPI
      * @configkey resourceVersion	string
      * @configkey timeoutSeconds	integer
      * @configkey watch	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteCollectionExtensionsV1beta1(string $namespace = 'default', array $queries)
+    public function deleteCollectionExtensionsV1beta1($namespace = 'default', array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -772,12 +772,12 @@ class DaemonSet extends \Kubernetes\AbstractAPI
      * @configkey export	boolean
      * @configkey exact	boolean
      * @configkey export	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param array $queries
-     * @return DaemonSet|mixed
+     * @return TheDaemonSetV1beta1|mixed
      */
-    public function readExtensionsV1beta1(string $namespace = 'default', $name, array $queries)
+    public function readExtensionsV1beta1($namespace = 'default', $name, array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -793,12 +793,12 @@ class DaemonSet extends \Kubernetes\AbstractAPI
     /**
      * replace the specified DaemonSet
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @param DaemonSet $Model
-     * @return DaemonSet|mixed
+     * @param TheDaemonSetV1beta1 $Model
+     * @return TheDaemonSetV1beta1|mixed
      */
-    public function replaceExtensionsV1beta1(string $namespace = 'default', $name, \DaemonSet $Model)
+    public function replaceExtensionsV1beta1($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Api\Extensions\V1beta1\DaemonSet $Model)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -820,13 +820,13 @@ class DaemonSet extends \Kubernetes\AbstractAPI
      * @configkey gracePeriodSeconds	integer
      * @configkey orphanDependents	boolean
      * @configkey propagationPolicy	string
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param DeleteOptions $Model
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteExtensionsV1beta1(string $namespace = 'default', $name, \DeleteOptions $Model, array $queries)
+    public function deleteExtensionsV1beta1($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -843,12 +843,12 @@ class DaemonSet extends \Kubernetes\AbstractAPI
     /**
      * partially update the specified DaemonSet
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param Patch $Model
-     * @return DaemonSet|mixed
+     * @return TheDaemonSetV1beta1|mixed
      */
-    public function patchExtensionsV1beta1(string $namespace = 'default', $name, \Patch $Model)
+    public function patchExtensionsV1beta1($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model)
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -864,11 +864,11 @@ class DaemonSet extends \Kubernetes\AbstractAPI
     /**
      * read status of the specified DaemonSet
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @return DaemonSet|mixed
+     * @return TheDaemonSetV1beta1|mixed
      */
-    public function readStatusExtensionsV1beta1(string $namespace = 'default', $name)
+    public function readStatusExtensionsV1beta1($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -883,12 +883,12 @@ class DaemonSet extends \Kubernetes\AbstractAPI
     /**
      * replace status of the specified DaemonSet
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @param DaemonSet $Model
-     * @return DaemonSet|mixed
+     * @param TheDaemonSetV1beta1 $Model
+     * @return TheDaemonSetV1beta1|mixed
      */
-    public function replaceStatusExtensionsV1beta1(string $namespace = 'default', $name, \DaemonSet $Model)
+    public function replaceStatusExtensionsV1beta1($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Api\Extensions\V1beta1\DaemonSet $Model)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -904,12 +904,12 @@ class DaemonSet extends \Kubernetes\AbstractAPI
     /**
      * partially update status of the specified DaemonSet
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param Patch $Model
-     * @return DaemonSet|mixed
+     * @return TheDaemonSetV1beta1|mixed
      */
-    public function patchStatusExtensionsV1beta1(string $namespace = 'default', $name, \Patch $Model)
+    public function patchStatusExtensionsV1beta1($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model)
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -942,10 +942,10 @@ class DaemonSet extends \Kubernetes\AbstractAPI
     /**
      * watch individual changes to a list of DaemonSet
      *
-     * @param string $namespace
+     * @param $namespace
      * @return WatchEvent|mixed
      */
-    public function watchListExtensionsV1beta1(string $namespace = 'default')
+    public function watchListExtensionsV1beta1($namespace = 'default')
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -960,11 +960,11 @@ class DaemonSet extends \Kubernetes\AbstractAPI
     /**
      * watch changes to an object of kind DaemonSet
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @return WatchEvent|mixed
      */
-    public function watchExtensionsV1beta1(string $namespace = 'default', $name)
+    public function watchExtensionsV1beta1($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('get',

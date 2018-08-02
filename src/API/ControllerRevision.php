@@ -3,15 +3,15 @@
 namespace Kubernetes\API;
 
 use \Kubernetes\Model\Io\K8s\Api\Apps\V1\ControllerRevisionList as ControllerRevisionList;
-use \Kubernetes\Model\Io\K8s\Api\Apps\V1\ControllerRevision as ControllerRevision;
-use \Kubernetes\Model\Io\K8s\Api\Apps\V1beta1\ControllerRevisionList as ControllerRevisionList;
-use \Kubernetes\Model\Io\K8s\Api\Apps\V1beta1\ControllerRevision as ControllerRevision;
-use \Kubernetes\Model\Io\K8s\Api\Apps\V1beta2\ControllerRevisionList as ControllerRevisionList;
-use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions as DeleteOptions;
+use \Kubernetes\Model\Io\K8s\Api\Apps\V1\ControllerRevision as TheControllerRevision;
 use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Status as Status;
+use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions as DeleteOptions;
 use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch as Patch;
-use \Kubernetes\Model\Io\K8s\Api\Apps\V1beta2\ControllerRevision as ControllerRevision;
 use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\WatchEvent as WatchEvent;
+use \Kubernetes\Model\Io\K8s\Api\Apps\V1beta1\ControllerRevisionList as ControllerRevisionListV1beta1;
+use \Kubernetes\Model\Io\K8s\Api\Apps\V1beta1\ControllerRevision as TheControllerRevisionV1beta1;
+use \Kubernetes\Model\Io\K8s\Api\Apps\V1beta2\ControllerRevisionList as ControllerRevisionListV1beta2;
+use \Kubernetes\Model\Io\K8s\Api\Apps\V1beta2\ControllerRevision as TheControllerRevisionV1beta2;
 
 class ControllerRevision extends \Kubernetes\AbstractAPI
 {
@@ -52,11 +52,11 @@ class ControllerRevision extends \Kubernetes\AbstractAPI
      * @configkey resourceVersion	string
      * @configkey timeoutSeconds	integer
      * @configkey watch	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param array $queries
      * @return ControllerRevisionList|mixed
      */
-    public function list(string $namespace = 'default', array $queries)
+    public function list($namespace = 'default', array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -72,11 +72,11 @@ class ControllerRevision extends \Kubernetes\AbstractAPI
     /**
      * create a ControllerRevision
      *
-     * @param string $namespace
-     * @param ControllerRevision $Model
-     * @return ControllerRevision|mixed
+     * @param $namespace
+     * @param TheControllerRevision $Model
+     * @return TheControllerRevision|mixed
      */
-    public function create(string $namespace = 'default', \ControllerRevision $Model)
+    public function create($namespace = 'default', \Kubernetes\Model\Io\K8s\Api\Apps\V1\ControllerRevision $Model)
     {
         return $this->parseResponse(
         	$this->client->request('post',
@@ -108,11 +108,11 @@ class ControllerRevision extends \Kubernetes\AbstractAPI
      * @configkey resourceVersion	string
      * @configkey timeoutSeconds	integer
      * @configkey watch	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteCollection(string $namespace = 'default', array $queries)
+    public function deleteCollection($namespace = 'default', array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -132,12 +132,12 @@ class ControllerRevision extends \Kubernetes\AbstractAPI
      * @configkey export	boolean
      * @configkey exact	boolean
      * @configkey export	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param array $queries
-     * @return ControllerRevision|mixed
+     * @return TheControllerRevision|mixed
      */
-    public function read(string $namespace = 'default', $name, array $queries)
+    public function read($namespace = 'default', $name, array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -153,12 +153,12 @@ class ControllerRevision extends \Kubernetes\AbstractAPI
     /**
      * replace the specified ControllerRevision
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @param ControllerRevision $Model
-     * @return ControllerRevision|mixed
+     * @param TheControllerRevision $Model
+     * @return TheControllerRevision|mixed
      */
-    public function replace(string $namespace = 'default', $name, \ControllerRevision $Model)
+    public function replace($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Api\Apps\V1\ControllerRevision $Model)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -180,13 +180,13 @@ class ControllerRevision extends \Kubernetes\AbstractAPI
      * @configkey gracePeriodSeconds	integer
      * @configkey orphanDependents	boolean
      * @configkey propagationPolicy	string
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param DeleteOptions $Model
      * @param array $queries
      * @return Status|mixed
      */
-    public function delete(string $namespace = 'default', $name, \DeleteOptions $Model, array $queries)
+    public function delete($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -203,12 +203,12 @@ class ControllerRevision extends \Kubernetes\AbstractAPI
     /**
      * partially update the specified ControllerRevision
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param Patch $Model
-     * @return ControllerRevision|mixed
+     * @return TheControllerRevision|mixed
      */
-    public function patch(string $namespace = 'default', $name, \Patch $Model)
+    public function patch($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model)
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -241,10 +241,10 @@ class ControllerRevision extends \Kubernetes\AbstractAPI
     /**
      * watch individual changes to a list of ControllerRevision
      *
-     * @param string $namespace
+     * @param $namespace
      * @return WatchEvent|mixed
      */
-    public function watchList(string $namespace = 'default')
+    public function watchList($namespace = 'default')
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -259,11 +259,11 @@ class ControllerRevision extends \Kubernetes\AbstractAPI
     /**
      * watch changes to an object of kind ControllerRevision
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @return WatchEvent|mixed
      */
-    public function watch(string $namespace = 'default', $name)
+    public function watch($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -278,7 +278,7 @@ class ControllerRevision extends \Kubernetes\AbstractAPI
     /**
      * list or watch objects of kind ControllerRevision
      *
-     * @return ControllerRevisionList|mixed
+     * @return ControllerRevisionListV1beta1|mixed
      */
     public function listForAllNamespacesAppsV1beta1()
     {
@@ -311,11 +311,11 @@ class ControllerRevision extends \Kubernetes\AbstractAPI
      * @configkey resourceVersion	string
      * @configkey timeoutSeconds	integer
      * @configkey watch	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param array $queries
-     * @return ControllerRevisionList|mixed
+     * @return ControllerRevisionListV1beta1|mixed
      */
-    public function listAppsV1beta1(string $namespace = 'default', array $queries)
+    public function listAppsV1beta1($namespace = 'default', array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -331,11 +331,11 @@ class ControllerRevision extends \Kubernetes\AbstractAPI
     /**
      * create a ControllerRevision
      *
-     * @param string $namespace
-     * @param ControllerRevision $Model
-     * @return ControllerRevision|mixed
+     * @param $namespace
+     * @param TheControllerRevisionV1beta1 $Model
+     * @return TheControllerRevisionV1beta1|mixed
      */
-    public function createAppsV1beta1(string $namespace = 'default', \ControllerRevision $Model)
+    public function createAppsV1beta1($namespace = 'default', \Kubernetes\Model\Io\K8s\Api\Apps\V1beta1\ControllerRevision $Model)
     {
         return $this->parseResponse(
         	$this->client->request('post',
@@ -367,11 +367,11 @@ class ControllerRevision extends \Kubernetes\AbstractAPI
      * @configkey resourceVersion	string
      * @configkey timeoutSeconds	integer
      * @configkey watch	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteCollectionAppsV1beta1(string $namespace = 'default', array $queries)
+    public function deleteCollectionAppsV1beta1($namespace = 'default', array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -391,12 +391,12 @@ class ControllerRevision extends \Kubernetes\AbstractAPI
      * @configkey export	boolean
      * @configkey exact	boolean
      * @configkey export	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param array $queries
-     * @return ControllerRevision|mixed
+     * @return TheControllerRevisionV1beta1|mixed
      */
-    public function readAppsV1beta1(string $namespace = 'default', $name, array $queries)
+    public function readAppsV1beta1($namespace = 'default', $name, array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -412,12 +412,12 @@ class ControllerRevision extends \Kubernetes\AbstractAPI
     /**
      * replace the specified ControllerRevision
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @param ControllerRevision $Model
-     * @return ControllerRevision|mixed
+     * @param TheControllerRevisionV1beta1 $Model
+     * @return TheControllerRevisionV1beta1|mixed
      */
-    public function replaceAppsV1beta1(string $namespace = 'default', $name, \ControllerRevision $Model)
+    public function replaceAppsV1beta1($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Api\Apps\V1beta1\ControllerRevision $Model)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -439,13 +439,13 @@ class ControllerRevision extends \Kubernetes\AbstractAPI
      * @configkey gracePeriodSeconds	integer
      * @configkey orphanDependents	boolean
      * @configkey propagationPolicy	string
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param DeleteOptions $Model
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteAppsV1beta1(string $namespace = 'default', $name, \DeleteOptions $Model, array $queries)
+    public function deleteAppsV1beta1($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -462,12 +462,12 @@ class ControllerRevision extends \Kubernetes\AbstractAPI
     /**
      * partially update the specified ControllerRevision
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param Patch $Model
-     * @return ControllerRevision|mixed
+     * @return TheControllerRevisionV1beta1|mixed
      */
-    public function patchAppsV1beta1(string $namespace = 'default', $name, \Patch $Model)
+    public function patchAppsV1beta1($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model)
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -500,10 +500,10 @@ class ControllerRevision extends \Kubernetes\AbstractAPI
     /**
      * watch individual changes to a list of ControllerRevision
      *
-     * @param string $namespace
+     * @param $namespace
      * @return WatchEvent|mixed
      */
-    public function watchListAppsV1beta1(string $namespace = 'default')
+    public function watchListAppsV1beta1($namespace = 'default')
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -518,11 +518,11 @@ class ControllerRevision extends \Kubernetes\AbstractAPI
     /**
      * watch changes to an object of kind ControllerRevision
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @return WatchEvent|mixed
      */
-    public function watchAppsV1beta1(string $namespace = 'default', $name)
+    public function watchAppsV1beta1($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -537,7 +537,7 @@ class ControllerRevision extends \Kubernetes\AbstractAPI
     /**
      * list or watch objects of kind ControllerRevision
      *
-     * @return ControllerRevisionList|mixed
+     * @return ControllerRevisionListV1beta2|mixed
      */
     public function listForAllNamespacesAppsV1beta2()
     {
@@ -570,11 +570,11 @@ class ControllerRevision extends \Kubernetes\AbstractAPI
      * @configkey resourceVersion	string
      * @configkey timeoutSeconds	integer
      * @configkey watch	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param array $queries
-     * @return ControllerRevisionList|mixed
+     * @return ControllerRevisionListV1beta2|mixed
      */
-    public function listAppsV1beta2(string $namespace = 'default', array $queries)
+    public function listAppsV1beta2($namespace = 'default', array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -590,11 +590,11 @@ class ControllerRevision extends \Kubernetes\AbstractAPI
     /**
      * create a ControllerRevision
      *
-     * @param string $namespace
-     * @param ControllerRevision $Model
-     * @return ControllerRevision|mixed
+     * @param $namespace
+     * @param TheControllerRevisionV1beta2 $Model
+     * @return TheControllerRevisionV1beta2|mixed
      */
-    public function createAppsV1beta2(string $namespace = 'default', \ControllerRevision $Model)
+    public function createAppsV1beta2($namespace = 'default', \Kubernetes\Model\Io\K8s\Api\Apps\V1beta2\ControllerRevision $Model)
     {
         return $this->parseResponse(
         	$this->client->request('post',
@@ -626,11 +626,11 @@ class ControllerRevision extends \Kubernetes\AbstractAPI
      * @configkey resourceVersion	string
      * @configkey timeoutSeconds	integer
      * @configkey watch	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteCollectionAppsV1beta2(string $namespace = 'default', array $queries)
+    public function deleteCollectionAppsV1beta2($namespace = 'default', array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -650,12 +650,12 @@ class ControllerRevision extends \Kubernetes\AbstractAPI
      * @configkey export	boolean
      * @configkey exact	boolean
      * @configkey export	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param array $queries
-     * @return ControllerRevision|mixed
+     * @return TheControllerRevisionV1beta2|mixed
      */
-    public function readAppsV1beta2(string $namespace = 'default', $name, array $queries)
+    public function readAppsV1beta2($namespace = 'default', $name, array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -671,12 +671,12 @@ class ControllerRevision extends \Kubernetes\AbstractAPI
     /**
      * replace the specified ControllerRevision
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @param ControllerRevision $Model
-     * @return ControllerRevision|mixed
+     * @param TheControllerRevisionV1beta2 $Model
+     * @return TheControllerRevisionV1beta2|mixed
      */
-    public function replaceAppsV1beta2(string $namespace = 'default', $name, \ControllerRevision $Model)
+    public function replaceAppsV1beta2($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Api\Apps\V1beta2\ControllerRevision $Model)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -698,13 +698,13 @@ class ControllerRevision extends \Kubernetes\AbstractAPI
      * @configkey gracePeriodSeconds	integer
      * @configkey orphanDependents	boolean
      * @configkey propagationPolicy	string
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param DeleteOptions $Model
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteAppsV1beta2(string $namespace = 'default', $name, \DeleteOptions $Model, array $queries)
+    public function deleteAppsV1beta2($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -721,12 +721,12 @@ class ControllerRevision extends \Kubernetes\AbstractAPI
     /**
      * partially update the specified ControllerRevision
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param Patch $Model
-     * @return ControllerRevision|mixed
+     * @return TheControllerRevisionV1beta2|mixed
      */
-    public function patchAppsV1beta2(string $namespace = 'default', $name, \Patch $Model)
+    public function patchAppsV1beta2($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model)
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -759,10 +759,10 @@ class ControllerRevision extends \Kubernetes\AbstractAPI
     /**
      * watch individual changes to a list of ControllerRevision
      *
-     * @param string $namespace
+     * @param $namespace
      * @return WatchEvent|mixed
      */
-    public function watchListAppsV1beta2(string $namespace = 'default')
+    public function watchListAppsV1beta2($namespace = 'default')
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -777,11 +777,11 @@ class ControllerRevision extends \Kubernetes\AbstractAPI
     /**
      * watch changes to an object of kind ControllerRevision
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @return WatchEvent|mixed
      */
-    public function watchAppsV1beta2(string $namespace = 'default', $name)
+    public function watchAppsV1beta2($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('get',

@@ -2,16 +2,16 @@
 
 namespace Kubernetes\API;
 
-use \Kubernetes\Model\Io\K8s\Api\Rbac\V1\Role as Role;
 use \Kubernetes\Model\Io\K8s\Api\Rbac\V1\RoleList as RoleList;
-use \Kubernetes\Model\Io\K8s\Api\Rbac\V1alpha1\Role as Role;
-use \Kubernetes\Model\Io\K8s\Api\Rbac\V1alpha1\RoleList as RoleList;
-use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions as DeleteOptions;
+use \Kubernetes\Model\Io\K8s\Api\Rbac\V1\Role as TheRole;
 use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Status as Status;
+use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions as DeleteOptions;
 use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch as Patch;
-use \Kubernetes\Model\Io\K8s\Api\Rbac\V1beta1\Role as Role;
-use \Kubernetes\Model\Io\K8s\Api\Rbac\V1beta1\RoleList as RoleList;
 use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\WatchEvent as WatchEvent;
+use \Kubernetes\Model\Io\K8s\Api\Rbac\V1alpha1\RoleList as RoleListV1alpha1;
+use \Kubernetes\Model\Io\K8s\Api\Rbac\V1alpha1\Role as TheRoleV1alpha1;
+use \Kubernetes\Model\Io\K8s\Api\Rbac\V1beta1\RoleList as RoleListV1beta1;
+use \Kubernetes\Model\Io\K8s\Api\Rbac\V1beta1\Role as TheRoleV1beta1;
 
 class Role extends \Kubernetes\AbstractAPI
 {
@@ -35,11 +35,11 @@ class Role extends \Kubernetes\AbstractAPI
      * @configkey resourceVersion	string
      * @configkey timeoutSeconds	integer
      * @configkey watch	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param array $queries
      * @return RoleList|mixed
      */
-    public function listRbacAuthorizationV1(string $namespace = 'default', array $queries)
+    public function listRbacAuthorizationV1($namespace = 'default', array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -55,11 +55,11 @@ class Role extends \Kubernetes\AbstractAPI
     /**
      * create a Role
      *
-     * @param string $namespace
-     * @param Role $Model
-     * @return Role|mixed
+     * @param $namespace
+     * @param TheRole $Model
+     * @return TheRole|mixed
      */
-    public function createRbacAuthorizationV1(string $namespace = 'default', \Role $Model)
+    public function createRbacAuthorizationV1($namespace = 'default', \Kubernetes\Model\Io\K8s\Api\Rbac\V1\Role $Model)
     {
         return $this->parseResponse(
         	$this->client->request('post',
@@ -91,11 +91,11 @@ class Role extends \Kubernetes\AbstractAPI
      * @configkey resourceVersion	string
      * @configkey timeoutSeconds	integer
      * @configkey watch	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteRbacAuthorizationV1Collection(string $namespace = 'default', array $queries)
+    public function deleteRbacAuthorizationV1Collection($namespace = 'default', array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -111,11 +111,11 @@ class Role extends \Kubernetes\AbstractAPI
     /**
      * read the specified Role
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @return Role|mixed
+     * @return TheRole|mixed
      */
-    public function readRbacAuthorizationV1(string $namespace = 'default', $name)
+    public function readRbacAuthorizationV1($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -130,12 +130,12 @@ class Role extends \Kubernetes\AbstractAPI
     /**
      * replace the specified Role
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @param Role $Model
-     * @return Role|mixed
+     * @param TheRole $Model
+     * @return TheRole|mixed
      */
-    public function replaceRbacAuthorizationV1(string $namespace = 'default', $name, \Role $Model)
+    public function replaceRbacAuthorizationV1($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Api\Rbac\V1\Role $Model)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -157,13 +157,13 @@ class Role extends \Kubernetes\AbstractAPI
      * @configkey gracePeriodSeconds	integer
      * @configkey orphanDependents	boolean
      * @configkey propagationPolicy	string
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param DeleteOptions $Model
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteRbacAuthorizationV1(string $namespace = 'default', $name, \DeleteOptions $Model, array $queries)
+    public function deleteRbacAuthorizationV1($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -180,12 +180,12 @@ class Role extends \Kubernetes\AbstractAPI
     /**
      * partially update the specified Role
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param Patch $Model
-     * @return Role|mixed
+     * @return TheRole|mixed
      */
-    public function patchRbacAuthorizationV1(string $namespace = 'default', $name, \Patch $Model)
+    public function patchRbacAuthorizationV1($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model)
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -218,10 +218,10 @@ class Role extends \Kubernetes\AbstractAPI
     /**
      * watch individual changes to a list of Role
      *
-     * @param string $namespace
+     * @param $namespace
      * @return WatchEvent|mixed
      */
-    public function watchRbacAuthorizationV1List(string $namespace = 'default')
+    public function watchRbacAuthorizationV1List($namespace = 'default')
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -236,11 +236,11 @@ class Role extends \Kubernetes\AbstractAPI
     /**
      * watch changes to an object of kind Role
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @return WatchEvent|mixed
      */
-    public function watchRbacAuthorizationV1(string $namespace = 'default', $name)
+    public function watchRbacAuthorizationV1($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -288,11 +288,11 @@ class Role extends \Kubernetes\AbstractAPI
      * @configkey resourceVersion	string
      * @configkey timeoutSeconds	integer
      * @configkey watch	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param array $queries
-     * @return RoleList|mixed
+     * @return RoleListV1alpha1|mixed
      */
-    public function listRbacAuthorizationV1alpha1(string $namespace = 'default', array $queries)
+    public function listRbacAuthorizationV1alpha1($namespace = 'default', array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -308,11 +308,11 @@ class Role extends \Kubernetes\AbstractAPI
     /**
      * create a Role
      *
-     * @param string $namespace
-     * @param Role $Model
-     * @return Role|mixed
+     * @param $namespace
+     * @param TheRoleV1alpha1 $Model
+     * @return TheRoleV1alpha1|mixed
      */
-    public function createRbacAuthorizationV1alpha1(string $namespace = 'default', \Role $Model)
+    public function createRbacAuthorizationV1alpha1($namespace = 'default', \Kubernetes\Model\Io\K8s\Api\Rbac\V1alpha1\Role $Model)
     {
         return $this->parseResponse(
         	$this->client->request('post',
@@ -344,11 +344,11 @@ class Role extends \Kubernetes\AbstractAPI
      * @configkey resourceVersion	string
      * @configkey timeoutSeconds	integer
      * @configkey watch	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteRbacAuthorizationV1alpha1Collection(string $namespace = 'default', array $queries)
+    public function deleteRbacAuthorizationV1alpha1Collection($namespace = 'default', array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -364,11 +364,11 @@ class Role extends \Kubernetes\AbstractAPI
     /**
      * read the specified Role
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @return Role|mixed
+     * @return TheRoleV1alpha1|mixed
      */
-    public function readRbacAuthorizationV1alpha1(string $namespace = 'default', $name)
+    public function readRbacAuthorizationV1alpha1($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -383,12 +383,12 @@ class Role extends \Kubernetes\AbstractAPI
     /**
      * replace the specified Role
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @param Role $Model
-     * @return Role|mixed
+     * @param TheRoleV1alpha1 $Model
+     * @return TheRoleV1alpha1|mixed
      */
-    public function replaceRbacAuthorizationV1alpha1(string $namespace = 'default', $name, \Role $Model)
+    public function replaceRbacAuthorizationV1alpha1($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Api\Rbac\V1alpha1\Role $Model)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -410,13 +410,13 @@ class Role extends \Kubernetes\AbstractAPI
      * @configkey gracePeriodSeconds	integer
      * @configkey orphanDependents	boolean
      * @configkey propagationPolicy	string
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param DeleteOptions $Model
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteRbacAuthorizationV1alpha1(string $namespace = 'default', $name, \DeleteOptions $Model, array $queries)
+    public function deleteRbacAuthorizationV1alpha1($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -433,12 +433,12 @@ class Role extends \Kubernetes\AbstractAPI
     /**
      * partially update the specified Role
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param Patch $Model
-     * @return Role|mixed
+     * @return TheRoleV1alpha1|mixed
      */
-    public function patchRbacAuthorizationV1alpha1(string $namespace = 'default', $name, \Patch $Model)
+    public function patchRbacAuthorizationV1alpha1($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model)
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -454,7 +454,7 @@ class Role extends \Kubernetes\AbstractAPI
     /**
      * list or watch objects of kind Role
      *
-     * @return RoleList|mixed
+     * @return RoleListV1alpha1|mixed
      */
     public function listRbacAuthorizationV1alpha1ForAllNamespaces()
     {
@@ -471,10 +471,10 @@ class Role extends \Kubernetes\AbstractAPI
     /**
      * watch individual changes to a list of Role
      *
-     * @param string $namespace
+     * @param $namespace
      * @return WatchEvent|mixed
      */
-    public function watchRbacAuthorizationV1alpha1List(string $namespace = 'default')
+    public function watchRbacAuthorizationV1alpha1List($namespace = 'default')
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -489,11 +489,11 @@ class Role extends \Kubernetes\AbstractAPI
     /**
      * watch changes to an object of kind Role
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @return WatchEvent|mixed
      */
-    public function watchRbacAuthorizationV1alpha1(string $namespace = 'default', $name)
+    public function watchRbacAuthorizationV1alpha1($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -541,11 +541,11 @@ class Role extends \Kubernetes\AbstractAPI
      * @configkey resourceVersion	string
      * @configkey timeoutSeconds	integer
      * @configkey watch	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param array $queries
-     * @return RoleList|mixed
+     * @return RoleListV1beta1|mixed
      */
-    public function listRbacAuthorizationV1beta1(string $namespace = 'default', array $queries)
+    public function listRbacAuthorizationV1beta1($namespace = 'default', array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -561,11 +561,11 @@ class Role extends \Kubernetes\AbstractAPI
     /**
      * create a Role
      *
-     * @param string $namespace
-     * @param Role $Model
-     * @return Role|mixed
+     * @param $namespace
+     * @param TheRoleV1beta1 $Model
+     * @return TheRoleV1beta1|mixed
      */
-    public function createRbacAuthorizationV1beta1(string $namespace = 'default', \Role $Model)
+    public function createRbacAuthorizationV1beta1($namespace = 'default', \Kubernetes\Model\Io\K8s\Api\Rbac\V1beta1\Role $Model)
     {
         return $this->parseResponse(
         	$this->client->request('post',
@@ -597,11 +597,11 @@ class Role extends \Kubernetes\AbstractAPI
      * @configkey resourceVersion	string
      * @configkey timeoutSeconds	integer
      * @configkey watch	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteRbacAuthorizationV1beta1Collection(string $namespace = 'default', array $queries)
+    public function deleteRbacAuthorizationV1beta1Collection($namespace = 'default', array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -617,11 +617,11 @@ class Role extends \Kubernetes\AbstractAPI
     /**
      * read the specified Role
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @return Role|mixed
+     * @return TheRoleV1beta1|mixed
      */
-    public function readRbacAuthorizationV1beta1(string $namespace = 'default', $name)
+    public function readRbacAuthorizationV1beta1($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -636,12 +636,12 @@ class Role extends \Kubernetes\AbstractAPI
     /**
      * replace the specified Role
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @param Role $Model
-     * @return Role|mixed
+     * @param TheRoleV1beta1 $Model
+     * @return TheRoleV1beta1|mixed
      */
-    public function replaceRbacAuthorizationV1beta1(string $namespace = 'default', $name, \Role $Model)
+    public function replaceRbacAuthorizationV1beta1($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Api\Rbac\V1beta1\Role $Model)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -663,13 +663,13 @@ class Role extends \Kubernetes\AbstractAPI
      * @configkey gracePeriodSeconds	integer
      * @configkey orphanDependents	boolean
      * @configkey propagationPolicy	string
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param DeleteOptions $Model
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteRbacAuthorizationV1beta1(string $namespace = 'default', $name, \DeleteOptions $Model, array $queries)
+    public function deleteRbacAuthorizationV1beta1($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -686,12 +686,12 @@ class Role extends \Kubernetes\AbstractAPI
     /**
      * partially update the specified Role
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param Patch $Model
-     * @return Role|mixed
+     * @return TheRoleV1beta1|mixed
      */
-    public function patchRbacAuthorizationV1beta1(string $namespace = 'default', $name, \Patch $Model)
+    public function patchRbacAuthorizationV1beta1($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model)
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -707,7 +707,7 @@ class Role extends \Kubernetes\AbstractAPI
     /**
      * list or watch objects of kind Role
      *
-     * @return RoleList|mixed
+     * @return RoleListV1beta1|mixed
      */
     public function listRbacAuthorizationV1beta1ForAllNamespaces()
     {
@@ -724,10 +724,10 @@ class Role extends \Kubernetes\AbstractAPI
     /**
      * watch individual changes to a list of Role
      *
-     * @param string $namespace
+     * @param $namespace
      * @return WatchEvent|mixed
      */
-    public function watchRbacAuthorizationV1beta1List(string $namespace = 'default')
+    public function watchRbacAuthorizationV1beta1List($namespace = 'default')
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -742,11 +742,11 @@ class Role extends \Kubernetes\AbstractAPI
     /**
      * watch changes to an object of kind Role
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @return WatchEvent|mixed
      */
-    public function watchRbacAuthorizationV1beta1(string $namespace = 'default', $name)
+    public function watchRbacAuthorizationV1beta1($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('get',

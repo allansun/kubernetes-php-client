@@ -2,8 +2,8 @@
 
 namespace Kubernetes\API;
 
-use \Kubernetes\Model\Io\K8s\Api\Apps\V1beta1\DeploymentRollback as DeploymentRollback;
-use \Kubernetes\Model\Io\K8s\Api\Extensions\V1beta1\DeploymentRollback as DeploymentRollback;
+use \Kubernetes\Model\Io\K8s\Api\Apps\V1beta1\DeploymentRollback as TheDeploymentRollback;
+use \Kubernetes\Model\Io\K8s\Api\Extensions\V1beta1\DeploymentRollback as TheDeploymentRollbackV1beta1;
 
 class DeploymentRollback extends \Kubernetes\AbstractAPI
 {
@@ -11,12 +11,12 @@ class DeploymentRollback extends \Kubernetes\AbstractAPI
     /**
      * create rollback of a Deployment
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @param DeploymentRollback $Model
-     * @return DeploymentRollback|mixed
+     * @param TheDeploymentRollback $Model
+     * @return TheDeploymentRollback|mixed
      */
-    public function create(string $namespace = 'default', $name, \DeploymentRollback $Model)
+    public function create($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Api\Apps\V1beta1\DeploymentRollback $Model)
     {
         return $this->parseResponse(
         	$this->client->request('post',
@@ -32,12 +32,12 @@ class DeploymentRollback extends \Kubernetes\AbstractAPI
     /**
      * create rollback of a Deployment
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @param DeploymentRollback $Model
-     * @return DeploymentRollback|mixed
+     * @param TheDeploymentRollbackV1beta1 $Model
+     * @return TheDeploymentRollbackV1beta1|mixed
      */
-    public function createExtensionsV1beta1(string $namespace = 'default', $name, \DeploymentRollback $Model)
+    public function createExtensionsV1beta1($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Api\Extensions\V1beta1\DeploymentRollback $Model)
     {
         return $this->parseResponse(
         	$this->client->request('post',

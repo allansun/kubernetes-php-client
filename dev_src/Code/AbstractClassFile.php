@@ -24,6 +24,18 @@ abstract class AbstractClassFile extends FileGenerator
      */
     protected $sourceFileDirectory;
 
+    protected static $internalPhpTypes = [
+        'void',
+        'int',
+        'float',
+        'string',
+        'bool',
+        'array',
+        'callable',
+        'iterable',
+        'object'
+    ];
+
 
     protected function parseDescription(string $description): string
     {
@@ -39,15 +51,32 @@ abstract class AbstractClassFile extends FileGenerator
 
     protected function getUseAlias(string $fullClassName): string
     {
+        if (0 !== strpos($fullClassName, '\\')) {
+            $fullClassName = '\\' . $fullClassName;
+        }
 
         $classInfo = explode('\\', $fullClassName);
         $className = array_pop($classInfo);
 
-        while (in_array($className, $uses)) {
-            $className .= array_pop($classInfo);
+        if ($className == $this->ClassGenerator->getName()) {
+            $className = 'The' . $className;
         }
+
+        $classGeneratorUses = $this->ClassGenerator->getUses();
+        $uses               = [];
+
+        foreach ($classGeneratorUses as $use) {
+            $useInfo = explode(' as ', $use);
+
+            $uses[$useInfo[0]] = $useInfo[1];
+        }
+
         if ($this->ClassGenerator->hasUse($fullClassName)) {
             return $uses[$fullClassName];
+        }
+
+        while (in_array($className, $uses)) {
+            $className .= array_pop($classInfo);
         }
 
         $this->ClassGenerator->addUse($fullClassName, $className);

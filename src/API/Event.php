@@ -3,13 +3,13 @@
 namespace Kubernetes\API;
 
 use \Kubernetes\Model\Io\K8s\Api\Core\V1\EventList as EventList;
-use \Kubernetes\Model\Io\K8s\Api\Core\V1\Event as Event;
-use \Kubernetes\Model\Io\K8s\Api\Events\V1beta1\EventList as EventList;
-use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions as DeleteOptions;
+use \Kubernetes\Model\Io\K8s\Api\Core\V1\Event as TheEvent;
 use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Status as Status;
+use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions as DeleteOptions;
 use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch as Patch;
-use \Kubernetes\Model\Io\K8s\Api\Events\V1beta1\Event as Event;
 use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\WatchEvent as WatchEvent;
+use \Kubernetes\Model\Io\K8s\Api\Events\V1beta1\EventList as EventListV1beta1;
+use \Kubernetes\Model\Io\K8s\Api\Events\V1beta1\Event as TheEventV1beta1;
 
 class Event extends \Kubernetes\AbstractAPI
 {
@@ -50,11 +50,11 @@ class Event extends \Kubernetes\AbstractAPI
      * @configkey resourceVersion	string
      * @configkey timeoutSeconds	integer
      * @configkey watch	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param array $queries
      * @return EventList|mixed
      */
-    public function list(string $namespace = 'default', array $queries)
+    public function list($namespace = 'default', array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -70,11 +70,11 @@ class Event extends \Kubernetes\AbstractAPI
     /**
      * create an Event
      *
-     * @param string $namespace
-     * @param Event $Model
-     * @return Event|mixed
+     * @param $namespace
+     * @param TheEvent $Model
+     * @return TheEvent|mixed
      */
-    public function create(string $namespace = 'default', \Event $Model)
+    public function create($namespace = 'default', \Kubernetes\Model\Io\K8s\Api\Core\V1\Event $Model)
     {
         return $this->parseResponse(
         	$this->client->request('post',
@@ -106,11 +106,11 @@ class Event extends \Kubernetes\AbstractAPI
      * @configkey resourceVersion	string
      * @configkey timeoutSeconds	integer
      * @configkey watch	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteCollection(string $namespace = 'default', array $queries)
+    public function deleteCollection($namespace = 'default', array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -130,12 +130,12 @@ class Event extends \Kubernetes\AbstractAPI
      * @configkey export	boolean
      * @configkey exact	boolean
      * @configkey export	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param array $queries
-     * @return Event|mixed
+     * @return TheEvent|mixed
      */
-    public function read(string $namespace = 'default', $name, array $queries)
+    public function read($namespace = 'default', $name, array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -151,12 +151,12 @@ class Event extends \Kubernetes\AbstractAPI
     /**
      * replace the specified Event
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @param Event $Model
-     * @return Event|mixed
+     * @param TheEvent $Model
+     * @return TheEvent|mixed
      */
-    public function replace(string $namespace = 'default', $name, \Event $Model)
+    public function replace($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Api\Core\V1\Event $Model)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -178,13 +178,13 @@ class Event extends \Kubernetes\AbstractAPI
      * @configkey gracePeriodSeconds	integer
      * @configkey orphanDependents	boolean
      * @configkey propagationPolicy	string
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param DeleteOptions $Model
      * @param array $queries
      * @return Status|mixed
      */
-    public function delete(string $namespace = 'default', $name, \DeleteOptions $Model, array $queries)
+    public function delete($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -201,12 +201,12 @@ class Event extends \Kubernetes\AbstractAPI
     /**
      * partially update the specified Event
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param Patch $Model
-     * @return Event|mixed
+     * @return TheEvent|mixed
      */
-    public function patch(string $namespace = 'default', $name, \Patch $Model)
+    public function patch($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model)
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -239,10 +239,10 @@ class Event extends \Kubernetes\AbstractAPI
     /**
      * watch individual changes to a list of Event
      *
-     * @param string $namespace
+     * @param $namespace
      * @return WatchEvent|mixed
      */
-    public function watchList(string $namespace = 'default')
+    public function watchList($namespace = 'default')
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -257,11 +257,11 @@ class Event extends \Kubernetes\AbstractAPI
     /**
      * watch changes to an object of kind Event
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @return WatchEvent|mixed
      */
-    public function watch(string $namespace = 'default', $name)
+    public function watch($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -276,7 +276,7 @@ class Event extends \Kubernetes\AbstractAPI
     /**
      * list or watch objects of kind Event
      *
-     * @return EventList|mixed
+     * @return EventListV1beta1|mixed
      */
     public function listForAllNamespacesEventsV1beta1()
     {
@@ -309,11 +309,11 @@ class Event extends \Kubernetes\AbstractAPI
      * @configkey resourceVersion	string
      * @configkey timeoutSeconds	integer
      * @configkey watch	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param array $queries
-     * @return EventList|mixed
+     * @return EventListV1beta1|mixed
      */
-    public function listEventsV1beta1(string $namespace = 'default', array $queries)
+    public function listEventsV1beta1($namespace = 'default', array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -329,11 +329,11 @@ class Event extends \Kubernetes\AbstractAPI
     /**
      * create an Event
      *
-     * @param string $namespace
-     * @param Event $Model
-     * @return Event|mixed
+     * @param $namespace
+     * @param TheEventV1beta1 $Model
+     * @return TheEventV1beta1|mixed
      */
-    public function createEventsV1beta1(string $namespace = 'default', \Event $Model)
+    public function createEventsV1beta1($namespace = 'default', \Kubernetes\Model\Io\K8s\Api\Events\V1beta1\Event $Model)
     {
         return $this->parseResponse(
         	$this->client->request('post',
@@ -365,11 +365,11 @@ class Event extends \Kubernetes\AbstractAPI
      * @configkey resourceVersion	string
      * @configkey timeoutSeconds	integer
      * @configkey watch	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteCollectionEventsV1beta1(string $namespace = 'default', array $queries)
+    public function deleteCollectionEventsV1beta1($namespace = 'default', array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -389,12 +389,12 @@ class Event extends \Kubernetes\AbstractAPI
      * @configkey export	boolean
      * @configkey exact	boolean
      * @configkey export	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param array $queries
-     * @return Event|mixed
+     * @return TheEventV1beta1|mixed
      */
-    public function readEventsV1beta1(string $namespace = 'default', $name, array $queries)
+    public function readEventsV1beta1($namespace = 'default', $name, array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -410,12 +410,12 @@ class Event extends \Kubernetes\AbstractAPI
     /**
      * replace the specified Event
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @param Event $Model
-     * @return Event|mixed
+     * @param TheEventV1beta1 $Model
+     * @return TheEventV1beta1|mixed
      */
-    public function replaceEventsV1beta1(string $namespace = 'default', $name, \Event $Model)
+    public function replaceEventsV1beta1($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Api\Events\V1beta1\Event $Model)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -437,13 +437,13 @@ class Event extends \Kubernetes\AbstractAPI
      * @configkey gracePeriodSeconds	integer
      * @configkey orphanDependents	boolean
      * @configkey propagationPolicy	string
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param DeleteOptions $Model
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteEventsV1beta1(string $namespace = 'default', $name, \DeleteOptions $Model, array $queries)
+    public function deleteEventsV1beta1($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -460,12 +460,12 @@ class Event extends \Kubernetes\AbstractAPI
     /**
      * partially update the specified Event
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param Patch $Model
-     * @return Event|mixed
+     * @return TheEventV1beta1|mixed
      */
-    public function patchEventsV1beta1(string $namespace = 'default', $name, \Patch $Model)
+    public function patchEventsV1beta1($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model)
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -498,10 +498,10 @@ class Event extends \Kubernetes\AbstractAPI
     /**
      * watch individual changes to a list of Event
      *
-     * @param string $namespace
+     * @param $namespace
      * @return WatchEvent|mixed
      */
-    public function watchListEventsV1beta1(string $namespace = 'default')
+    public function watchListEventsV1beta1($namespace = 'default')
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -516,11 +516,11 @@ class Event extends \Kubernetes\AbstractAPI
     /**
      * watch changes to an object of kind Event
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @return WatchEvent|mixed
      */
-    public function watchEventsV1beta1(string $namespace = 'default', $name)
+    public function watchEventsV1beta1($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('get',

@@ -3,13 +3,13 @@
 namespace Kubernetes\API;
 
 use \Kubernetes\Model\Io\K8s\Api\Batch\V1beta1\CronJobList as CronJobList;
-use \Kubernetes\Model\Io\K8s\Api\Batch\V1beta1\CronJob as CronJob;
-use \Kubernetes\Model\Io\K8s\Api\Batch\V2alpha1\CronJobList as CronJobList;
-use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions as DeleteOptions;
+use \Kubernetes\Model\Io\K8s\Api\Batch\V1beta1\CronJob as TheCronJob;
 use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Status as Status;
+use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions as DeleteOptions;
 use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch as Patch;
-use \Kubernetes\Model\Io\K8s\Api\Batch\V2alpha1\CronJob as CronJob;
 use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\WatchEvent as WatchEvent;
+use \Kubernetes\Model\Io\K8s\Api\Batch\V2alpha1\CronJobList as CronJobListV2alpha1;
+use \Kubernetes\Model\Io\K8s\Api\Batch\V2alpha1\CronJob as TheCronJobV2alpha1;
 
 class CronJob extends \Kubernetes\AbstractAPI
 {
@@ -50,11 +50,11 @@ class CronJob extends \Kubernetes\AbstractAPI
      * @configkey resourceVersion	string
      * @configkey timeoutSeconds	integer
      * @configkey watch	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param array $queries
      * @return CronJobList|mixed
      */
-    public function list(string $namespace = 'default', array $queries)
+    public function list($namespace = 'default', array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -70,11 +70,11 @@ class CronJob extends \Kubernetes\AbstractAPI
     /**
      * create a CronJob
      *
-     * @param string $namespace
-     * @param CronJob $Model
-     * @return CronJob|mixed
+     * @param $namespace
+     * @param TheCronJob $Model
+     * @return TheCronJob|mixed
      */
-    public function create(string $namespace = 'default', \CronJob $Model)
+    public function create($namespace = 'default', \Kubernetes\Model\Io\K8s\Api\Batch\V1beta1\CronJob $Model)
     {
         return $this->parseResponse(
         	$this->client->request('post',
@@ -106,11 +106,11 @@ class CronJob extends \Kubernetes\AbstractAPI
      * @configkey resourceVersion	string
      * @configkey timeoutSeconds	integer
      * @configkey watch	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteCollection(string $namespace = 'default', array $queries)
+    public function deleteCollection($namespace = 'default', array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -130,12 +130,12 @@ class CronJob extends \Kubernetes\AbstractAPI
      * @configkey export	boolean
      * @configkey exact	boolean
      * @configkey export	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param array $queries
-     * @return CronJob|mixed
+     * @return TheCronJob|mixed
      */
-    public function read(string $namespace = 'default', $name, array $queries)
+    public function read($namespace = 'default', $name, array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -151,12 +151,12 @@ class CronJob extends \Kubernetes\AbstractAPI
     /**
      * replace the specified CronJob
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @param CronJob $Model
-     * @return CronJob|mixed
+     * @param TheCronJob $Model
+     * @return TheCronJob|mixed
      */
-    public function replace(string $namespace = 'default', $name, \CronJob $Model)
+    public function replace($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Api\Batch\V1beta1\CronJob $Model)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -178,13 +178,13 @@ class CronJob extends \Kubernetes\AbstractAPI
      * @configkey gracePeriodSeconds	integer
      * @configkey orphanDependents	boolean
      * @configkey propagationPolicy	string
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param DeleteOptions $Model
      * @param array $queries
      * @return Status|mixed
      */
-    public function delete(string $namespace = 'default', $name, \DeleteOptions $Model, array $queries)
+    public function delete($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -201,12 +201,12 @@ class CronJob extends \Kubernetes\AbstractAPI
     /**
      * partially update the specified CronJob
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param Patch $Model
-     * @return CronJob|mixed
+     * @return TheCronJob|mixed
      */
-    public function patch(string $namespace = 'default', $name, \Patch $Model)
+    public function patch($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model)
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -222,11 +222,11 @@ class CronJob extends \Kubernetes\AbstractAPI
     /**
      * read status of the specified CronJob
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @return CronJob|mixed
+     * @return TheCronJob|mixed
      */
-    public function readStatus(string $namespace = 'default', $name)
+    public function readStatus($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -241,12 +241,12 @@ class CronJob extends \Kubernetes\AbstractAPI
     /**
      * replace status of the specified CronJob
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @param CronJob $Model
-     * @return CronJob|mixed
+     * @param TheCronJob $Model
+     * @return TheCronJob|mixed
      */
-    public function replaceStatus(string $namespace = 'default', $name, \CronJob $Model)
+    public function replaceStatus($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Api\Batch\V1beta1\CronJob $Model)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -262,12 +262,12 @@ class CronJob extends \Kubernetes\AbstractAPI
     /**
      * partially update status of the specified CronJob
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param Patch $Model
-     * @return CronJob|mixed
+     * @return TheCronJob|mixed
      */
-    public function patchStatus(string $namespace = 'default', $name, \Patch $Model)
+    public function patchStatus($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model)
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -300,10 +300,10 @@ class CronJob extends \Kubernetes\AbstractAPI
     /**
      * watch individual changes to a list of CronJob
      *
-     * @param string $namespace
+     * @param $namespace
      * @return WatchEvent|mixed
      */
-    public function watchList(string $namespace = 'default')
+    public function watchList($namespace = 'default')
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -318,11 +318,11 @@ class CronJob extends \Kubernetes\AbstractAPI
     /**
      * watch changes to an object of kind CronJob
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @return WatchEvent|mixed
      */
-    public function watch(string $namespace = 'default', $name)
+    public function watch($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -337,7 +337,7 @@ class CronJob extends \Kubernetes\AbstractAPI
     /**
      * list or watch objects of kind CronJob
      *
-     * @return CronJobList|mixed
+     * @return CronJobListV2alpha1|mixed
      */
     public function listForAllNamespacesBatchV2alpha1()
     {
@@ -370,11 +370,11 @@ class CronJob extends \Kubernetes\AbstractAPI
      * @configkey resourceVersion	string
      * @configkey timeoutSeconds	integer
      * @configkey watch	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param array $queries
-     * @return CronJobList|mixed
+     * @return CronJobListV2alpha1|mixed
      */
-    public function listBatchV2alpha1(string $namespace = 'default', array $queries)
+    public function listBatchV2alpha1($namespace = 'default', array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -390,11 +390,11 @@ class CronJob extends \Kubernetes\AbstractAPI
     /**
      * create a CronJob
      *
-     * @param string $namespace
-     * @param CronJob $Model
-     * @return CronJob|mixed
+     * @param $namespace
+     * @param TheCronJobV2alpha1 $Model
+     * @return TheCronJobV2alpha1|mixed
      */
-    public function createBatchV2alpha1(string $namespace = 'default', \CronJob $Model)
+    public function createBatchV2alpha1($namespace = 'default', \Kubernetes\Model\Io\K8s\Api\Batch\V2alpha1\CronJob $Model)
     {
         return $this->parseResponse(
         	$this->client->request('post',
@@ -426,11 +426,11 @@ class CronJob extends \Kubernetes\AbstractAPI
      * @configkey resourceVersion	string
      * @configkey timeoutSeconds	integer
      * @configkey watch	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteCollectionBatchV2alpha1(string $namespace = 'default', array $queries)
+    public function deleteCollectionBatchV2alpha1($namespace = 'default', array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -450,12 +450,12 @@ class CronJob extends \Kubernetes\AbstractAPI
      * @configkey export	boolean
      * @configkey exact	boolean
      * @configkey export	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param array $queries
-     * @return CronJob|mixed
+     * @return TheCronJobV2alpha1|mixed
      */
-    public function readBatchV2alpha1(string $namespace = 'default', $name, array $queries)
+    public function readBatchV2alpha1($namespace = 'default', $name, array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -471,12 +471,12 @@ class CronJob extends \Kubernetes\AbstractAPI
     /**
      * replace the specified CronJob
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @param CronJob $Model
-     * @return CronJob|mixed
+     * @param TheCronJobV2alpha1 $Model
+     * @return TheCronJobV2alpha1|mixed
      */
-    public function replaceBatchV2alpha1(string $namespace = 'default', $name, \CronJob $Model)
+    public function replaceBatchV2alpha1($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Api\Batch\V2alpha1\CronJob $Model)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -498,13 +498,13 @@ class CronJob extends \Kubernetes\AbstractAPI
      * @configkey gracePeriodSeconds	integer
      * @configkey orphanDependents	boolean
      * @configkey propagationPolicy	string
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param DeleteOptions $Model
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteBatchV2alpha1(string $namespace = 'default', $name, \DeleteOptions $Model, array $queries)
+    public function deleteBatchV2alpha1($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -521,12 +521,12 @@ class CronJob extends \Kubernetes\AbstractAPI
     /**
      * partially update the specified CronJob
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param Patch $Model
-     * @return CronJob|mixed
+     * @return TheCronJobV2alpha1|mixed
      */
-    public function patchBatchV2alpha1(string $namespace = 'default', $name, \Patch $Model)
+    public function patchBatchV2alpha1($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model)
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -542,11 +542,11 @@ class CronJob extends \Kubernetes\AbstractAPI
     /**
      * read status of the specified CronJob
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @return CronJob|mixed
+     * @return TheCronJobV2alpha1|mixed
      */
-    public function readStatusBatchV2alpha1(string $namespace = 'default', $name)
+    public function readStatusBatchV2alpha1($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -561,12 +561,12 @@ class CronJob extends \Kubernetes\AbstractAPI
     /**
      * replace status of the specified CronJob
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @param CronJob $Model
-     * @return CronJob|mixed
+     * @param TheCronJobV2alpha1 $Model
+     * @return TheCronJobV2alpha1|mixed
      */
-    public function replaceStatusBatchV2alpha1(string $namespace = 'default', $name, \CronJob $Model)
+    public function replaceStatusBatchV2alpha1($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Api\Batch\V2alpha1\CronJob $Model)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -582,12 +582,12 @@ class CronJob extends \Kubernetes\AbstractAPI
     /**
      * partially update status of the specified CronJob
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param Patch $Model
-     * @return CronJob|mixed
+     * @return TheCronJobV2alpha1|mixed
      */
-    public function patchStatusBatchV2alpha1(string $namespace = 'default', $name, \Patch $Model)
+    public function patchStatusBatchV2alpha1($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model)
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -620,10 +620,10 @@ class CronJob extends \Kubernetes\AbstractAPI
     /**
      * watch individual changes to a list of CronJob
      *
-     * @param string $namespace
+     * @param $namespace
      * @return WatchEvent|mixed
      */
-    public function watchListBatchV2alpha1(string $namespace = 'default')
+    public function watchListBatchV2alpha1($namespace = 'default')
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -638,11 +638,11 @@ class CronJob extends \Kubernetes\AbstractAPI
     /**
      * watch changes to an object of kind CronJob
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @return WatchEvent|mixed
      */
-    public function watchBatchV2alpha1(string $namespace = 'default', $name)
+    public function watchBatchV2alpha1($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('get',

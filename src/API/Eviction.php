@@ -2,7 +2,7 @@
 
 namespace Kubernetes\API;
 
-use \Kubernetes\Model\Io\K8s\Api\Policy\V1beta1\Eviction as Eviction;
+use \Kubernetes\Model\Io\K8s\Api\Policy\V1beta1\Eviction as TheEviction;
 
 class Eviction extends \Kubernetes\AbstractAPI
 {
@@ -10,12 +10,12 @@ class Eviction extends \Kubernetes\AbstractAPI
     /**
      * create eviction of a Pod
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @param Eviction $Model
-     * @return Eviction|mixed
+     * @param TheEviction $Model
+     * @return TheEviction|mixed
      */
-    public function createPod(string $namespace = 'default', $name, \Eviction $Model)
+    public function createPod($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Api\Policy\V1beta1\Eviction $Model)
     {
         return $this->parseResponse(
         	$this->client->request('post',

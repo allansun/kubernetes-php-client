@@ -3,13 +3,13 @@
 namespace Kubernetes\API;
 
 use \Kubernetes\Model\Io\K8s\Api\Storage\V1alpha1\VolumeAttachmentList as VolumeAttachmentList;
-use \Kubernetes\Model\Io\K8s\Api\Storage\V1alpha1\VolumeAttachment as VolumeAttachment;
-use \Kubernetes\Model\Io\K8s\Api\Storage\V1beta1\VolumeAttachmentList as VolumeAttachmentList;
-use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions as DeleteOptions;
+use \Kubernetes\Model\Io\K8s\Api\Storage\V1alpha1\VolumeAttachment as TheVolumeAttachment;
 use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Status as Status;
+use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions as DeleteOptions;
 use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch as Patch;
-use \Kubernetes\Model\Io\K8s\Api\Storage\V1beta1\VolumeAttachment as VolumeAttachment;
 use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\WatchEvent as WatchEvent;
+use \Kubernetes\Model\Io\K8s\Api\Storage\V1beta1\VolumeAttachmentList as VolumeAttachmentListV1beta1;
+use \Kubernetes\Model\Io\K8s\Api\Storage\V1beta1\VolumeAttachment as TheVolumeAttachmentV1beta1;
 
 class VolumeAttachment extends \Kubernetes\AbstractAPI
 {
@@ -52,10 +52,10 @@ class VolumeAttachment extends \Kubernetes\AbstractAPI
     /**
      * create a VolumeAttachment
      *
-     * @param VolumeAttachment $Model
-     * @return VolumeAttachment|mixed
+     * @param TheVolumeAttachment $Model
+     * @return TheVolumeAttachment|mixed
      */
-    public function create(\VolumeAttachment $Model)
+    public function create(\Kubernetes\Model\Io\K8s\Api\Storage\V1alpha1\VolumeAttachment $Model)
     {
         return $this->parseResponse(
         	$this->client->request('post',
@@ -112,7 +112,7 @@ class VolumeAttachment extends \Kubernetes\AbstractAPI
      * @configkey export	boolean
      * @param $name
      * @param array $queries
-     * @return VolumeAttachment|mixed
+     * @return TheVolumeAttachment|mixed
      */
     public function read($name, array $queries)
     {
@@ -131,10 +131,10 @@ class VolumeAttachment extends \Kubernetes\AbstractAPI
      * replace the specified VolumeAttachment
      *
      * @param $name
-     * @param VolumeAttachment $Model
-     * @return VolumeAttachment|mixed
+     * @param TheVolumeAttachment $Model
+     * @return TheVolumeAttachment|mixed
      */
-    public function replace($name, \VolumeAttachment $Model)
+    public function replace($name, \Kubernetes\Model\Io\K8s\Api\Storage\V1alpha1\VolumeAttachment $Model)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -161,7 +161,7 @@ class VolumeAttachment extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return Status|mixed
      */
-    public function delete($name, \DeleteOptions $Model, array $queries)
+    public function delete($name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -180,9 +180,9 @@ class VolumeAttachment extends \Kubernetes\AbstractAPI
      *
      * @param $name
      * @param Patch $Model
-     * @return VolumeAttachment|mixed
+     * @return TheVolumeAttachment|mixed
      */
-    public function patch($name, \Patch $Model)
+    public function patch($name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model)
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -250,7 +250,7 @@ class VolumeAttachment extends \Kubernetes\AbstractAPI
      * @configkey timeoutSeconds	integer
      * @configkey watch	boolean
      * @param array $queries
-     * @return VolumeAttachmentList|mixed
+     * @return VolumeAttachmentListV1beta1|mixed
      */
     public function listStorageV1beta1(array $queries)
     {
@@ -268,10 +268,10 @@ class VolumeAttachment extends \Kubernetes\AbstractAPI
     /**
      * create a VolumeAttachment
      *
-     * @param VolumeAttachment $Model
-     * @return VolumeAttachment|mixed
+     * @param TheVolumeAttachmentV1beta1 $Model
+     * @return TheVolumeAttachmentV1beta1|mixed
      */
-    public function createStorageV1beta1(\VolumeAttachment $Model)
+    public function createStorageV1beta1(\Kubernetes\Model\Io\K8s\Api\Storage\V1beta1\VolumeAttachment $Model)
     {
         return $this->parseResponse(
         	$this->client->request('post',
@@ -328,7 +328,7 @@ class VolumeAttachment extends \Kubernetes\AbstractAPI
      * @configkey export	boolean
      * @param $name
      * @param array $queries
-     * @return VolumeAttachment|mixed
+     * @return TheVolumeAttachmentV1beta1|mixed
      */
     public function readStorageV1beta1($name, array $queries)
     {
@@ -347,10 +347,10 @@ class VolumeAttachment extends \Kubernetes\AbstractAPI
      * replace the specified VolumeAttachment
      *
      * @param $name
-     * @param VolumeAttachment $Model
-     * @return VolumeAttachment|mixed
+     * @param TheVolumeAttachmentV1beta1 $Model
+     * @return TheVolumeAttachmentV1beta1|mixed
      */
-    public function replaceStorageV1beta1($name, \VolumeAttachment $Model)
+    public function replaceStorageV1beta1($name, \Kubernetes\Model\Io\K8s\Api\Storage\V1beta1\VolumeAttachment $Model)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -377,7 +377,7 @@ class VolumeAttachment extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteStorageV1beta1($name, \DeleteOptions $Model, array $queries)
+    public function deleteStorageV1beta1($name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -396,9 +396,9 @@ class VolumeAttachment extends \Kubernetes\AbstractAPI
      *
      * @param $name
      * @param Patch $Model
-     * @return VolumeAttachment|mixed
+     * @return TheVolumeAttachmentV1beta1|mixed
      */
-    public function patchStorageV1beta1($name, \Patch $Model)
+    public function patchStorageV1beta1($name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model)
     {
         return $this->parseResponse(
         	$this->client->request('patch',

@@ -3,7 +3,7 @@
 namespace Kubernetes\API;
 
 use \Kubernetes\Model\Io\K8s\Api\Core\V1\ComponentStatusList as ComponentStatusList;
-use \Kubernetes\Model\Io\K8s\Api\Core\V1\ComponentStatus as ComponentStatus;
+use \Kubernetes\Model\Io\K8s\Api\Core\V1\ComponentStatus as TheComponentStatus;
 
 class ComponentStatus extends \Kubernetes\AbstractAPI
 {
@@ -29,7 +29,7 @@ class ComponentStatus extends \Kubernetes\AbstractAPI
      * read the specified ComponentStatus
      *
      * @param $name
-     * @return ComponentStatus|mixed
+     * @return TheComponentStatus|mixed
      */
     public function read($name)
     {

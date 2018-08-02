@@ -2,8 +2,8 @@
 
 namespace Kubernetes\API;
 
-use \Kubernetes\Model\Io\K8s\Api\Authentication\V1\TokenReview as TokenReview;
-use \Kubernetes\Model\Io\K8s\Api\Authentication\V1beta1\TokenReview as TokenReview;
+use \Kubernetes\Model\Io\K8s\Api\Authentication\V1\TokenReview as TheTokenReview;
+use \Kubernetes\Model\Io\K8s\Api\Authentication\V1beta1\TokenReview as TheTokenReviewV1beta1;
 
 class TokenReview extends \Kubernetes\AbstractAPI
 {
@@ -11,10 +11,10 @@ class TokenReview extends \Kubernetes\AbstractAPI
     /**
      * create a TokenReview
      *
-     * @param TokenReview $Model
-     * @return TokenReview|mixed
+     * @param TheTokenReview $Model
+     * @return TheTokenReview|mixed
      */
-    public function create(\TokenReview $Model)
+    public function create(\Kubernetes\Model\Io\K8s\Api\Authentication\V1\TokenReview $Model)
     {
         return $this->parseResponse(
         	$this->client->request('post',
@@ -30,10 +30,10 @@ class TokenReview extends \Kubernetes\AbstractAPI
     /**
      * create a TokenReview
      *
-     * @param TokenReview $Model
-     * @return TokenReview|mixed
+     * @param TheTokenReviewV1beta1 $Model
+     * @return TheTokenReviewV1beta1|mixed
      */
-    public function createAuthenticationV1beta1(\TokenReview $Model)
+    public function createAuthenticationV1beta1(\Kubernetes\Model\Io\K8s\Api\Authentication\V1beta1\TokenReview $Model)
     {
         return $this->parseResponse(
         	$this->client->request('post',

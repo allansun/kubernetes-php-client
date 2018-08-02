@@ -3,10 +3,10 @@
 namespace Kubernetes\API;
 
 use \Kubernetes\Model\Io\K8s\Api\Core\V1\EndpointsList as EndpointsList;
-use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions as DeleteOptions;
+use \Kubernetes\Model\Io\K8s\Api\Core\V1\Endpoints as TheEndpoints;
 use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Status as Status;
+use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions as DeleteOptions;
 use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch as Patch;
-use \Kubernetes\Model\Io\K8s\Api\Core\V1\Endpoints as Endpoints;
 use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\WatchEvent as WatchEvent;
 
 class Endpoints extends \Kubernetes\AbstractAPI
@@ -48,11 +48,11 @@ class Endpoints extends \Kubernetes\AbstractAPI
      * @configkey resourceVersion	string
      * @configkey timeoutSeconds	integer
      * @configkey watch	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param array $queries
      * @return EndpointsList|mixed
      */
-    public function list(string $namespace = 'default', array $queries)
+    public function list($namespace = 'default', array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -68,11 +68,11 @@ class Endpoints extends \Kubernetes\AbstractAPI
     /**
      * create Endpoints
      *
-     * @param string $namespace
-     * @param Endpoints $Model
-     * @return Endpoints|mixed
+     * @param $namespace
+     * @param TheEndpoints $Model
+     * @return TheEndpoints|mixed
      */
-    public function create(string $namespace = 'default', \Endpoints $Model)
+    public function create($namespace = 'default', \Kubernetes\Model\Io\K8s\Api\Core\V1\Endpoints $Model)
     {
         return $this->parseResponse(
         	$this->client->request('post',
@@ -104,11 +104,11 @@ class Endpoints extends \Kubernetes\AbstractAPI
      * @configkey resourceVersion	string
      * @configkey timeoutSeconds	integer
      * @configkey watch	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteCollection(string $namespace = 'default', array $queries)
+    public function deleteCollection($namespace = 'default', array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -128,12 +128,12 @@ class Endpoints extends \Kubernetes\AbstractAPI
      * @configkey export	boolean
      * @configkey exact	boolean
      * @configkey export	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param array $queries
-     * @return Endpoints|mixed
+     * @return TheEndpoints|mixed
      */
-    public function read(string $namespace = 'default', $name, array $queries)
+    public function read($namespace = 'default', $name, array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -149,12 +149,12 @@ class Endpoints extends \Kubernetes\AbstractAPI
     /**
      * replace the specified Endpoints
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @param Endpoints $Model
-     * @return Endpoints|mixed
+     * @param TheEndpoints $Model
+     * @return TheEndpoints|mixed
      */
-    public function replace(string $namespace = 'default', $name, \Endpoints $Model)
+    public function replace($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Api\Core\V1\Endpoints $Model)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -176,13 +176,13 @@ class Endpoints extends \Kubernetes\AbstractAPI
      * @configkey gracePeriodSeconds	integer
      * @configkey orphanDependents	boolean
      * @configkey propagationPolicy	string
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param DeleteOptions $Model
      * @param array $queries
      * @return Status|mixed
      */
-    public function delete(string $namespace = 'default', $name, \DeleteOptions $Model, array $queries)
+    public function delete($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -199,12 +199,12 @@ class Endpoints extends \Kubernetes\AbstractAPI
     /**
      * partially update the specified Endpoints
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param Patch $Model
-     * @return Endpoints|mixed
+     * @return TheEndpoints|mixed
      */
-    public function patch(string $namespace = 'default', $name, \Patch $Model)
+    public function patch($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model)
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -237,10 +237,10 @@ class Endpoints extends \Kubernetes\AbstractAPI
     /**
      * watch individual changes to a list of Endpoints
      *
-     * @param string $namespace
+     * @param $namespace
      * @return WatchEvent|mixed
      */
-    public function watchList(string $namespace = 'default')
+    public function watchList($namespace = 'default')
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -255,11 +255,11 @@ class Endpoints extends \Kubernetes\AbstractAPI
     /**
      * watch changes to an object of kind Endpoints
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @return WatchEvent|mixed
      */
-    public function watch(string $namespace = 'default', $name)
+    public function watch($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('get',

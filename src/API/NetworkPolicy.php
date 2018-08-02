@@ -2,14 +2,14 @@
 
 namespace Kubernetes\API;
 
-use \Kubernetes\Model\Io\K8s\Api\Extensions\V1beta1\NetworkPolicy as NetworkPolicy;
 use \Kubernetes\Model\Io\K8s\Api\Extensions\V1beta1\NetworkPolicyList as NetworkPolicyList;
-use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions as DeleteOptions;
+use \Kubernetes\Model\Io\K8s\Api\Extensions\V1beta1\NetworkPolicy as TheNetworkPolicy;
 use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Status as Status;
+use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions as DeleteOptions;
 use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch as Patch;
-use \Kubernetes\Model\Io\K8s\Api\Networking\V1\NetworkPolicy as NetworkPolicy;
-use \Kubernetes\Model\Io\K8s\Api\Networking\V1\NetworkPolicyList as NetworkPolicyList;
 use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\WatchEvent as WatchEvent;
+use \Kubernetes\Model\Io\K8s\Api\Networking\V1\NetworkPolicyList as NetworkPolicyListV1;
+use \Kubernetes\Model\Io\K8s\Api\Networking\V1\NetworkPolicy as TheNetworkPolicyV1;
 
 class NetworkPolicy extends \Kubernetes\AbstractAPI
 {
@@ -33,11 +33,11 @@ class NetworkPolicy extends \Kubernetes\AbstractAPI
      * @configkey resourceVersion	string
      * @configkey timeoutSeconds	integer
      * @configkey watch	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param array $queries
      * @return NetworkPolicyList|mixed
      */
-    public function list(string $namespace = 'default', array $queries)
+    public function list($namespace = 'default', array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -53,11 +53,11 @@ class NetworkPolicy extends \Kubernetes\AbstractAPI
     /**
      * create a NetworkPolicy
      *
-     * @param string $namespace
-     * @param NetworkPolicy $Model
-     * @return NetworkPolicy|mixed
+     * @param $namespace
+     * @param TheNetworkPolicy $Model
+     * @return TheNetworkPolicy|mixed
      */
-    public function create(string $namespace = 'default', \NetworkPolicy $Model)
+    public function create($namespace = 'default', \Kubernetes\Model\Io\K8s\Api\Extensions\V1beta1\NetworkPolicy $Model)
     {
         return $this->parseResponse(
         	$this->client->request('post',
@@ -89,11 +89,11 @@ class NetworkPolicy extends \Kubernetes\AbstractAPI
      * @configkey resourceVersion	string
      * @configkey timeoutSeconds	integer
      * @configkey watch	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteCollection(string $namespace = 'default', array $queries)
+    public function deleteCollection($namespace = 'default', array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -113,12 +113,12 @@ class NetworkPolicy extends \Kubernetes\AbstractAPI
      * @configkey export	boolean
      * @configkey exact	boolean
      * @configkey export	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param array $queries
-     * @return NetworkPolicy|mixed
+     * @return TheNetworkPolicy|mixed
      */
-    public function read(string $namespace = 'default', $name, array $queries)
+    public function read($namespace = 'default', $name, array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -134,12 +134,12 @@ class NetworkPolicy extends \Kubernetes\AbstractAPI
     /**
      * replace the specified NetworkPolicy
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @param NetworkPolicy $Model
-     * @return NetworkPolicy|mixed
+     * @param TheNetworkPolicy $Model
+     * @return TheNetworkPolicy|mixed
      */
-    public function replace(string $namespace = 'default', $name, \NetworkPolicy $Model)
+    public function replace($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Api\Extensions\V1beta1\NetworkPolicy $Model)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -161,13 +161,13 @@ class NetworkPolicy extends \Kubernetes\AbstractAPI
      * @configkey gracePeriodSeconds	integer
      * @configkey orphanDependents	boolean
      * @configkey propagationPolicy	string
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param DeleteOptions $Model
      * @param array $queries
      * @return Status|mixed
      */
-    public function delete(string $namespace = 'default', $name, \DeleteOptions $Model, array $queries)
+    public function delete($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -184,12 +184,12 @@ class NetworkPolicy extends \Kubernetes\AbstractAPI
     /**
      * partially update the specified NetworkPolicy
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param Patch $Model
-     * @return NetworkPolicy|mixed
+     * @return TheNetworkPolicy|mixed
      */
-    public function patch(string $namespace = 'default', $name, \Patch $Model)
+    public function patch($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model)
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -222,10 +222,10 @@ class NetworkPolicy extends \Kubernetes\AbstractAPI
     /**
      * watch individual changes to a list of NetworkPolicy
      *
-     * @param string $namespace
+     * @param $namespace
      * @return WatchEvent|mixed
      */
-    public function watchList(string $namespace = 'default')
+    public function watchList($namespace = 'default')
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -240,11 +240,11 @@ class NetworkPolicy extends \Kubernetes\AbstractAPI
     /**
      * watch changes to an object of kind NetworkPolicy
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @return WatchEvent|mixed
      */
-    public function watch(string $namespace = 'default', $name)
+    public function watch($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -292,11 +292,11 @@ class NetworkPolicy extends \Kubernetes\AbstractAPI
      * @configkey resourceVersion	string
      * @configkey timeoutSeconds	integer
      * @configkey watch	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param array $queries
-     * @return NetworkPolicyList|mixed
+     * @return NetworkPolicyListV1|mixed
      */
-    public function listNetworkingV1(string $namespace = 'default', array $queries)
+    public function listNetworkingV1($namespace = 'default', array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -312,11 +312,11 @@ class NetworkPolicy extends \Kubernetes\AbstractAPI
     /**
      * create a NetworkPolicy
      *
-     * @param string $namespace
-     * @param NetworkPolicy $Model
-     * @return NetworkPolicy|mixed
+     * @param $namespace
+     * @param TheNetworkPolicyV1 $Model
+     * @return TheNetworkPolicyV1|mixed
      */
-    public function createNetworkingV1(string $namespace = 'default', \NetworkPolicy $Model)
+    public function createNetworkingV1($namespace = 'default', \Kubernetes\Model\Io\K8s\Api\Networking\V1\NetworkPolicy $Model)
     {
         return $this->parseResponse(
         	$this->client->request('post',
@@ -348,11 +348,11 @@ class NetworkPolicy extends \Kubernetes\AbstractAPI
      * @configkey resourceVersion	string
      * @configkey timeoutSeconds	integer
      * @configkey watch	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteCollectionNetworkingV1(string $namespace = 'default', array $queries)
+    public function deleteCollectionNetworkingV1($namespace = 'default', array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -372,12 +372,12 @@ class NetworkPolicy extends \Kubernetes\AbstractAPI
      * @configkey export	boolean
      * @configkey exact	boolean
      * @configkey export	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param array $queries
-     * @return NetworkPolicy|mixed
+     * @return TheNetworkPolicyV1|mixed
      */
-    public function readNetworkingV1(string $namespace = 'default', $name, array $queries)
+    public function readNetworkingV1($namespace = 'default', $name, array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -393,12 +393,12 @@ class NetworkPolicy extends \Kubernetes\AbstractAPI
     /**
      * replace the specified NetworkPolicy
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @param NetworkPolicy $Model
-     * @return NetworkPolicy|mixed
+     * @param TheNetworkPolicyV1 $Model
+     * @return TheNetworkPolicyV1|mixed
      */
-    public function replaceNetworkingV1(string $namespace = 'default', $name, \NetworkPolicy $Model)
+    public function replaceNetworkingV1($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Api\Networking\V1\NetworkPolicy $Model)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -420,13 +420,13 @@ class NetworkPolicy extends \Kubernetes\AbstractAPI
      * @configkey gracePeriodSeconds	integer
      * @configkey orphanDependents	boolean
      * @configkey propagationPolicy	string
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param DeleteOptions $Model
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteNetworkingV1(string $namespace = 'default', $name, \DeleteOptions $Model, array $queries)
+    public function deleteNetworkingV1($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -443,12 +443,12 @@ class NetworkPolicy extends \Kubernetes\AbstractAPI
     /**
      * partially update the specified NetworkPolicy
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param Patch $Model
-     * @return NetworkPolicy|mixed
+     * @return TheNetworkPolicyV1|mixed
      */
-    public function patchNetworkingV1(string $namespace = 'default', $name, \Patch $Model)
+    public function patchNetworkingV1($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model)
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -464,7 +464,7 @@ class NetworkPolicy extends \Kubernetes\AbstractAPI
     /**
      * list or watch objects of kind NetworkPolicy
      *
-     * @return NetworkPolicyList|mixed
+     * @return NetworkPolicyListV1|mixed
      */
     public function listForAllNamespacesNetworkingV1()
     {
@@ -481,10 +481,10 @@ class NetworkPolicy extends \Kubernetes\AbstractAPI
     /**
      * watch individual changes to a list of NetworkPolicy
      *
-     * @param string $namespace
+     * @param $namespace
      * @return WatchEvent|mixed
      */
-    public function watchListNetworkingV1(string $namespace = 'default')
+    public function watchListNetworkingV1($namespace = 'default')
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -499,11 +499,11 @@ class NetworkPolicy extends \Kubernetes\AbstractAPI
     /**
      * watch changes to an object of kind NetworkPolicy
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @return WatchEvent|mixed
      */
-    public function watchNetworkingV1(string $namespace = 'default', $name)
+    public function watchNetworkingV1($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('get',

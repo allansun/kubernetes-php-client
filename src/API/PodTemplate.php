@@ -2,11 +2,11 @@
 
 namespace Kubernetes\API;
 
-use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions as DeleteOptions;
-use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Status as Status;
-use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch as Patch;
-use \Kubernetes\Model\Io\K8s\Api\Core\V1\PodTemplate as PodTemplate;
 use \Kubernetes\Model\Io\K8s\Api\Core\V1\PodTemplateList as PodTemplateList;
+use \Kubernetes\Model\Io\K8s\Api\Core\V1\PodTemplate as ThePodTemplate;
+use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Status as Status;
+use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions as DeleteOptions;
+use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch as Patch;
 use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\WatchEvent as WatchEvent;
 
 class PodTemplate extends \Kubernetes\AbstractAPI
@@ -31,11 +31,11 @@ class PodTemplate extends \Kubernetes\AbstractAPI
      * @configkey resourceVersion	string
      * @configkey timeoutSeconds	integer
      * @configkey watch	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param array $queries
      * @return PodTemplateList|mixed
      */
-    public function list(string $namespace = 'default', array $queries)
+    public function list($namespace = 'default', array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -51,11 +51,11 @@ class PodTemplate extends \Kubernetes\AbstractAPI
     /**
      * create a PodTemplate
      *
-     * @param string $namespace
-     * @param PodTemplate $Model
-     * @return PodTemplate|mixed
+     * @param $namespace
+     * @param ThePodTemplate $Model
+     * @return ThePodTemplate|mixed
      */
-    public function create(string $namespace = 'default', \PodTemplate $Model)
+    public function create($namespace = 'default', \Kubernetes\Model\Io\K8s\Api\Core\V1\PodTemplate $Model)
     {
         return $this->parseResponse(
         	$this->client->request('post',
@@ -87,11 +87,11 @@ class PodTemplate extends \Kubernetes\AbstractAPI
      * @configkey resourceVersion	string
      * @configkey timeoutSeconds	integer
      * @configkey watch	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteCollection(string $namespace = 'default', array $queries)
+    public function deleteCollection($namespace = 'default', array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -111,12 +111,12 @@ class PodTemplate extends \Kubernetes\AbstractAPI
      * @configkey export	boolean
      * @configkey exact	boolean
      * @configkey export	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param array $queries
-     * @return PodTemplate|mixed
+     * @return ThePodTemplate|mixed
      */
-    public function read(string $namespace = 'default', $name, array $queries)
+    public function read($namespace = 'default', $name, array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -132,12 +132,12 @@ class PodTemplate extends \Kubernetes\AbstractAPI
     /**
      * replace the specified PodTemplate
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @param PodTemplate $Model
-     * @return PodTemplate|mixed
+     * @param ThePodTemplate $Model
+     * @return ThePodTemplate|mixed
      */
-    public function replace(string $namespace = 'default', $name, \PodTemplate $Model)
+    public function replace($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Api\Core\V1\PodTemplate $Model)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -159,13 +159,13 @@ class PodTemplate extends \Kubernetes\AbstractAPI
      * @configkey gracePeriodSeconds	integer
      * @configkey orphanDependents	boolean
      * @configkey propagationPolicy	string
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param DeleteOptions $Model
      * @param array $queries
      * @return Status|mixed
      */
-    public function delete(string $namespace = 'default', $name, \DeleteOptions $Model, array $queries)
+    public function delete($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -182,12 +182,12 @@ class PodTemplate extends \Kubernetes\AbstractAPI
     /**
      * partially update the specified PodTemplate
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param Patch $Model
-     * @return PodTemplate|mixed
+     * @return ThePodTemplate|mixed
      */
-    public function patch(string $namespace = 'default', $name, \Patch $Model)
+    public function patch($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model)
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -220,10 +220,10 @@ class PodTemplate extends \Kubernetes\AbstractAPI
     /**
      * watch individual changes to a list of PodTemplate
      *
-     * @param string $namespace
+     * @param $namespace
      * @return WatchEvent|mixed
      */
-    public function watchList(string $namespace = 'default')
+    public function watchList($namespace = 'default')
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -238,11 +238,11 @@ class PodTemplate extends \Kubernetes\AbstractAPI
     /**
      * watch changes to an object of kind PodTemplate
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @return WatchEvent|mixed
      */
-    public function watch(string $namespace = 'default', $name)
+    public function watch($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('get',

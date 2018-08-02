@@ -3,13 +3,13 @@
 namespace Kubernetes\API;
 
 use \Kubernetes\Model\Io\K8s\Kube_aggregator\Pkg\Apis\Apiregistration\V1\APIServiceList as APIServiceList;
-use \Kubernetes\Model\Io\K8s\Kube_aggregator\Pkg\Apis\Apiregistration\V1\APIService as APIService;
-use \Kubernetes\Model\Io\K8s\Kube_aggregator\Pkg\Apis\Apiregistration\V1beta1\APIServiceList as APIServiceList;
-use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions as DeleteOptions;
+use \Kubernetes\Model\Io\K8s\Kube_aggregator\Pkg\Apis\Apiregistration\V1\APIService as TheAPIService;
 use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Status as Status;
+use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions as DeleteOptions;
 use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch as Patch;
-use \Kubernetes\Model\Io\K8s\Kube_aggregator\Pkg\Apis\Apiregistration\V1beta1\APIService as APIService;
 use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\WatchEvent as WatchEvent;
+use \Kubernetes\Model\Io\K8s\Kube_aggregator\Pkg\Apis\Apiregistration\V1beta1\APIServiceList as APIServiceListV1beta1;
+use \Kubernetes\Model\Io\K8s\Kube_aggregator\Pkg\Apis\Apiregistration\V1beta1\APIService as TheAPIServiceV1beta1;
 
 class APIService extends \Kubernetes\AbstractAPI
 {
@@ -52,10 +52,10 @@ class APIService extends \Kubernetes\AbstractAPI
     /**
      * create an APIService
      *
-     * @param APIService $Model
-     * @return APIService|mixed
+     * @param TheAPIService $Model
+     * @return TheAPIService|mixed
      */
-    public function create(\APIService $Model)
+    public function create(\Kubernetes\Model\Io\K8s\Kube_aggregator\Pkg\Apis\Apiregistration\V1\APIService $Model)
     {
         return $this->parseResponse(
         	$this->client->request('post',
@@ -112,7 +112,7 @@ class APIService extends \Kubernetes\AbstractAPI
      * @configkey export	boolean
      * @param $name
      * @param array $queries
-     * @return APIService|mixed
+     * @return TheAPIService|mixed
      */
     public function read($name, array $queries)
     {
@@ -131,10 +131,10 @@ class APIService extends \Kubernetes\AbstractAPI
      * replace the specified APIService
      *
      * @param $name
-     * @param APIService $Model
-     * @return APIService|mixed
+     * @param TheAPIService $Model
+     * @return TheAPIService|mixed
      */
-    public function replace($name, \APIService $Model)
+    public function replace($name, \Kubernetes\Model\Io\K8s\Kube_aggregator\Pkg\Apis\Apiregistration\V1\APIService $Model)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -161,7 +161,7 @@ class APIService extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return Status|mixed
      */
-    public function delete($name, \DeleteOptions $Model, array $queries)
+    public function delete($name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -180,9 +180,9 @@ class APIService extends \Kubernetes\AbstractAPI
      *
      * @param $name
      * @param Patch $Model
-     * @return APIService|mixed
+     * @return TheAPIService|mixed
      */
-    public function patch($name, \Patch $Model)
+    public function patch($name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model)
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -199,10 +199,10 @@ class APIService extends \Kubernetes\AbstractAPI
      * replace status of the specified APIService
      *
      * @param $name
-     * @param APIService $Model
-     * @return APIService|mixed
+     * @param TheAPIService $Model
+     * @return TheAPIService|mixed
      */
-    public function replaceStatus($name, \APIService $Model)
+    public function replaceStatus($name, \Kubernetes\Model\Io\K8s\Kube_aggregator\Pkg\Apis\Apiregistration\V1\APIService $Model)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -270,7 +270,7 @@ class APIService extends \Kubernetes\AbstractAPI
      * @configkey timeoutSeconds	integer
      * @configkey watch	boolean
      * @param array $queries
-     * @return APIServiceList|mixed
+     * @return APIServiceListV1beta1|mixed
      */
     public function listApiregistrationV1beta1(array $queries)
     {
@@ -288,10 +288,10 @@ class APIService extends \Kubernetes\AbstractAPI
     /**
      * create an APIService
      *
-     * @param APIService $Model
-     * @return APIService|mixed
+     * @param TheAPIServiceV1beta1 $Model
+     * @return TheAPIServiceV1beta1|mixed
      */
-    public function createApiregistrationV1beta1(\APIService $Model)
+    public function createApiregistrationV1beta1(\Kubernetes\Model\Io\K8s\Kube_aggregator\Pkg\Apis\Apiregistration\V1beta1\APIService $Model)
     {
         return $this->parseResponse(
         	$this->client->request('post',
@@ -348,7 +348,7 @@ class APIService extends \Kubernetes\AbstractAPI
      * @configkey export	boolean
      * @param $name
      * @param array $queries
-     * @return APIService|mixed
+     * @return TheAPIServiceV1beta1|mixed
      */
     public function readApiregistrationV1beta1($name, array $queries)
     {
@@ -367,10 +367,10 @@ class APIService extends \Kubernetes\AbstractAPI
      * replace the specified APIService
      *
      * @param $name
-     * @param APIService $Model
-     * @return APIService|mixed
+     * @param TheAPIServiceV1beta1 $Model
+     * @return TheAPIServiceV1beta1|mixed
      */
-    public function replaceApiregistrationV1beta1($name, \APIService $Model)
+    public function replaceApiregistrationV1beta1($name, \Kubernetes\Model\Io\K8s\Kube_aggregator\Pkg\Apis\Apiregistration\V1beta1\APIService $Model)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -397,7 +397,7 @@ class APIService extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteApiregistrationV1beta1($name, \DeleteOptions $Model, array $queries)
+    public function deleteApiregistrationV1beta1($name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -416,9 +416,9 @@ class APIService extends \Kubernetes\AbstractAPI
      *
      * @param $name
      * @param Patch $Model
-     * @return APIService|mixed
+     * @return TheAPIServiceV1beta1|mixed
      */
-    public function patchApiregistrationV1beta1($name, \Patch $Model)
+    public function patchApiregistrationV1beta1($name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model)
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -435,10 +435,10 @@ class APIService extends \Kubernetes\AbstractAPI
      * replace status of the specified APIService
      *
      * @param $name
-     * @param APIService $Model
-     * @return APIService|mixed
+     * @param TheAPIServiceV1beta1 $Model
+     * @return TheAPIServiceV1beta1|mixed
      */
-    public function replaceStatusApiregistrationV1beta1($name, \APIService $Model)
+    public function replaceStatusApiregistrationV1beta1($name, \Kubernetes\Model\Io\K8s\Kube_aggregator\Pkg\Apis\Apiregistration\V1beta1\APIService $Model)
     {
         return $this->parseResponse(
         	$this->client->request('put',

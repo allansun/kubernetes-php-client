@@ -3,10 +3,10 @@
 namespace Kubernetes\API;
 
 use \Kubernetes\Model\Io\K8s\Api\Core\V1\NodeList as NodeList;
-use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions as DeleteOptions;
+use \Kubernetes\Model\Io\K8s\Api\Core\V1\Node as TheNode;
 use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Status as Status;
+use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions as DeleteOptions;
 use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch as Patch;
-use \Kubernetes\Model\Io\K8s\Api\Core\V1\Node as Node;
 use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\WatchEvent as WatchEvent;
 
 class Node extends \Kubernetes\AbstractAPI
@@ -50,10 +50,10 @@ class Node extends \Kubernetes\AbstractAPI
     /**
      * create a Node
      *
-     * @param Node $Model
-     * @return Node|mixed
+     * @param TheNode $Model
+     * @return TheNode|mixed
      */
-    public function create(\Node $Model)
+    public function create(\Kubernetes\Model\Io\K8s\Api\Core\V1\Node $Model)
     {
         return $this->parseResponse(
         	$this->client->request('post',
@@ -110,7 +110,7 @@ class Node extends \Kubernetes\AbstractAPI
      * @configkey export	boolean
      * @param $name
      * @param array $queries
-     * @return Node|mixed
+     * @return TheNode|mixed
      */
     public function read($name, array $queries)
     {
@@ -129,10 +129,10 @@ class Node extends \Kubernetes\AbstractAPI
      * replace the specified Node
      *
      * @param $name
-     * @param Node $Model
-     * @return Node|mixed
+     * @param TheNode $Model
+     * @return TheNode|mixed
      */
-    public function replace($name, \Node $Model)
+    public function replace($name, \Kubernetes\Model\Io\K8s\Api\Core\V1\Node $Model)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -159,7 +159,7 @@ class Node extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return Status|mixed
      */
-    public function delete($name, \DeleteOptions $Model, array $queries)
+    public function delete($name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -178,9 +178,9 @@ class Node extends \Kubernetes\AbstractAPI
      *
      * @param $name
      * @param Patch $Model
-     * @return Node|mixed
+     * @return TheNode|mixed
      */
-    public function patch($name, \Patch $Model)
+    public function patch($name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model)
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -456,7 +456,7 @@ class Node extends \Kubernetes\AbstractAPI
      * read status of the specified Node
      *
      * @param $name
-     * @return Node|mixed
+     * @return TheNode|mixed
      */
     public function readStatus($name)
     {
@@ -474,10 +474,10 @@ class Node extends \Kubernetes\AbstractAPI
      * replace status of the specified Node
      *
      * @param $name
-     * @param Node $Model
-     * @return Node|mixed
+     * @param TheNode $Model
+     * @return TheNode|mixed
      */
-    public function replaceStatus($name, \Node $Model)
+    public function replaceStatus($name, \Kubernetes\Model\Io\K8s\Api\Core\V1\Node $Model)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -495,9 +495,9 @@ class Node extends \Kubernetes\AbstractAPI
      *
      * @param $name
      * @param Patch $Model
-     * @return Node|mixed
+     * @return TheNode|mixed
      */
-    public function patchStatus($name, \Patch $Model)
+    public function patchStatus($name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model)
     {
         return $this->parseResponse(
         	$this->client->request('patch',

@@ -3,17 +3,17 @@
 namespace Kubernetes\API;
 
 use \Kubernetes\Model\Io\K8s\Api\Apps\V1\DeploymentList as DeploymentList;
-use \Kubernetes\Model\Io\K8s\Api\Apps\V1\Deployment as Deployment;
-use \Kubernetes\Model\Io\K8s\Api\Apps\V1beta1\DeploymentList as DeploymentList;
-use \Kubernetes\Model\Io\K8s\Api\Apps\V1beta1\Deployment as Deployment;
-use \Kubernetes\Model\Io\K8s\Api\Apps\V1beta2\DeploymentList as DeploymentList;
-use \Kubernetes\Model\Io\K8s\Api\Apps\V1beta2\Deployment as Deployment;
-use \Kubernetes\Model\Io\K8s\Api\Extensions\V1beta1\DeploymentList as DeploymentList;
-use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions as DeleteOptions;
+use \Kubernetes\Model\Io\K8s\Api\Apps\V1\Deployment as TheDeployment;
 use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Status as Status;
+use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions as DeleteOptions;
 use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch as Patch;
-use \Kubernetes\Model\Io\K8s\Api\Extensions\V1beta1\Deployment as Deployment;
 use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\WatchEvent as WatchEvent;
+use \Kubernetes\Model\Io\K8s\Api\Apps\V1beta1\DeploymentList as DeploymentListV1beta1;
+use \Kubernetes\Model\Io\K8s\Api\Apps\V1beta1\Deployment as TheDeploymentV1beta1;
+use \Kubernetes\Model\Io\K8s\Api\Apps\V1beta2\DeploymentList as DeploymentListV1beta2;
+use \Kubernetes\Model\Io\K8s\Api\Apps\V1beta2\Deployment as TheDeploymentV1beta2;
+use \Kubernetes\Model\Io\K8s\Api\Extensions\V1beta1\DeploymentList as DeploymentListV1beta1Extensions;
+use \Kubernetes\Model\Io\K8s\Api\Extensions\V1beta1\Deployment as TheDeploymentV1beta1Extensions;
 
 class Deployment extends \Kubernetes\AbstractAPI
 {
@@ -54,11 +54,11 @@ class Deployment extends \Kubernetes\AbstractAPI
      * @configkey resourceVersion	string
      * @configkey timeoutSeconds	integer
      * @configkey watch	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param array $queries
      * @return DeploymentList|mixed
      */
-    public function list(string $namespace = 'default', array $queries)
+    public function list($namespace = 'default', array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -74,11 +74,11 @@ class Deployment extends \Kubernetes\AbstractAPI
     /**
      * create a Deployment
      *
-     * @param string $namespace
-     * @param Deployment $Model
-     * @return Deployment|mixed
+     * @param $namespace
+     * @param TheDeployment $Model
+     * @return TheDeployment|mixed
      */
-    public function create(string $namespace = 'default', \Deployment $Model)
+    public function create($namespace = 'default', \Kubernetes\Model\Io\K8s\Api\Apps\V1\Deployment $Model)
     {
         return $this->parseResponse(
         	$this->client->request('post',
@@ -110,11 +110,11 @@ class Deployment extends \Kubernetes\AbstractAPI
      * @configkey resourceVersion	string
      * @configkey timeoutSeconds	integer
      * @configkey watch	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteCollection(string $namespace = 'default', array $queries)
+    public function deleteCollection($namespace = 'default', array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -134,12 +134,12 @@ class Deployment extends \Kubernetes\AbstractAPI
      * @configkey export	boolean
      * @configkey exact	boolean
      * @configkey export	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param array $queries
-     * @return Deployment|mixed
+     * @return TheDeployment|mixed
      */
-    public function read(string $namespace = 'default', $name, array $queries)
+    public function read($namespace = 'default', $name, array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -155,12 +155,12 @@ class Deployment extends \Kubernetes\AbstractAPI
     /**
      * replace the specified Deployment
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @param Deployment $Model
-     * @return Deployment|mixed
+     * @param TheDeployment $Model
+     * @return TheDeployment|mixed
      */
-    public function replace(string $namespace = 'default', $name, \Deployment $Model)
+    public function replace($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Api\Apps\V1\Deployment $Model)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -182,13 +182,13 @@ class Deployment extends \Kubernetes\AbstractAPI
      * @configkey gracePeriodSeconds	integer
      * @configkey orphanDependents	boolean
      * @configkey propagationPolicy	string
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param DeleteOptions $Model
      * @param array $queries
      * @return Status|mixed
      */
-    public function delete(string $namespace = 'default', $name, \DeleteOptions $Model, array $queries)
+    public function delete($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -205,12 +205,12 @@ class Deployment extends \Kubernetes\AbstractAPI
     /**
      * partially update the specified Deployment
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param Patch $Model
-     * @return Deployment|mixed
+     * @return TheDeployment|mixed
      */
-    public function patch(string $namespace = 'default', $name, \Patch $Model)
+    public function patch($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model)
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -226,11 +226,11 @@ class Deployment extends \Kubernetes\AbstractAPI
     /**
      * read status of the specified Deployment
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @return Deployment|mixed
+     * @return TheDeployment|mixed
      */
-    public function readStatus(string $namespace = 'default', $name)
+    public function readStatus($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -245,12 +245,12 @@ class Deployment extends \Kubernetes\AbstractAPI
     /**
      * replace status of the specified Deployment
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @param Deployment $Model
-     * @return Deployment|mixed
+     * @param TheDeployment $Model
+     * @return TheDeployment|mixed
      */
-    public function replaceStatus(string $namespace = 'default', $name, \Deployment $Model)
+    public function replaceStatus($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Api\Apps\V1\Deployment $Model)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -266,12 +266,12 @@ class Deployment extends \Kubernetes\AbstractAPI
     /**
      * partially update status of the specified Deployment
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param Patch $Model
-     * @return Deployment|mixed
+     * @return TheDeployment|mixed
      */
-    public function patchStatus(string $namespace = 'default', $name, \Patch $Model)
+    public function patchStatus($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model)
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -304,10 +304,10 @@ class Deployment extends \Kubernetes\AbstractAPI
     /**
      * watch individual changes to a list of Deployment
      *
-     * @param string $namespace
+     * @param $namespace
      * @return WatchEvent|mixed
      */
-    public function watchList(string $namespace = 'default')
+    public function watchList($namespace = 'default')
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -322,11 +322,11 @@ class Deployment extends \Kubernetes\AbstractAPI
     /**
      * watch changes to an object of kind Deployment
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @return WatchEvent|mixed
      */
-    public function watch(string $namespace = 'default', $name)
+    public function watch($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -341,7 +341,7 @@ class Deployment extends \Kubernetes\AbstractAPI
     /**
      * list or watch objects of kind Deployment
      *
-     * @return DeploymentList|mixed
+     * @return DeploymentListV1beta1|mixed
      */
     public function listForAllNamespacesAppsV1beta1()
     {
@@ -374,11 +374,11 @@ class Deployment extends \Kubernetes\AbstractAPI
      * @configkey resourceVersion	string
      * @configkey timeoutSeconds	integer
      * @configkey watch	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param array $queries
-     * @return DeploymentList|mixed
+     * @return DeploymentListV1beta1|mixed
      */
-    public function listAppsV1beta1(string $namespace = 'default', array $queries)
+    public function listAppsV1beta1($namespace = 'default', array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -394,11 +394,11 @@ class Deployment extends \Kubernetes\AbstractAPI
     /**
      * create a Deployment
      *
-     * @param string $namespace
-     * @param Deployment $Model
-     * @return Deployment|mixed
+     * @param $namespace
+     * @param TheDeploymentV1beta1 $Model
+     * @return TheDeploymentV1beta1|mixed
      */
-    public function createAppsV1beta1(string $namespace = 'default', \Deployment $Model)
+    public function createAppsV1beta1($namespace = 'default', \Kubernetes\Model\Io\K8s\Api\Apps\V1beta1\Deployment $Model)
     {
         return $this->parseResponse(
         	$this->client->request('post',
@@ -430,11 +430,11 @@ class Deployment extends \Kubernetes\AbstractAPI
      * @configkey resourceVersion	string
      * @configkey timeoutSeconds	integer
      * @configkey watch	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteCollectionAppsV1beta1(string $namespace = 'default', array $queries)
+    public function deleteCollectionAppsV1beta1($namespace = 'default', array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -454,12 +454,12 @@ class Deployment extends \Kubernetes\AbstractAPI
      * @configkey export	boolean
      * @configkey exact	boolean
      * @configkey export	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param array $queries
-     * @return Deployment|mixed
+     * @return TheDeploymentV1beta1|mixed
      */
-    public function readAppsV1beta1(string $namespace = 'default', $name, array $queries)
+    public function readAppsV1beta1($namespace = 'default', $name, array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -475,12 +475,12 @@ class Deployment extends \Kubernetes\AbstractAPI
     /**
      * replace the specified Deployment
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @param Deployment $Model
-     * @return Deployment|mixed
+     * @param TheDeploymentV1beta1 $Model
+     * @return TheDeploymentV1beta1|mixed
      */
-    public function replaceAppsV1beta1(string $namespace = 'default', $name, \Deployment $Model)
+    public function replaceAppsV1beta1($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Api\Apps\V1beta1\Deployment $Model)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -502,13 +502,13 @@ class Deployment extends \Kubernetes\AbstractAPI
      * @configkey gracePeriodSeconds	integer
      * @configkey orphanDependents	boolean
      * @configkey propagationPolicy	string
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param DeleteOptions $Model
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteAppsV1beta1(string $namespace = 'default', $name, \DeleteOptions $Model, array $queries)
+    public function deleteAppsV1beta1($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -525,12 +525,12 @@ class Deployment extends \Kubernetes\AbstractAPI
     /**
      * partially update the specified Deployment
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param Patch $Model
-     * @return Deployment|mixed
+     * @return TheDeploymentV1beta1|mixed
      */
-    public function patchAppsV1beta1(string $namespace = 'default', $name, \Patch $Model)
+    public function patchAppsV1beta1($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model)
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -546,11 +546,11 @@ class Deployment extends \Kubernetes\AbstractAPI
     /**
      * read status of the specified Deployment
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @return Deployment|mixed
+     * @return TheDeploymentV1beta1|mixed
      */
-    public function readStatusAppsV1beta1(string $namespace = 'default', $name)
+    public function readStatusAppsV1beta1($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -565,12 +565,12 @@ class Deployment extends \Kubernetes\AbstractAPI
     /**
      * replace status of the specified Deployment
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @param Deployment $Model
-     * @return Deployment|mixed
+     * @param TheDeploymentV1beta1 $Model
+     * @return TheDeploymentV1beta1|mixed
      */
-    public function replaceStatusAppsV1beta1(string $namespace = 'default', $name, \Deployment $Model)
+    public function replaceStatusAppsV1beta1($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Api\Apps\V1beta1\Deployment $Model)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -586,12 +586,12 @@ class Deployment extends \Kubernetes\AbstractAPI
     /**
      * partially update status of the specified Deployment
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param Patch $Model
-     * @return Deployment|mixed
+     * @return TheDeploymentV1beta1|mixed
      */
-    public function patchStatusAppsV1beta1(string $namespace = 'default', $name, \Patch $Model)
+    public function patchStatusAppsV1beta1($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model)
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -624,10 +624,10 @@ class Deployment extends \Kubernetes\AbstractAPI
     /**
      * watch individual changes to a list of Deployment
      *
-     * @param string $namespace
+     * @param $namespace
      * @return WatchEvent|mixed
      */
-    public function watchListAppsV1beta1(string $namespace = 'default')
+    public function watchListAppsV1beta1($namespace = 'default')
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -642,11 +642,11 @@ class Deployment extends \Kubernetes\AbstractAPI
     /**
      * watch changes to an object of kind Deployment
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @return WatchEvent|mixed
      */
-    public function watchAppsV1beta1(string $namespace = 'default', $name)
+    public function watchAppsV1beta1($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -661,7 +661,7 @@ class Deployment extends \Kubernetes\AbstractAPI
     /**
      * list or watch objects of kind Deployment
      *
-     * @return DeploymentList|mixed
+     * @return DeploymentListV1beta2|mixed
      */
     public function listForAllNamespacesAppsV1beta2()
     {
@@ -694,11 +694,11 @@ class Deployment extends \Kubernetes\AbstractAPI
      * @configkey resourceVersion	string
      * @configkey timeoutSeconds	integer
      * @configkey watch	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param array $queries
-     * @return DeploymentList|mixed
+     * @return DeploymentListV1beta2|mixed
      */
-    public function listAppsV1beta2(string $namespace = 'default', array $queries)
+    public function listAppsV1beta2($namespace = 'default', array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -714,11 +714,11 @@ class Deployment extends \Kubernetes\AbstractAPI
     /**
      * create a Deployment
      *
-     * @param string $namespace
-     * @param Deployment $Model
-     * @return Deployment|mixed
+     * @param $namespace
+     * @param TheDeploymentV1beta2 $Model
+     * @return TheDeploymentV1beta2|mixed
      */
-    public function createAppsV1beta2(string $namespace = 'default', \Deployment $Model)
+    public function createAppsV1beta2($namespace = 'default', \Kubernetes\Model\Io\K8s\Api\Apps\V1beta2\Deployment $Model)
     {
         return $this->parseResponse(
         	$this->client->request('post',
@@ -750,11 +750,11 @@ class Deployment extends \Kubernetes\AbstractAPI
      * @configkey resourceVersion	string
      * @configkey timeoutSeconds	integer
      * @configkey watch	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteCollectionAppsV1beta2(string $namespace = 'default', array $queries)
+    public function deleteCollectionAppsV1beta2($namespace = 'default', array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -774,12 +774,12 @@ class Deployment extends \Kubernetes\AbstractAPI
      * @configkey export	boolean
      * @configkey exact	boolean
      * @configkey export	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param array $queries
-     * @return Deployment|mixed
+     * @return TheDeploymentV1beta2|mixed
      */
-    public function readAppsV1beta2(string $namespace = 'default', $name, array $queries)
+    public function readAppsV1beta2($namespace = 'default', $name, array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -795,12 +795,12 @@ class Deployment extends \Kubernetes\AbstractAPI
     /**
      * replace the specified Deployment
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @param Deployment $Model
-     * @return Deployment|mixed
+     * @param TheDeploymentV1beta2 $Model
+     * @return TheDeploymentV1beta2|mixed
      */
-    public function replaceAppsV1beta2(string $namespace = 'default', $name, \Deployment $Model)
+    public function replaceAppsV1beta2($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Api\Apps\V1beta2\Deployment $Model)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -822,13 +822,13 @@ class Deployment extends \Kubernetes\AbstractAPI
      * @configkey gracePeriodSeconds	integer
      * @configkey orphanDependents	boolean
      * @configkey propagationPolicy	string
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param DeleteOptions $Model
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteAppsV1beta2(string $namespace = 'default', $name, \DeleteOptions $Model, array $queries)
+    public function deleteAppsV1beta2($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -845,12 +845,12 @@ class Deployment extends \Kubernetes\AbstractAPI
     /**
      * partially update the specified Deployment
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param Patch $Model
-     * @return Deployment|mixed
+     * @return TheDeploymentV1beta2|mixed
      */
-    public function patchAppsV1beta2(string $namespace = 'default', $name, \Patch $Model)
+    public function patchAppsV1beta2($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model)
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -866,11 +866,11 @@ class Deployment extends \Kubernetes\AbstractAPI
     /**
      * read status of the specified Deployment
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @return Deployment|mixed
+     * @return TheDeploymentV1beta2|mixed
      */
-    public function readStatusAppsV1beta2(string $namespace = 'default', $name)
+    public function readStatusAppsV1beta2($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -885,12 +885,12 @@ class Deployment extends \Kubernetes\AbstractAPI
     /**
      * replace status of the specified Deployment
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @param Deployment $Model
-     * @return Deployment|mixed
+     * @param TheDeploymentV1beta2 $Model
+     * @return TheDeploymentV1beta2|mixed
      */
-    public function replaceStatusAppsV1beta2(string $namespace = 'default', $name, \Deployment $Model)
+    public function replaceStatusAppsV1beta2($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Api\Apps\V1beta2\Deployment $Model)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -906,12 +906,12 @@ class Deployment extends \Kubernetes\AbstractAPI
     /**
      * partially update status of the specified Deployment
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param Patch $Model
-     * @return Deployment|mixed
+     * @return TheDeploymentV1beta2|mixed
      */
-    public function patchStatusAppsV1beta2(string $namespace = 'default', $name, \Patch $Model)
+    public function patchStatusAppsV1beta2($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model)
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -944,10 +944,10 @@ class Deployment extends \Kubernetes\AbstractAPI
     /**
      * watch individual changes to a list of Deployment
      *
-     * @param string $namespace
+     * @param $namespace
      * @return WatchEvent|mixed
      */
-    public function watchListAppsV1beta2(string $namespace = 'default')
+    public function watchListAppsV1beta2($namespace = 'default')
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -962,11 +962,11 @@ class Deployment extends \Kubernetes\AbstractAPI
     /**
      * watch changes to an object of kind Deployment
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @return WatchEvent|mixed
      */
-    public function watchAppsV1beta2(string $namespace = 'default', $name)
+    public function watchAppsV1beta2($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -981,7 +981,7 @@ class Deployment extends \Kubernetes\AbstractAPI
     /**
      * list or watch objects of kind Deployment
      *
-     * @return DeploymentList|mixed
+     * @return DeploymentListV1beta1Extensions|mixed
      */
     public function listForAllNamespacesExtensionsV1beta1()
     {
@@ -1014,11 +1014,11 @@ class Deployment extends \Kubernetes\AbstractAPI
      * @configkey resourceVersion	string
      * @configkey timeoutSeconds	integer
      * @configkey watch	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param array $queries
-     * @return DeploymentList|mixed
+     * @return DeploymentListV1beta1Extensions|mixed
      */
-    public function listExtensionsV1beta1(string $namespace = 'default', array $queries)
+    public function listExtensionsV1beta1($namespace = 'default', array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -1034,11 +1034,11 @@ class Deployment extends \Kubernetes\AbstractAPI
     /**
      * create a Deployment
      *
-     * @param string $namespace
-     * @param Deployment $Model
-     * @return Deployment|mixed
+     * @param $namespace
+     * @param TheDeploymentV1beta1Extensions $Model
+     * @return TheDeploymentV1beta1Extensions|mixed
      */
-    public function createExtensionsV1beta1(string $namespace = 'default', \Deployment $Model)
+    public function createExtensionsV1beta1($namespace = 'default', \Kubernetes\Model\Io\K8s\Api\Extensions\V1beta1\Deployment $Model)
     {
         return $this->parseResponse(
         	$this->client->request('post',
@@ -1070,11 +1070,11 @@ class Deployment extends \Kubernetes\AbstractAPI
      * @configkey resourceVersion	string
      * @configkey timeoutSeconds	integer
      * @configkey watch	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteCollectionExtensionsV1beta1(string $namespace = 'default', array $queries)
+    public function deleteCollectionExtensionsV1beta1($namespace = 'default', array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -1094,12 +1094,12 @@ class Deployment extends \Kubernetes\AbstractAPI
      * @configkey export	boolean
      * @configkey exact	boolean
      * @configkey export	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param array $queries
-     * @return Deployment|mixed
+     * @return TheDeploymentV1beta1Extensions|mixed
      */
-    public function readExtensionsV1beta1(string $namespace = 'default', $name, array $queries)
+    public function readExtensionsV1beta1($namespace = 'default', $name, array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -1115,12 +1115,12 @@ class Deployment extends \Kubernetes\AbstractAPI
     /**
      * replace the specified Deployment
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @param Deployment $Model
-     * @return Deployment|mixed
+     * @param TheDeploymentV1beta1Extensions $Model
+     * @return TheDeploymentV1beta1Extensions|mixed
      */
-    public function replaceExtensionsV1beta1(string $namespace = 'default', $name, \Deployment $Model)
+    public function replaceExtensionsV1beta1($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Api\Extensions\V1beta1\Deployment $Model)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -1142,13 +1142,13 @@ class Deployment extends \Kubernetes\AbstractAPI
      * @configkey gracePeriodSeconds	integer
      * @configkey orphanDependents	boolean
      * @configkey propagationPolicy	string
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param DeleteOptions $Model
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteExtensionsV1beta1(string $namespace = 'default', $name, \DeleteOptions $Model, array $queries)
+    public function deleteExtensionsV1beta1($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -1165,12 +1165,12 @@ class Deployment extends \Kubernetes\AbstractAPI
     /**
      * partially update the specified Deployment
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param Patch $Model
-     * @return Deployment|mixed
+     * @return TheDeploymentV1beta1Extensions|mixed
      */
-    public function patchExtensionsV1beta1(string $namespace = 'default', $name, \Patch $Model)
+    public function patchExtensionsV1beta1($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model)
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -1186,11 +1186,11 @@ class Deployment extends \Kubernetes\AbstractAPI
     /**
      * read status of the specified Deployment
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @return Deployment|mixed
+     * @return TheDeploymentV1beta1Extensions|mixed
      */
-    public function readStatusExtensionsV1beta1(string $namespace = 'default', $name)
+    public function readStatusExtensionsV1beta1($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -1205,12 +1205,12 @@ class Deployment extends \Kubernetes\AbstractAPI
     /**
      * replace status of the specified Deployment
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @param Deployment $Model
-     * @return Deployment|mixed
+     * @param TheDeploymentV1beta1Extensions $Model
+     * @return TheDeploymentV1beta1Extensions|mixed
      */
-    public function replaceStatusExtensionsV1beta1(string $namespace = 'default', $name, \Deployment $Model)
+    public function replaceStatusExtensionsV1beta1($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Api\Extensions\V1beta1\Deployment $Model)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -1226,12 +1226,12 @@ class Deployment extends \Kubernetes\AbstractAPI
     /**
      * partially update status of the specified Deployment
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param Patch $Model
-     * @return Deployment|mixed
+     * @return TheDeploymentV1beta1Extensions|mixed
      */
-    public function patchStatusExtensionsV1beta1(string $namespace = 'default', $name, \Patch $Model)
+    public function patchStatusExtensionsV1beta1($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model)
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -1264,10 +1264,10 @@ class Deployment extends \Kubernetes\AbstractAPI
     /**
      * watch individual changes to a list of Deployment
      *
-     * @param string $namespace
+     * @param $namespace
      * @return WatchEvent|mixed
      */
-    public function watchListExtensionsV1beta1(string $namespace = 'default')
+    public function watchListExtensionsV1beta1($namespace = 'default')
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -1282,11 +1282,11 @@ class Deployment extends \Kubernetes\AbstractAPI
     /**
      * watch changes to an object of kind Deployment
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @return WatchEvent|mixed
      */
-    public function watchExtensionsV1beta1(string $namespace = 'default', $name)
+    public function watchExtensionsV1beta1($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('get',

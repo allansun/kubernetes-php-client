@@ -76,7 +76,12 @@ class API extends AbstractClassFile
 
         foreach ($methodParameters as $Parameter) {
             /** @var ParameterGenerator $Parameter $ParamTag */
-            $tags[] = new ParamTag($Parameter->getName(), $Parameter->getType());
+
+            $tags[] = new ParamTag($Parameter->getName(),
+                (!$Parameter->getType() || in_array($Parameter->getType(), self::$internalPhpTypes))
+                    ? $Parameter->getType()
+                    : $this->getUseAlias($Parameter->getType())
+            );
         }
 
         $responseTypes = [];
@@ -168,7 +173,6 @@ class API extends AbstractClassFile
             foreach ((array)$pathParameters[1] as $parameter) {
                 $ParameterGenerator = new ParameterGenerator($parameter);
                 if ('namespace' == $parameter) {
-                    $ParameterGenerator->setType('string');
                     $ParameterGenerator->setDefaultValue('default');
                 }
 
@@ -181,9 +185,9 @@ class API extends AbstractClassFile
             if ('body' == $Parameter->in) {
                 if ($Parameter->schema) {
                     $parameters[] =
-                        new ParameterGenerator('Model',
-                            $this->getUseAlias('\\Kubernetes\\Model\\' . Utility::convertRefToClass
-                                ($Parameter->schema->_ref)));
+                        new ParameterGenerator('Model'
+                            ,'\\Kubernetes\\Model\\' . Utility::convertRefToClass($Parameter->schema->_ref)
+                        );
                 }
             } else {
                 $queryParameters[] = $Parameter;

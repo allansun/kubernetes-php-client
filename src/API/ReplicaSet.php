@@ -2,16 +2,16 @@
 
 namespace Kubernetes\API;
 
-use \Kubernetes\Model\Io\K8s\Api\Apps\V1\ReplicaSet as ReplicaSet;
 use \Kubernetes\Model\Io\K8s\Api\Apps\V1\ReplicaSetList as ReplicaSetList;
-use \Kubernetes\Model\Io\K8s\Api\Apps\V1beta2\ReplicaSet as ReplicaSet;
-use \Kubernetes\Model\Io\K8s\Api\Apps\V1beta2\ReplicaSetList as ReplicaSetList;
-use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions as DeleteOptions;
+use \Kubernetes\Model\Io\K8s\Api\Apps\V1\ReplicaSet as TheReplicaSet;
 use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Status as Status;
+use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions as DeleteOptions;
 use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch as Patch;
-use \Kubernetes\Model\Io\K8s\Api\Extensions\V1beta1\ReplicaSet as ReplicaSet;
-use \Kubernetes\Model\Io\K8s\Api\Extensions\V1beta1\ReplicaSetList as ReplicaSetList;
 use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\WatchEvent as WatchEvent;
+use \Kubernetes\Model\Io\K8s\Api\Apps\V1beta2\ReplicaSetList as ReplicaSetListV1beta2;
+use \Kubernetes\Model\Io\K8s\Api\Apps\V1beta2\ReplicaSet as TheReplicaSetV1beta2;
+use \Kubernetes\Model\Io\K8s\Api\Extensions\V1beta1\ReplicaSetList as ReplicaSetListV1beta1;
+use \Kubernetes\Model\Io\K8s\Api\Extensions\V1beta1\ReplicaSet as TheReplicaSetV1beta1;
 
 class ReplicaSet extends \Kubernetes\AbstractAPI
 {
@@ -35,11 +35,11 @@ class ReplicaSet extends \Kubernetes\AbstractAPI
      * @configkey resourceVersion	string
      * @configkey timeoutSeconds	integer
      * @configkey watch	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param array $queries
      * @return ReplicaSetList|mixed
      */
-    public function list(string $namespace = 'default', array $queries)
+    public function list($namespace = 'default', array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -55,11 +55,11 @@ class ReplicaSet extends \Kubernetes\AbstractAPI
     /**
      * create a ReplicaSet
      *
-     * @param string $namespace
-     * @param ReplicaSet $Model
-     * @return ReplicaSet|mixed
+     * @param $namespace
+     * @param TheReplicaSet $Model
+     * @return TheReplicaSet|mixed
      */
-    public function create(string $namespace = 'default', \ReplicaSet $Model)
+    public function create($namespace = 'default', \Kubernetes\Model\Io\K8s\Api\Apps\V1\ReplicaSet $Model)
     {
         return $this->parseResponse(
         	$this->client->request('post',
@@ -91,11 +91,11 @@ class ReplicaSet extends \Kubernetes\AbstractAPI
      * @configkey resourceVersion	string
      * @configkey timeoutSeconds	integer
      * @configkey watch	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteCollection(string $namespace = 'default', array $queries)
+    public function deleteCollection($namespace = 'default', array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -115,12 +115,12 @@ class ReplicaSet extends \Kubernetes\AbstractAPI
      * @configkey export	boolean
      * @configkey exact	boolean
      * @configkey export	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param array $queries
-     * @return ReplicaSet|mixed
+     * @return TheReplicaSet|mixed
      */
-    public function read(string $namespace = 'default', $name, array $queries)
+    public function read($namespace = 'default', $name, array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -136,12 +136,12 @@ class ReplicaSet extends \Kubernetes\AbstractAPI
     /**
      * replace the specified ReplicaSet
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @param ReplicaSet $Model
-     * @return ReplicaSet|mixed
+     * @param TheReplicaSet $Model
+     * @return TheReplicaSet|mixed
      */
-    public function replace(string $namespace = 'default', $name, \ReplicaSet $Model)
+    public function replace($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Api\Apps\V1\ReplicaSet $Model)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -163,13 +163,13 @@ class ReplicaSet extends \Kubernetes\AbstractAPI
      * @configkey gracePeriodSeconds	integer
      * @configkey orphanDependents	boolean
      * @configkey propagationPolicy	string
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param DeleteOptions $Model
      * @param array $queries
      * @return Status|mixed
      */
-    public function delete(string $namespace = 'default', $name, \DeleteOptions $Model, array $queries)
+    public function delete($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -186,12 +186,12 @@ class ReplicaSet extends \Kubernetes\AbstractAPI
     /**
      * partially update the specified ReplicaSet
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param Patch $Model
-     * @return ReplicaSet|mixed
+     * @return TheReplicaSet|mixed
      */
-    public function patch(string $namespace = 'default', $name, \Patch $Model)
+    public function patch($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model)
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -207,11 +207,11 @@ class ReplicaSet extends \Kubernetes\AbstractAPI
     /**
      * read status of the specified ReplicaSet
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @return ReplicaSet|mixed
+     * @return TheReplicaSet|mixed
      */
-    public function readStatus(string $namespace = 'default', $name)
+    public function readStatus($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -226,12 +226,12 @@ class ReplicaSet extends \Kubernetes\AbstractAPI
     /**
      * replace status of the specified ReplicaSet
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @param ReplicaSet $Model
-     * @return ReplicaSet|mixed
+     * @param TheReplicaSet $Model
+     * @return TheReplicaSet|mixed
      */
-    public function replaceStatus(string $namespace = 'default', $name, \ReplicaSet $Model)
+    public function replaceStatus($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Api\Apps\V1\ReplicaSet $Model)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -247,12 +247,12 @@ class ReplicaSet extends \Kubernetes\AbstractAPI
     /**
      * partially update status of the specified ReplicaSet
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param Patch $Model
-     * @return ReplicaSet|mixed
+     * @return TheReplicaSet|mixed
      */
-    public function patchStatus(string $namespace = 'default', $name, \Patch $Model)
+    public function patchStatus($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model)
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -285,10 +285,10 @@ class ReplicaSet extends \Kubernetes\AbstractAPI
     /**
      * watch individual changes to a list of ReplicaSet
      *
-     * @param string $namespace
+     * @param $namespace
      * @return WatchEvent|mixed
      */
-    public function watchList(string $namespace = 'default')
+    public function watchList($namespace = 'default')
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -303,11 +303,11 @@ class ReplicaSet extends \Kubernetes\AbstractAPI
     /**
      * watch changes to an object of kind ReplicaSet
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @return WatchEvent|mixed
      */
-    public function watch(string $namespace = 'default', $name)
+    public function watch($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -355,11 +355,11 @@ class ReplicaSet extends \Kubernetes\AbstractAPI
      * @configkey resourceVersion	string
      * @configkey timeoutSeconds	integer
      * @configkey watch	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param array $queries
-     * @return ReplicaSetList|mixed
+     * @return ReplicaSetListV1beta2|mixed
      */
-    public function listAppsV1beta2(string $namespace = 'default', array $queries)
+    public function listAppsV1beta2($namespace = 'default', array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -375,11 +375,11 @@ class ReplicaSet extends \Kubernetes\AbstractAPI
     /**
      * create a ReplicaSet
      *
-     * @param string $namespace
-     * @param ReplicaSet $Model
-     * @return ReplicaSet|mixed
+     * @param $namespace
+     * @param TheReplicaSetV1beta2 $Model
+     * @return TheReplicaSetV1beta2|mixed
      */
-    public function createAppsV1beta2(string $namespace = 'default', \ReplicaSet $Model)
+    public function createAppsV1beta2($namespace = 'default', \Kubernetes\Model\Io\K8s\Api\Apps\V1beta2\ReplicaSet $Model)
     {
         return $this->parseResponse(
         	$this->client->request('post',
@@ -411,11 +411,11 @@ class ReplicaSet extends \Kubernetes\AbstractAPI
      * @configkey resourceVersion	string
      * @configkey timeoutSeconds	integer
      * @configkey watch	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteCollectionAppsV1beta2(string $namespace = 'default', array $queries)
+    public function deleteCollectionAppsV1beta2($namespace = 'default', array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -435,12 +435,12 @@ class ReplicaSet extends \Kubernetes\AbstractAPI
      * @configkey export	boolean
      * @configkey exact	boolean
      * @configkey export	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param array $queries
-     * @return ReplicaSet|mixed
+     * @return TheReplicaSetV1beta2|mixed
      */
-    public function readAppsV1beta2(string $namespace = 'default', $name, array $queries)
+    public function readAppsV1beta2($namespace = 'default', $name, array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -456,12 +456,12 @@ class ReplicaSet extends \Kubernetes\AbstractAPI
     /**
      * replace the specified ReplicaSet
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @param ReplicaSet $Model
-     * @return ReplicaSet|mixed
+     * @param TheReplicaSetV1beta2 $Model
+     * @return TheReplicaSetV1beta2|mixed
      */
-    public function replaceAppsV1beta2(string $namespace = 'default', $name, \ReplicaSet $Model)
+    public function replaceAppsV1beta2($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Api\Apps\V1beta2\ReplicaSet $Model)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -483,13 +483,13 @@ class ReplicaSet extends \Kubernetes\AbstractAPI
      * @configkey gracePeriodSeconds	integer
      * @configkey orphanDependents	boolean
      * @configkey propagationPolicy	string
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param DeleteOptions $Model
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteAppsV1beta2(string $namespace = 'default', $name, \DeleteOptions $Model, array $queries)
+    public function deleteAppsV1beta2($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -506,12 +506,12 @@ class ReplicaSet extends \Kubernetes\AbstractAPI
     /**
      * partially update the specified ReplicaSet
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param Patch $Model
-     * @return ReplicaSet|mixed
+     * @return TheReplicaSetV1beta2|mixed
      */
-    public function patchAppsV1beta2(string $namespace = 'default', $name, \Patch $Model)
+    public function patchAppsV1beta2($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model)
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -527,11 +527,11 @@ class ReplicaSet extends \Kubernetes\AbstractAPI
     /**
      * read status of the specified ReplicaSet
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @return ReplicaSet|mixed
+     * @return TheReplicaSetV1beta2|mixed
      */
-    public function readStatusAppsV1beta2(string $namespace = 'default', $name)
+    public function readStatusAppsV1beta2($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -546,12 +546,12 @@ class ReplicaSet extends \Kubernetes\AbstractAPI
     /**
      * replace status of the specified ReplicaSet
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @param ReplicaSet $Model
-     * @return ReplicaSet|mixed
+     * @param TheReplicaSetV1beta2 $Model
+     * @return TheReplicaSetV1beta2|mixed
      */
-    public function replaceStatusAppsV1beta2(string $namespace = 'default', $name, \ReplicaSet $Model)
+    public function replaceStatusAppsV1beta2($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Api\Apps\V1beta2\ReplicaSet $Model)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -567,12 +567,12 @@ class ReplicaSet extends \Kubernetes\AbstractAPI
     /**
      * partially update status of the specified ReplicaSet
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param Patch $Model
-     * @return ReplicaSet|mixed
+     * @return TheReplicaSetV1beta2|mixed
      */
-    public function patchStatusAppsV1beta2(string $namespace = 'default', $name, \Patch $Model)
+    public function patchStatusAppsV1beta2($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model)
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -588,7 +588,7 @@ class ReplicaSet extends \Kubernetes\AbstractAPI
     /**
      * list or watch objects of kind ReplicaSet
      *
-     * @return ReplicaSetList|mixed
+     * @return ReplicaSetListV1beta2|mixed
      */
     public function listForAllNamespacesAppsV1beta2()
     {
@@ -605,10 +605,10 @@ class ReplicaSet extends \Kubernetes\AbstractAPI
     /**
      * watch individual changes to a list of ReplicaSet
      *
-     * @param string $namespace
+     * @param $namespace
      * @return WatchEvent|mixed
      */
-    public function watchListAppsV1beta2(string $namespace = 'default')
+    public function watchListAppsV1beta2($namespace = 'default')
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -623,11 +623,11 @@ class ReplicaSet extends \Kubernetes\AbstractAPI
     /**
      * watch changes to an object of kind ReplicaSet
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @return WatchEvent|mixed
      */
-    public function watchAppsV1beta2(string $namespace = 'default', $name)
+    public function watchAppsV1beta2($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -675,11 +675,11 @@ class ReplicaSet extends \Kubernetes\AbstractAPI
      * @configkey resourceVersion	string
      * @configkey timeoutSeconds	integer
      * @configkey watch	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param array $queries
-     * @return ReplicaSetList|mixed
+     * @return ReplicaSetListV1beta1|mixed
      */
-    public function listExtensionsV1beta1(string $namespace = 'default', array $queries)
+    public function listExtensionsV1beta1($namespace = 'default', array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -695,11 +695,11 @@ class ReplicaSet extends \Kubernetes\AbstractAPI
     /**
      * create a ReplicaSet
      *
-     * @param string $namespace
-     * @param ReplicaSet $Model
-     * @return ReplicaSet|mixed
+     * @param $namespace
+     * @param TheReplicaSetV1beta1 $Model
+     * @return TheReplicaSetV1beta1|mixed
      */
-    public function createExtensionsV1beta1(string $namespace = 'default', \ReplicaSet $Model)
+    public function createExtensionsV1beta1($namespace = 'default', \Kubernetes\Model\Io\K8s\Api\Extensions\V1beta1\ReplicaSet $Model)
     {
         return $this->parseResponse(
         	$this->client->request('post',
@@ -731,11 +731,11 @@ class ReplicaSet extends \Kubernetes\AbstractAPI
      * @configkey resourceVersion	string
      * @configkey timeoutSeconds	integer
      * @configkey watch	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteCollectionExtensionsV1beta1(string $namespace = 'default', array $queries)
+    public function deleteCollectionExtensionsV1beta1($namespace = 'default', array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -755,12 +755,12 @@ class ReplicaSet extends \Kubernetes\AbstractAPI
      * @configkey export	boolean
      * @configkey exact	boolean
      * @configkey export	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param array $queries
-     * @return ReplicaSet|mixed
+     * @return TheReplicaSetV1beta1|mixed
      */
-    public function readExtensionsV1beta1(string $namespace = 'default', $name, array $queries)
+    public function readExtensionsV1beta1($namespace = 'default', $name, array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -776,12 +776,12 @@ class ReplicaSet extends \Kubernetes\AbstractAPI
     /**
      * replace the specified ReplicaSet
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @param ReplicaSet $Model
-     * @return ReplicaSet|mixed
+     * @param TheReplicaSetV1beta1 $Model
+     * @return TheReplicaSetV1beta1|mixed
      */
-    public function replaceExtensionsV1beta1(string $namespace = 'default', $name, \ReplicaSet $Model)
+    public function replaceExtensionsV1beta1($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Api\Extensions\V1beta1\ReplicaSet $Model)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -803,13 +803,13 @@ class ReplicaSet extends \Kubernetes\AbstractAPI
      * @configkey gracePeriodSeconds	integer
      * @configkey orphanDependents	boolean
      * @configkey propagationPolicy	string
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param DeleteOptions $Model
      * @param array $queries
      * @return Status|mixed
      */
-    public function deleteExtensionsV1beta1(string $namespace = 'default', $name, \DeleteOptions $Model, array $queries)
+    public function deleteExtensionsV1beta1($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -826,12 +826,12 @@ class ReplicaSet extends \Kubernetes\AbstractAPI
     /**
      * partially update the specified ReplicaSet
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param Patch $Model
-     * @return ReplicaSet|mixed
+     * @return TheReplicaSetV1beta1|mixed
      */
-    public function patchExtensionsV1beta1(string $namespace = 'default', $name, \Patch $Model)
+    public function patchExtensionsV1beta1($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model)
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -847,11 +847,11 @@ class ReplicaSet extends \Kubernetes\AbstractAPI
     /**
      * read status of the specified ReplicaSet
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @return ReplicaSet|mixed
+     * @return TheReplicaSetV1beta1|mixed
      */
-    public function readStatusExtensionsV1beta1(string $namespace = 'default', $name)
+    public function readStatusExtensionsV1beta1($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -866,12 +866,12 @@ class ReplicaSet extends \Kubernetes\AbstractAPI
     /**
      * replace status of the specified ReplicaSet
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @param ReplicaSet $Model
-     * @return ReplicaSet|mixed
+     * @param TheReplicaSetV1beta1 $Model
+     * @return TheReplicaSetV1beta1|mixed
      */
-    public function replaceStatusExtensionsV1beta1(string $namespace = 'default', $name, \ReplicaSet $Model)
+    public function replaceStatusExtensionsV1beta1($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Api\Extensions\V1beta1\ReplicaSet $Model)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -887,12 +887,12 @@ class ReplicaSet extends \Kubernetes\AbstractAPI
     /**
      * partially update status of the specified ReplicaSet
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param Patch $Model
-     * @return ReplicaSet|mixed
+     * @return TheReplicaSetV1beta1|mixed
      */
-    public function patchStatusExtensionsV1beta1(string $namespace = 'default', $name, \Patch $Model)
+    public function patchStatusExtensionsV1beta1($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model)
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -908,7 +908,7 @@ class ReplicaSet extends \Kubernetes\AbstractAPI
     /**
      * list or watch objects of kind ReplicaSet
      *
-     * @return ReplicaSetList|mixed
+     * @return ReplicaSetListV1beta1|mixed
      */
     public function listForAllNamespacesExtensionsV1beta1()
     {
@@ -925,10 +925,10 @@ class ReplicaSet extends \Kubernetes\AbstractAPI
     /**
      * watch individual changes to a list of ReplicaSet
      *
-     * @param string $namespace
+     * @param $namespace
      * @return WatchEvent|mixed
      */
-    public function watchListExtensionsV1beta1(string $namespace = 'default')
+    public function watchListExtensionsV1beta1($namespace = 'default')
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -943,11 +943,11 @@ class ReplicaSet extends \Kubernetes\AbstractAPI
     /**
      * watch changes to an object of kind ReplicaSet
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @return WatchEvent|mixed
      */
-    public function watchExtensionsV1beta1(string $namespace = 'default', $name)
+    public function watchExtensionsV1beta1($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('get',

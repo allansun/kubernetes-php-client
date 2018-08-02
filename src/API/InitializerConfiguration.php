@@ -3,10 +3,10 @@
 namespace Kubernetes\API;
 
 use \Kubernetes\Model\Io\K8s\Api\Admissionregistration\V1alpha1\InitializerConfigurationList as InitializerConfigurationList;
-use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions as DeleteOptions;
+use \Kubernetes\Model\Io\K8s\Api\Admissionregistration\V1alpha1\InitializerConfiguration as TheInitializerConfiguration;
 use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Status as Status;
+use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions as DeleteOptions;
 use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch as Patch;
-use \Kubernetes\Model\Io\K8s\Api\Admissionregistration\V1alpha1\InitializerConfiguration as InitializerConfiguration;
 use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\WatchEvent as WatchEvent;
 
 class InitializerConfiguration extends \Kubernetes\AbstractAPI
@@ -50,10 +50,10 @@ class InitializerConfiguration extends \Kubernetes\AbstractAPI
     /**
      * create an InitializerConfiguration
      *
-     * @param InitializerConfiguration $Model
-     * @return InitializerConfiguration|mixed
+     * @param TheInitializerConfiguration $Model
+     * @return TheInitializerConfiguration|mixed
      */
-    public function create(\InitializerConfiguration $Model)
+    public function create(\Kubernetes\Model\Io\K8s\Api\Admissionregistration\V1alpha1\InitializerConfiguration $Model)
     {
         return $this->parseResponse(
         	$this->client->request('post',
@@ -110,7 +110,7 @@ class InitializerConfiguration extends \Kubernetes\AbstractAPI
      * @configkey export	boolean
      * @param $name
      * @param array $queries
-     * @return InitializerConfiguration|mixed
+     * @return TheInitializerConfiguration|mixed
      */
     public function read($name, array $queries)
     {
@@ -129,10 +129,10 @@ class InitializerConfiguration extends \Kubernetes\AbstractAPI
      * replace the specified InitializerConfiguration
      *
      * @param $name
-     * @param InitializerConfiguration $Model
-     * @return InitializerConfiguration|mixed
+     * @param TheInitializerConfiguration $Model
+     * @return TheInitializerConfiguration|mixed
      */
-    public function replace($name, \InitializerConfiguration $Model)
+    public function replace($name, \Kubernetes\Model\Io\K8s\Api\Admissionregistration\V1alpha1\InitializerConfiguration $Model)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -159,7 +159,7 @@ class InitializerConfiguration extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return Status|mixed
      */
-    public function delete($name, \DeleteOptions $Model, array $queries)
+    public function delete($name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -178,9 +178,9 @@ class InitializerConfiguration extends \Kubernetes\AbstractAPI
      *
      * @param $name
      * @param Patch $Model
-     * @return InitializerConfiguration|mixed
+     * @return TheInitializerConfiguration|mixed
      */
-    public function patch($name, \Patch $Model)
+    public function patch($name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model)
     {
         return $this->parseResponse(
         	$this->client->request('patch',

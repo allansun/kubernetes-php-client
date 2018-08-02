@@ -3,10 +3,10 @@
 namespace Kubernetes\API;
 
 use \Kubernetes\Model\Io\K8s\Api\Core\V1\NamespaceList as NamespaceList;
+use \Kubernetes\Model\Io\K8s\Api\Core\V1\KubernetesNamespace as TheKubernetesNamespace;
 use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions as DeleteOptions;
 use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Status as Status;
 use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch as Patch;
-use \Kubernetes\Model\Io\K8s\Api\Core\V1\KubernetesNamespace as KubernetesNamespace;
 use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\WatchEvent as WatchEvent;
 
 class KubernetesNamespace extends \Kubernetes\AbstractAPI
@@ -50,10 +50,10 @@ class KubernetesNamespace extends \Kubernetes\AbstractAPI
     /**
      * create a Namespace
      *
-     * @param KubernetesNamespace $Model
-     * @return KubernetesNamespace|mixed
+     * @param TheKubernetesNamespace $Model
+     * @return TheKubernetesNamespace|mixed
      */
-    public function create(\KubernetesNamespace $Model)
+    public function create(\Kubernetes\Model\Io\K8s\Api\Core\V1\KubernetesNamespace $Model)
     {
         return $this->parseResponse(
         	$this->client->request('post',
@@ -75,7 +75,7 @@ class KubernetesNamespace extends \Kubernetes\AbstractAPI
      * @configkey export	boolean
      * @param $name
      * @param array $queries
-     * @return KubernetesNamespace|mixed
+     * @return TheKubernetesNamespace|mixed
      */
     public function read($name, array $queries)
     {
@@ -94,10 +94,10 @@ class KubernetesNamespace extends \Kubernetes\AbstractAPI
      * replace the specified Namespace
      *
      * @param $name
-     * @param KubernetesNamespace $Model
-     * @return KubernetesNamespace|mixed
+     * @param TheKubernetesNamespace $Model
+     * @return TheKubernetesNamespace|mixed
      */
-    public function replace($name, \KubernetesNamespace $Model)
+    public function replace($name, \Kubernetes\Model\Io\K8s\Api\Core\V1\KubernetesNamespace $Model)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -124,7 +124,7 @@ class KubernetesNamespace extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return Status|mixed
      */
-    public function delete($name, \DeleteOptions $Model, array $queries)
+    public function delete($name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -143,9 +143,9 @@ class KubernetesNamespace extends \Kubernetes\AbstractAPI
      *
      * @param $name
      * @param Patch $Model
-     * @return KubernetesNamespace|mixed
+     * @return TheKubernetesNamespace|mixed
      */
-    public function patch($name, \Patch $Model)
+    public function patch($name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model)
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -162,10 +162,10 @@ class KubernetesNamespace extends \Kubernetes\AbstractAPI
      * replace finalize of the specified Namespace
      *
      * @param $name
-     * @param KubernetesNamespace $Model
-     * @return KubernetesNamespace|mixed
+     * @param TheKubernetesNamespace $Model
+     * @return TheKubernetesNamespace|mixed
      */
-    public function replaceFinalize($name, \KubernetesNamespace $Model)
+    public function replaceFinalize($name, \Kubernetes\Model\Io\K8s\Api\Core\V1\KubernetesNamespace $Model)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -182,7 +182,7 @@ class KubernetesNamespace extends \Kubernetes\AbstractAPI
      * read status of the specified Namespace
      *
      * @param $name
-     * @return KubernetesNamespace|mixed
+     * @return TheKubernetesNamespace|mixed
      */
     public function readStatus($name)
     {
@@ -200,10 +200,10 @@ class KubernetesNamespace extends \Kubernetes\AbstractAPI
      * replace status of the specified Namespace
      *
      * @param $name
-     * @param KubernetesNamespace $Model
-     * @return KubernetesNamespace|mixed
+     * @param TheKubernetesNamespace $Model
+     * @return TheKubernetesNamespace|mixed
      */
-    public function replaceStatus($name, \KubernetesNamespace $Model)
+    public function replaceStatus($name, \Kubernetes\Model\Io\K8s\Api\Core\V1\KubernetesNamespace $Model)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -221,9 +221,9 @@ class KubernetesNamespace extends \Kubernetes\AbstractAPI
      *
      * @param $name
      * @param Patch $Model
-     * @return KubernetesNamespace|mixed
+     * @return TheKubernetesNamespace|mixed
      */
-    public function patchStatus($name, \Patch $Model)
+    public function patchStatus($name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model)
     {
         return $this->parseResponse(
         	$this->client->request('patch',

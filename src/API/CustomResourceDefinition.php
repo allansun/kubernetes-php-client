@@ -3,10 +3,10 @@
 namespace Kubernetes\API;
 
 use \Kubernetes\Model\Io\K8s\Apiextensions_apiserver\Pkg\Apis\Apiextensions\V1beta1\CustomResourceDefinitionList as CustomResourceDefinitionList;
-use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions as DeleteOptions;
+use \Kubernetes\Model\Io\K8s\Apiextensions_apiserver\Pkg\Apis\Apiextensions\V1beta1\CustomResourceDefinition as TheCustomResourceDefinition;
 use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Status as Status;
+use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions as DeleteOptions;
 use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch as Patch;
-use \Kubernetes\Model\Io\K8s\Apiextensions_apiserver\Pkg\Apis\Apiextensions\V1beta1\CustomResourceDefinition as CustomResourceDefinition;
 use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\WatchEvent as WatchEvent;
 
 class CustomResourceDefinition extends \Kubernetes\AbstractAPI
@@ -50,10 +50,10 @@ class CustomResourceDefinition extends \Kubernetes\AbstractAPI
     /**
      * create a CustomResourceDefinition
      *
-     * @param CustomResourceDefinition $Model
-     * @return CustomResourceDefinition|mixed
+     * @param TheCustomResourceDefinition $Model
+     * @return TheCustomResourceDefinition|mixed
      */
-    public function create(\CustomResourceDefinition $Model)
+    public function create(\Kubernetes\Model\Io\K8s\Apiextensions_apiserver\Pkg\Apis\Apiextensions\V1beta1\CustomResourceDefinition $Model)
     {
         return $this->parseResponse(
         	$this->client->request('post',
@@ -110,7 +110,7 @@ class CustomResourceDefinition extends \Kubernetes\AbstractAPI
      * @configkey export	boolean
      * @param $name
      * @param array $queries
-     * @return CustomResourceDefinition|mixed
+     * @return TheCustomResourceDefinition|mixed
      */
     public function read($name, array $queries)
     {
@@ -129,10 +129,10 @@ class CustomResourceDefinition extends \Kubernetes\AbstractAPI
      * replace the specified CustomResourceDefinition
      *
      * @param $name
-     * @param CustomResourceDefinition $Model
-     * @return CustomResourceDefinition|mixed
+     * @param TheCustomResourceDefinition $Model
+     * @return TheCustomResourceDefinition|mixed
      */
-    public function replace($name, \CustomResourceDefinition $Model)
+    public function replace($name, \Kubernetes\Model\Io\K8s\Apiextensions_apiserver\Pkg\Apis\Apiextensions\V1beta1\CustomResourceDefinition $Model)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -159,7 +159,7 @@ class CustomResourceDefinition extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return Status|mixed
      */
-    public function delete($name, \DeleteOptions $Model, array $queries)
+    public function delete($name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -178,9 +178,9 @@ class CustomResourceDefinition extends \Kubernetes\AbstractAPI
      *
      * @param $name
      * @param Patch $Model
-     * @return CustomResourceDefinition|mixed
+     * @return TheCustomResourceDefinition|mixed
      */
-    public function patch($name, \Patch $Model)
+    public function patch($name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model)
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -197,10 +197,10 @@ class CustomResourceDefinition extends \Kubernetes\AbstractAPI
      * replace status of the specified CustomResourceDefinition
      *
      * @param $name
-     * @param CustomResourceDefinition $Model
-     * @return CustomResourceDefinition|mixed
+     * @param TheCustomResourceDefinition $Model
+     * @return TheCustomResourceDefinition|mixed
      */
-    public function replaceStatus($name, \CustomResourceDefinition $Model)
+    public function replaceStatus($name, \Kubernetes\Model\Io\K8s\Apiextensions_apiserver\Pkg\Apis\Apiextensions\V1beta1\CustomResourceDefinition $Model)
     {
         return $this->parseResponse(
         	$this->client->request('put',

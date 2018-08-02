@@ -2,11 +2,11 @@
 
 namespace Kubernetes\API;
 
+use \Kubernetes\Model\Io\K8s\Api\Core\V1\ServiceList as ServiceList;
+use \Kubernetes\Model\Io\K8s\Api\Core\V1\Service as TheService;
 use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions as DeleteOptions;
 use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Status as Status;
 use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch as Patch;
-use \Kubernetes\Model\Io\K8s\Api\Core\V1\Service as Service;
-use \Kubernetes\Model\Io\K8s\Api\Core\V1\ServiceList as ServiceList;
 use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\WatchEvent as WatchEvent;
 
 class Service extends \Kubernetes\AbstractAPI
@@ -31,11 +31,11 @@ class Service extends \Kubernetes\AbstractAPI
      * @configkey resourceVersion	string
      * @configkey timeoutSeconds	integer
      * @configkey watch	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param array $queries
      * @return ServiceList|mixed
      */
-    public function list(string $namespace = 'default', array $queries)
+    public function list($namespace = 'default', array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -51,11 +51,11 @@ class Service extends \Kubernetes\AbstractAPI
     /**
      * create a Service
      *
-     * @param string $namespace
-     * @param Service $Model
-     * @return Service|mixed
+     * @param $namespace
+     * @param TheService $Model
+     * @return TheService|mixed
      */
-    public function create(string $namespace = 'default', \Service $Model)
+    public function create($namespace = 'default', \Kubernetes\Model\Io\K8s\Api\Core\V1\Service $Model)
     {
         return $this->parseResponse(
         	$this->client->request('post',
@@ -75,12 +75,12 @@ class Service extends \Kubernetes\AbstractAPI
      * @configkey export	boolean
      * @configkey exact	boolean
      * @configkey export	boolean
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param array $queries
-     * @return Service|mixed
+     * @return TheService|mixed
      */
-    public function read(string $namespace = 'default', $name, array $queries)
+    public function read($namespace = 'default', $name, array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -96,12 +96,12 @@ class Service extends \Kubernetes\AbstractAPI
     /**
      * replace the specified Service
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @param Service $Model
-     * @return Service|mixed
+     * @param TheService $Model
+     * @return TheService|mixed
      */
-    public function replace(string $namespace = 'default', $name, \Service $Model)
+    public function replace($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Api\Core\V1\Service $Model)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -123,13 +123,13 @@ class Service extends \Kubernetes\AbstractAPI
      * @configkey gracePeriodSeconds	integer
      * @configkey orphanDependents	boolean
      * @configkey propagationPolicy	string
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param DeleteOptions $Model
      * @param array $queries
      * @return Status|mixed
      */
-    public function delete(string $namespace = 'default', $name, \DeleteOptions $Model, array $queries)
+    public function delete($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -146,12 +146,12 @@ class Service extends \Kubernetes\AbstractAPI
     /**
      * partially update the specified Service
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param Patch $Model
-     * @return Service|mixed
+     * @return TheService|mixed
      */
-    public function patch(string $namespace = 'default', $name, \Patch $Model)
+    public function patch($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model)
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -167,11 +167,11 @@ class Service extends \Kubernetes\AbstractAPI
     /**
      * connect GET requests to proxy of Service
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @return string|mixed
      */
-    public function connectGetProxy(string $namespace = 'default', $name)
+    public function connectGetProxy($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -186,11 +186,11 @@ class Service extends \Kubernetes\AbstractAPI
     /**
      * connect PUT requests to proxy of Service
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @return string|mixed
      */
-    public function connectPutProxy(string $namespace = 'default', $name)
+    public function connectPutProxy($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -205,11 +205,11 @@ class Service extends \Kubernetes\AbstractAPI
     /**
      * connect POST requests to proxy of Service
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @return string|mixed
      */
-    public function connectPostProxy(string $namespace = 'default', $name)
+    public function connectPostProxy($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('post',
@@ -224,11 +224,11 @@ class Service extends \Kubernetes\AbstractAPI
     /**
      * connect DELETE requests to proxy of Service
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @return string|mixed
      */
-    public function connectDeleteProxy(string $namespace = 'default', $name)
+    public function connectDeleteProxy($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -243,11 +243,11 @@ class Service extends \Kubernetes\AbstractAPI
     /**
      * connect OPTIONS requests to proxy of Service
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @return string|mixed
      */
-    public function connectOptionsProxy(string $namespace = 'default', $name)
+    public function connectOptionsProxy($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('options',
@@ -262,11 +262,11 @@ class Service extends \Kubernetes\AbstractAPI
     /**
      * connect HEAD requests to proxy of Service
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @return string|mixed
      */
-    public function connectHeadProxy(string $namespace = 'default', $name)
+    public function connectHeadProxy($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('head',
@@ -281,11 +281,11 @@ class Service extends \Kubernetes\AbstractAPI
     /**
      * connect PATCH requests to proxy of Service
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @return string|mixed
      */
-    public function connectPatchProxy(string $namespace = 'default', $name)
+    public function connectPatchProxy($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -300,12 +300,12 @@ class Service extends \Kubernetes\AbstractAPI
     /**
      * connect GET requests to proxy of Service
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param $path
      * @return string|mixed
      */
-    public function connectGetProxyWithPath(string $namespace = 'default', $name, $path)
+    public function connectGetProxyWithPath($namespace = 'default', $name, $path)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -320,12 +320,12 @@ class Service extends \Kubernetes\AbstractAPI
     /**
      * connect PUT requests to proxy of Service
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param $path
      * @return string|mixed
      */
-    public function connectPutProxyWithPath(string $namespace = 'default', $name, $path)
+    public function connectPutProxyWithPath($namespace = 'default', $name, $path)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -340,12 +340,12 @@ class Service extends \Kubernetes\AbstractAPI
     /**
      * connect POST requests to proxy of Service
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param $path
      * @return string|mixed
      */
-    public function connectPostProxyWithPath(string $namespace = 'default', $name, $path)
+    public function connectPostProxyWithPath($namespace = 'default', $name, $path)
     {
         return $this->parseResponse(
         	$this->client->request('post',
@@ -360,12 +360,12 @@ class Service extends \Kubernetes\AbstractAPI
     /**
      * connect DELETE requests to proxy of Service
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param $path
      * @return string|mixed
      */
-    public function connectDeleteProxyWithPath(string $namespace = 'default', $name, $path)
+    public function connectDeleteProxyWithPath($namespace = 'default', $name, $path)
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -380,12 +380,12 @@ class Service extends \Kubernetes\AbstractAPI
     /**
      * connect OPTIONS requests to proxy of Service
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param $path
      * @return string|mixed
      */
-    public function connectOptionsProxyWithPath(string $namespace = 'default', $name, $path)
+    public function connectOptionsProxyWithPath($namespace = 'default', $name, $path)
     {
         return $this->parseResponse(
         	$this->client->request('options',
@@ -400,12 +400,12 @@ class Service extends \Kubernetes\AbstractAPI
     /**
      * connect HEAD requests to proxy of Service
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param $path
      * @return string|mixed
      */
-    public function connectHeadProxyWithPath(string $namespace = 'default', $name, $path)
+    public function connectHeadProxyWithPath($namespace = 'default', $name, $path)
     {
         return $this->parseResponse(
         	$this->client->request('head',
@@ -420,12 +420,12 @@ class Service extends \Kubernetes\AbstractAPI
     /**
      * connect PATCH requests to proxy of Service
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param $path
      * @return string|mixed
      */
-    public function connectPatchProxyWithPath(string $namespace = 'default', $name, $path)
+    public function connectPatchProxyWithPath($namespace = 'default', $name, $path)
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -440,11 +440,11 @@ class Service extends \Kubernetes\AbstractAPI
     /**
      * read status of the specified Service
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @return Service|mixed
+     * @return TheService|mixed
      */
-    public function readStatus(string $namespace = 'default', $name)
+    public function readStatus($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -459,12 +459,12 @@ class Service extends \Kubernetes\AbstractAPI
     /**
      * replace status of the specified Service
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
-     * @param Service $Model
-     * @return Service|mixed
+     * @param TheService $Model
+     * @return TheService|mixed
      */
-    public function replaceStatus(string $namespace = 'default', $name, \Service $Model)
+    public function replaceStatus($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Api\Core\V1\Service $Model)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -480,12 +480,12 @@ class Service extends \Kubernetes\AbstractAPI
     /**
      * partially update status of the specified Service
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @param Patch $Model
-     * @return Service|mixed
+     * @return TheService|mixed
      */
-    public function patchStatus(string $namespace = 'default', $name, \Patch $Model)
+    public function patchStatus($namespace = 'default', $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model)
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -518,10 +518,10 @@ class Service extends \Kubernetes\AbstractAPI
     /**
      * watch individual changes to a list of Service
      *
-     * @param string $namespace
+     * @param $namespace
      * @return WatchEvent|mixed
      */
-    public function watchList(string $namespace = 'default')
+    public function watchList($namespace = 'default')
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -536,11 +536,11 @@ class Service extends \Kubernetes\AbstractAPI
     /**
      * watch changes to an object of kind Service
      *
-     * @param string $namespace
+     * @param $namespace
      * @param $name
      * @return WatchEvent|mixed
      */
-    public function watch(string $namespace = 'default', $name)
+    public function watch($namespace = 'default', $name)
     {
         return $this->parseResponse(
         	$this->client->request('get',

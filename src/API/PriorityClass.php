@@ -3,10 +3,10 @@
 namespace Kubernetes\API;
 
 use \Kubernetes\Model\Io\K8s\Api\Scheduling\V1alpha1\PriorityClassList as PriorityClassList;
-use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions as DeleteOptions;
+use \Kubernetes\Model\Io\K8s\Api\Scheduling\V1alpha1\PriorityClass as ThePriorityClass;
 use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Status as Status;
+use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions as DeleteOptions;
 use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch as Patch;
-use \Kubernetes\Model\Io\K8s\Api\Scheduling\V1alpha1\PriorityClass as PriorityClass;
 use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\WatchEvent as WatchEvent;
 
 class PriorityClass extends \Kubernetes\AbstractAPI
@@ -50,10 +50,10 @@ class PriorityClass extends \Kubernetes\AbstractAPI
     /**
      * create a PriorityClass
      *
-     * @param PriorityClass $Model
-     * @return PriorityClass|mixed
+     * @param ThePriorityClass $Model
+     * @return ThePriorityClass|mixed
      */
-    public function create(\PriorityClass $Model)
+    public function create(\Kubernetes\Model\Io\K8s\Api\Scheduling\V1alpha1\PriorityClass $Model)
     {
         return $this->parseResponse(
         	$this->client->request('post',
@@ -110,7 +110,7 @@ class PriorityClass extends \Kubernetes\AbstractAPI
      * @configkey export	boolean
      * @param $name
      * @param array $queries
-     * @return PriorityClass|mixed
+     * @return ThePriorityClass|mixed
      */
     public function read($name, array $queries)
     {
@@ -129,10 +129,10 @@ class PriorityClass extends \Kubernetes\AbstractAPI
      * replace the specified PriorityClass
      *
      * @param $name
-     * @param PriorityClass $Model
-     * @return PriorityClass|mixed
+     * @param ThePriorityClass $Model
+     * @return ThePriorityClass|mixed
      */
-    public function replace($name, \PriorityClass $Model)
+    public function replace($name, \Kubernetes\Model\Io\K8s\Api\Scheduling\V1alpha1\PriorityClass $Model)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -159,7 +159,7 @@ class PriorityClass extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return Status|mixed
      */
-    public function delete($name, \DeleteOptions $Model, array $queries)
+    public function delete($name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -178,9 +178,9 @@ class PriorityClass extends \Kubernetes\AbstractAPI
      *
      * @param $name
      * @param Patch $Model
-     * @return PriorityClass|mixed
+     * @return ThePriorityClass|mixed
      */
-    public function patch($name, \Patch $Model)
+    public function patch($name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model)
     {
         return $this->parseResponse(
         	$this->client->request('patch',

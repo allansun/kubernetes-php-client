@@ -3,10 +3,10 @@
 namespace Kubernetes\API;
 
 use \Kubernetes\Model\Io\K8s\Api\Certificates\V1beta1\CertificateSigningRequestList as CertificateSigningRequestList;
-use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions as DeleteOptions;
+use \Kubernetes\Model\Io\K8s\Api\Certificates\V1beta1\CertificateSigningRequest as TheCertificateSigningRequest;
 use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Status as Status;
+use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions as DeleteOptions;
 use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch as Patch;
-use \Kubernetes\Model\Io\K8s\Api\Certificates\V1beta1\CertificateSigningRequest as CertificateSigningRequest;
 use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\WatchEvent as WatchEvent;
 
 class CertificateSigningRequest extends \Kubernetes\AbstractAPI
@@ -50,10 +50,10 @@ class CertificateSigningRequest extends \Kubernetes\AbstractAPI
     /**
      * create a CertificateSigningRequest
      *
-     * @param CertificateSigningRequest $Model
-     * @return CertificateSigningRequest|mixed
+     * @param TheCertificateSigningRequest $Model
+     * @return TheCertificateSigningRequest|mixed
      */
-    public function create(\CertificateSigningRequest $Model)
+    public function create(\Kubernetes\Model\Io\K8s\Api\Certificates\V1beta1\CertificateSigningRequest $Model)
     {
         return $this->parseResponse(
         	$this->client->request('post',
@@ -110,7 +110,7 @@ class CertificateSigningRequest extends \Kubernetes\AbstractAPI
      * @configkey export	boolean
      * @param $name
      * @param array $queries
-     * @return CertificateSigningRequest|mixed
+     * @return TheCertificateSigningRequest|mixed
      */
     public function read($name, array $queries)
     {
@@ -129,10 +129,10 @@ class CertificateSigningRequest extends \Kubernetes\AbstractAPI
      * replace the specified CertificateSigningRequest
      *
      * @param $name
-     * @param CertificateSigningRequest $Model
-     * @return CertificateSigningRequest|mixed
+     * @param TheCertificateSigningRequest $Model
+     * @return TheCertificateSigningRequest|mixed
      */
-    public function replace($name, \CertificateSigningRequest $Model)
+    public function replace($name, \Kubernetes\Model\Io\K8s\Api\Certificates\V1beta1\CertificateSigningRequest $Model)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -159,7 +159,7 @@ class CertificateSigningRequest extends \Kubernetes\AbstractAPI
      * @param array $queries
      * @return Status|mixed
      */
-    public function delete($name, \DeleteOptions $Model, array $queries)
+    public function delete($name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries)
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -178,9 +178,9 @@ class CertificateSigningRequest extends \Kubernetes\AbstractAPI
      *
      * @param $name
      * @param Patch $Model
-     * @return CertificateSigningRequest|mixed
+     * @return TheCertificateSigningRequest|mixed
      */
-    public function patch($name, \Patch $Model)
+    public function patch($name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model)
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -197,10 +197,10 @@ class CertificateSigningRequest extends \Kubernetes\AbstractAPI
      * replace approval of the specified CertificateSigningRequest
      *
      * @param $name
-     * @param CertificateSigningRequest $Model
-     * @return CertificateSigningRequest|mixed
+     * @param TheCertificateSigningRequest $Model
+     * @return TheCertificateSigningRequest|mixed
      */
-    public function replaceApproval($name, \CertificateSigningRequest $Model)
+    public function replaceApproval($name, \Kubernetes\Model\Io\K8s\Api\Certificates\V1beta1\CertificateSigningRequest $Model)
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -217,10 +217,10 @@ class CertificateSigningRequest extends \Kubernetes\AbstractAPI
      * replace status of the specified CertificateSigningRequest
      *
      * @param $name
-     * @param CertificateSigningRequest $Model
-     * @return CertificateSigningRequest|mixed
+     * @param TheCertificateSigningRequest $Model
+     * @return TheCertificateSigningRequest|mixed
      */
-    public function replaceStatus($name, \CertificateSigningRequest $Model)
+    public function replaceStatus($name, \Kubernetes\Model\Io\K8s\Api\Certificates\V1beta1\CertificateSigningRequest $Model)
     {
         return $this->parseResponse(
         	$this->client->request('put',
