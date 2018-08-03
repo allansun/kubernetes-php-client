@@ -11,6 +11,7 @@
 namespace Kubernetes;
 
 
+use Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Status;
 use Psr\Http\Message\ResponseInterface;
 
 abstract class AbstractAPI
@@ -107,6 +108,11 @@ abstract class AbstractAPI
 
             return new $className($contents);
         }
+
+        if ('Status' == $contents['kind']) {
+            return new Status($contents);
+        }
+
 
         return $contents;
     }
