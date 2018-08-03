@@ -57,7 +57,7 @@ class Model extends AbstractClassFile
         }
 
         if ($SchemaObject->type) {
-            $this->ClassGenerator->addProperty('isRawObject', true);
+            $this->ClassGenerator->addProperty('isRawObject', true, PropertyGenerator::FLAG_PROTECTED);
         }
 
         $this->initFilename();

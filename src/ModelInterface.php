@@ -12,4 +12,5 @@ interface ModelInterface
 
     public function toJson();
 
+    public function isRawObject();
 }
