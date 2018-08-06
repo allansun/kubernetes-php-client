@@ -152,7 +152,7 @@ abstract class AbstractModel implements ModelInterface
     {
         $propertyTypes = $this->getPropertyTypes($this, $index);
 
-        if ($propertyTypes) {
+        if ($propertyTypes && ($value || 0 < count($value))) {
             foreach ($propertyTypes as $PropertyType) {
                 if ($PropertyType->isCollection()) {
                     $values = [];
@@ -160,8 +160,8 @@ abstract class AbstractModel implements ModelInterface
                         foreach ((array)$value as $valueItem) {
                             /** @var ModelInterface $propertyValue */
                             $PropertyValue = new $className($valueItem);
-                            if ($PropertyType instanceof ModelInterface && $PropertyValue->isRawObject()) {
-                                $values[] = $valueItem;
+                            if ($PropertyValue instanceof ModelInterface && !$PropertyValue->isRawObject()) {
+                                $values[] = $PropertyValue;
                             } else {
                                 $values[] = $valueItem;
                             }
@@ -176,14 +176,14 @@ abstract class AbstractModel implements ModelInterface
                     $className = $PropertyType->getClassName();
                     /** @var ModelInterface $propertyValue */
                     $PropertyValue = new $className($value);
-                    if (!($PropertyType instanceof ModelInterface && $PropertyValue->isRawObject())) {
+                    if (!($PropertyValue instanceof ModelInterface && $PropertyValue->isRawObject())) {
                         $value = new $className($value);
                     }
                 }
             }
+            $this->$index = $value;
         }
 
-        $this->$index = $value;
 
         return $this;
     }
