@@ -18,7 +18,7 @@ class TokenReview extends \Kubernetes\AbstractModel
      *
      * @var string
      */
-    public $apiVersion = 'v1';
+    public $apiVersion = 'authentication.k8s.io\\/v1';
 
     /**
      * Kind is a string value representing the REST resource this object represents.

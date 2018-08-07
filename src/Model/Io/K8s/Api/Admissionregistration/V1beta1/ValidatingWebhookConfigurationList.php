@@ -16,7 +16,7 @@ class ValidatingWebhookConfigurationList extends \Kubernetes\AbstractModel
      *
      * @var string
      */
-    public $apiVersion = 'v1beta1';
+    public $apiVersion = 'admissionregistration.k8s.io\\/v1beta1';
 
     /**
      * List of ValidatingWebhookConfiguration.

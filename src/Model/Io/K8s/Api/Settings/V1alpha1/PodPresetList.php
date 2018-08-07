@@ -16,7 +16,7 @@ class PodPresetList extends \Kubernetes\AbstractModel
      *
      * @var string
      */
-    public $apiVersion = 'v1alpha1';
+    public $apiVersion = 'settings.k8s.io\\/v1alpha1';
 
     /**
      * Items is a list of schema objects.

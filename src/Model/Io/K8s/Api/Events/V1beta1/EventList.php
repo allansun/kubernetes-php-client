@@ -16,7 +16,7 @@ class EventList extends \Kubernetes\AbstractModel
      *
      * @var string
      */
-    public $apiVersion = 'v1beta1';
+    public $apiVersion = 'events.k8s.io\\/v1beta1';
 
     /**
      * Items is a list of schema objects.

@@ -16,7 +16,7 @@ class VolumeAttachmentList extends \Kubernetes\AbstractModel
      *
      * @var string
      */
-    public $apiVersion = 'v1alpha1';
+    public $apiVersion = 'storage.k8s.io\\/v1alpha1';
 
     /**
      * Items is the list of VolumeAttachments

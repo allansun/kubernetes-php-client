@@ -13,7 +13,7 @@ class CertificateSigningRequestList extends \Kubernetes\AbstractModel
      *
      * @var string
      */
-    public $apiVersion = 'v1beta1';
+    public $apiVersion = 'certificates.k8s.io\\/v1beta1';
 
     /**
      * @var CertificateSigningRequest[]

@@ -16,7 +16,7 @@ class ClusterRoleBindingList extends \Kubernetes\AbstractModel
      *
      * @var string
      */
-    public $apiVersion = 'v1';
+    public $apiVersion = 'rbac.authorization.k8s.io\\/v1';
 
     /**
      * Items is a list of ClusterRoleBindings

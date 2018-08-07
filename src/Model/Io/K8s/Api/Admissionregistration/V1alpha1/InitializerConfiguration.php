@@ -16,7 +16,7 @@ class InitializerConfiguration extends \Kubernetes\AbstractModel
      *
      * @var string
      */
-    public $apiVersion = 'v1alpha1';
+    public $apiVersion = 'admissionregistration.k8s.io\\/v1alpha1';
 
     /**
      * Initializers is a list of resources and their default initializers

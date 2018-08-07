@@ -18,7 +18,7 @@ class HorizontalPodAutoscaler extends \Kubernetes\AbstractModel
      *
      * @var string
      */
-    public $apiVersion = 'v2beta1';
+    public $apiVersion = 'autoscaling\\/v2beta1';
 
     /**
      * Kind is a string value representing the REST resource this object represents.

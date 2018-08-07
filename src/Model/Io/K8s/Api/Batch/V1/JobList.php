@@ -16,7 +16,7 @@ class JobList extends \Kubernetes\AbstractModel
      *
      * @var string
      */
-    public $apiVersion = 'v1';
+    public $apiVersion = 'batch\\/v1';
 
     /**
      * items is the list of Jobs.

@@ -24,7 +24,7 @@ class ControllerRevision extends \Kubernetes\AbstractModel
      *
      * @var string
      */
-    public $apiVersion = 'v1';
+    public $apiVersion = 'apps\\/v1';
 
     /**
      * Data is the serialized representation of the state.

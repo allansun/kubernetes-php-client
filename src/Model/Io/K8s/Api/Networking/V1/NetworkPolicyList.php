@@ -16,7 +16,7 @@ class NetworkPolicyList extends \Kubernetes\AbstractModel
      *
      * @var string
      */
-    public $apiVersion = 'v1';
+    public $apiVersion = 'networking.k8s.io\\/v1';
 
     /**
      * Items is a list of schema objects.

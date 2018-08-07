@@ -16,7 +16,7 @@ class CronJobList extends \Kubernetes\AbstractModel
      *
      * @var string
      */
-    public $apiVersion = 'v1beta1';
+    public $apiVersion = 'batch\\/v1beta1';
 
     /**
      * items is the list of CronJobs.

@@ -17,7 +17,7 @@ class PodPreset extends \Kubernetes\AbstractModel
      *
      * @var string
      */
-    public $apiVersion = 'v1alpha1';
+    public $apiVersion = 'settings.k8s.io\\/v1alpha1';
 
     /**
      * Kind is a string value representing the REST resource this object represents.

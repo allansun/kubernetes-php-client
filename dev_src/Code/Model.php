@@ -119,12 +119,25 @@ class Model extends AbstractClassFile
                 array_key_exists(KubernetesExtentions::KIND, $groupVersionKind[0])) {
                 $PropertyGenerator->setDefaultValue($groupVersionKind[0][KubernetesExtentions::KIND]);
             }
-            if ('apiVersion' == $key &&
-                is_array($groupVersionKind) &&
-                array_key_exists(KubernetesExtentions::VERSION, $groupVersionKind[0])) {
-                $PropertyGenerator->setDefaultValue($groupVersionKind[0][KubernetesExtentions::VERSION]);
-            }
+            if ('apiVersion' == $key) {
+                $apiVersion = '';
+                if (is_array($groupVersionKind) &&
+                    array_key_exists(KubernetesExtentions::GROUP, $groupVersionKind[0]) &&
+                    '' != $groupVersionKind[0][KubernetesExtentions::GROUP]
+                ) {
+                    $apiVersion .= $groupVersionKind[0][KubernetesExtentions::GROUP] . '\/';
+                }
 
+                if (is_array($groupVersionKind) &&
+                    array_key_exists(KubernetesExtentions::VERSION, $groupVersionKind[0]) &&
+                    $groupVersionKind[0][KubernetesExtentions::VERSION]
+                ) {
+                    $apiVersion .= $groupVersionKind[0][KubernetesExtentions::VERSION];
+                }
+                if ('' != $apiVersion) {
+                    $PropertyGenerator->setDefaultValue($apiVersion);
+                }
+            }
             $PropertyGenerator->setDocBlock($DocBlockGenerator);
             $properties[] = $PropertyGenerator;
         }
@@ -139,8 +152,11 @@ class Model extends AbstractClassFile
      * @return string
      * @throws \Exception
      */
-    protected function parseDataType(string $dataType, $isArray = false): string
-    {
+    protected
+    function parseDataType(
+        string $dataType,
+        $isArray = false
+    ): string {
         if (0 === strpos($dataType, '#')) {
             $dataType = '\\' . $this->kubernetesNamespace . Utility::convertRefToClass($dataType);
 

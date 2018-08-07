@@ -18,7 +18,7 @@ class ClusterRoleBinding extends \Kubernetes\AbstractModel
      *
      * @var string
      */
-    public $apiVersion = 'v1beta1';
+    public $apiVersion = 'rbac.authorization.k8s.io\\/v1beta1';
 
     /**
      * Kind is a string value representing the REST resource this object represents.

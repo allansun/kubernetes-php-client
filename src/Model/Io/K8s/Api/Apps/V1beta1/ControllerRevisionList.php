@@ -17,7 +17,7 @@ class ControllerRevisionList extends \Kubernetes\AbstractModel
      *
      * @var string
      */
-    public $apiVersion = 'v1beta1';
+    public $apiVersion = 'apps\\/v1beta1';
 
     /**
      * Items is the list of ControllerRevisions

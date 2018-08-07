@@ -16,7 +16,7 @@ class RoleList extends \Kubernetes\AbstractModel
      *
      * @var string
      */
-    public $apiVersion = 'v1alpha1';
+    public $apiVersion = 'rbac.authorization.k8s.io\\/v1alpha1';
 
     /**
      * Items is a list of Roles

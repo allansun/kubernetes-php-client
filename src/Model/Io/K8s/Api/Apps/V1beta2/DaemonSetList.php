@@ -16,7 +16,7 @@ class DaemonSetList extends \Kubernetes\AbstractModel
      *
      * @var string
      */
-    public $apiVersion = 'v1beta2';
+    public $apiVersion = 'apps\\/v1beta2';
 
     /**
      * A list of daemon sets.

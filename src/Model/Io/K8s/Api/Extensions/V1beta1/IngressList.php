@@ -16,7 +16,7 @@ class IngressList extends \Kubernetes\AbstractModel
      *
      * @var string
      */
-    public $apiVersion = 'v1beta1';
+    public $apiVersion = 'extensions\\/v1beta1';
 
     /**
      * Items is the list of Ingress.

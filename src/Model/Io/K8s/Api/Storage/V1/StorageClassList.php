@@ -16,7 +16,7 @@ class StorageClassList extends \Kubernetes\AbstractModel
      *
      * @var string
      */
-    public $apiVersion = 'v1';
+    public $apiVersion = 'storage.k8s.io\\/v1';
 
     /**
      * Items is the list of StorageClasses

@@ -16,7 +16,7 @@ class PodDisruptionBudgetList extends \Kubernetes\AbstractModel
      *
      * @var string
      */
-    public $apiVersion = 'v1beta1';
+    public $apiVersion = 'policy\\/v1beta1';
 
     /**
      * @var PodDisruptionBudget[]
