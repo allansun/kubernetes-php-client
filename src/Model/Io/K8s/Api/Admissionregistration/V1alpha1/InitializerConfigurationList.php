@@ -16,7 +16,7 @@ class InitializerConfigurationList extends \Kubernetes\AbstractModel
      *
      * @var string
      */
-    public $apiVersion = 'admissionregistration.k8s.io\\/v1alpha1';
+    public $apiVersion = 'admissionregistration.k8s.io/v1alpha1';
 
     /**
      * List of InitializerConfiguration.

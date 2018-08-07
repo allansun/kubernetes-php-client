@@ -125,7 +125,7 @@ class Model extends AbstractClassFile
                     array_key_exists(KubernetesExtentions::GROUP, $groupVersionKind[0]) &&
                     '' != $groupVersionKind[0][KubernetesExtentions::GROUP]
                 ) {
-                    $apiVersion .= $groupVersionKind[0][KubernetesExtentions::GROUP] . '\/';
+                    $apiVersion .= $groupVersionKind[0][KubernetesExtentions::GROUP] . "/";
                 }
 
                 if (is_array($groupVersionKind) &&

@@ -16,7 +16,7 @@ class CronJob extends \Kubernetes\AbstractModel
      *
      * @var string
      */
-    public $apiVersion = 'batch\\/v1beta1';
+    public $apiVersion = 'batch/v1beta1';
 
     /**
      * Kind is a string value representing the REST resource this object represents.

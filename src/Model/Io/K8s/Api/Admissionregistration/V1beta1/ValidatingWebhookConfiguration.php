@@ -17,7 +17,7 @@ class ValidatingWebhookConfiguration extends \Kubernetes\AbstractModel
      *
      * @var string
      */
-    public $apiVersion = 'admissionregistration.k8s.io\\/v1beta1';
+    public $apiVersion = 'admissionregistration.k8s.io/v1beta1';
 
     /**
      * Kind is a string value representing the REST resource this object represents.

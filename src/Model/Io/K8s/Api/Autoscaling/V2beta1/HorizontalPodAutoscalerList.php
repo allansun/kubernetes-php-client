@@ -16,7 +16,7 @@ class HorizontalPodAutoscalerList extends \Kubernetes\AbstractModel
      *
      * @var string
      */
-    public $apiVersion = 'autoscaling\\/v2beta1';
+    public $apiVersion = 'autoscaling/v2beta1';
 
     /**
      * items is the list of horizontal pod autoscaler objects.

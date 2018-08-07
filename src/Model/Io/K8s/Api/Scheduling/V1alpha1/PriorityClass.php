@@ -17,7 +17,7 @@ class PriorityClass extends \Kubernetes\AbstractModel
      *
      * @var string
      */
-    public $apiVersion = 'scheduling.k8s.io\\/v1alpha1';
+    public $apiVersion = 'scheduling.k8s.io/v1alpha1';
 
     /**
      * description is an arbitrary string that usually provides guidelines on when this

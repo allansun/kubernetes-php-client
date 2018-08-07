@@ -25,7 +25,7 @@ class StatefulSet extends \Kubernetes\AbstractModel
      *
      * @var string
      */
-    public $apiVersion = 'apps\\/v1beta1';
+    public $apiVersion = 'apps/v1beta1';
 
     /**
      * Kind is a string value representing the REST resource this object represents.

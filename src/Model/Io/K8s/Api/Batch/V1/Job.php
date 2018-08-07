@@ -16,7 +16,7 @@ class Job extends \Kubernetes\AbstractModel
      *
      * @var string
      */
-    public $apiVersion = 'batch\\/v1';
+    public $apiVersion = 'batch/v1';
 
     /**
      * Kind is a string value representing the REST resource this object represents.

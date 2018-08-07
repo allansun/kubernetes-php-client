@@ -16,7 +16,7 @@ class StatefulSetList extends \Kubernetes\AbstractModel
      *
      * @var string
      */
-    public $apiVersion = 'apps\\/v1beta2';
+    public $apiVersion = 'apps/v1beta2';
 
     /**
      * @var StatefulSet[]

@@ -26,7 +26,7 @@ class ClusterRole extends \Kubernetes\AbstractModel
      *
      * @var string
      */
-    public $apiVersion = 'rbac.authorization.k8s.io\\/v1alpha1';
+    public $apiVersion = 'rbac.authorization.k8s.io/v1alpha1';
 
     /**
      * Kind is a string value representing the REST resource this object represents.

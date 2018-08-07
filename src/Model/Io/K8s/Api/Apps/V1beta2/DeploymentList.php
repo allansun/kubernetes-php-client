@@ -16,7 +16,7 @@ class DeploymentList extends \Kubernetes\AbstractModel
      *
      * @var string
      */
-    public $apiVersion = 'apps\\/v1beta2';
+    public $apiVersion = 'apps/v1beta2';
 
     /**
      * Items is the list of Deployments.

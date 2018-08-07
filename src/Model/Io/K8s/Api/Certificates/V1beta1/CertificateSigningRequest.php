@@ -16,7 +16,7 @@ class CertificateSigningRequest extends \Kubernetes\AbstractModel
      *
      * @var string
      */
-    public $apiVersion = 'certificates.k8s.io\\/v1beta1';
+    public $apiVersion = 'certificates.k8s.io/v1beta1';
 
     /**
      * Kind is a string value representing the REST resource this object represents.

@@ -16,7 +16,7 @@ class ReplicaSetList extends \Kubernetes\AbstractModel
      *
      * @var string
      */
-    public $apiVersion = 'extensions\\/v1beta1';
+    public $apiVersion = 'extensions/v1beta1';
 
     /**
      * List of ReplicaSets. More info:

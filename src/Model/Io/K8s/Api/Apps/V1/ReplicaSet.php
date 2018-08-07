@@ -17,7 +17,7 @@ class ReplicaSet extends \Kubernetes\AbstractModel
      *
      * @var string
      */
-    public $apiVersion = 'apps\\/v1';
+    public $apiVersion = 'apps/v1';
 
     /**
      * Kind is a string value representing the REST resource this object represents.

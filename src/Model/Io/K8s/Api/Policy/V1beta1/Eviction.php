@@ -18,7 +18,7 @@ class Eviction extends \Kubernetes\AbstractModel
      *
      * @var string
      */
-    public $apiVersion = 'policy\\/v1beta1';
+    public $apiVersion = 'policy/v1beta1';
 
     /**
      * DeleteOptions may be provided

@@ -24,7 +24,7 @@ class Event extends \Kubernetes\AbstractModel
      *
      * @var string
      */
-    public $apiVersion = 'events.k8s.io\\/v1beta1';
+    public $apiVersion = 'events.k8s.io/v1beta1';
 
     /**
      * Deprecated field assuring backward compatibility with core.v1 Event type

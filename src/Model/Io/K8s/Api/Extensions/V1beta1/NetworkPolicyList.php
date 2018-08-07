@@ -20,7 +20,7 @@ class NetworkPolicyList extends \Kubernetes\AbstractModel
      *
      * @var string
      */
-    public $apiVersion = 'extensions\\/v1beta1';
+    public $apiVersion = 'extensions/v1beta1';
 
     /**
      * Items is a list of schema objects.
