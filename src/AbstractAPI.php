@@ -103,8 +103,8 @@ abstract class AbstractAPI
         }
 
         if (array_key_exists($operationId, ResponseTypes::TYPES) &&
-            array_key_exists($response->getStatusCode(), ResponseTypes::TYPES[$operationId])) {
-            $className = ResponseTypes::TYPES[$operationId];
+            array_key_exists($response->getStatusCode() . '.', ResponseTypes::TYPES[$operationId])) {
+            $className = ResponseTypes::TYPES[$operationId][$response->getStatusCode() . '.'];
 
             return new $className($contents);
         }
