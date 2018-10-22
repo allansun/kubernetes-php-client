@@ -26,7 +26,8 @@
     "zendframework/zend-code": "3.3.*",
     "symfony/console": "4.1.*",
     "mattketmo/camel": "^1.1",
-    "symfony/filesystem": "4.1.*"
+    "symfony/filesystem": "4.1.*",
+    "cpliakas/git-wrapper": "^2.0"
   },
   "autoload": {
     "psr-4": {
@@ -41,6 +42,7 @@
   },
   "archive": {
     "exclude": [
+      "dev_src",
       "openapi",
       "bin"
     ]
