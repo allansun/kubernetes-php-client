@@ -41,7 +41,7 @@ class RunCommand extends Command
 
         $this->checkOutBranch($version)
 //            ->pullSwagger($version)
-//            ->generateCode($input, $output)
+//            ->generateCode($output)
 //            ->cleanUp()
             ->commitAndPush($version);
     }
@@ -64,6 +64,7 @@ class RunCommand extends Command
 
     protected function checkOutBranch($version)
     {
+        $this->GitWorkingCopy->pull();
         if ($this->GitWorkingCopy->run('rev-parse', ["--verify --quiet ${version}"])) {
             $this->GitWorkingCopy->checkout($version);
         } else {
@@ -89,7 +90,7 @@ class RunCommand extends Command
         return $this;
     }
 
-    protected function generateCode(InputInterface $input, OutputInterface $output)
+    protected function generateCode(OutputInterface $output)
     {
         $Conmmand = $this->getApplication()->find('generate');
 
@@ -110,6 +111,9 @@ class RunCommand extends Command
     {
         $this->GitWorkingCopy->run('add', ['-A']);
         $this->GitWorkingCopy->commit("Generated against Kubernetes version ${version}");
+        $this->GitWorkingCopy->tag($version);
+        $this->GitWorkingCopy->push('origin', $version, "--set-upstream-to=origin/${version}");
+        $this->GitWorkingCopy->pushTag($version);
 
         return $this;
     }
