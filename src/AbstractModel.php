@@ -152,7 +152,7 @@ abstract class AbstractModel implements ModelInterface
     {
         $propertyTypes = $this->getPropertyTypes($this, $index);
 
-        if ($propertyTypes && ($value || 0 < count($value))) {
+        if ($propertyTypes && (isset($value) && 0 < count($value))) {
             foreach ($propertyTypes as $PropertyType) {
                 if ($PropertyType->isCollection()) {
                     $values = [];
