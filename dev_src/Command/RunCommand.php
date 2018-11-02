@@ -39,7 +39,8 @@ class RunCommand extends Command
         $this->GitWorkingCopy = $Git->workingCopy(APP_ROOT);
 
 
-        $this->checkOutBranch($version)
+        $this
+//            ->checkOutBranch($version)
 //            ->pullSwagger($version)
 //            ->generateCode($output)
 //            ->cleanUp()
