@@ -27,7 +27,8 @@
     "symfony/console": "4.1.*",
     "mattketmo/camel": "^1.1",
     "symfony/filesystem": "4.1.*",
-    "cpliakas/git-wrapper": "^2.0"
+    "cpliakas/git-wrapper": "^2.0",
+    "symfony/monolog-bridge": "4.1.*"
   },
   "autoload": {
     "psr-4": {
