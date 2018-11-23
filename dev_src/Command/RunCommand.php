@@ -4,6 +4,7 @@ namespace CodeGenerator\Command;
 
 
 use GitWrapper\Event\GitLoggerListener;
+use GitWrapper\GitException;
 use GitWrapper\GitWorkingCopy;
 use GitWrapper\GitWrapper;
 use GuzzleHttp\Client;
@@ -36,21 +37,23 @@ class RunCommand extends Command
     {
 
         $this->logger = new ConsoleLogger($output);
-        $version = $input->getArgument('version');
+        $version      = $input->getArgument('version');
 
-//        $this->validateGitPrivateKey();
+        $this->validateGitPrivateKey();
 
         $Git = new GitWrapper();
         $Git->addLoggerListener(new GitLoggerListener($this->logger));
-//        $Git->setPrivateKey($this->githubDeployKeyFile);
+        if ($this->githubDeployKeyFile) {
+            $Git->setPrivateKey($this->githubDeployKeyFile);
+        }
         $this->GitWorkingCopy = $Git->workingCopy(APP_ROOT);
 
 
         $this
-//            ->checkOutBranch($version)
-//            ->pullSwagger($version)
-//            ->generateCode($output)
-//            ->cleanUp()
+            ->checkOutBranch($version)
+            ->pullSwagger($version)
+            ->generateCode($output)
+            ->cleanUp()
             ->commitAndPush($version);
     }
 
@@ -72,10 +75,11 @@ class RunCommand extends Command
 
     protected function checkOutBranch($version)
     {
-        $this->GitWorkingCopy->pull();
-        if ($this->GitWorkingCopy->run('rev-parse', ["--verify --quiet ${version}"])) {
+        $this->GitWorkingCopy->pull('origin', 'master');
+        try {
+            $this->GitWorkingCopy->run('rev-parse', ["--verify --quiet ${version}"]);
             $this->GitWorkingCopy->checkout($version);
-        } else {
+        } catch (GitException $e) {
             $this->GitWorkingCopy->checkoutNewBranch($version);
         }
 
@@ -110,7 +114,9 @@ class RunCommand extends Command
 
     protected function cleanUp()
     {
-        unlink($this->githubDeployKeyFile);
+        if (isset($_ENV['GITHUB_DEPLOY_KEY'])) {
+            unlink($this->githubDeployKeyFile);
+        }
 
         return $this;
     }
@@ -120,7 +126,7 @@ class RunCommand extends Command
         $this->GitWorkingCopy->run('add', ['-A']);
         $this->GitWorkingCopy->commit("Generated against Kubernetes version ${version}");
         $this->GitWorkingCopy->tag($version);
-        $this->GitWorkingCopy->push('origin', $version, "--set-upstream-to=origin/${version}");
+        $this->GitWorkingCopy->push('origin', $version, "--set-upstream-to=origin");
         $this->GitWorkingCopy->pushTag($version);
 
         return $this;
