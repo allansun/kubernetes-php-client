@@ -59,14 +59,10 @@ class RunCommand extends Command
 
     protected function validateGitPrivateKey()
     {
-        if (!file_exists($this->githubDeployKeyFile)) {
-            if (isset($_ENV['GITHUB_DEPLOY_KEY'])) {
-                $handler = fopen($this->githubDeployKeyFile, 'w');
-                fwrite($handler, $_ENV['GITHUB_DEPLOY_KEY']);
-                fclose($handler);
-            } else {
-                throw new \Exception('GITHUB_DEPLOY_KEY undefined!');
-            }
+        if (isset($_ENV['GITHUB_DEPLOY_KEY'])) {
+            $handler = fopen($this->githubDeployKeyFile, 'w');
+            fwrite($handler, $_ENV['GITHUB_DEPLOY_KEY']);
+            fclose($handler);
         }
 
         return $this;
