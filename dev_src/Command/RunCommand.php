@@ -39,13 +39,10 @@ class RunCommand extends Command
         $this->logger = new ConsoleLogger($output);
         $version      = $input->getArgument('version');
 
-        $this->validateGitPrivateKey();
 
         $Git = new GitWrapper();
         $Git->addLoggerListener(new GitLoggerListener($this->logger));
-        if ($this->githubDeployKeyFile) {
-            $Git->setPrivateKey($this->githubDeployKeyFile);
-        }
+        $this->prepareGitPrivateKey($Git);
         $this->GitWorkingCopy = $Git->workingCopy(APP_ROOT);
 
 
@@ -57,12 +54,13 @@ class RunCommand extends Command
             ->commitAndPush($version);
     }
 
-    protected function validateGitPrivateKey()
+    protected function prepareGitPrivateKey(GitWrapper $Git)
     {
         if (isset($_ENV['GITHUB_DEPLOY_KEY'])) {
             $handler = fopen($this->githubDeployKeyFile, 'w');
             fwrite($handler, $_ENV['GITHUB_DEPLOY_KEY']);
             fclose($handler);
+            $Git->setPrivateKey($this->githubDeployKeyFile);
         }
 
         return $this;
