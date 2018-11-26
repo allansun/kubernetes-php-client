@@ -5,7 +5,7 @@ env:
 - VERSION=""
 before_install:
 - openssl aes-256-cbc -K $encrypted_ea27c11ce5fd_key -iv $encrypted_ea27c11ce5fd_iv
-  -in id_rsa.enc -out ~\/.ssh/id_rsa -d
+  -in id_rsa.enc -out ~/.ssh/id_rsa -d
 - git checkout -b $VERSION
 install:
 - composer install
