@@ -9,13 +9,10 @@ before_install:
 - cd git
 - git checkout -b $VERSION
 install:
-- cd git
 - composer install
 script:
-- cd git
 - bin/console run $VERSION
 after_success:
-- cd git
 - git add -A
 - git commit -m "Generated against Kubernetes version $VERSION" -a
 - git push -u origin $VERSION
