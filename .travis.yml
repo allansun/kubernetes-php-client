@@ -17,4 +17,4 @@ after_success:
 - git commit -m "Generated against Kubernetes version $VERSION" -a
 - git push -u origin $VERSION
 - git tag $VERSION
-- git push origin tags
+- git push --tags
