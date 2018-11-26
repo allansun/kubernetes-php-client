@@ -42,16 +42,17 @@ class RunCommand extends Command
 
         $Git = new GitWrapper();
         $Git->addLoggerListener(new GitLoggerListener($this->logger));
-        $this->prepareGitPrivateKey($Git);
+//        $this->prepareGitPrivateKey($Git);
         $this->GitWorkingCopy = $Git->workingCopy(APP_ROOT);
 
 
         $this
-            ->checkOutBranch($version)
+//            ->checkOutBranch($version)
             ->pullSwagger($version)
             ->generateCode($output)
-            ->cleanUp()
-            ->commitAndPush($version);
+//            ->cleanUp()
+//            ->commitAndPush($version)
+        ;
     }
 
     protected function prepareGitPrivateKey(GitWrapper $Git)

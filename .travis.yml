@@ -1,0 +1,16 @@
+language: php
+php:
+  - '7.2'
+env:
+  - VERSION=""
+before_install:
+  - git checkout -b $VERSION
+install:
+  - composer install
+script: bin/console run $VERSION
+after_success:
+  - git add -A
+  - git commit "Generated against Kubernetes version $VERSION"
+  - git push -u origin $VERSION
+  - git tag $VERSION
+  - git push origin tags
