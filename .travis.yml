@@ -5,8 +5,7 @@ env:
 - VERSION=""
 - GITHUB_TOKEN=""
 before_install:
-- git clone --depth=50 --branch=master https://$GITHUB_TOKEN@github.com/allansun/kubernetes-php-client.git 
- -allansun/kubernetes-php-client
+- git clone --depth=50 --branch=master https://$GITHUB_TOKEN@github.com/allansun/kubernetes-php-client.git allansun/kubernetes-php-client
 - git checkout -b $VERSION
 install:
 - composer install
