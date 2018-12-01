@@ -2,8 +2,9 @@ language: php
 php:
 - '7.2'
 env:
-- VERSION=""
-- GITHUB_TOKEN=""
+  global:
+    - VERSION=""
+    - GITHUB_TOKEN=""
 before_install:
 - git clone --depth=50 --branch=master https://$GITHUB_TOKEN@github.com/allansun/kubernetes-php-client.git git
 - cd git
