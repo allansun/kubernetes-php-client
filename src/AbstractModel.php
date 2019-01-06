@@ -37,12 +37,12 @@ abstract class AbstractModel implements ModelInterface
     /**
      * @var PropertyInfoExtractor
      */
-    static protected $PropertyInfoExtractor;
+    protected static $PropertyInfoExtractor;
 
     /**
      * @var array Cache for reflection results
      */
-    static protected $reflectionCache = [];
+    protected static $reflectionCache = [];
 
     /**
      * AbstractModel constructor.
@@ -152,7 +152,16 @@ abstract class AbstractModel implements ModelInterface
     {
         $propertyTypes = $this->getPropertyTypes($this, $index);
 
-        if ($propertyTypes && (isset($value) && 0 < count($value))) {
+        $countValue = 0;
+        if ($propertyTypes && isset($value)) {
+            if (is_array($value)) {
+                $countValue = count($value);
+            } elseif (is_string($value) || is_integer($value)) {
+                $countValue = 1;
+            }
+        }
+
+        if (0 < $countValue) {
             foreach ($propertyTypes as $PropertyType) {
                 if ($PropertyType->isCollection()) {
                     $values = [];
@@ -217,5 +226,4 @@ abstract class AbstractModel implements ModelInterface
     {
         return $this->isRawObject;
     }
-
 }
