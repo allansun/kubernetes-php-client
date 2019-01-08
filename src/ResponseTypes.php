@@ -1579,6 +1579,43 @@ class ResponseTypes
         'watchAppsV1beta2StatefulSetListForAllNamespaces' => [
             '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\WatchEvent',
         ],
+        'getAuditregistrationAPIGroup' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\APIGroup',
+        ],
+        'getAuditregistrationV1alpha1APIResources' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\APIResourceList',
+        ],
+        'listAuditregistrationV1alpha1AuditSink' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Auditregistration\\V1alpha1\\AuditSinkList',
+        ],
+        'createAuditregistrationV1alpha1AuditSink' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Auditregistration\\V1alpha1\\AuditSink',
+            '201.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Auditregistration\\V1alpha1\\AuditSink',
+            '202.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Auditregistration\\V1alpha1\\AuditSink',
+        ],
+        'deleteAuditregistrationV1alpha1CollectionAuditSink' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\Status',
+        ],
+        'readAuditregistrationV1alpha1AuditSink' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Auditregistration\\V1alpha1\\AuditSink',
+        ],
+        'replaceAuditregistrationV1alpha1AuditSink' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Auditregistration\\V1alpha1\\AuditSink',
+            '201.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Auditregistration\\V1alpha1\\AuditSink',
+        ],
+        'deleteAuditregistrationV1alpha1AuditSink' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\Status',
+            '202.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\Status',
+        ],
+        'patchAuditregistrationV1alpha1AuditSink' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Auditregistration\\V1alpha1\\AuditSink',
+        ],
+        'watchAuditregistrationV1alpha1AuditSinkList' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\WatchEvent',
+        ],
+        'watchAuditregistrationV1alpha1AuditSink' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\WatchEvent',
+        ],
         'getAuthenticationAPIGroup' => [
             '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\APIGroup',
         ],
@@ -3079,10 +3116,51 @@ class ResponseTypes
         'patchStorageV1StorageClass' => [
             '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Storage\\V1\\StorageClass',
         ],
+        'listStorageV1VolumeAttachment' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Storage\\V1\\VolumeAttachmentList',
+        ],
+        'createStorageV1VolumeAttachment' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Storage\\V1\\VolumeAttachment',
+            '201.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Storage\\V1\\VolumeAttachment',
+            '202.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Storage\\V1\\VolumeAttachment',
+        ],
+        'deleteStorageV1CollectionVolumeAttachment' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\Status',
+        ],
+        'readStorageV1VolumeAttachment' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Storage\\V1\\VolumeAttachment',
+        ],
+        'replaceStorageV1VolumeAttachment' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Storage\\V1\\VolumeAttachment',
+            '201.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Storage\\V1\\VolumeAttachment',
+        ],
+        'deleteStorageV1VolumeAttachment' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\Status',
+            '202.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\Status',
+        ],
+        'patchStorageV1VolumeAttachment' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Storage\\V1\\VolumeAttachment',
+        ],
+        'readStorageV1VolumeAttachmentStatus' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Storage\\V1\\VolumeAttachment',
+        ],
+        'replaceStorageV1VolumeAttachmentStatus' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Storage\\V1\\VolumeAttachment',
+            '201.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Storage\\V1\\VolumeAttachment',
+        ],
+        'patchStorageV1VolumeAttachmentStatus' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Storage\\V1\\VolumeAttachment',
+        ],
         'watchStorageV1StorageClassList' => [
             '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\WatchEvent',
         ],
         'watchStorageV1StorageClass' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\WatchEvent',
+        ],
+        'watchStorageV1VolumeAttachmentList' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\WatchEvent',
+        ],
+        'watchStorageV1VolumeAttachment' => [
             '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\WatchEvent',
         ],
         'getStorageV1alpha1APIResources' => [
