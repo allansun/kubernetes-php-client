@@ -3,7 +3,6 @@
 namespace CodeGenerator\Code;
 
 use CodeGenerator\Utility;
-use Kubernetes\AbstractModel;
 use OpenAPI\Schema\V2\DataTypes;
 use OpenAPI\Schema\V2\SchemaObject;
 use Zend\Code\Generator\ClassGenerator;
@@ -42,7 +41,7 @@ class Model extends AbstractClassFile
             ->setNamespaceName($this->namespace)
             ->setName($objectClassname)
             ->addProperties($this->parseProperties())
-            ->setExtendedClass(AbstractModel::class);
+            ->setExtendedClass('\KubernetesRuntime\AbstractModel');
 
         $this->setClass($this->ClassGenerator);
 

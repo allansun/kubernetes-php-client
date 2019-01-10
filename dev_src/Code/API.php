@@ -7,7 +7,6 @@ use Camel\CaseTransformer;
 use Camel\Format\CamelCase;
 use Camel\Format\SnakeCase;
 use CodeGenerator\Utility;
-use Kubernetes\AbstractAPI;
 use OpenAPI\Schema\V2\OperationObject;
 use OpenAPI\Schema\V2\ParameterObject;
 use OpenAPI\Schema\V2\ResponseObject;
@@ -34,7 +33,7 @@ class API extends AbstractClassFile
         $this->ClassGenerator
             ->setNamespaceName($this->kubernetesNamespace)
             ->setName(Utility::filterSpecialWord($classname))
-            ->setExtendedClass(AbstractAPI::class);
+            ->setExtendedClass('\KubernetesRuntime\AbstractAPI');
 
         $this->setClass($this->ClassGenerator);
 

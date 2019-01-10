@@ -16,9 +16,7 @@
   ],
   "require": {
     "php": ">=7.1",
-    "guzzlehttp/guzzle": "~6.0",
-    "monolog/monolog": "@stable",
-    "symfony/property-info": "~4"
+    "kubernetes/php-runtime": "dev-master"
   },
   "require-dev": {
     "phpunit/phpunit": "~7",
