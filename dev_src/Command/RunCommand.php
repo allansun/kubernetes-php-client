@@ -3,7 +3,7 @@
 namespace CodeGenerator\Command;
 
 
-use GitWrapper\Event\GitLoggerListener;
+use GitWrapper\Event\GitLoggerEventSubscriber;
 use GitWrapper\GitException;
 use GitWrapper\GitWorkingCopy;
 use GitWrapper\GitWrapper;
@@ -41,7 +41,7 @@ class RunCommand extends Command
 
 
         $Git = new GitWrapper();
-        $Git->addLoggerListener(new GitLoggerListener($this->logger));
+        $Git->addLoggerEventSubscriber(new GitLoggerEventSubscriber($this->logger));
 //        $this->prepareGitPrivateKey($Git);
         $this->GitWorkingCopy = $Git->workingCopy(APP_ROOT);
 

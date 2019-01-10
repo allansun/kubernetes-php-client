@@ -8,7 +8,7 @@ use CodeGenerator\Code\KubernetesExtentions;
 use CodeGenerator\Code\KubernetesOperations;
 use CodeGenerator\Code\Model;
 use CodeGenerator\Code\ResponseTypes;
-use Kubernetes\Logger;
+use KubernetesRuntime\Logger;
 use OpenAPI\Schema\V2 as Schema;
 
 class CodeGenerator
