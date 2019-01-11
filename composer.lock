@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "af304f01d548a80edf2d04d71a6a573f",
+    "content-hash": "9122df6ae0fc774477075705768cea9e",
     "packages": [
         {
             "name": "guzzlehttp/guzzle",
@@ -191,16 +191,16 @@
         },
         {
             "name": "kubernetes/php-runtime",
-            "version": "dev-master",
+            "version": "v1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/allansun/kubernetes-php-runtime.git",
-                "reference": "bad6e51033aad90016009f120d74869cb735fe4c"
+                "reference": "1375c07db6f3299dd3be115edeb38d1b851f6d7e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/allansun/kubernetes-php-runtime/zipball/bad6e51033aad90016009f120d74869cb735fe4c",
-                "reference": "bad6e51033aad90016009f120d74869cb735fe4c",
+                "url": "https://api.github.com/repos/allansun/kubernetes-php-runtime/zipball/1375c07db6f3299dd3be115edeb38d1b851f6d7e",
+                "reference": "1375c07db6f3299dd3be115edeb38d1b851f6d7e",
                 "shasum": ""
             },
             "require": {
@@ -231,7 +231,7 @@
                 "kubernetes",
                 "runtime"
             ],
-            "time": "2019-01-10T16:14:16+00:00"
+            "time": "2019-01-10T17:06:47+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -644,7 +644,7 @@
     "packages-dev": [
         {
             "name": "allansun/openapi-parser",
-            "version": "dev-master",
+            "version": "v1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/allansun/openapi-parser.git",
@@ -2986,10 +2986,7 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "kubernetes/php-runtime": 20,
-        "allansun/openapi-parser": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

@@ -16,11 +16,11 @@
   ],
   "require": {
     "php": ">=7.1",
-    "kubernetes/php-runtime": "dev-master"
+    "kubernetes/php-runtime": "~1"
   },
   "require-dev": {
     "phpunit/phpunit": "~7",
-    "allansun/openapi-parser": "dev-master",
+    "allansun/openapi-parser": "~1",
     "zendframework/zend-code": "3.3.*",
     "symfony/console": "4.1.*",
     "mattketmo/camel": "^1.1",
