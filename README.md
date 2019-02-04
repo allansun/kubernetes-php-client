@@ -1,7 +1,7 @@
 # Kubernetes-PHP-Client (`kpc`)
 
 [![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D7.1-green.svg?style=plastic)](https://php.net/)
-[![Gitter](https://badges.gitter.im/allansun/kubernetes-php-api.svg?style=plastic)](https://gitter.im/allansun/kubernetes-php-api?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+[![Gitter](https://badges.gitter.im/allansun/kubernetes-php-client.svg?style=plastic)](https://gitter.im/allansun/kubernetes-php-client?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 This is a full PHP client reverse engineered from Kubernetes' Swagger defination.
 
