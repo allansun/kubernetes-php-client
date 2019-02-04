@@ -42,11 +42,8 @@ that higher versions of Kubernetes are not _officially_ supported by kpc.
 
 ### kpc Release Schedule
 
-This project does not follow the Kubernetes release schedule.  `kpc` aims to
-provide a reliable usage experience for kubernetes, and typically
-releases about a month after the corresponding Kubernetes release. This time
-allows for the Kubernetes project to resolve any issues introduced by the new
-version and ensures that we can support the latest features. 
+This project runs on an automatic nightly build against latest Kubernetes release. If you found a particular version 
+not available please open an issue so I can generate it manually. 
 
 
 ## Installation
@@ -76,7 +73,7 @@ Now you need to configure authentication credentials via a static method, (you o
 
 require_once('./vendor/autoload.php');
 
-use Kubernetes\Client;
+use KubernetesRuntime\Client;
 use Kubernetes\API\ConfigMap as ConfigMapAPI;
 use Kubernetes\Model\Io\K8s\Api\Core\V1\ConfigMap;
 
@@ -159,6 +156,10 @@ can use whatever authentication mode suits your requirement.
 * token
 * username
 * password 
+
+Should you need to modify your Client to meet your Kubernetes cluster requirement, please refer to [Guzzle's 
+documentation](http://docs.guzzlephp.org/en/stable/request-options.html) to pass any extra configuration parameters 
+you might need in the `$authentication` array.
 
 ### Class naming convension
 
