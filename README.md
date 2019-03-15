@@ -198,3 +198,61 @@ given,
 This API Wrapper implements all API endpoints currently provided by Kubernetes, for full documentation on how to use 
 it please refere to [API](https://kubernetes.io/docs/reference/#api-reference)
 
+## `Patch` Operation
+
+As specified in the [Kubernetes document](https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#patch-operations) ,
+`Patch` accepts three different kinds of operations:
+
+1. JSON Patch, `Content-Type: application/json-patch+json`
+1. Merge Patch, `Content-Type: application/merge-patch+json`
+1. Strategic Merge Patch, `Content-Type: application/strategic-merge-patch+json`
+
+To define which operation to use, developer is supposed to specifying the Content-Type by themselves.
+
+In order implement the API operation without modifying the `Patch` model class, you can pass `patchOperation` as 
+additional data passed into the model, acceptable options are:
+
+1. patch
+1. merge-patch
+1. strategic-merge-patch
+
+Example:
+
+```php
+$Patch = new \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch([
+    'patchOperation' => 'merge-patch',
+    'spec' => [
+        'template' => [
+            'spec' => [
+                'containers' => [[
+                    'name' => 'nginx-ingress-controller',
+                    'image' => 'quay.io/kubernetes-ingress-controller/nginx-ingress-controller:0.23.0'
+                ]]
+            ]
+        ]
+    ]
+]);
+
+$DeploymentAPI = new \Kubernetes\API\Deployment();
+$DeploymentAPI->patch('default','nginx-ingress', $Patch);
+ 
+```
+
+The above request will send a json to your server:
+
+```json
+{
+    "spec": {
+        "template": {
+            "spec": {
+                "containers":[{
+                    "name": "nginx-ingress-controller",
+                    "image": "quay.io/kubernetes-ingress-controller/nginx-ingress-controller:0.23.0" 
+                }]
+            }
+        }
+    }
+}
+```
+
+Be noted that the 'patchOperation' field is removed from the request, and the `Content-Type` header will be set as `merge-patch+json`
