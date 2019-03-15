@@ -59,6 +59,11 @@ class Model extends AbstractClassFile
             $this->ClassGenerator->addProperty('isRawObject', true, PropertyGenerator::FLAG_PROTECTED);
         }
 
+        # Patch object should be dealt specially
+        if('Patch' == $objectClassname){
+            $this->ClassGenerator->setExtendedClass('\KubernetesRuntime\AbstractPatchModel');
+        }
+
         $this->initFilename();
     }
 
