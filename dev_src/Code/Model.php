@@ -55,7 +55,7 @@ class Model extends AbstractClassFile
             $this->ClassGenerator->setDocBlock($DocBlockGenerator);
         }
 
-        if ($SchemaObject->type) {
+        if ($SchemaObject->type && 'object' != $SchemaObject->type) {
             $this->ClassGenerator->addProperty('isRawObject', true, PropertyGenerator::FLAG_PROTECTED);
         }
 
