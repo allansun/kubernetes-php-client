@@ -15,7 +15,7 @@
     }
   ],
   "require": {
-    "php": ">=7.1",
+    "php": ">=7.2",
     "kubernetes/php-runtime": "~1"
   },
   "require-dev": {
@@ -26,7 +26,8 @@
     "mattketmo/camel": "^1.1",
     "symfony/filesystem": "4.1.*",
     "cpliakas/git-wrapper": "^2.0",
-    "symfony/monolog-bridge": "4.1.*"
+    "symfony/monolog-bridge": "4.1.*",
+    "ext-json": "*"
   },
   "autoload": {
     "psr-4": {
@@ -36,7 +37,8 @@
   "autoload-dev": {
     "psr-4": {
       "Kubernetes\\Test\\": "test",
-      "CodeGenerator\\": "dev_src"
+      "CodeGenerator\\": "dev_src",
+      "Kubernetes\\": "src"
     }
   },
   "archive": {
