@@ -48,6 +48,8 @@ class CodeGenerator
         $ungroupedApis      = [];
 
         foreach ($pathItems as $path => $PathItemObject) {
+            $pathParameters = $PathItemObject->parameters;
+
             foreach (KubernetesOperations::OPERATIONS as $operation) {
                 $OperationObject = $PathItemObject->$operation;
                 if ($OperationObject instanceof Schema\OperationObject) {
@@ -65,7 +67,7 @@ class CodeGenerator
                             $apiClassGenerators[$apiKind] = $API;
                         }
 
-                        $API->parseMethod($OperationObject, $path, $operation);
+                        $API->parseMethod($OperationObject, $path, $operation, $pathParameters);
 
                     } else {
                         $ungroupedApis[$path][$operation] = $OperationObject;

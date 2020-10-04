@@ -53,6 +53,7 @@ class RunCommand extends Command
 //            ->cleanUp()
 //            ->commitAndPush($version)
         ;
+        return Command::SUCCESS;
     }
 
     protected function prepareGitPrivateKey(GitWrapper $Git)

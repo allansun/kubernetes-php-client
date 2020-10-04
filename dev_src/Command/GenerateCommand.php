@@ -30,6 +30,7 @@ class GenerateCommand extends Command
 
         $CodeGenerator->generateResponseTypes($Swagger->paths->getPatternedFields());
 
+        return Command::SUCCESS;
     }
 
 }

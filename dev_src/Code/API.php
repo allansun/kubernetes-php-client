@@ -11,7 +11,6 @@ use OpenAPI\Schema\V2\OperationObject;
 use OpenAPI\Schema\V2\ParameterObject;
 use OpenAPI\Schema\V2\ResponseObject;
 use Zend\Code\Generator\ClassGenerator;
-use Zend\Code\Generator\DocBlock\Tag\GenericTag;
 use Zend\Code\Generator\DocBlock\Tag\ParamTag;
 use Zend\Code\Generator\DocBlock\Tag\ReturnTag;
 use Zend\Code\Generator\DocBlockGenerator;
@@ -20,6 +19,9 @@ use Zend\Code\Generator\ParameterGenerator;
 
 class API extends AbstractClassFile
 {
+    const PARAMETER_IN_PATH = 'path';
+    const PARAMETER_IN_QUERY = 'query';
+    const PARAMETER_IN_BODY = 'body';
     protected $kubernetesNamespace = 'Kubernetes\\API';
 
     public function __construct(string $classname)
@@ -33,55 +35,101 @@ class API extends AbstractClassFile
         $this->ClassGenerator
             ->setNamespaceName($this->kubernetesNamespace)
             ->setName(Utility::filterSpecialWord($classname))
-            ->setExtendedClass('\KubernetesRuntime\AbstractAPI');
+            ->addUse('\KubernetesRuntime\AbstractAPI')
+            ->setExtendedClass('AbstractAPI');
 
         $this->setClass($this->ClassGenerator);
 
         $this->initFilename();
     }
 
-    function parseMethod(OperationObject $OperationObject, string $path, string $operation)
-    {
+    /**
+     * @param  OperationObject    $OperationObject
+     * @param  string             $path
+     * @param  string             $operation
+     * @param  ParameterObject[]  $pathItemParameters
+     */
+    public function parseMethod(
+        OperationObject $OperationObject,
+        string $path,
+        string $operation,
+        array $pathItemParameters =
+        []
+    ) {
         $apiKind   = $OperationObject->getPatternedFields()
                      [KubernetesExtentions::GROUP_VERSION_KIND][KubernetesExtentions::KIND];
         $apiAction = $this->parseApiAction($OperationObject, $apiKind);
 
-        echo $apiKind . ' : ' . $apiAction .
-             ' : ' . $OperationObject->operationId .
-             PHP_EOL;
+        echo $apiKind . ' : ' . $apiAction . ' : ' . $OperationObject->operationId . PHP_EOL;
 
+        $parameters = $this->parseParameters($OperationObject, $pathItemParameters);
 
         $MethodGenerator   = new MethodGenerator($apiAction);
         $DocBlockGenerator = new DocBlockGenerator($OperationObject->description);
 
         $MethodGenerator->setFlags(MethodGenerator::FLAG_PUBLIC);
-        $MethodGenerator->setBody($this->generateMethodBody($OperationObject, $path, $operation));
+        $MethodGenerator->setBody($this->generateMethodBody($OperationObject, $path, $operation, $parameters));
 
-        [$methodParameters, $queryParameters] = $this->generateParameters($OperationObject, $path);
-        $defaultQueryParameters = $OperationObject->parameters ?: [];
-        $MethodGenerator->setParameters($methodParameters);
+        /** @var ParameterObject[] $methodParameters */
+        $methodParameters = $parameters[self::PARAMETER_IN_PATH];
+        /** @var ParameterObject[] $payloadParameters */
+        $payloadParameters = $parameters[self::PARAMETER_IN_BODY];
+        /** @var ParameterObject[] $queryParameters */
+        $queryParameters = $parameters[self::PARAMETER_IN_QUERY];
+        $tags            = [];
 
-        $tags = [];
-        foreach ($queryParameters as $Parameter) {
-            /** @var ParameterObject $Parameter */
-            $tags[] = new GenericTag('configkey', $Parameter->name . "\t" . $Parameter->type);
-        }
-        foreach ($defaultQueryParameters as $Parameter) {
-            /** @var ParameterObject $Parameter */
-            if ('query' == $Parameter->in) {
-                $tags[] = new GenericTag('configkey', $Parameter->name . "\t" . $Parameter->type);
+
+        if (0 < count($methodParameters)) {
+            foreach ($methodParameters as $Parameter) {
+                $ParameterGenerator = new ParameterGenerator($Parameter->name, $Parameter->type, $Parameter->default);
+                if ('namespace' == $Parameter->name) {
+                    $ParameterGenerator->setPosition(1);
+                }
+                $MethodGenerator->setParameter($ParameterGenerator);
+
+                $tags[] = new ParamTag($ParameterGenerator->getName(),
+                    (!$ParameterGenerator->getType() ||
+                     in_array($ParameterGenerator->getType(), self::$internalPhpTypes))
+                        ? $ParameterGenerator->getType()
+                        : $this->getUseAlias($ParameterGenerator->getType()),
+                    $Parameter->description
+                );
             }
         }
 
-        foreach ($methodParameters as $Parameter) {
-            /** @var ParameterGenerator $Parameter $ParamTag */
+        if (0 < count($payloadParameters)) {
+            foreach ($payloadParameters as $Parameter) {
+                if ($Parameter->schema) {
+                    $ParameterGenerator =
+                        new ParameterGenerator('Model',
+                            '\\Kubernetes\\Model\\' . Utility::convertRefToClass($Parameter->schema->_ref)
+                            , $Parameter->type, $Parameter->default
+                        );
+                    $MethodGenerator->setParameter($ParameterGenerator);
 
-            $tags[] = new ParamTag($Parameter->getName(),
-                (!$Parameter->getType() || in_array($Parameter->getType(), self::$internalPhpTypes))
-                    ? $Parameter->getType()
-                    : $this->getUseAlias($Parameter->getType())
-            );
+                    $tags[] = new ParamTag($ParameterGenerator->getName(),
+                        (!$ParameterGenerator->getType() ||
+                         in_array($ParameterGenerator->getType(), self::$internalPhpTypes))
+                            ? $ParameterGenerator->getType()
+                            : $this->getUseAlias($ParameterGenerator->getType()),
+                        $Parameter->description
+                    );
+                }
+            }
         }
+
+        if (0 < count($queryParameters)) {
+            $queryOptionsDescription = 'options:' . PHP_EOL;
+            foreach ($queryParameters as $ParameterGenerator) {
+                /** @var ParameterObject $ParameterGenerator */
+                $queryOptionsDescription .= "'" . $ParameterGenerator->name . "'" . "\t" . $ParameterGenerator->type .
+                                            PHP_EOL . $ParameterGenerator->description .
+                                            PHP_EOL;
+            }
+            $tags[] = new ParamTag('queries', ['array'], $queryOptionsDescription);
+            $MethodGenerator->setParameter(new ParameterGenerator('queries', 'array', []));
+        }
+
 
         $responseTypes = [];
         foreach ($OperationObject->responses->getPatternedFields() as $ResponseObject) {
@@ -122,94 +170,114 @@ class API extends AbstractClassFile
         return $apiAction;
     }
 
-    protected function generateMethodBody(OperationObject $OperationObject, string $path, string $operation): string
-    {
-        $body               = '';
-        $queryParameterBody = '';
-        [$methodParameters, $queryParameters] = $this->generateParameters($OperationObject, $path);
-        $pathParameters = $this->parsePathParameters($path);
+    /**
+     * @param  OperationObject    $OperationObject
+     * @param  ParameterObject[]  $pathItemParameters
+     *
+     * @return array[]
+     */
+    protected function parseParameters(
+        OperationObject $OperationObject,
+        array $pathItemParameters = []
+    ) {
+        $parameters = [
+            self::PARAMETER_IN_PATH  => [],
+            self::PARAMETER_IN_BODY  => [],
+            self::PARAMETER_IN_QUERY => [],
+        ];
 
-        if ($pathParameters) {
-            foreach ($pathParameters[0] as $index => $pathParameter) {
-                $path = str_replace($pathParameter, '{$' . $pathParameters[1][$index] . '}', $path);
-            }
+        foreach ((array)$OperationObject->parameters as $Parameter) {
+            $this->parseParameter($parameters, $Parameter);
         }
 
-        $queryParameterBody .= "\t\t,[" . PHP_EOL;
-        foreach ($methodParameters as $MethodParameter) {
-            /** @var ParameterGenerator $MethodParameter */
-            if ('Model' == $MethodParameter->getName()) {
+        foreach ((array)$pathItemParameters as $Parameter) {
+            $this->parseParameter($parameters, $Parameter);
+        }
+
+        $parameters[self::PARAMETER_IN_PATH] = $this->sortMethodParameters($parameters[self::PARAMETER_IN_PATH]);
+        return $parameters;
+    }
+
+    private function parseParameter(&$parameters, $Parameter)
+    {
+        switch ($Parameter->in) {
+            case self::PARAMETER_IN_QUERY:
+                $parameters[self::PARAMETER_IN_QUERY][] = $Parameter;
+                break;
+
+            case self::PARAMETER_IN_BODY:
+                $parameters[self::PARAMETER_IN_BODY][] = $Parameter;
+                break;
+
+            case self::PARAMETER_IN_PATH:
+                $parameters[self::PARAMETER_IN_PATH][] = $Parameter;
+                break;
+        }
+    }
+
+    protected function generateMethodBody(
+        OperationObject $OperationObject,
+        string $path,
+        string $operation,
+        array $parameters
+    ):
+    string {
+        $body               = '';
+        $queryParameterBody = "\t\t[" . PHP_EOL;
+
+        foreach ($parameters[self::PARAMETER_IN_BODY] as $Parameter) {
+            if ($Parameter->schema) {
                 $queryParameterBody .= "\t\t\t'json' => \$Model->getArrayCopy()," . PHP_EOL;
             }
         }
-        if (0 < count($queryParameters)) {
+
+        foreach ($parameters[self::PARAMETER_IN_PATH] as $Parameter) {
+            /** @var ParameterObject $Parameter */
+            $path = str_replace('{' . $Parameter->name . '}', '{$' . $Parameter->name . '}', $path);
+        }
+
+
+        if (0 < count($parameters[self::PARAMETER_IN_QUERY])) {
             $queryParameterBody .= "\t\t\t'query' => \$queries," . PHP_EOL;
         }
         $queryParameterBody .= "\t\t]" . PHP_EOL;
 
         $body .= 'return $this->parseResponse(' . PHP_EOL;
         $body .= "\t" . '$this->client->request(\'' . $operation . '\',' . PHP_EOL;
-        $body .= "\t\t" . "\"{$path}\"" . PHP_EOL;
-
-        if (0 < strlen($queryParameterBody)) {
-            $body .= $queryParameterBody;
-        }
-
-        $body .= "\t)" . PHP_EOL;
-        $body .= "\t, '{$OperationObject->operationId}'" . PHP_EOL;
+        $body .= "\t\t" . "\"{$path}\"," . PHP_EOL;
+        $body .= $queryParameterBody;
+        $body .= "\t)," . PHP_EOL;
+        $body .= "\t'{$OperationObject->operationId}'" . PHP_EOL;
         $body .= ');';
 
         return $body;
     }
 
-    protected function generateParameters(OperationObject $OperationObject, string $path): array
-    {
-        $parameters      = [];
-        $queryParameters = [];
-
-        $pathParameters = $this->parsePathParameters($path);
-        if ($pathParameters) {
-            foreach ((array)$pathParameters[1] as $parameter) {
-                $ParameterGenerator = new ParameterGenerator($parameter);
-                if ('namespace' == $parameter) {
-                    $ParameterGenerator->setDefaultValue('default');
+    /**
+     * Sort method parameters to enforce the order of ($namepsace, $name)
+     *
+     * @param  ParameterObject[]  $parameters
+     *
+     * @return ParameterObject[]
+     */
+    private function sortMethodParameters(array $parameters){
+        $sortedParameters=[];
+        $sortKeyOrder=['namespace','name'];
+        //Find items by expected name and put them into $sortedParameters in order
+        foreach($sortKeyOrder as $sortKey) {
+            foreach ($parameters as $key => $Parameter) {
+                if($sortKey == $Parameter->name){
+                    $sortedParameters[] = $Parameter;
+                    unset($parameters[$key]);
                 }
-
-                $parameters[] = $ParameterGenerator;
             }
         }
 
-        $operationParameters = $OperationObject->parameters;
-        foreach ((array)$operationParameters as $Parameter) {
-            if ('body' == $Parameter->in) {
-                if ($Parameter->schema) {
-                    $parameters[] =
-                        new ParameterGenerator('Model'
-                            , '\\Kubernetes\\Model\\' . Utility::convertRefToClass($Parameter->schema->_ref)
-                        );
-                }
-            } else {
-                $queryParameters[] = $Parameter;
-            }
+        //Put remaining items into $sortedParameters
+        foreach($parameters as $Parameter){
+            $sortedParameters[] = $Parameter;
         }
-
-        if (1 <= count($queryParameters)) {
-            $parameters[] = new ParameterGenerator('queries', 'array', []);
-        }
-
-        return [$parameters, $queryParameters];
-    }
-
-    protected function parsePathParameters(string $path)
-    {
-        $hasPathParameters = preg_match_all('/\{([a-z]*)\}/', $path, $pathParameters);
-        if ($hasPathParameters) {
-            return $pathParameters;
-        } else {
-            return $hasPathParameters;
-        }
-
-
+        return $sortedParameters;
     }
 
 }

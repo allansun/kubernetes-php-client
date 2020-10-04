@@ -12,6 +12,9 @@ use Zend\Code\Generator\FileGenerator;
 
 abstract class AbstractClassFile extends FileGenerator
 {
+    /**
+     * @var string
+     */
     protected $kubernetesNamespace = 'Kubernetes\\';
 
     /**
