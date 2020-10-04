@@ -37,7 +37,7 @@ class SecretVolumeSource extends AbstractModel
     public $items = null;
 
     /**
-     * Specify whether the Secret or it's keys must be defined
+     * Specify whether the Secret or its keys must be defined
      *
      * @var boolean
      */

@@ -42,7 +42,7 @@ class MutatingWebhookConfiguration extends AbstractModel
     /**
      * Webhooks is a list of webhooks and the affected resources and operations.
      *
-     * @var Webhook[]
+     * @var MutatingWebhook[]
      */
     public $webhooks = null;
 

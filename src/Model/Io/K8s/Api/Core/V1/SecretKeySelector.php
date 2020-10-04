@@ -26,7 +26,7 @@ class SecretKeySelector extends AbstractModel
     public $name = null;
 
     /**
-     * Specify whether the Secret or it's key must be defined
+     * Specify whether the Secret or its key must be defined
      *
      * @var boolean
      */

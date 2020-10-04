@@ -20,8 +20,9 @@ class PodSecurityPolicySpec extends AbstractModel
 
     /**
      * AllowedCSIDrivers is a whitelist of inline CSI drivers that must be explicitly
-     * set to be embedded within a pod spec. An empty value means no CSI drivers can
-     * run inline within a pod spec.
+     * set to be embedded within a pod spec. An empty value indicates that any CSI
+     * driver can be used for inline ephemeral volumes. This is an alpha field, and is
+     * only honored if the API server enables the CSIInlineVolume feature gate.
      *
      * @var AllowedCSIDriver[]
      */
@@ -188,6 +189,16 @@ class PodSecurityPolicySpec extends AbstractModel
      * @var RunAsUserStrategyOptions
      */
     public $runAsUser = null;
+
+    /**
+     * runtimeClass is the strategy that will dictate the allowable RuntimeClasses for
+     * a pod. If this field is omitted, the pod's runtimeClassName field is
+     * unrestricted. Enforcement of this field depends on the RuntimeClass feature gate
+     * being enabled.
+     *
+     * @var RuntimeClassStrategyOptions
+     */
+    public $runtimeClass = null;
 
     /**
      * seLinux is the strategy that will dictate the allowable labels that may be set.

@@ -5,8 +5,8 @@ namespace Kubernetes\API;
 use \KubernetesRuntime\AbstractAPI;
 use \Kubernetes\Model\Io\K8s\Api\Autoscaling\V1\HorizontalPodAutoscalerList as HorizontalPodAutoscalerList;
 use \Kubernetes\Model\Io\K8s\Api\Autoscaling\V1\HorizontalPodAutoscaler as TheHorizontalPodAutoscaler;
-use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Status as Status;
 use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions as DeleteOptions;
+use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Status as Status;
 use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch as Patch;
 use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\WatchEvent as WatchEvent;
 use \Kubernetes\Model\Io\K8s\Api\Autoscaling\V2beta1\HorizontalPodAutoscalerList as HorizontalPodAutoscalerListV2beta1;
@@ -21,6 +21,15 @@ class HorizontalPodAutoscaler extends AbstractAPI
      * list or watch objects of kind HorizontalPodAutoscaler
      *
      * @param array $queries options:
+     * 'allowWatchBookmarks'	boolean
+     * allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+     * not implement bookmarks may ignore this flag and bookmarks are sent at the
+     * server's discretion. Clients should not assume bookmarks are returned at any
+     * specific interval, nor may they assume the server will send any BOOKMARK event
+     * during a session. If this is not a watch, this field is ignored. If the feature
+     * gate WatchBookmarks is not enabled in apiserver, this field is ignored.
+     *
+     * This field is alpha and can be changed or removed without notice.
      * 'continue'	string
      * The continue option should be set when retrieving more results from the server.
      * Since this value is server defined, clients may only use the continue value from
@@ -103,6 +112,15 @@ class HorizontalPodAutoscaler extends AbstractAPI
      * @param string $namespace object name and auth scope, such as for teams and
      * projects
      * @param array $queries options:
+     * 'allowWatchBookmarks'	boolean
+     * allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+     * not implement bookmarks may ignore this flag and bookmarks are sent at the
+     * server's discretion. Clients should not assume bookmarks are returned at any
+     * specific interval, nor may they assume the server will send any BOOKMARK event
+     * during a session. If this is not a watch, this field is ignored. If the feature
+     * gate WatchBookmarks is not enabled in apiserver, this field is ignored.
+     *
+     * This field is alpha and can be changed or removed without notice.
      * 'continue'	string
      * The continue option should be set when retrieving more results from the server.
      * Since this value is server defined, clients may only use the continue value from
@@ -219,7 +237,17 @@ class HorizontalPodAutoscaler extends AbstractAPI
      *
      * @param string $namespace object name and auth scope, such as for teams and
      * projects
+     * @param DeleteOptions $Model
      * @param array $queries options:
+     * 'allowWatchBookmarks'	boolean
+     * allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+     * not implement bookmarks may ignore this flag and bookmarks are sent at the
+     * server's discretion. Clients should not assume bookmarks are returned at any
+     * specific interval, nor may they assume the server will send any BOOKMARK event
+     * during a session. If this is not a watch, this field is ignored. If the feature
+     * gate WatchBookmarks is not enabled in apiserver, this field is ignored.
+     *
+     * This field is alpha and can be changed or removed without notice.
      * 'continue'	string
      * The continue option should be set when retrieving more results from the server.
      * Since this value is server defined, clients may only use the continue value from
@@ -239,9 +267,19 @@ class HorizontalPodAutoscaler extends AbstractAPI
      * This field is not supported when watch is true. Clients may start a watch from
      * the last resourceVersion value returned by the server and not miss any
      * modifications.
+     * 'dryRun'	string
+     * When present, indicates that modifications should not be persisted. An invalid
+     * or unrecognized dryRun directive will result in an error response and no further
+     * processing of the request. Valid values are: - All: all dry run stages will be
+     * processed
      * 'fieldSelector'	string
      * A selector to restrict the list of returned objects by their fields. Defaults to
      * everything.
+     * 'gracePeriodSeconds'	integer
+     * The duration in seconds before the object should be deleted. Value must be
+     * non-negative integer. The value zero indicates delete immediately. If this value
+     * is nil, the default grace period for the specified type will be used. Defaults
+     * to a per object value if not specified. zero means delete immediately.
      * 'labelSelector'	string
      * A selector to restrict the list of returned objects by their labels. Defaults to
      * everything.
@@ -265,6 +303,19 @@ class HorizontalPodAutoscaler extends AbstractAPI
      * smaller chunks of a very large result can ensure they see all possible objects.
      * If objects are updated during a chunked list the version of the object that was
      * present at the time the first list result was calculated is returned.
+     * 'orphanDependents'	boolean
+     * Deprecated: please use the PropagationPolicy, this field will be deprecated in
+     * 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
+     * finalizer will be added to/removed from the object's finalizers list. Either
+     * this field or PropagationPolicy may be set, but not both.
+     * 'propagationPolicy'	string
+     * Whether and how garbage collection will be performed. Either this field or
+     * OrphanDependents may be set, but not both. The default policy is decided by the
+     * existing finalizer set in the metadata.finalizers and the resource-specific
+     * default policy. Acceptable values are: 'Orphan' - orphan the dependents;
+     * 'Background' - allow the garbage collector to delete the dependents in the
+     * background; 'Foreground' - a cascading policy that deletes all dependents in the
+     * foreground.
      * 'resourceVersion'	string
      * When specified with a watch call, shows changes that occur after that particular
      * version of a resource. Defaults to changes from the beginning of history. When
@@ -283,12 +334,13 @@ class HorizontalPodAutoscaler extends AbstractAPI
      *
      * @return Status|mixed
      */
-    public function deleteCollection(string $namespace, array $queries = [])
+    public function deleteCollection(string $namespace, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('delete',
         		"/apis/autoscaling/v1/namespaces/{$namespace}/horizontalpodautoscalers",
         		[
+        			'json' => $Model->getArrayCopy(),
         			'query' => $queries,
         		]
         	),
@@ -563,6 +615,15 @@ class HorizontalPodAutoscaler extends AbstractAPI
      * the 'watch' parameter with a list operation instead.
      *
      * @param array $queries options:
+     * 'allowWatchBookmarks'	boolean
+     * allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+     * not implement bookmarks may ignore this flag and bookmarks are sent at the
+     * server's discretion. Clients should not assume bookmarks are returned at any
+     * specific interval, nor may they assume the server will send any BOOKMARK event
+     * during a session. If this is not a watch, this field is ignored. If the feature
+     * gate WatchBookmarks is not enabled in apiserver, this field is ignored.
+     *
+     * This field is alpha and can be changed or removed without notice.
      * 'continue'	string
      * The continue option should be set when retrieving more results from the server.
      * Since this value is server defined, clients may only use the continue value from
@@ -646,6 +707,15 @@ class HorizontalPodAutoscaler extends AbstractAPI
      * @param string $namespace object name and auth scope, such as for teams and
      * projects
      * @param array $queries options:
+     * 'allowWatchBookmarks'	boolean
+     * allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+     * not implement bookmarks may ignore this flag and bookmarks are sent at the
+     * server's discretion. Clients should not assume bookmarks are returned at any
+     * specific interval, nor may they assume the server will send any BOOKMARK event
+     * during a session. If this is not a watch, this field is ignored. If the feature
+     * gate WatchBookmarks is not enabled in apiserver, this field is ignored.
+     *
+     * This field is alpha and can be changed or removed without notice.
      * 'continue'	string
      * The continue option should be set when retrieving more results from the server.
      * Since this value is server defined, clients may only use the continue value from
@@ -731,6 +801,15 @@ class HorizontalPodAutoscaler extends AbstractAPI
      * projects
      * @param string $name name of the HorizontalPodAutoscaler
      * @param array $queries options:
+     * 'allowWatchBookmarks'	boolean
+     * allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+     * not implement bookmarks may ignore this flag and bookmarks are sent at the
+     * server's discretion. Clients should not assume bookmarks are returned at any
+     * specific interval, nor may they assume the server will send any BOOKMARK event
+     * during a session. If this is not a watch, this field is ignored. If the feature
+     * gate WatchBookmarks is not enabled in apiserver, this field is ignored.
+     *
+     * This field is alpha and can be changed or removed without notice.
      * 'continue'	string
      * The continue option should be set when retrieving more results from the server.
      * Since this value is server defined, clients may only use the continue value from
@@ -811,6 +890,15 @@ class HorizontalPodAutoscaler extends AbstractAPI
      * list or watch objects of kind HorizontalPodAutoscaler
      *
      * @param array $queries options:
+     * 'allowWatchBookmarks'	boolean
+     * allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+     * not implement bookmarks may ignore this flag and bookmarks are sent at the
+     * server's discretion. Clients should not assume bookmarks are returned at any
+     * specific interval, nor may they assume the server will send any BOOKMARK event
+     * during a session. If this is not a watch, this field is ignored. If the feature
+     * gate WatchBookmarks is not enabled in apiserver, this field is ignored.
+     *
+     * This field is alpha and can be changed or removed without notice.
      * 'continue'	string
      * The continue option should be set when retrieving more results from the server.
      * Since this value is server defined, clients may only use the continue value from
@@ -893,6 +981,15 @@ class HorizontalPodAutoscaler extends AbstractAPI
      * @param string $namespace object name and auth scope, such as for teams and
      * projects
      * @param array $queries options:
+     * 'allowWatchBookmarks'	boolean
+     * allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+     * not implement bookmarks may ignore this flag and bookmarks are sent at the
+     * server's discretion. Clients should not assume bookmarks are returned at any
+     * specific interval, nor may they assume the server will send any BOOKMARK event
+     * during a session. If this is not a watch, this field is ignored. If the feature
+     * gate WatchBookmarks is not enabled in apiserver, this field is ignored.
+     *
+     * This field is alpha and can be changed or removed without notice.
      * 'continue'	string
      * The continue option should be set when retrieving more results from the server.
      * Since this value is server defined, clients may only use the continue value from
@@ -1009,7 +1106,17 @@ class HorizontalPodAutoscaler extends AbstractAPI
      *
      * @param string $namespace object name and auth scope, such as for teams and
      * projects
+     * @param DeleteOptions $Model
      * @param array $queries options:
+     * 'allowWatchBookmarks'	boolean
+     * allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+     * not implement bookmarks may ignore this flag and bookmarks are sent at the
+     * server's discretion. Clients should not assume bookmarks are returned at any
+     * specific interval, nor may they assume the server will send any BOOKMARK event
+     * during a session. If this is not a watch, this field is ignored. If the feature
+     * gate WatchBookmarks is not enabled in apiserver, this field is ignored.
+     *
+     * This field is alpha and can be changed or removed without notice.
      * 'continue'	string
      * The continue option should be set when retrieving more results from the server.
      * Since this value is server defined, clients may only use the continue value from
@@ -1029,9 +1136,19 @@ class HorizontalPodAutoscaler extends AbstractAPI
      * This field is not supported when watch is true. Clients may start a watch from
      * the last resourceVersion value returned by the server and not miss any
      * modifications.
+     * 'dryRun'	string
+     * When present, indicates that modifications should not be persisted. An invalid
+     * or unrecognized dryRun directive will result in an error response and no further
+     * processing of the request. Valid values are: - All: all dry run stages will be
+     * processed
      * 'fieldSelector'	string
      * A selector to restrict the list of returned objects by their fields. Defaults to
      * everything.
+     * 'gracePeriodSeconds'	integer
+     * The duration in seconds before the object should be deleted. Value must be
+     * non-negative integer. The value zero indicates delete immediately. If this value
+     * is nil, the default grace period for the specified type will be used. Defaults
+     * to a per object value if not specified. zero means delete immediately.
      * 'labelSelector'	string
      * A selector to restrict the list of returned objects by their labels. Defaults to
      * everything.
@@ -1055,6 +1172,19 @@ class HorizontalPodAutoscaler extends AbstractAPI
      * smaller chunks of a very large result can ensure they see all possible objects.
      * If objects are updated during a chunked list the version of the object that was
      * present at the time the first list result was calculated is returned.
+     * 'orphanDependents'	boolean
+     * Deprecated: please use the PropagationPolicy, this field will be deprecated in
+     * 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
+     * finalizer will be added to/removed from the object's finalizers list. Either
+     * this field or PropagationPolicy may be set, but not both.
+     * 'propagationPolicy'	string
+     * Whether and how garbage collection will be performed. Either this field or
+     * OrphanDependents may be set, but not both. The default policy is decided by the
+     * existing finalizer set in the metadata.finalizers and the resource-specific
+     * default policy. Acceptable values are: 'Orphan' - orphan the dependents;
+     * 'Background' - allow the garbage collector to delete the dependents in the
+     * background; 'Foreground' - a cascading policy that deletes all dependents in the
+     * foreground.
      * 'resourceVersion'	string
      * When specified with a watch call, shows changes that occur after that particular
      * version of a resource. Defaults to changes from the beginning of history. When
@@ -1073,12 +1203,13 @@ class HorizontalPodAutoscaler extends AbstractAPI
      *
      * @return Status|mixed
      */
-    public function deleteCollectionAutoscalingV2beta1(string $namespace, array $queries = [])
+    public function deleteCollectionAutoscalingV2beta1(string $namespace, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('delete',
         		"/apis/autoscaling/v2beta1/namespaces/{$namespace}/horizontalpodautoscalers",
         		[
+        			'json' => $Model->getArrayCopy(),
         			'query' => $queries,
         		]
         	),
@@ -1353,6 +1484,15 @@ class HorizontalPodAutoscaler extends AbstractAPI
      * the 'watch' parameter with a list operation instead.
      *
      * @param array $queries options:
+     * 'allowWatchBookmarks'	boolean
+     * allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+     * not implement bookmarks may ignore this flag and bookmarks are sent at the
+     * server's discretion. Clients should not assume bookmarks are returned at any
+     * specific interval, nor may they assume the server will send any BOOKMARK event
+     * during a session. If this is not a watch, this field is ignored. If the feature
+     * gate WatchBookmarks is not enabled in apiserver, this field is ignored.
+     *
+     * This field is alpha and can be changed or removed without notice.
      * 'continue'	string
      * The continue option should be set when retrieving more results from the server.
      * Since this value is server defined, clients may only use the continue value from
@@ -1436,6 +1576,15 @@ class HorizontalPodAutoscaler extends AbstractAPI
      * @param string $namespace object name and auth scope, such as for teams and
      * projects
      * @param array $queries options:
+     * 'allowWatchBookmarks'	boolean
+     * allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+     * not implement bookmarks may ignore this flag and bookmarks are sent at the
+     * server's discretion. Clients should not assume bookmarks are returned at any
+     * specific interval, nor may they assume the server will send any BOOKMARK event
+     * during a session. If this is not a watch, this field is ignored. If the feature
+     * gate WatchBookmarks is not enabled in apiserver, this field is ignored.
+     *
+     * This field is alpha and can be changed or removed without notice.
      * 'continue'	string
      * The continue option should be set when retrieving more results from the server.
      * Since this value is server defined, clients may only use the continue value from
@@ -1521,6 +1670,15 @@ class HorizontalPodAutoscaler extends AbstractAPI
      * projects
      * @param string $name name of the HorizontalPodAutoscaler
      * @param array $queries options:
+     * 'allowWatchBookmarks'	boolean
+     * allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+     * not implement bookmarks may ignore this flag and bookmarks are sent at the
+     * server's discretion. Clients should not assume bookmarks are returned at any
+     * specific interval, nor may they assume the server will send any BOOKMARK event
+     * during a session. If this is not a watch, this field is ignored. If the feature
+     * gate WatchBookmarks is not enabled in apiserver, this field is ignored.
+     *
+     * This field is alpha and can be changed or removed without notice.
      * 'continue'	string
      * The continue option should be set when retrieving more results from the server.
      * Since this value is server defined, clients may only use the continue value from
@@ -1601,6 +1759,15 @@ class HorizontalPodAutoscaler extends AbstractAPI
      * list or watch objects of kind HorizontalPodAutoscaler
      *
      * @param array $queries options:
+     * 'allowWatchBookmarks'	boolean
+     * allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+     * not implement bookmarks may ignore this flag and bookmarks are sent at the
+     * server's discretion. Clients should not assume bookmarks are returned at any
+     * specific interval, nor may they assume the server will send any BOOKMARK event
+     * during a session. If this is not a watch, this field is ignored. If the feature
+     * gate WatchBookmarks is not enabled in apiserver, this field is ignored.
+     *
+     * This field is alpha and can be changed or removed without notice.
      * 'continue'	string
      * The continue option should be set when retrieving more results from the server.
      * Since this value is server defined, clients may only use the continue value from
@@ -1683,6 +1850,15 @@ class HorizontalPodAutoscaler extends AbstractAPI
      * @param string $namespace object name and auth scope, such as for teams and
      * projects
      * @param array $queries options:
+     * 'allowWatchBookmarks'	boolean
+     * allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+     * not implement bookmarks may ignore this flag and bookmarks are sent at the
+     * server's discretion. Clients should not assume bookmarks are returned at any
+     * specific interval, nor may they assume the server will send any BOOKMARK event
+     * during a session. If this is not a watch, this field is ignored. If the feature
+     * gate WatchBookmarks is not enabled in apiserver, this field is ignored.
+     *
+     * This field is alpha and can be changed or removed without notice.
      * 'continue'	string
      * The continue option should be set when retrieving more results from the server.
      * Since this value is server defined, clients may only use the continue value from
@@ -1799,7 +1975,17 @@ class HorizontalPodAutoscaler extends AbstractAPI
      *
      * @param string $namespace object name and auth scope, such as for teams and
      * projects
+     * @param DeleteOptions $Model
      * @param array $queries options:
+     * 'allowWatchBookmarks'	boolean
+     * allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+     * not implement bookmarks may ignore this flag and bookmarks are sent at the
+     * server's discretion. Clients should not assume bookmarks are returned at any
+     * specific interval, nor may they assume the server will send any BOOKMARK event
+     * during a session. If this is not a watch, this field is ignored. If the feature
+     * gate WatchBookmarks is not enabled in apiserver, this field is ignored.
+     *
+     * This field is alpha and can be changed or removed without notice.
      * 'continue'	string
      * The continue option should be set when retrieving more results from the server.
      * Since this value is server defined, clients may only use the continue value from
@@ -1819,9 +2005,19 @@ class HorizontalPodAutoscaler extends AbstractAPI
      * This field is not supported when watch is true. Clients may start a watch from
      * the last resourceVersion value returned by the server and not miss any
      * modifications.
+     * 'dryRun'	string
+     * When present, indicates that modifications should not be persisted. An invalid
+     * or unrecognized dryRun directive will result in an error response and no further
+     * processing of the request. Valid values are: - All: all dry run stages will be
+     * processed
      * 'fieldSelector'	string
      * A selector to restrict the list of returned objects by their fields. Defaults to
      * everything.
+     * 'gracePeriodSeconds'	integer
+     * The duration in seconds before the object should be deleted. Value must be
+     * non-negative integer. The value zero indicates delete immediately. If this value
+     * is nil, the default grace period for the specified type will be used. Defaults
+     * to a per object value if not specified. zero means delete immediately.
      * 'labelSelector'	string
      * A selector to restrict the list of returned objects by their labels. Defaults to
      * everything.
@@ -1845,6 +2041,19 @@ class HorizontalPodAutoscaler extends AbstractAPI
      * smaller chunks of a very large result can ensure they see all possible objects.
      * If objects are updated during a chunked list the version of the object that was
      * present at the time the first list result was calculated is returned.
+     * 'orphanDependents'	boolean
+     * Deprecated: please use the PropagationPolicy, this field will be deprecated in
+     * 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
+     * finalizer will be added to/removed from the object's finalizers list. Either
+     * this field or PropagationPolicy may be set, but not both.
+     * 'propagationPolicy'	string
+     * Whether and how garbage collection will be performed. Either this field or
+     * OrphanDependents may be set, but not both. The default policy is decided by the
+     * existing finalizer set in the metadata.finalizers and the resource-specific
+     * default policy. Acceptable values are: 'Orphan' - orphan the dependents;
+     * 'Background' - allow the garbage collector to delete the dependents in the
+     * background; 'Foreground' - a cascading policy that deletes all dependents in the
+     * foreground.
      * 'resourceVersion'	string
      * When specified with a watch call, shows changes that occur after that particular
      * version of a resource. Defaults to changes from the beginning of history. When
@@ -1863,12 +2072,13 @@ class HorizontalPodAutoscaler extends AbstractAPI
      *
      * @return Status|mixed
      */
-    public function deleteCollectionAutoscalingV2beta2(string $namespace, array $queries = [])
+    public function deleteCollectionAutoscalingV2beta2(string $namespace, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('delete',
         		"/apis/autoscaling/v2beta2/namespaces/{$namespace}/horizontalpodautoscalers",
         		[
+        			'json' => $Model->getArrayCopy(),
         			'query' => $queries,
         		]
         	),
@@ -2143,6 +2353,15 @@ class HorizontalPodAutoscaler extends AbstractAPI
      * the 'watch' parameter with a list operation instead.
      *
      * @param array $queries options:
+     * 'allowWatchBookmarks'	boolean
+     * allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+     * not implement bookmarks may ignore this flag and bookmarks are sent at the
+     * server's discretion. Clients should not assume bookmarks are returned at any
+     * specific interval, nor may they assume the server will send any BOOKMARK event
+     * during a session. If this is not a watch, this field is ignored. If the feature
+     * gate WatchBookmarks is not enabled in apiserver, this field is ignored.
+     *
+     * This field is alpha and can be changed or removed without notice.
      * 'continue'	string
      * The continue option should be set when retrieving more results from the server.
      * Since this value is server defined, clients may only use the continue value from
@@ -2226,6 +2445,15 @@ class HorizontalPodAutoscaler extends AbstractAPI
      * @param string $namespace object name and auth scope, such as for teams and
      * projects
      * @param array $queries options:
+     * 'allowWatchBookmarks'	boolean
+     * allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+     * not implement bookmarks may ignore this flag and bookmarks are sent at the
+     * server's discretion. Clients should not assume bookmarks are returned at any
+     * specific interval, nor may they assume the server will send any BOOKMARK event
+     * during a session. If this is not a watch, this field is ignored. If the feature
+     * gate WatchBookmarks is not enabled in apiserver, this field is ignored.
+     *
+     * This field is alpha and can be changed or removed without notice.
      * 'continue'	string
      * The continue option should be set when retrieving more results from the server.
      * Since this value is server defined, clients may only use the continue value from
@@ -2311,6 +2539,15 @@ class HorizontalPodAutoscaler extends AbstractAPI
      * projects
      * @param string $name name of the HorizontalPodAutoscaler
      * @param array $queries options:
+     * 'allowWatchBookmarks'	boolean
+     * allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+     * not implement bookmarks may ignore this flag and bookmarks are sent at the
+     * server's discretion. Clients should not assume bookmarks are returned at any
+     * specific interval, nor may they assume the server will send any BOOKMARK event
+     * during a session. If this is not a watch, this field is ignored. If the feature
+     * gate WatchBookmarks is not enabled in apiserver, this field is ignored.
+     *
+     * This field is alpha and can be changed or removed without notice.
      * 'continue'	string
      * The continue option should be set when retrieving more results from the server.
      * Since this value is server defined, clients may only use the continue value from

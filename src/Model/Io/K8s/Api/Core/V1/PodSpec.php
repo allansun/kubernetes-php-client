@@ -158,6 +158,16 @@ class PodSpec extends AbstractModel
     public $nodeSelector = null;
 
     /**
+     * PreemptionPolicy is the Policy for preempting pods with lower priority. One of
+     * Never, PreemptLowerPriority. Defaults to PreemptLowerPriority if unset. This
+     * field is alpha-level and is only honored by servers that enable the
+     * NonPreemptingPriority feature.
+     *
+     * @var string
+     */
+    public $preemptionPolicy = null;
+
+    /**
      * The priority value. Various system components use this field to find the
      * priority of the pod. When Priority Admission Controller is enabled, it prevents
      * users from setting this field. The admission controller populates this field
@@ -203,8 +213,8 @@ class PodSpec extends AbstractModel
      * class, the pod will not be run. If unset or empty, the "legacy" RuntimeClass
      * will be used, which is an implicit class with an empty definition that uses the
      * default runtime handler. More info:
-     * https://git.k8s.io/enhancements/keps/sig-node/runtime-class.md This is an alpha
-     * feature and may change in the future.
+     * https://git.k8s.io/enhancements/keps/sig-node/runtime-class.md This is a beta
+     * feature as of Kubernetes v1.14.
      *
      * @var string
      */

@@ -24,6 +24,15 @@ class ServiceReference extends AbstractModel
      */
     public $namespace = null;
 
+    /**
+     * If specified, the port on the service that hosting webhook. Default to 443 for
+     * backward compatibility. `port` should be a valid port number (1-65535,
+     * inclusive).
+     *
+     * @var integer
+     */
+    public $port = null;
+
 
 }
 

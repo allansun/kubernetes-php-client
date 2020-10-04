@@ -42,6 +42,10 @@ class JSONSchemaProps extends AbstractModel
     public $anyOf = null;
 
     /**
+     * default is a default value for undefined object fields. Defaulting is an alpha
+     * feature under the CustomResourceDefaulting feature gate. Defaulting requires
+     * spec.preserveUnknownFields to be false.
+     *
      * @var JSON
      */
     public $default = null;
@@ -195,6 +199,47 @@ class JSONSchemaProps extends AbstractModel
      * @var boolean
      */
     public $uniqueItems = null;
+
+    /**
+     * x-kubernetes-embedded-resource defines that the value is an embedded Kubernetes
+     * runtime.Object, with TypeMeta and ObjectMeta. The type must be object. It is
+     * allowed to further restrict the embedded object. kind, apiVersion and metadata
+     * are validated automatically. x-kubernetes-preserve-unknown-fields is allowed to
+     * be true, but does not have to be if the object is fully specified (up to kind,
+     * apiVersion, metadata).
+     *
+     * @var boolean
+     */
+    public $x-kubernetes-embedded-resource = null;
+
+    /**
+     * x-kubernetes-int-or-string specifies that this value is either an integer or a
+     * string. If this is true, an empty type is allowed and type as child of anyOf is
+     * permitted if following one of the following patterns:
+     *
+     * 1) anyOf:
+     *    - type: integer
+     *    - type: string
+     * 2) allOf:
+     *    - anyOf:
+     *      - type: integer
+     *      - type: string
+     *    - ... zero or more
+     *
+     * @var boolean
+     */
+    public $x-kubernetes-int-or-string = null;
+
+    /**
+     * x-kubernetes-preserve-unknown-fields stops the API server decoding step from
+     * pruning fields which are not specified in the validation schema. This affects
+     * fields recursively, but switches back to normal pruning behaviour if nested
+     * properties or additionalProperties are specified in the schema. This can either
+     * be true or undefined. False is forbidden.
+     *
+     * @var boolean
+     */
+    public $x-kubernetes-preserve-unknown-fields = null;
 
 
 }

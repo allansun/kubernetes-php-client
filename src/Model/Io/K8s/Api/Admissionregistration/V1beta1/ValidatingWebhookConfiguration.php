@@ -42,7 +42,7 @@ class ValidatingWebhookConfiguration extends AbstractModel
     /**
      * Webhooks is a list of webhooks and the affected resources and operations.
      *
-     * @var Webhook[]
+     * @var ValidatingWebhook[]
      */
     public $webhooks = null;
 

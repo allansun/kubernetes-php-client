@@ -41,6 +41,16 @@ class CustomResourceDefinitionSpec extends AbstractModel
     public $names = null;
 
     /**
+     * preserveUnknownFields disables pruning of object fields which are not specified
+     * in the OpenAPI schema. apiVersion, kind, metadata and known fields inside
+     * metadata are always preserved. Defaults to true in v1beta and will default to
+     * false in v1.
+     *
+     * @var boolean
+     */
+    public $preserveUnknownFields = null;
+
+    /**
      * Scope indicates whether this resource is cluster or namespace scoped.  Default
      * is namespaced
      *

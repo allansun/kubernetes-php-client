@@ -47,7 +47,7 @@ class ConfigMapVolumeSource extends AbstractModel
     public $name = null;
 
     /**
-     * Specify whether the ConfigMap or it's keys must be defined
+     * Specify whether the ConfigMap or its keys must be defined
      *
      * @var boolean
      */

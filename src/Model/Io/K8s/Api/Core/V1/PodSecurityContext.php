@@ -89,6 +89,13 @@ class PodSecurityContext extends AbstractModel
      */
     public $sysctls = null;
 
+    /**
+     * Windows security options.
+     *
+     * @var WindowsSecurityContextOptions
+     */
+    public $windowsOptions = null;
+
 
 }
 

@@ -96,6 +96,13 @@ class SecurityContext extends AbstractModel
      */
     public $seLinuxOptions = null;
 
+    /**
+     * Windows security options.
+     *
+     * @var WindowsSecurityContextOptions
+     */
+    public $windowsOptions = null;
+
 
 }
 

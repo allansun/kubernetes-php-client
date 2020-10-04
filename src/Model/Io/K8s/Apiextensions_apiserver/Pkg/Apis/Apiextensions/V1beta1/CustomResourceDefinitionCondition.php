@@ -40,7 +40,8 @@ class CustomResourceDefinitionCondition extends AbstractModel
     public $status = null;
 
     /**
-     * Type is the type of the condition.
+     * Type is the type of the condition. Types include Established, NamesAccepted and
+     * Terminating.
      *
      * @var string
      */

@@ -17,6 +17,15 @@ class KubernetesNamespace extends AbstractAPI
      * list or watch objects of kind Namespace
      *
      * @param array $queries options:
+     * 'allowWatchBookmarks'	boolean
+     * allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+     * not implement bookmarks may ignore this flag and bookmarks are sent at the
+     * server's discretion. Clients should not assume bookmarks are returned at any
+     * specific interval, nor may they assume the server will send any BOOKMARK event
+     * during a session. If this is not a watch, this field is ignored. If the feature
+     * gate WatchBookmarks is not enabled in apiserver, this field is ignored.
+     *
+     * This field is alpha and can be changed or removed without notice.
      * 'continue'	string
      * The continue option should be set when retrieving more results from the server.
      * Since this value is server defined, clients may only use the continue value from
@@ -413,6 +422,15 @@ class KubernetesNamespace extends AbstractAPI
      * parameter with a list operation instead.
      *
      * @param array $queries options:
+     * 'allowWatchBookmarks'	boolean
+     * allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+     * not implement bookmarks may ignore this flag and bookmarks are sent at the
+     * server's discretion. Clients should not assume bookmarks are returned at any
+     * specific interval, nor may they assume the server will send any BOOKMARK event
+     * during a session. If this is not a watch, this field is ignored. If the feature
+     * gate WatchBookmarks is not enabled in apiserver, this field is ignored.
+     *
+     * This field is alpha and can be changed or removed without notice.
      * 'continue'	string
      * The continue option should be set when retrieving more results from the server.
      * Since this value is server defined, clients may only use the continue value from
@@ -496,6 +514,15 @@ class KubernetesNamespace extends AbstractAPI
      *
      * @param string $name name of the Namespace
      * @param array $queries options:
+     * 'allowWatchBookmarks'	boolean
+     * allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+     * not implement bookmarks may ignore this flag and bookmarks are sent at the
+     * server's discretion. Clients should not assume bookmarks are returned at any
+     * specific interval, nor may they assume the server will send any BOOKMARK event
+     * during a session. If this is not a watch, this field is ignored. If the feature
+     * gate WatchBookmarks is not enabled in apiserver, this field is ignored.
+     *
+     * This field is alpha and can be changed or removed without notice.
      * 'continue'	string
      * The continue option should be set when retrieving more results from the server.
      * Since this value is server defined, clients may only use the continue value from

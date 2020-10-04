@@ -26,7 +26,7 @@ class ConfigMapKeySelector extends AbstractModel
     public $name = null;
 
     /**
-     * Specify whether the ConfigMap or it's key must be defined
+     * Specify whether the ConfigMap or its key must be defined
      *
      * @var boolean
      */
