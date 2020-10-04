@@ -26,6 +26,16 @@ class CSIDriverSpec extends AbstractModel
     public $attachRequired = null;
 
     /**
+     * Defines if the underlying volume supports changing ownership and permission of
+     * the volume before being mounted. Refer to the specific FSGroupPolicy values for
+     * additional details. This field is alpha-level, and is only honored by servers
+     * that enable the CSIVolumeFSGroupPolicy feature gate.
+     *
+     * @var string
+     */
+    public $fsGroupPolicy = null;
+
+    /**
      * If set to true, podInfoOnMount indicates this CSI volume driver requires
      * additional pod information (like podName, podUID, etc.) during mount operations.
      * If set to false, pod information will not be passed on mount. Default is false.
@@ -50,6 +60,25 @@ class CSIDriverSpec extends AbstractModel
      * @var boolean
      */
     public $podInfoOnMount = null;
+
+    /**
+     * If set to true, storageCapacity indicates that the CSI volume driver wants pod
+     * scheduling to consider the storage capacity that the driver deployment will
+     * report by creating CSIStorageCapacity objects with capacity information.
+     *
+     * The check can be enabled immediately when deploying a driver. In that case,
+     * provisioning new volumes with late binding will pause until the driver
+     * deployment has published some suitable CSIStorageCapacity object.
+     *
+     * Alternatively, the driver can be deployed with the field unset or false and it
+     * can be flipped later when storage capacity information has been published.
+     *
+     * This is an alpha field and only available when the CSIStorageCapacity feature is
+     * enabled. The default is false.
+     *
+     * @var boolean
+     */
+    public $storageCapacity = null;
 
     /**
      * volumeLifecycleModes defines what kind of volumes this CSI volume driver

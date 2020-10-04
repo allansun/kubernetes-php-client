@@ -32,7 +32,7 @@ class PriorityLevelConfiguration extends AbstractModel
 
     /**
      * `metadata` is the standard object's metadata. More info:
-     * https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+     * https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      *
      * @var \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\ObjectMeta
      */
@@ -41,7 +41,7 @@ class PriorityLevelConfiguration extends AbstractModel
     /**
      * `spec` is the specification of the desired behavior of a "request-priority".
      * More info:
-     * https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status
+     * https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
      *
      * @var PriorityLevelConfigurationSpec
      */
@@ -49,7 +49,7 @@ class PriorityLevelConfiguration extends AbstractModel
 
     /**
      * `status` is the current status of a "request-priority". More info:
-     * https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status
+     * https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
      *
      * @var PriorityLevelConfigurationStatus
      */

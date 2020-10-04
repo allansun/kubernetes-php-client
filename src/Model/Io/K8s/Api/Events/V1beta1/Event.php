@@ -12,7 +12,8 @@ class Event extends AbstractModel
 {
 
     /**
-     * What action was taken/failed regarding to the regarding object.
+     * action is what action was taken/failed regarding to the regarding object. It is
+     * machine-readable. This field can have at most 128 characters.
      *
      * @var string
      */
@@ -29,35 +30,39 @@ class Event extends AbstractModel
     public $apiVersion = 'events.k8s.io/v1beta1';
 
     /**
-     * Deprecated field assuring backward compatibility with core.v1 Event type
+     * deprecatedCount is the deprecated field assuring backward compatibility with
+     * core.v1 Event type.
      *
      * @var integer
      */
     public $deprecatedCount = null;
 
     /**
-     * Deprecated field assuring backward compatibility with core.v1 Event type
+     * deprecatedFirstTimestamp is the deprecated field assuring backward compatibility
+     * with core.v1 Event type.
      *
      * @var \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Time
      */
     public $deprecatedFirstTimestamp = null;
 
     /**
-     * Deprecated field assuring backward compatibility with core.v1 Event type
+     * deprecatedLastTimestamp is the deprecated field assuring backward compatibility
+     * with core.v1 Event type.
      *
      * @var \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Time
      */
     public $deprecatedLastTimestamp = null;
 
     /**
-     * Deprecated field assuring backward compatibility with core.v1 Event type
+     * deprecatedSource is the deprecated field assuring backward compatibility with
+     * core.v1 Event type.
      *
      * @var \Kubernetes\Model\Io\K8s\Api\Core\V1\EventSource
      */
     public $deprecatedSource = null;
 
     /**
-     * Required. Time when this Event was first observed.
+     * eventTime is the time when this Event was first observed. It is required.
      *
      * @var \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\MicroTime
      */
@@ -79,7 +84,7 @@ class Event extends AbstractModel
     public $metadata = null;
 
     /**
-     * Optional. A human-readable description of the status of this operation. Maximal
+     * note is a human-readable description of the status of this operation. Maximal
      * length of the note is 1kB, but libraries should be prepared to handle values up
      * to 64kB.
      *
@@ -88,53 +93,59 @@ class Event extends AbstractModel
     public $note = null;
 
     /**
-     * Why the action was taken.
+     * reason is why the action was taken. It is human-readable. This field can have at
+     * most 128 characters.
      *
      * @var string
      */
     public $reason = null;
 
     /**
-     * The object this Event is about. In most cases it's an Object reporting
-     * controller implements. E.g. ReplicaSetController implements ReplicaSets and this
-     * event is emitted because it acts on some changes in a ReplicaSet object.
+     * regarding contains the object this Event is about. In most cases it's an Object
+     * reporting controller implements, e.g. ReplicaSetController implements
+     * ReplicaSets and this event is emitted because it acts on some changes in a
+     * ReplicaSet object.
      *
      * @var \Kubernetes\Model\Io\K8s\Api\Core\V1\ObjectReference
      */
     public $regarding = null;
 
     /**
-     * Optional secondary object for more complex actions. E.g. when regarding object
-     * triggers a creation or deletion of related object.
+     * related is the optional secondary object for more complex actions. E.g. when
+     * regarding object triggers a creation or deletion of related object.
      *
      * @var \Kubernetes\Model\Io\K8s\Api\Core\V1\ObjectReference
      */
     public $related = null;
 
     /**
-     * Name of the controller that emitted this Event, e.g. `kubernetes.io/kubelet`.
+     * reportingController is the name of the controller that emitted this Event, e.g.
+     * `kubernetes.io/kubelet`. This field cannot be empty for new Events.
      *
      * @var string
      */
     public $reportingController = null;
 
     /**
-     * ID of the controller instance, e.g. `kubelet-xyzf`.
+     * reportingInstance is the ID of the controller instance, e.g. `kubelet-xyzf`.
+     * This field cannot be empty for new Events and it can have at most 128
+     * characters.
      *
      * @var string
      */
     public $reportingInstance = null;
 
     /**
-     * Data about the Event series this event represents or nil if it's a singleton
-     * Event.
+     * series is data about the Event series this event represents or nil if it's a
+     * singleton Event.
      *
      * @var EventSeries
      */
     public $series = null;
 
     /**
-     * Type of this event (Normal, Warning), new types could be added in the future.
+     * type is the type of this event (Normal, Warning), new types could be added in
+     * the future. It is machine-readable.
      *
      * @var string
      */

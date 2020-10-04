@@ -68,12 +68,20 @@ class ComponentStatus extends AbstractAPI
      * 'pretty'	string
      * If 'true', then the output is pretty printed.
      * 'resourceVersion'	string
-     * When specified with a watch call, shows changes that occur after that particular
-     * version of a resource. Defaults to changes from the beginning of history. When
-     * specified for list: - if unset, then the result is returned from remote storage
-     * based on quorum-read flag; - if it's 0, then we simply return what we currently
-     * have in cache, no guarantee; - if set to non zero, then the result is at least
-     * as fresh as given rv.
+     * resourceVersion sets a constraint on what resource versions a request may be
+     * served from. See
+     * https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+     * for details.
+     *
+     * Defaults to unset
+     * 'resourceVersionMatch'	string
+     * resourceVersionMatch determines how resourceVersion is applied to list calls. It
+     * is highly recommended that resourceVersionMatch be set for list calls where
+     * resourceVersion is set See
+     * https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+     * for details.
+     *
+     * Defaults to unset
      * 'timeoutSeconds'	integer
      * Timeout for the list/watch call. This limits the duration of the call,
      * regardless of any activity or inactivity.

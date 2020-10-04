@@ -5,7 +5,7 @@ namespace Kubernetes\Model\Io\K8s\Api\Networking\V1;
 use \KubernetesRuntime\AbstractModel;
 
 /**
- * NetworkPolicyPeer describes a peer to allow traffic from. Only certain
+ * NetworkPolicyPeer describes a peer to allow traffic to/from. Only certain
  * combinations of fields are allowed
  */
 class NetworkPolicyPeer extends AbstractModel

@@ -7,7 +7,7 @@ use \KubernetesRuntime\AbstractModel;
 /**
  * ClusterRoleBindingList is a collection of ClusterRoleBindings. Deprecated in
  * v1.17 in favor of rbac.authorization.k8s.io/v1 ClusterRoleBindings, and will no
- * longer be served in v1.20.
+ * longer be served in v1.22.
  */
 class ClusterRoleBindingList extends AbstractModel
 {

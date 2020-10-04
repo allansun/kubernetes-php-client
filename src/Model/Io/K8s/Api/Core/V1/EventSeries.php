@@ -25,13 +25,6 @@ class EventSeries extends AbstractModel
      */
     public $lastObservedTime = null;
 
-    /**
-     * State of this Series: Ongoing or Finished Deprecated. Planned removal for 1.18
-     *
-     * @var string
-     */
-    public $state = null;
-
 
 }
 

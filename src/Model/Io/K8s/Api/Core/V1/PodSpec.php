@@ -190,8 +190,7 @@ class PodSpec extends AbstractModel
     /**
      * PreemptionPolicy is the Policy for preempting pods with lower priority. One of
      * Never, PreemptLowerPriority. Defaults to PreemptLowerPriority if unset. This
-     * field is alpha-level and is only honored by servers that enable the
-     * NonPreemptingPriority feature.
+     * field is beta-level, gated by the NonPreemptingPriority feature-gate.
      *
      * @var string
      */
@@ -285,6 +284,18 @@ class PodSpec extends AbstractModel
     public $serviceAccountName = null;
 
     /**
+     * If true the pod's hostname will be configured as the pod's FQDN, rather than the
+     * leaf name (the default). In Linux containers, this means setting the FQDN in the
+     * hostname field of the kernel (the nodename field of struct utsname). In Windows
+     * containers, this means setting the registry value of hostname for the registry
+     * key HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters to
+     * FQDN. If a pod does not have FQDN, this has no effect. Default to false.
+     *
+     * @var boolean
+     */
+    public $setHostnameAsFQDN = null;
+
+    /**
      * Share a single process namespace between all of the containers in a pod. When
      * this is set containers will be able to view and signal processes from other
      * containers in the same pod, and the first process in each container will not be
@@ -327,8 +338,7 @@ class PodSpec extends AbstractModel
     /**
      * TopologySpreadConstraints describes how a group of pods ought to spread across
      * topology domains. Scheduler will schedule pods in a way which abides by the
-     * constraints. This field is only honored by clusters that enable the
-     * EvenPodsSpread feature. All topologySpreadConstraints are ANDed.
+     * constraints. All topologySpreadConstraints are ANDed.
      *
      * @var TopologySpreadConstraint[]
      */

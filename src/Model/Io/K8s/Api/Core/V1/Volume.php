@@ -59,8 +59,8 @@ class Volume extends AbstractModel
     public $configMap = null;
 
     /**
-     * CSI (Container Storage Interface) represents storage that is handled by an
-     * external CSI driver (Alpha feature).
+     * CSI (Container Storage Interface) represents ephemeral storage that is handled
+     * by certain external CSI drivers (Beta feature).
      *
      * @var CSIVolumeSource
      */
@@ -81,6 +81,33 @@ class Volume extends AbstractModel
      * @var EmptyDirVolumeSource
      */
     public $emptyDir = null;
+
+    /**
+     * Ephemeral represents a volume that is handled by a cluster storage driver (Alpha
+     * feature). The volume's lifecycle is tied to the pod that defines it - it will be
+     * created before the pod starts, and deleted when the pod is removed.
+     *
+     * Use this if: a) the volume is only needed while the pod runs, b) features of
+     * normal volumes like restoring from snapshot or capacity
+     *    tracking are needed,
+     * c) the storage driver is specified through a storage class, and d) the storage
+     * driver supports dynamic volume provisioning through
+     *    a PersistentVolumeClaim (see EphemeralVolumeSource for more
+     *    information on the connection between this volume type
+     *    and PersistentVolumeClaim).
+     *
+     * Use PersistentVolumeClaim or one of the vendor-specific APIs for volumes that
+     * persist for longer than the lifecycle of an individual pod.
+     *
+     * Use CSI for light-weight local ephemeral volumes if the CSI driver is meant to
+     * be used that way - see the documentation of the driver for more information.
+     *
+     * A pod can use both types of ephemeral volumes and persistent volumes at the same
+     * time.
+     *
+     * @var EphemeralVolumeSource
+     */
+    public $ephemeral = null;
 
     /**
      * FC represents a Fibre Channel resource that is attached to a kubelet's host

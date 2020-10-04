@@ -1242,43 +1242,6 @@ class ResponseTypes
         'watchAppsV1StatefulSetListForAllNamespaces' => [
             '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\WatchEvent',
         ],
-        'getAuditregistrationAPIGroup' => [
-            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\APIGroup',
-        ],
-        'getAuditregistrationV1alpha1APIResources' => [
-            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\APIResourceList',
-        ],
-        'listAuditregistrationV1alpha1AuditSink' => [
-            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Auditregistration\\V1alpha1\\AuditSinkList',
-        ],
-        'createAuditregistrationV1alpha1AuditSink' => [
-            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Auditregistration\\V1alpha1\\AuditSink',
-            '201.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Auditregistration\\V1alpha1\\AuditSink',
-            '202.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Auditregistration\\V1alpha1\\AuditSink',
-        ],
-        'deleteAuditregistrationV1alpha1CollectionAuditSink' => [
-            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\Status',
-        ],
-        'readAuditregistrationV1alpha1AuditSink' => [
-            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Auditregistration\\V1alpha1\\AuditSink',
-        ],
-        'replaceAuditregistrationV1alpha1AuditSink' => [
-            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Auditregistration\\V1alpha1\\AuditSink',
-            '201.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Auditregistration\\V1alpha1\\AuditSink',
-        ],
-        'deleteAuditregistrationV1alpha1AuditSink' => [
-            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\Status',
-            '202.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\Status',
-        ],
-        'patchAuditregistrationV1alpha1AuditSink' => [
-            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Auditregistration\\V1alpha1\\AuditSink',
-        ],
-        'watchAuditregistrationV1alpha1AuditSinkList' => [
-            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\WatchEvent',
-        ],
-        'watchAuditregistrationV1alpha1AuditSink' => [
-            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\WatchEvent',
-        ],
         'getAuthenticationAPIGroup' => [
             '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\APIGroup',
         ],
@@ -1656,6 +1619,60 @@ class ResponseTypes
         'getCertificatesAPIGroup' => [
             '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\APIGroup',
         ],
+        'getCertificatesV1APIResources' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\APIResourceList',
+        ],
+        'listCertificatesV1CertificateSigningRequest' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Certificates\\V1\\CertificateSigningRequestList',
+        ],
+        'createCertificatesV1CertificateSigningRequest' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Certificates\\V1\\CertificateSigningRequest',
+            '201.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Certificates\\V1\\CertificateSigningRequest',
+            '202.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Certificates\\V1\\CertificateSigningRequest',
+        ],
+        'deleteCertificatesV1CollectionCertificateSigningRequest' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\Status',
+        ],
+        'readCertificatesV1CertificateSigningRequest' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Certificates\\V1\\CertificateSigningRequest',
+        ],
+        'replaceCertificatesV1CertificateSigningRequest' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Certificates\\V1\\CertificateSigningRequest',
+            '201.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Certificates\\V1\\CertificateSigningRequest',
+        ],
+        'deleteCertificatesV1CertificateSigningRequest' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\Status',
+            '202.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\Status',
+        ],
+        'patchCertificatesV1CertificateSigningRequest' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Certificates\\V1\\CertificateSigningRequest',
+        ],
+        'readCertificatesV1CertificateSigningRequestApproval' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Certificates\\V1\\CertificateSigningRequest',
+        ],
+        'replaceCertificatesV1CertificateSigningRequestApproval' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Certificates\\V1\\CertificateSigningRequest',
+            '201.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Certificates\\V1\\CertificateSigningRequest',
+        ],
+        'patchCertificatesV1CertificateSigningRequestApproval' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Certificates\\V1\\CertificateSigningRequest',
+        ],
+        'readCertificatesV1CertificateSigningRequestStatus' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Certificates\\V1\\CertificateSigningRequest',
+        ],
+        'replaceCertificatesV1CertificateSigningRequestStatus' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Certificates\\V1\\CertificateSigningRequest',
+            '201.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Certificates\\V1\\CertificateSigningRequest',
+        ],
+        'patchCertificatesV1CertificateSigningRequestStatus' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Certificates\\V1\\CertificateSigningRequest',
+        ],
+        'watchCertificatesV1CertificateSigningRequestList' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\WatchEvent',
+        ],
+        'watchCertificatesV1CertificateSigningRequest' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\WatchEvent',
+        ],
         'getCertificatesV1beta1APIResources' => [
             '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\APIResourceList',
         ],
@@ -1684,9 +1701,15 @@ class ResponseTypes
         'patchCertificatesV1beta1CertificateSigningRequest' => [
             '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Certificates\\V1beta1\\CertificateSigningRequest',
         ],
+        'readCertificatesV1beta1CertificateSigningRequestApproval' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Certificates\\V1beta1\\CertificateSigningRequest',
+        ],
         'replaceCertificatesV1beta1CertificateSigningRequestApproval' => [
             '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Certificates\\V1beta1\\CertificateSigningRequest',
             '201.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Certificates\\V1beta1\\CertificateSigningRequest',
+        ],
+        'patchCertificatesV1beta1CertificateSigningRequestApproval' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Certificates\\V1beta1\\CertificateSigningRequest',
         ],
         'readCertificatesV1beta1CertificateSigningRequestStatus' => [
             '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Certificates\\V1beta1\\CertificateSigningRequest',
@@ -1832,6 +1855,46 @@ class ResponseTypes
         ],
         'getEventsAPIGroup' => [
             '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\APIGroup',
+        ],
+        'getEventsV1APIResources' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\APIResourceList',
+        ],
+        'listEventsV1EventForAllNamespaces' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Events\\V1\\EventList',
+        ],
+        'listEventsV1NamespacedEvent' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Events\\V1\\EventList',
+        ],
+        'createEventsV1NamespacedEvent' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Events\\V1\\Event',
+            '201.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Events\\V1\\Event',
+            '202.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Events\\V1\\Event',
+        ],
+        'deleteEventsV1CollectionNamespacedEvent' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\Status',
+        ],
+        'readEventsV1NamespacedEvent' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Events\\V1\\Event',
+        ],
+        'replaceEventsV1NamespacedEvent' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Events\\V1\\Event',
+            '201.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Events\\V1\\Event',
+        ],
+        'deleteEventsV1NamespacedEvent' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\Status',
+            '202.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\Status',
+        ],
+        'patchEventsV1NamespacedEvent' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Events\\V1\\Event',
+        ],
+        'watchEventsV1EventListForAllNamespaces' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\WatchEvent',
+        ],
+        'watchEventsV1NamespacedEventList' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\WatchEvent',
+        ],
+        'watchEventsV1NamespacedEvent' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\WatchEvent',
         ],
         'getEventsV1beta1APIResources' => [
             '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\APIResourceList',
@@ -2020,6 +2083,69 @@ class ResponseTypes
         'getNetworkingV1APIResources' => [
             '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\APIResourceList',
         ],
+        'listNetworkingV1IngressClass' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Networking\\V1\\IngressClassList',
+        ],
+        'createNetworkingV1IngressClass' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Networking\\V1\\IngressClass',
+            '201.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Networking\\V1\\IngressClass',
+            '202.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Networking\\V1\\IngressClass',
+        ],
+        'deleteNetworkingV1CollectionIngressClass' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\Status',
+        ],
+        'readNetworkingV1IngressClass' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Networking\\V1\\IngressClass',
+        ],
+        'replaceNetworkingV1IngressClass' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Networking\\V1\\IngressClass',
+            '201.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Networking\\V1\\IngressClass',
+        ],
+        'deleteNetworkingV1IngressClass' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\Status',
+            '202.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\Status',
+        ],
+        'patchNetworkingV1IngressClass' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Networking\\V1\\IngressClass',
+        ],
+        'listNetworkingV1IngressForAllNamespaces' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Networking\\V1\\IngressList',
+        ],
+        'listNetworkingV1NamespacedIngress' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Networking\\V1\\IngressList',
+        ],
+        'createNetworkingV1NamespacedIngress' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Networking\\V1\\Ingress',
+            '201.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Networking\\V1\\Ingress',
+            '202.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Networking\\V1\\Ingress',
+        ],
+        'deleteNetworkingV1CollectionNamespacedIngress' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\Status',
+        ],
+        'readNetworkingV1NamespacedIngress' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Networking\\V1\\Ingress',
+        ],
+        'replaceNetworkingV1NamespacedIngress' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Networking\\V1\\Ingress',
+            '201.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Networking\\V1\\Ingress',
+        ],
+        'deleteNetworkingV1NamespacedIngress' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\Status',
+            '202.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\Status',
+        ],
+        'patchNetworkingV1NamespacedIngress' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Networking\\V1\\Ingress',
+        ],
+        'readNetworkingV1NamespacedIngressStatus' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Networking\\V1\\Ingress',
+        ],
+        'replaceNetworkingV1NamespacedIngressStatus' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Networking\\V1\\Ingress',
+            '201.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Networking\\V1\\Ingress',
+        ],
+        'patchNetworkingV1NamespacedIngressStatus' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Networking\\V1\\Ingress',
+        ],
         'listNetworkingV1NamespacedNetworkPolicy' => [
             '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Networking\\V1\\NetworkPolicyList',
         ],
@@ -2047,6 +2173,21 @@ class ResponseTypes
         ],
         'listNetworkingV1NetworkPolicyForAllNamespaces' => [
             '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Networking\\V1\\NetworkPolicyList',
+        ],
+        'watchNetworkingV1IngressClassList' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\WatchEvent',
+        ],
+        'watchNetworkingV1IngressClass' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\WatchEvent',
+        ],
+        'watchNetworkingV1IngressListForAllNamespaces' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\WatchEvent',
+        ],
+        'watchNetworkingV1NamespacedIngressList' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\WatchEvent',
+        ],
+        'watchNetworkingV1NamespacedIngress' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\WatchEvent',
         ],
         'watchNetworkingV1NamespacedNetworkPolicyList' => [
             '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\WatchEvent',

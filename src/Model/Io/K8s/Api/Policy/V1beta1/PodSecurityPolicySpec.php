@@ -19,9 +19,9 @@ class PodSecurityPolicySpec extends AbstractModel
     public $allowPrivilegeEscalation = null;
 
     /**
-     * AllowedCSIDrivers is a whitelist of inline CSI drivers that must be explicitly
+     * AllowedCSIDrivers is an allowlist of inline CSI drivers that must be explicitly
      * set to be embedded within a pod spec. An empty value indicates that any CSI
-     * driver can be used for inline ephemeral volumes. This is an alpha field, and is
+     * driver can be used for inline ephemeral volumes. This is a beta field, and is
      * only honored if the API server enables the CSIInlineVolume feature gate.
      *
      * @var AllowedCSIDriver[]
@@ -39,24 +39,24 @@ class PodSecurityPolicySpec extends AbstractModel
     public $allowedCapabilities = null;
 
     /**
-     * allowedFlexVolumes is a whitelist of allowed Flexvolumes.  Empty or nil
-     * indicates that all Flexvolumes may be used.  This parameter is effective only
-     * when the usage of the Flexvolumes is allowed in the "volumes" field.
+     * allowedFlexVolumes is an allowlist of Flexvolumes.  Empty or nil indicates that
+     * all Flexvolumes may be used.  This parameter is effective only when the usage of
+     * the Flexvolumes is allowed in the "volumes" field.
      *
      * @var AllowedFlexVolume[]
      */
     public $allowedFlexVolumes = null;
 
     /**
-     * allowedHostPaths is a white list of allowed host paths. Empty indicates that all
-     * host paths may be used.
+     * allowedHostPaths is an allowlist of host paths. Empty indicates that all host
+     * paths may be used.
      *
      * @var AllowedHostPath[]
      */
     public $allowedHostPaths = null;
 
     /**
-     * AllowedProcMountTypes is a whitelist of allowed ProcMountTypes. Empty or nil
+     * AllowedProcMountTypes is an allowlist of allowed ProcMountTypes. Empty or nil
      * indicates that only the DefaultProcMountType may be used. This requires the
      * ProcMountType feature flag to be enabled.
      *
@@ -68,7 +68,7 @@ class PodSecurityPolicySpec extends AbstractModel
      * allowedUnsafeSysctls is a list of explicitly allowed unsafe sysctls, defaults to
      * none. Each entry is either a plain sysctl name or ends in "*" in which case it
      * is considered as a prefix of allowed sysctls. Single * means all unsafe sysctls
-     * are allowed. Kubelet has to whitelist all allowed unsafe sysctls explicitly to
+     * are allowed. Kubelet has to allowlist all allowed unsafe sysctls explicitly to
      * avoid rejection.
      *
      * Examples: e.g. "foo/*" allows "foo/bar", "foo/baz", etc. e.g. "foo.*" allows
@@ -216,8 +216,8 @@ class PodSecurityPolicySpec extends AbstractModel
     public $supplementalGroups = null;
 
     /**
-     * volumes is a white list of allowed volume plugins. Empty indicates that no
-     * volumes may be used. To allow all volumes you may use '*'.
+     * volumes is an allowlist of volume plugins. Empty indicates that no volumes may
+     * be used. To allow all volumes you may use '*'.
      *
      * @var string[]
      */

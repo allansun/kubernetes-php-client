@@ -76,12 +76,20 @@ class Role extends AbstractAPI
      * If objects are updated during a chunked list the version of the object that was
      * present at the time the first list result was calculated is returned.
      * 'resourceVersion'	string
-     * When specified with a watch call, shows changes that occur after that particular
-     * version of a resource. Defaults to changes from the beginning of history. When
-     * specified for list: - if unset, then the result is returned from remote storage
-     * based on quorum-read flag; - if it's 0, then we simply return what we currently
-     * have in cache, no guarantee; - if set to non zero, then the result is at least
-     * as fresh as given rv.
+     * resourceVersion sets a constraint on what resource versions a request may be
+     * served from. See
+     * https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+     * for details.
+     *
+     * Defaults to unset
+     * 'resourceVersionMatch'	string
+     * resourceVersionMatch determines how resourceVersion is applied to list calls. It
+     * is highly recommended that resourceVersionMatch be set for list calls where
+     * resourceVersion is set See
+     * https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+     * for details.
+     *
+     * Defaults to unset
      * 'timeoutSeconds'	integer
      * Timeout for the list/watch call. This limits the duration of the call,
      * regardless of any activity or inactivity.
@@ -148,13 +156,6 @@ class Role extends AbstractAPI
      * projects
      * @param DeleteOptions $Model
      * @param array $queries options:
-     * 'allowWatchBookmarks'	boolean
-     * allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
-     * not implement bookmarks may ignore this flag and bookmarks are sent at the
-     * server's discretion. Clients should not assume bookmarks are returned at any
-     * specific interval, nor may they assume the server will send any BOOKMARK event
-     * during a session. If this is not a watch, this field is ignored. If the feature
-     * gate WatchBookmarks is not enabled in apiserver, this field is ignored.
      * 'continue'	string
      * The continue option should be set when retrieving more results from the server.
      * Since this value is server defined, clients may only use the continue value from
@@ -224,18 +225,23 @@ class Role extends AbstractAPI
      * background; 'Foreground' - a cascading policy that deletes all dependents in the
      * foreground.
      * 'resourceVersion'	string
-     * When specified with a watch call, shows changes that occur after that particular
-     * version of a resource. Defaults to changes from the beginning of history. When
-     * specified for list: - if unset, then the result is returned from remote storage
-     * based on quorum-read flag; - if it's 0, then we simply return what we currently
-     * have in cache, no guarantee; - if set to non zero, then the result is at least
-     * as fresh as given rv.
+     * resourceVersion sets a constraint on what resource versions a request may be
+     * served from. See
+     * https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+     * for details.
+     *
+     * Defaults to unset
+     * 'resourceVersionMatch'	string
+     * resourceVersionMatch determines how resourceVersion is applied to list calls. It
+     * is highly recommended that resourceVersionMatch be set for list calls where
+     * resourceVersion is set See
+     * https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+     * for details.
+     *
+     * Defaults to unset
      * 'timeoutSeconds'	integer
      * Timeout for the list/watch call. This limits the duration of the call,
      * regardless of any activity or inactivity.
-     * 'watch'	boolean
-     * Watch for changes to the described resources and return them as a stream of add,
-     * update, and remove notifications. Specify resourceVersion.
      * 'pretty'	string
      * If 'true', then the output is pretty printed.
      *
@@ -467,12 +473,20 @@ class Role extends AbstractAPI
      * 'pretty'	string
      * If 'true', then the output is pretty printed.
      * 'resourceVersion'	string
-     * When specified with a watch call, shows changes that occur after that particular
-     * version of a resource. Defaults to changes from the beginning of history. When
-     * specified for list: - if unset, then the result is returned from remote storage
-     * based on quorum-read flag; - if it's 0, then we simply return what we currently
-     * have in cache, no guarantee; - if set to non zero, then the result is at least
-     * as fresh as given rv.
+     * resourceVersion sets a constraint on what resource versions a request may be
+     * served from. See
+     * https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+     * for details.
+     *
+     * Defaults to unset
+     * 'resourceVersionMatch'	string
+     * resourceVersionMatch determines how resourceVersion is applied to list calls. It
+     * is highly recommended that resourceVersionMatch be set for list calls where
+     * resourceVersion is set See
+     * https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+     * for details.
+     *
+     * Defaults to unset
      * 'timeoutSeconds'	integer
      * Timeout for the list/watch call. This limits the duration of the call,
      * regardless of any activity or inactivity.
@@ -557,12 +571,20 @@ class Role extends AbstractAPI
      * 'pretty'	string
      * If 'true', then the output is pretty printed.
      * 'resourceVersion'	string
-     * When specified with a watch call, shows changes that occur after that particular
-     * version of a resource. Defaults to changes from the beginning of history. When
-     * specified for list: - if unset, then the result is returned from remote storage
-     * based on quorum-read flag; - if it's 0, then we simply return what we currently
-     * have in cache, no guarantee; - if set to non zero, then the result is at least
-     * as fresh as given rv.
+     * resourceVersion sets a constraint on what resource versions a request may be
+     * served from. See
+     * https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+     * for details.
+     *
+     * Defaults to unset
+     * 'resourceVersionMatch'	string
+     * resourceVersionMatch determines how resourceVersion is applied to list calls. It
+     * is highly recommended that resourceVersionMatch be set for list calls where
+     * resourceVersion is set See
+     * https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+     * for details.
+     *
+     * Defaults to unset
      * 'timeoutSeconds'	integer
      * Timeout for the list/watch call. This limits the duration of the call,
      * regardless of any activity or inactivity.
@@ -649,12 +671,20 @@ class Role extends AbstractAPI
      * 'pretty'	string
      * If 'true', then the output is pretty printed.
      * 'resourceVersion'	string
-     * When specified with a watch call, shows changes that occur after that particular
-     * version of a resource. Defaults to changes from the beginning of history. When
-     * specified for list: - if unset, then the result is returned from remote storage
-     * based on quorum-read flag; - if it's 0, then we simply return what we currently
-     * have in cache, no guarantee; - if set to non zero, then the result is at least
-     * as fresh as given rv.
+     * resourceVersion sets a constraint on what resource versions a request may be
+     * served from. See
+     * https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+     * for details.
+     *
+     * Defaults to unset
+     * 'resourceVersionMatch'	string
+     * resourceVersionMatch determines how resourceVersion is applied to list calls. It
+     * is highly recommended that resourceVersionMatch be set for list calls where
+     * resourceVersion is set See
+     * https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+     * for details.
+     *
+     * Defaults to unset
      * 'timeoutSeconds'	integer
      * Timeout for the list/watch call. This limits the duration of the call,
      * regardless of any activity or inactivity.
@@ -737,12 +767,20 @@ class Role extends AbstractAPI
      * 'pretty'	string
      * If 'true', then the output is pretty printed.
      * 'resourceVersion'	string
-     * When specified with a watch call, shows changes that occur after that particular
-     * version of a resource. Defaults to changes from the beginning of history. When
-     * specified for list: - if unset, then the result is returned from remote storage
-     * based on quorum-read flag; - if it's 0, then we simply return what we currently
-     * have in cache, no guarantee; - if set to non zero, then the result is at least
-     * as fresh as given rv.
+     * resourceVersion sets a constraint on what resource versions a request may be
+     * served from. See
+     * https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+     * for details.
+     *
+     * Defaults to unset
+     * 'resourceVersionMatch'	string
+     * resourceVersionMatch determines how resourceVersion is applied to list calls. It
+     * is highly recommended that resourceVersionMatch be set for list calls where
+     * resourceVersion is set See
+     * https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+     * for details.
+     *
+     * Defaults to unset
      * 'timeoutSeconds'	integer
      * Timeout for the list/watch call. This limits the duration of the call,
      * regardless of any activity or inactivity.
@@ -824,12 +862,20 @@ class Role extends AbstractAPI
      * If objects are updated during a chunked list the version of the object that was
      * present at the time the first list result was calculated is returned.
      * 'resourceVersion'	string
-     * When specified with a watch call, shows changes that occur after that particular
-     * version of a resource. Defaults to changes from the beginning of history. When
-     * specified for list: - if unset, then the result is returned from remote storage
-     * based on quorum-read flag; - if it's 0, then we simply return what we currently
-     * have in cache, no guarantee; - if set to non zero, then the result is at least
-     * as fresh as given rv.
+     * resourceVersion sets a constraint on what resource versions a request may be
+     * served from. See
+     * https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+     * for details.
+     *
+     * Defaults to unset
+     * 'resourceVersionMatch'	string
+     * resourceVersionMatch determines how resourceVersion is applied to list calls. It
+     * is highly recommended that resourceVersionMatch be set for list calls where
+     * resourceVersion is set See
+     * https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+     * for details.
+     *
+     * Defaults to unset
      * 'timeoutSeconds'	integer
      * Timeout for the list/watch call. This limits the duration of the call,
      * regardless of any activity or inactivity.
@@ -896,13 +942,6 @@ class Role extends AbstractAPI
      * projects
      * @param DeleteOptions $Model
      * @param array $queries options:
-     * 'allowWatchBookmarks'	boolean
-     * allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
-     * not implement bookmarks may ignore this flag and bookmarks are sent at the
-     * server's discretion. Clients should not assume bookmarks are returned at any
-     * specific interval, nor may they assume the server will send any BOOKMARK event
-     * during a session. If this is not a watch, this field is ignored. If the feature
-     * gate WatchBookmarks is not enabled in apiserver, this field is ignored.
      * 'continue'	string
      * The continue option should be set when retrieving more results from the server.
      * Since this value is server defined, clients may only use the continue value from
@@ -972,18 +1011,23 @@ class Role extends AbstractAPI
      * background; 'Foreground' - a cascading policy that deletes all dependents in the
      * foreground.
      * 'resourceVersion'	string
-     * When specified with a watch call, shows changes that occur after that particular
-     * version of a resource. Defaults to changes from the beginning of history. When
-     * specified for list: - if unset, then the result is returned from remote storage
-     * based on quorum-read flag; - if it's 0, then we simply return what we currently
-     * have in cache, no guarantee; - if set to non zero, then the result is at least
-     * as fresh as given rv.
+     * resourceVersion sets a constraint on what resource versions a request may be
+     * served from. See
+     * https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+     * for details.
+     *
+     * Defaults to unset
+     * 'resourceVersionMatch'	string
+     * resourceVersionMatch determines how resourceVersion is applied to list calls. It
+     * is highly recommended that resourceVersionMatch be set for list calls where
+     * resourceVersion is set See
+     * https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+     * for details.
+     *
+     * Defaults to unset
      * 'timeoutSeconds'	integer
      * Timeout for the list/watch call. This limits the duration of the call,
      * regardless of any activity or inactivity.
-     * 'watch'	boolean
-     * Watch for changes to the described resources and return them as a stream of add,
-     * update, and remove notifications. Specify resourceVersion.
      * 'pretty'	string
      * If 'true', then the output is pretty printed.
      *
@@ -1215,12 +1259,20 @@ class Role extends AbstractAPI
      * 'pretty'	string
      * If 'true', then the output is pretty printed.
      * 'resourceVersion'	string
-     * When specified with a watch call, shows changes that occur after that particular
-     * version of a resource. Defaults to changes from the beginning of history. When
-     * specified for list: - if unset, then the result is returned from remote storage
-     * based on quorum-read flag; - if it's 0, then we simply return what we currently
-     * have in cache, no guarantee; - if set to non zero, then the result is at least
-     * as fresh as given rv.
+     * resourceVersion sets a constraint on what resource versions a request may be
+     * served from. See
+     * https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+     * for details.
+     *
+     * Defaults to unset
+     * 'resourceVersionMatch'	string
+     * resourceVersionMatch determines how resourceVersion is applied to list calls. It
+     * is highly recommended that resourceVersionMatch be set for list calls where
+     * resourceVersion is set See
+     * https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+     * for details.
+     *
+     * Defaults to unset
      * 'timeoutSeconds'	integer
      * Timeout for the list/watch call. This limits the duration of the call,
      * regardless of any activity or inactivity.
@@ -1305,12 +1357,20 @@ class Role extends AbstractAPI
      * 'pretty'	string
      * If 'true', then the output is pretty printed.
      * 'resourceVersion'	string
-     * When specified with a watch call, shows changes that occur after that particular
-     * version of a resource. Defaults to changes from the beginning of history. When
-     * specified for list: - if unset, then the result is returned from remote storage
-     * based on quorum-read flag; - if it's 0, then we simply return what we currently
-     * have in cache, no guarantee; - if set to non zero, then the result is at least
-     * as fresh as given rv.
+     * resourceVersion sets a constraint on what resource versions a request may be
+     * served from. See
+     * https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+     * for details.
+     *
+     * Defaults to unset
+     * 'resourceVersionMatch'	string
+     * resourceVersionMatch determines how resourceVersion is applied to list calls. It
+     * is highly recommended that resourceVersionMatch be set for list calls where
+     * resourceVersion is set See
+     * https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+     * for details.
+     *
+     * Defaults to unset
      * 'timeoutSeconds'	integer
      * Timeout for the list/watch call. This limits the duration of the call,
      * regardless of any activity or inactivity.
@@ -1397,12 +1457,20 @@ class Role extends AbstractAPI
      * 'pretty'	string
      * If 'true', then the output is pretty printed.
      * 'resourceVersion'	string
-     * When specified with a watch call, shows changes that occur after that particular
-     * version of a resource. Defaults to changes from the beginning of history. When
-     * specified for list: - if unset, then the result is returned from remote storage
-     * based on quorum-read flag; - if it's 0, then we simply return what we currently
-     * have in cache, no guarantee; - if set to non zero, then the result is at least
-     * as fresh as given rv.
+     * resourceVersion sets a constraint on what resource versions a request may be
+     * served from. See
+     * https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+     * for details.
+     *
+     * Defaults to unset
+     * 'resourceVersionMatch'	string
+     * resourceVersionMatch determines how resourceVersion is applied to list calls. It
+     * is highly recommended that resourceVersionMatch be set for list calls where
+     * resourceVersion is set See
+     * https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+     * for details.
+     *
+     * Defaults to unset
      * 'timeoutSeconds'	integer
      * Timeout for the list/watch call. This limits the duration of the call,
      * regardless of any activity or inactivity.
@@ -1485,12 +1553,20 @@ class Role extends AbstractAPI
      * 'pretty'	string
      * If 'true', then the output is pretty printed.
      * 'resourceVersion'	string
-     * When specified with a watch call, shows changes that occur after that particular
-     * version of a resource. Defaults to changes from the beginning of history. When
-     * specified for list: - if unset, then the result is returned from remote storage
-     * based on quorum-read flag; - if it's 0, then we simply return what we currently
-     * have in cache, no guarantee; - if set to non zero, then the result is at least
-     * as fresh as given rv.
+     * resourceVersion sets a constraint on what resource versions a request may be
+     * served from. See
+     * https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+     * for details.
+     *
+     * Defaults to unset
+     * 'resourceVersionMatch'	string
+     * resourceVersionMatch determines how resourceVersion is applied to list calls. It
+     * is highly recommended that resourceVersionMatch be set for list calls where
+     * resourceVersion is set See
+     * https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+     * for details.
+     *
+     * Defaults to unset
      * 'timeoutSeconds'	integer
      * Timeout for the list/watch call. This limits the duration of the call,
      * regardless of any activity or inactivity.
@@ -1572,12 +1648,20 @@ class Role extends AbstractAPI
      * If objects are updated during a chunked list the version of the object that was
      * present at the time the first list result was calculated is returned.
      * 'resourceVersion'	string
-     * When specified with a watch call, shows changes that occur after that particular
-     * version of a resource. Defaults to changes from the beginning of history. When
-     * specified for list: - if unset, then the result is returned from remote storage
-     * based on quorum-read flag; - if it's 0, then we simply return what we currently
-     * have in cache, no guarantee; - if set to non zero, then the result is at least
-     * as fresh as given rv.
+     * resourceVersion sets a constraint on what resource versions a request may be
+     * served from. See
+     * https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+     * for details.
+     *
+     * Defaults to unset
+     * 'resourceVersionMatch'	string
+     * resourceVersionMatch determines how resourceVersion is applied to list calls. It
+     * is highly recommended that resourceVersionMatch be set for list calls where
+     * resourceVersion is set See
+     * https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+     * for details.
+     *
+     * Defaults to unset
      * 'timeoutSeconds'	integer
      * Timeout for the list/watch call. This limits the duration of the call,
      * regardless of any activity or inactivity.
@@ -1644,13 +1728,6 @@ class Role extends AbstractAPI
      * projects
      * @param DeleteOptions $Model
      * @param array $queries options:
-     * 'allowWatchBookmarks'	boolean
-     * allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
-     * not implement bookmarks may ignore this flag and bookmarks are sent at the
-     * server's discretion. Clients should not assume bookmarks are returned at any
-     * specific interval, nor may they assume the server will send any BOOKMARK event
-     * during a session. If this is not a watch, this field is ignored. If the feature
-     * gate WatchBookmarks is not enabled in apiserver, this field is ignored.
      * 'continue'	string
      * The continue option should be set when retrieving more results from the server.
      * Since this value is server defined, clients may only use the continue value from
@@ -1720,18 +1797,23 @@ class Role extends AbstractAPI
      * background; 'Foreground' - a cascading policy that deletes all dependents in the
      * foreground.
      * 'resourceVersion'	string
-     * When specified with a watch call, shows changes that occur after that particular
-     * version of a resource. Defaults to changes from the beginning of history. When
-     * specified for list: - if unset, then the result is returned from remote storage
-     * based on quorum-read flag; - if it's 0, then we simply return what we currently
-     * have in cache, no guarantee; - if set to non zero, then the result is at least
-     * as fresh as given rv.
+     * resourceVersion sets a constraint on what resource versions a request may be
+     * served from. See
+     * https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+     * for details.
+     *
+     * Defaults to unset
+     * 'resourceVersionMatch'	string
+     * resourceVersionMatch determines how resourceVersion is applied to list calls. It
+     * is highly recommended that resourceVersionMatch be set for list calls where
+     * resourceVersion is set See
+     * https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+     * for details.
+     *
+     * Defaults to unset
      * 'timeoutSeconds'	integer
      * Timeout for the list/watch call. This limits the duration of the call,
      * regardless of any activity or inactivity.
-     * 'watch'	boolean
-     * Watch for changes to the described resources and return them as a stream of add,
-     * update, and remove notifications. Specify resourceVersion.
      * 'pretty'	string
      * If 'true', then the output is pretty printed.
      *
@@ -1963,12 +2045,20 @@ class Role extends AbstractAPI
      * 'pretty'	string
      * If 'true', then the output is pretty printed.
      * 'resourceVersion'	string
-     * When specified with a watch call, shows changes that occur after that particular
-     * version of a resource. Defaults to changes from the beginning of history. When
-     * specified for list: - if unset, then the result is returned from remote storage
-     * based on quorum-read flag; - if it's 0, then we simply return what we currently
-     * have in cache, no guarantee; - if set to non zero, then the result is at least
-     * as fresh as given rv.
+     * resourceVersion sets a constraint on what resource versions a request may be
+     * served from. See
+     * https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+     * for details.
+     *
+     * Defaults to unset
+     * 'resourceVersionMatch'	string
+     * resourceVersionMatch determines how resourceVersion is applied to list calls. It
+     * is highly recommended that resourceVersionMatch be set for list calls where
+     * resourceVersion is set See
+     * https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+     * for details.
+     *
+     * Defaults to unset
      * 'timeoutSeconds'	integer
      * Timeout for the list/watch call. This limits the duration of the call,
      * regardless of any activity or inactivity.
@@ -2053,12 +2143,20 @@ class Role extends AbstractAPI
      * 'pretty'	string
      * If 'true', then the output is pretty printed.
      * 'resourceVersion'	string
-     * When specified with a watch call, shows changes that occur after that particular
-     * version of a resource. Defaults to changes from the beginning of history. When
-     * specified for list: - if unset, then the result is returned from remote storage
-     * based on quorum-read flag; - if it's 0, then we simply return what we currently
-     * have in cache, no guarantee; - if set to non zero, then the result is at least
-     * as fresh as given rv.
+     * resourceVersion sets a constraint on what resource versions a request may be
+     * served from. See
+     * https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+     * for details.
+     *
+     * Defaults to unset
+     * 'resourceVersionMatch'	string
+     * resourceVersionMatch determines how resourceVersion is applied to list calls. It
+     * is highly recommended that resourceVersionMatch be set for list calls where
+     * resourceVersion is set See
+     * https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+     * for details.
+     *
+     * Defaults to unset
      * 'timeoutSeconds'	integer
      * Timeout for the list/watch call. This limits the duration of the call,
      * regardless of any activity or inactivity.
@@ -2145,12 +2243,20 @@ class Role extends AbstractAPI
      * 'pretty'	string
      * If 'true', then the output is pretty printed.
      * 'resourceVersion'	string
-     * When specified with a watch call, shows changes that occur after that particular
-     * version of a resource. Defaults to changes from the beginning of history. When
-     * specified for list: - if unset, then the result is returned from remote storage
-     * based on quorum-read flag; - if it's 0, then we simply return what we currently
-     * have in cache, no guarantee; - if set to non zero, then the result is at least
-     * as fresh as given rv.
+     * resourceVersion sets a constraint on what resource versions a request may be
+     * served from. See
+     * https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+     * for details.
+     *
+     * Defaults to unset
+     * 'resourceVersionMatch'	string
+     * resourceVersionMatch determines how resourceVersion is applied to list calls. It
+     * is highly recommended that resourceVersionMatch be set for list calls where
+     * resourceVersion is set See
+     * https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+     * for details.
+     *
+     * Defaults to unset
      * 'timeoutSeconds'	integer
      * Timeout for the list/watch call. This limits the duration of the call,
      * regardless of any activity or inactivity.
@@ -2233,12 +2339,20 @@ class Role extends AbstractAPI
      * 'pretty'	string
      * If 'true', then the output is pretty printed.
      * 'resourceVersion'	string
-     * When specified with a watch call, shows changes that occur after that particular
-     * version of a resource. Defaults to changes from the beginning of history. When
-     * specified for list: - if unset, then the result is returned from remote storage
-     * based on quorum-read flag; - if it's 0, then we simply return what we currently
-     * have in cache, no guarantee; - if set to non zero, then the result is at least
-     * as fresh as given rv.
+     * resourceVersion sets a constraint on what resource versions a request may be
+     * served from. See
+     * https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+     * for details.
+     *
+     * Defaults to unset
+     * 'resourceVersionMatch'	string
+     * resourceVersionMatch determines how resourceVersion is applied to list calls. It
+     * is highly recommended that resourceVersionMatch be set for list calls where
+     * resourceVersion is set See
+     * https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+     * for details.
+     *
+     * Defaults to unset
      * 'timeoutSeconds'	integer
      * Timeout for the list/watch call. This limits the duration of the call,
      * regardless of any activity or inactivity.

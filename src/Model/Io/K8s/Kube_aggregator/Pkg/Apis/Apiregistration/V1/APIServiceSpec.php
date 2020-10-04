@@ -54,7 +54,7 @@ class APIServiceSpec extends AbstractModel
 
     /**
      * Service is a reference to the service for this API server.  It must communicate
-     * on port 443 If the Service is nil, that means the handling for the API
+     * on port 443. If the Service is nil, that means the handling for the API
      * groupversion is handled locally on this server. The call will simply delegate to
      * the normal handler chain to be fulfilled.
      *

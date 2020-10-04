@@ -84,6 +84,13 @@ class PodSecurityContext extends AbstractModel
     public $seLinuxOptions = null;
 
     /**
+     * The seccomp options to use by the containers in this pod.
+     *
+     * @var SeccompProfile
+     */
+    public $seccompProfile = null;
+
+    /**
      * A list of groups applied to the first process run in each container, in addition
      * to the container's primary GID.  If unspecified, no groups will be added to any
      * container.

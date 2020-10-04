@@ -12,26 +12,19 @@ class EventSeries extends AbstractModel
 {
 
     /**
-     * Number of occurrences in this series up to the last heartbeat time
+     * count is the number of occurrences in this series up to the last heartbeat time.
      *
      * @var integer
      */
     public $count = null;
 
     /**
-     * Time when last Event from the series was seen before last heartbeat.
+     * lastObservedTime is the time when last Event from the series was seen before
+     * last heartbeat.
      *
      * @var \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\MicroTime
      */
     public $lastObservedTime = null;
-
-    /**
-     * Information whether this series is ongoing or finished. Deprecated. Planned
-     * removal for 1.18
-     *
-     * @var string
-     */
-    public $state = null;
 
 
 }

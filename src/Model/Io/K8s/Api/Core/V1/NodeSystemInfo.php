@@ -80,7 +80,7 @@ class NodeSystemInfo extends AbstractModel
     /**
      * SystemUUID reported by the node. For unique machine identification MachineID is
      * preferred. This field is specific to Red Hat hosts
-     * https://access.redhat.com/documentation/en-US/Red_Hat_Subscription_Management/1/html/RHSM/getting-system-uuid.html
+     * https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/rhsm/uuid
      *
      * @var string
      */

@@ -97,6 +97,14 @@ class SecurityContext extends AbstractModel
     public $seLinuxOptions = null;
 
     /**
+     * The seccomp options to use by this container. If seccomp options are provided at
+     * both the pod & container level, the container options override the pod options.
+     *
+     * @var SeccompProfile
+     */
+    public $seccompProfile = null;
+
+    /**
      * The Windows specific settings applied to all containers. If unspecified, the
      * options from the PodSecurityContext will be used. If set in both SecurityContext
      * and PodSecurityContext, the value specified in SecurityContext takes precedence.

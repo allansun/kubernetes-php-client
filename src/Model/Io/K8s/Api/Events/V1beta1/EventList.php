@@ -21,7 +21,7 @@ class EventList extends AbstractModel
     public $apiVersion = 'events.k8s.io/v1beta1';
 
     /**
-     * Items is a list of schema objects.
+     * items is a list of schema objects.
      *
      * @var Event[]
      */

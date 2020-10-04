@@ -6,7 +6,9 @@ use \KubernetesRuntime\AbstractModel;
 
 /**
  * Status of all the conditions for the component as a list of ComponentStatus
- * objects.
+ * objects. Deprecated: This API is deprecated in v1.19+
+ *
+ * @deprecated
  */
 class ComponentStatusList extends AbstractModel
 {
