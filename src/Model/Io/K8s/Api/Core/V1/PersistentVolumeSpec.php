@@ -122,7 +122,7 @@ class PersistentVolumeSpec extends AbstractModel
      * to the pod. Provisioned by an admin. More info:
      * https://releases.k8s.io/HEAD/examples/volumes/glusterfs/README.md
      *
-     * @var GlusterfsVolumeSource
+     * @var GlusterfsPersistentVolumeSource
      */
     public $glusterfs = null;
 
@@ -247,7 +247,7 @@ class PersistentVolumeSpec extends AbstractModel
     /**
      * volumeMode defines if a volume is intended to be used with a formatted
      * filesystem or to remain in raw block state. Value of Filesystem is implied when
-     * not included in spec. This is an alpha feature and may change in the future.
+     * not included in spec. This is a beta feature.
      *
      * @var string
      */

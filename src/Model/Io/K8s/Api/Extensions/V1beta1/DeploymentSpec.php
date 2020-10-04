@@ -49,7 +49,9 @@ class DeploymentSpec extends AbstractModel
 
     /**
      * The number of old ReplicaSets to retain to allow rollback. This is a pointer to
-     * distinguish between explicit zero and not specified.
+     * distinguish between explicit zero and not specified. This is set to the max
+     * value of int32 (i.e. 2147483647) by default, which means "retaining all old
+     * RelicaSets".
      *
      * @var integer
      */

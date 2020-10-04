@@ -6,8 +6,8 @@ use \KubernetesRuntime\AbstractModel;
 
 /**
  * OwnerReference contains enough information to let you identify an owning object.
- * Currently, an owning object must be in the same namespace, so there is no
- * namespace field.
+ * An owning object must be in the same namespace as the dependent, or be
+ * cluster-scoped, so there is no namespace field.
  */
 class OwnerReference extends AbstractModel
 {

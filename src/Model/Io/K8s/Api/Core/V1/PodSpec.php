@@ -62,6 +62,15 @@ class PodSpec extends AbstractModel
     public $dnsPolicy = null;
 
     /**
+     * EnableServiceLinks indicates whether information about services should be
+     * injected into pod's environment variables, matching the syntax of Docker links.
+     * Optional: Defaults to true.
+     *
+     * @var boolean
+     */
+    public $enableServiceLinks = null;
+
+    /**
      * HostAliases is an optional list of hosts and IPs that will be injected into the
      * pod's hosts file if specified. This is only valid for non-hostNetwork pods.
      *

@@ -57,8 +57,7 @@ class PersistentVolumeClaimSpec extends AbstractModel
 
     /**
      * volumeMode defines what type of volume is required by the claim. Value of
-     * Filesystem is implied when not included in claim spec. This is an alpha feature
-     * and may change in the future.
+     * Filesystem is implied when not included in claim spec. This is a beta feature.
      *
      * @var string
      */

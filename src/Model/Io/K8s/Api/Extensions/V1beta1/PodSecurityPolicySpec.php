@@ -165,6 +165,15 @@ class PodSecurityPolicySpec extends AbstractModel
     public $requiredDropCapabilities = null;
 
     /**
+     * RunAsGroup is the strategy that will dictate the allowable RunAsGroup values
+     * that may be set. If this field is omitted, the pod's RunAsGroup can take any
+     * value. This field requires the RunAsGroup feature gate to be enabled.
+     *
+     * @var RunAsGroupStrategyOptions
+     */
+    public $runAsGroup = null;
+
+    /**
      * runAsUser is the strategy that will dictate the allowable RunAsUser values that
      * may be set.
      *

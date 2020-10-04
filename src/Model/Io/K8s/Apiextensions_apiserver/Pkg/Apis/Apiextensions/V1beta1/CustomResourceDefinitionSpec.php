@@ -12,11 +12,19 @@ class CustomResourceDefinitionSpec extends AbstractModel
 
     /**
      * AdditionalPrinterColumns are additional columns shown e.g. in kubectl next to
-     * the name. Defaults to a created-at column.
+     * the name. Defaults to a created-at column. Optional, the global columns for all
+     * versions. Top-level and per-version columns are mutually exclusive.
      *
      * @var CustomResourceColumnDefinition[]
      */
     public $additionalPrinterColumns = null;
+
+    /**
+     * `conversion` defines conversion settings for the CRD.
+     *
+     * @var CustomResourceConversion
+     */
+    public $conversion = null;
 
     /**
      * Group is the group this resource belongs in
@@ -41,14 +49,18 @@ class CustomResourceDefinitionSpec extends AbstractModel
     public $scope = null;
 
     /**
-     * Subresources describes the subresources for CustomResources
+     * Subresources describes the subresources for CustomResource Optional, the global
+     * subresources for all versions. Top-level and per-version subresources are
+     * mutually exclusive.
      *
      * @var CustomResourceSubresources
      */
     public $subresources = null;
 
     /**
-     * Validation describes the validation methods for CustomResources
+     * Validation describes the validation methods for CustomResources Optional, the
+     * global validation schema for all versions. Top-level and per-version schemas are
+     * mutually exclusive.
      *
      * @var CustomResourceValidation
      */

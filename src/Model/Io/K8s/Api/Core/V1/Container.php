@@ -194,7 +194,7 @@ class Container extends AbstractModel
 
     /**
      * volumeDevices is the list of block devices to be used by the container. This is
-     * an alpha feature and may change in the future.
+     * a beta feature.
      *
      * @var VolumeDevice[]
      */
