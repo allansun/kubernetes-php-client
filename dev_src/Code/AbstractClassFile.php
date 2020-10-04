@@ -71,6 +71,10 @@ abstract class AbstractClassFile extends FileGenerator
         foreach ($classGeneratorUses as $use) {
             $useInfo = explode(' as ', $use);
 
+            if(!isset($useInfo[1])){
+                $useInfo[1] = $useInfo[0];
+            }
+
             $uses[$useInfo[0]] = $useInfo[1];
         }
 
