@@ -125,8 +125,8 @@ class RunCommand extends Command
 
         $this->GitWorkingCopy->run('add', ['-A']);
         $this->GitWorkingCopy->commit("Generated against Kubernetes version ${version}");
-        $this->GitWorkingCopy->tag($version);
         $this->GitWorkingCopy->push('origin', $version);
+        $this->GitWorkingCopy->tag($version);
         $this->GitWorkingCopy->pushTag($version);
 
         return $this;
