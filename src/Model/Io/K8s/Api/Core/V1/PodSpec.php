@@ -289,8 +289,7 @@ class PodSpec extends AbstractModel
      * this is set containers will be able to view and signal processes from other
      * containers in the same pod, and the first process in each container will not be
      * assigned PID 1. HostPID and ShareProcessNamespace cannot both be set. Optional:
-     * Default to false. This field is beta-level and may be disabled with the
-     * PodShareProcessNamespace feature.
+     * Default to false.
      *
      * @var boolean
      */

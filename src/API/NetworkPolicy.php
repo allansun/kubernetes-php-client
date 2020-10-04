@@ -28,8 +28,6 @@ class NetworkPolicy extends AbstractAPI
      * specific interval, nor may they assume the server will send any BOOKMARK event
      * during a session. If this is not a watch, this field is ignored. If the feature
      * gate WatchBookmarks is not enabled in apiserver, this field is ignored.
-     *
-     * This field is beta.
      * 'continue'	string
      * The continue option should be set when retrieving more results from the server.
      * Since this value is server defined, clients may only use the continue value from
@@ -155,8 +153,6 @@ class NetworkPolicy extends AbstractAPI
      * specific interval, nor may they assume the server will send any BOOKMARK event
      * during a session. If this is not a watch, this field is ignored. If the feature
      * gate WatchBookmarks is not enabled in apiserver, this field is ignored.
-     *
-     * This field is beta.
      * 'continue'	string
      * The continue option should be set when retrieving more results from the server.
      * Since this value is server defined, clients may only use the continue value from
@@ -427,8 +423,6 @@ class NetworkPolicy extends AbstractAPI
      * specific interval, nor may they assume the server will send any BOOKMARK event
      * during a session. If this is not a watch, this field is ignored. If the feature
      * gate WatchBookmarks is not enabled in apiserver, this field is ignored.
-     *
-     * This field is beta.
      * 'continue'	string
      * The continue option should be set when retrieving more results from the server.
      * Since this value is server defined, clients may only use the continue value from
@@ -519,8 +513,6 @@ class NetworkPolicy extends AbstractAPI
      * specific interval, nor may they assume the server will send any BOOKMARK event
      * during a session. If this is not a watch, this field is ignored. If the feature
      * gate WatchBookmarks is not enabled in apiserver, this field is ignored.
-     *
-     * This field is beta.
      * 'continue'	string
      * The continue option should be set when retrieving more results from the server.
      * Since this value is server defined, clients may only use the continue value from
@@ -613,8 +605,6 @@ class NetworkPolicy extends AbstractAPI
      * specific interval, nor may they assume the server will send any BOOKMARK event
      * during a session. If this is not a watch, this field is ignored. If the feature
      * gate WatchBookmarks is not enabled in apiserver, this field is ignored.
-     *
-     * This field is beta.
      * 'continue'	string
      * The continue option should be set when retrieving more results from the server.
      * Since this value is server defined, clients may only use the continue value from
@@ -703,8 +693,6 @@ class NetworkPolicy extends AbstractAPI
      * specific interval, nor may they assume the server will send any BOOKMARK event
      * during a session. If this is not a watch, this field is ignored. If the feature
      * gate WatchBookmarks is not enabled in apiserver, this field is ignored.
-     *
-     * This field is beta.
      * 'continue'	string
      * The continue option should be set when retrieving more results from the server.
      * Since this value is server defined, clients may only use the continue value from
@@ -794,8 +782,6 @@ class NetworkPolicy extends AbstractAPI
      * specific interval, nor may they assume the server will send any BOOKMARK event
      * during a session. If this is not a watch, this field is ignored. If the feature
      * gate WatchBookmarks is not enabled in apiserver, this field is ignored.
-     *
-     * This field is beta.
      * 'continue'	string
      * The continue option should be set when retrieving more results from the server.
      * Since this value is server defined, clients may only use the continue value from
@@ -921,8 +907,6 @@ class NetworkPolicy extends AbstractAPI
      * specific interval, nor may they assume the server will send any BOOKMARK event
      * during a session. If this is not a watch, this field is ignored. If the feature
      * gate WatchBookmarks is not enabled in apiserver, this field is ignored.
-     *
-     * This field is beta.
      * 'continue'	string
      * The continue option should be set when retrieving more results from the server.
      * Since this value is server defined, clients may only use the continue value from
@@ -1193,8 +1177,6 @@ class NetworkPolicy extends AbstractAPI
      * specific interval, nor may they assume the server will send any BOOKMARK event
      * during a session. If this is not a watch, this field is ignored. If the feature
      * gate WatchBookmarks is not enabled in apiserver, this field is ignored.
-     *
-     * This field is beta.
      * 'continue'	string
      * The continue option should be set when retrieving more results from the server.
      * Since this value is server defined, clients may only use the continue value from
@@ -1285,8 +1267,6 @@ class NetworkPolicy extends AbstractAPI
      * specific interval, nor may they assume the server will send any BOOKMARK event
      * during a session. If this is not a watch, this field is ignored. If the feature
      * gate WatchBookmarks is not enabled in apiserver, this field is ignored.
-     *
-     * This field is beta.
      * 'continue'	string
      * The continue option should be set when retrieving more results from the server.
      * Since this value is server defined, clients may only use the continue value from
@@ -1379,8 +1359,6 @@ class NetworkPolicy extends AbstractAPI
      * specific interval, nor may they assume the server will send any BOOKMARK event
      * during a session. If this is not a watch, this field is ignored. If the feature
      * gate WatchBookmarks is not enabled in apiserver, this field is ignored.
-     *
-     * This field is beta.
      * 'continue'	string
      * The continue option should be set when retrieving more results from the server.
      * Since this value is server defined, clients may only use the continue value from
@@ -1469,8 +1447,6 @@ class NetworkPolicy extends AbstractAPI
      * specific interval, nor may they assume the server will send any BOOKMARK event
      * during a session. If this is not a watch, this field is ignored. If the feature
      * gate WatchBookmarks is not enabled in apiserver, this field is ignored.
-     *
-     * This field is beta.
      * 'continue'	string
      * The continue option should be set when retrieving more results from the server.
      * Since this value is server defined, clients may only use the continue value from

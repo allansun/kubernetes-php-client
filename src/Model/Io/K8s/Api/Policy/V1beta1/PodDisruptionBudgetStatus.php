@@ -58,7 +58,7 @@ class PodDisruptionBudgetStatus extends AbstractModel
 
     /**
      * Most recent generation observed when updating this PDB status.
-     * PodDisruptionsAllowed and other status informatio is valid only if
+     * PodDisruptionsAllowed and other status information is valid only if
      * observedGeneration equals to PDB's object generation.
      *
      * @var integer

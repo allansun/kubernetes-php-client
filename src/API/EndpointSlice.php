@@ -3,8 +3,8 @@
 namespace Kubernetes\API;
 
 use \KubernetesRuntime\AbstractAPI;
-use \Kubernetes\Model\Io\K8s\Api\Discovery\V1alpha1\EndpointSliceList as EndpointSliceList;
-use \Kubernetes\Model\Io\K8s\Api\Discovery\V1alpha1\EndpointSlice as TheEndpointSlice;
+use \Kubernetes\Model\Io\K8s\Api\Discovery\V1beta1\EndpointSliceList as EndpointSliceList;
+use \Kubernetes\Model\Io\K8s\Api\Discovery\V1beta1\EndpointSlice as TheEndpointSlice;
 use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions as DeleteOptions;
 use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Status as Status;
 use \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch as Patch;
@@ -24,8 +24,6 @@ class EndpointSlice extends AbstractAPI
      * specific interval, nor may they assume the server will send any BOOKMARK event
      * during a session. If this is not a watch, this field is ignored. If the feature
      * gate WatchBookmarks is not enabled in apiserver, this field is ignored.
-     *
-     * This field is beta.
      * 'continue'	string
      * The continue option should be set when retrieving more results from the server.
      * Since this value is server defined, clients may only use the continue value from
@@ -93,12 +91,12 @@ class EndpointSlice extends AbstractAPI
     {
         return $this->parseResponse(
         	$this->client->request('get',
-        		"/apis/discovery.k8s.io/v1alpha1/endpointslices",
+        		"/apis/discovery.k8s.io/v1beta1/endpointslices",
         		[
         			'query' => $queries,
         		]
         	),
-        	'listDiscoveryV1alpha1EndpointSliceForAllNamespaces'
+        	'listDiscoveryV1beta1EndpointSliceForAllNamespaces'
         );
     }
 
@@ -115,8 +113,6 @@ class EndpointSlice extends AbstractAPI
      * specific interval, nor may they assume the server will send any BOOKMARK event
      * during a session. If this is not a watch, this field is ignored. If the feature
      * gate WatchBookmarks is not enabled in apiserver, this field is ignored.
-     *
-     * This field is beta.
      * 'continue'	string
      * The continue option should be set when retrieving more results from the server.
      * Since this value is server defined, clients may only use the continue value from
@@ -184,12 +180,12 @@ class EndpointSlice extends AbstractAPI
     {
         return $this->parseResponse(
         	$this->client->request('get',
-        		"/apis/discovery.k8s.io/v1alpha1/namespaces/{$namespace}/endpointslices",
+        		"/apis/discovery.k8s.io/v1beta1/namespaces/{$namespace}/endpointslices",
         		[
         			'query' => $queries,
         		]
         	),
-        	'listDiscoveryV1alpha1NamespacedEndpointSlice'
+        	'listDiscoveryV1beta1NamespacedEndpointSlice'
         );
     }
 
@@ -214,17 +210,17 @@ class EndpointSlice extends AbstractAPI
      *
      * @return TheEndpointSlice|mixed
      */
-    public function create(string $namespace, \Kubernetes\Model\Io\K8s\Api\Discovery\V1alpha1\EndpointSlice $Model, array $queries = [])
+    public function create(string $namespace, \Kubernetes\Model\Io\K8s\Api\Discovery\V1beta1\EndpointSlice $Model, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('post',
-        		"/apis/discovery.k8s.io/v1alpha1/namespaces/{$namespace}/endpointslices",
+        		"/apis/discovery.k8s.io/v1beta1/namespaces/{$namespace}/endpointslices",
         		[
         			'json' => $Model->getArrayCopy(),
         			'query' => $queries,
         		]
         	),
-        	'createDiscoveryV1alpha1NamespacedEndpointSlice'
+        	'createDiscoveryV1beta1NamespacedEndpointSlice'
         );
     }
 
@@ -242,8 +238,6 @@ class EndpointSlice extends AbstractAPI
      * specific interval, nor may they assume the server will send any BOOKMARK event
      * during a session. If this is not a watch, this field is ignored. If the feature
      * gate WatchBookmarks is not enabled in apiserver, this field is ignored.
-     *
-     * This field is beta.
      * 'continue'	string
      * The continue option should be set when retrieving more results from the server.
      * Since this value is server defined, clients may only use the continue value from
@@ -334,13 +328,13 @@ class EndpointSlice extends AbstractAPI
     {
         return $this->parseResponse(
         	$this->client->request('delete',
-        		"/apis/discovery.k8s.io/v1alpha1/namespaces/{$namespace}/endpointslices",
+        		"/apis/discovery.k8s.io/v1beta1/namespaces/{$namespace}/endpointslices",
         		[
         			'json' => $Model->getArrayCopy(),
         			'query' => $queries,
         		]
         	),
-        	'deleteDiscoveryV1alpha1CollectionNamespacedEndpointSlice'
+        	'deleteDiscoveryV1beta1CollectionNamespacedEndpointSlice'
         );
     }
 
@@ -366,12 +360,12 @@ class EndpointSlice extends AbstractAPI
     {
         return $this->parseResponse(
         	$this->client->request('get',
-        		"/apis/discovery.k8s.io/v1alpha1/namespaces/{$namespace}/endpointslices/{$name}",
+        		"/apis/discovery.k8s.io/v1beta1/namespaces/{$namespace}/endpointslices/{$name}",
         		[
         			'query' => $queries,
         		]
         	),
-        	'readDiscoveryV1alpha1NamespacedEndpointSlice'
+        	'readDiscoveryV1beta1NamespacedEndpointSlice'
         );
     }
 
@@ -397,17 +391,17 @@ class EndpointSlice extends AbstractAPI
      *
      * @return TheEndpointSlice|mixed
      */
-    public function replace(string $namespace, string $name, \Kubernetes\Model\Io\K8s\Api\Discovery\V1alpha1\EndpointSlice $Model, array $queries = [])
+    public function replace(string $namespace, string $name, \Kubernetes\Model\Io\K8s\Api\Discovery\V1beta1\EndpointSlice $Model, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('put',
-        		"/apis/discovery.k8s.io/v1alpha1/namespaces/{$namespace}/endpointslices/{$name}",
+        		"/apis/discovery.k8s.io/v1beta1/namespaces/{$namespace}/endpointslices/{$name}",
         		[
         			'json' => $Model->getArrayCopy(),
         			'query' => $queries,
         		]
         	),
-        	'replaceDiscoveryV1alpha1NamespacedEndpointSlice'
+        	'replaceDiscoveryV1beta1NamespacedEndpointSlice'
         );
     }
 
@@ -451,13 +445,13 @@ class EndpointSlice extends AbstractAPI
     {
         return $this->parseResponse(
         	$this->client->request('delete',
-        		"/apis/discovery.k8s.io/v1alpha1/namespaces/{$namespace}/endpointslices/{$name}",
+        		"/apis/discovery.k8s.io/v1beta1/namespaces/{$namespace}/endpointslices/{$name}",
         		[
         			'json' => $Model->getArrayCopy(),
         			'query' => $queries,
         		]
         	),
-        	'deleteDiscoveryV1alpha1NamespacedEndpointSlice'
+        	'deleteDiscoveryV1beta1NamespacedEndpointSlice'
         );
     }
 
@@ -493,13 +487,13 @@ class EndpointSlice extends AbstractAPI
     {
         return $this->parseResponse(
         	$this->client->request('patch',
-        		"/apis/discovery.k8s.io/v1alpha1/namespaces/{$namespace}/endpointslices/{$name}",
+        		"/apis/discovery.k8s.io/v1beta1/namespaces/{$namespace}/endpointslices/{$name}",
         		[
         			'json' => $Model->getArrayCopy(),
         			'query' => $queries,
         		]
         	),
-        	'patchDiscoveryV1alpha1NamespacedEndpointSlice'
+        	'patchDiscoveryV1beta1NamespacedEndpointSlice'
         );
     }
 
@@ -515,8 +509,6 @@ class EndpointSlice extends AbstractAPI
      * specific interval, nor may they assume the server will send any BOOKMARK event
      * during a session. If this is not a watch, this field is ignored. If the feature
      * gate WatchBookmarks is not enabled in apiserver, this field is ignored.
-     *
-     * This field is beta.
      * 'continue'	string
      * The continue option should be set when retrieving more results from the server.
      * Since this value is server defined, clients may only use the continue value from
@@ -584,12 +576,12 @@ class EndpointSlice extends AbstractAPI
     {
         return $this->parseResponse(
         	$this->client->request('get',
-        		"/apis/discovery.k8s.io/v1alpha1/watch/endpointslices",
+        		"/apis/discovery.k8s.io/v1beta1/watch/endpointslices",
         		[
         			'query' => $queries,
         		]
         	),
-        	'watchDiscoveryV1alpha1EndpointSliceListForAllNamespaces'
+        	'watchDiscoveryV1beta1EndpointSliceListForAllNamespaces'
         );
     }
 
@@ -607,8 +599,6 @@ class EndpointSlice extends AbstractAPI
      * specific interval, nor may they assume the server will send any BOOKMARK event
      * during a session. If this is not a watch, this field is ignored. If the feature
      * gate WatchBookmarks is not enabled in apiserver, this field is ignored.
-     *
-     * This field is beta.
      * 'continue'	string
      * The continue option should be set when retrieving more results from the server.
      * Since this value is server defined, clients may only use the continue value from
@@ -676,12 +666,12 @@ class EndpointSlice extends AbstractAPI
     {
         return $this->parseResponse(
         	$this->client->request('get',
-        		"/apis/discovery.k8s.io/v1alpha1/watch/namespaces/{$namespace}/endpointslices",
+        		"/apis/discovery.k8s.io/v1beta1/watch/namespaces/{$namespace}/endpointslices",
         		[
         			'query' => $queries,
         		]
         	),
-        	'watchDiscoveryV1alpha1NamespacedEndpointSliceList'
+        	'watchDiscoveryV1beta1NamespacedEndpointSliceList'
         );
     }
 
@@ -701,8 +691,6 @@ class EndpointSlice extends AbstractAPI
      * specific interval, nor may they assume the server will send any BOOKMARK event
      * during a session. If this is not a watch, this field is ignored. If the feature
      * gate WatchBookmarks is not enabled in apiserver, this field is ignored.
-     *
-     * This field is beta.
      * 'continue'	string
      * The continue option should be set when retrieving more results from the server.
      * Since this value is server defined, clients may only use the continue value from
@@ -770,12 +758,12 @@ class EndpointSlice extends AbstractAPI
     {
         return $this->parseResponse(
         	$this->client->request('get',
-        		"/apis/discovery.k8s.io/v1alpha1/watch/namespaces/{$namespace}/endpointslices/{$name}",
+        		"/apis/discovery.k8s.io/v1beta1/watch/namespaces/{$namespace}/endpointslices/{$name}",
         		[
         			'query' => $queries,
         		]
         	),
-        	'watchDiscoveryV1alpha1NamespacedEndpointSlice'
+        	'watchDiscoveryV1beta1NamespacedEndpointSlice'
         );
     }
 

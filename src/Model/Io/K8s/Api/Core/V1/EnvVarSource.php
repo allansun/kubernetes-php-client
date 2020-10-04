@@ -20,7 +20,7 @@ class EnvVarSource extends AbstractModel
     /**
      * Selects a field of the pod: supports metadata.name, metadata.namespace,
      * metadata.labels, metadata.annotations, spec.nodeName, spec.serviceAccountName,
-     * status.hostIP, status.podIP.
+     * status.hostIP, status.podIP, status.podIPs.
      *
      * @var ObjectFieldSelector
      */

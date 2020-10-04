@@ -26,8 +26,6 @@ class Pod extends AbstractAPI
      * specific interval, nor may they assume the server will send any BOOKMARK event
      * during a session. If this is not a watch, this field is ignored. If the feature
      * gate WatchBookmarks is not enabled in apiserver, this field is ignored.
-     *
-     * This field is beta.
      * 'continue'	string
      * The continue option should be set when retrieving more results from the server.
      * Since this value is server defined, clients may only use the continue value from
@@ -153,8 +151,6 @@ class Pod extends AbstractAPI
      * specific interval, nor may they assume the server will send any BOOKMARK event
      * during a session. If this is not a watch, this field is ignored. If the feature
      * gate WatchBookmarks is not enabled in apiserver, this field is ignored.
-     *
-     * This field is beta.
      * 'continue'	string
      * The continue option should be set when retrieving more results from the server.
      * Since this value is server defined, clients may only use the continue value from
@@ -426,6 +422,15 @@ class Pod extends AbstractAPI
      * one container in the pod.
      * 'follow'	boolean
      * Follow the log stream of the pod. Defaults to false.
+     * 'insecureSkipTLSVerifyBackend'	boolean
+     * insecureSkipTLSVerifyBackend indicates that the apiserver should not confirm the
+     * validity of the serving certificate of the backend it is connecting to.  This
+     * will make the HTTPS connection between the apiserver and the backend insecure.
+     * This means the apiserver cannot verify the log data it is receiving came from
+     * the real kubelet.  If the kubelet is configured to verify the apiserver's TLS
+     * credentials, it does not mean the connection to the real kubelet is vulnerable
+     * to a man in the middle attack (e.g. an attacker could not intercept the actual
+     * log data coming from the real kubelet).
      * 'limitBytes'	integer
      * If set, the number of bytes to read from the server before terminating the log
      * output. This may not display a complete final line of logging, and may return
@@ -575,8 +580,6 @@ class Pod extends AbstractAPI
      * specific interval, nor may they assume the server will send any BOOKMARK event
      * during a session. If this is not a watch, this field is ignored. If the feature
      * gate WatchBookmarks is not enabled in apiserver, this field is ignored.
-     *
-     * This field is beta.
      * 'continue'	string
      * The continue option should be set when retrieving more results from the server.
      * Since this value is server defined, clients may only use the continue value from
@@ -667,8 +670,6 @@ class Pod extends AbstractAPI
      * specific interval, nor may they assume the server will send any BOOKMARK event
      * during a session. If this is not a watch, this field is ignored. If the feature
      * gate WatchBookmarks is not enabled in apiserver, this field is ignored.
-     *
-     * This field is beta.
      * 'continue'	string
      * The continue option should be set when retrieving more results from the server.
      * Since this value is server defined, clients may only use the continue value from
@@ -761,8 +762,6 @@ class Pod extends AbstractAPI
      * specific interval, nor may they assume the server will send any BOOKMARK event
      * during a session. If this is not a watch, this field is ignored. If the feature
      * gate WatchBookmarks is not enabled in apiserver, this field is ignored.
-     *
-     * This field is beta.
      * 'continue'	string
      * The continue option should be set when retrieving more results from the server.
      * Since this value is server defined, clients may only use the continue value from
@@ -851,8 +850,6 @@ class Pod extends AbstractAPI
      * specific interval, nor may they assume the server will send any BOOKMARK event
      * during a session. If this is not a watch, this field is ignored. If the feature
      * gate WatchBookmarks is not enabled in apiserver, this field is ignored.
-     *
-     * This field is beta.
      * 'continue'	string
      * The continue option should be set when retrieving more results from the server.
      * Since this value is server defined, clients may only use the continue value from

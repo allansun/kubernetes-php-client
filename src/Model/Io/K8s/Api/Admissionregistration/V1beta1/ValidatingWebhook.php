@@ -145,9 +145,9 @@ class ValidatingWebhook extends AbstractModel
     public $rules = null;
 
     /**
-     * SideEffects states whether this webhookk has side effects. Acceptable values
-     * are: Unknown, None, Some, NoneOnDryRun Webhooks with side effects MUST implement
-     * a reconciliation system, since a request may be rejected by a future step in the
+     * SideEffects states whether this webhook has side effects. Acceptable values are:
+     * Unknown, None, Some, NoneOnDryRun Webhooks with side effects MUST implement a
+     * reconciliation system, since a request may be rejected by a future step in the
      * admission change and the side effects therefore need to be undone. Requests with
      * the dryRun attribute will be auto-rejected if they match a webhook with
      * sideEffects == Unknown or Some. Defaults to Unknown.

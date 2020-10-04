@@ -5,7 +5,9 @@ namespace Kubernetes\Model\Io\K8s\Api\Rbac\V1alpha1;
 use \KubernetesRuntime\AbstractModel;
 
 /**
- * ClusterRoleList is a collection of ClusterRoles
+ * ClusterRoleList is a collection of ClusterRoles. Deprecated in v1.17 in favor of
+ * rbac.authorization.k8s.io/v1 ClusterRoles, and will no longer be served in
+ * v1.20.
  */
 class ClusterRoleList extends AbstractModel
 {
