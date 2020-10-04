@@ -13,6 +13,7 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Logger\ConsoleLogger;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Filesystem\Filesystem;
@@ -30,7 +31,11 @@ class RunCommand extends Command
     {
         $this->setName('run')
             ->setDescription('Pull Swagger file from Kubernetes github, generate new code and commit.')
-            ->addArgument('version', InputArgument::REQUIRED, 'Kubernetes version number');
+            ->addArgument('version', InputArgument::REQUIRED, 'Kubernetes version number')
+            ->addOption('github', 'g', InputOption::VALUE_OPTIONAL,
+                'Push to GitHub, if true then `GITHUB_DEPLOY_KEY` environment variable should be set', false)
+            ->addOption('patch', 'p', InputOption::VALUE_OPTIONAL,
+                'Addtional patch version number on top of existing Kubernetes version number.', null);
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -38,21 +43,25 @@ class RunCommand extends Command
 
         $this->logger = new ConsoleLogger($output);
         $version      = $input->getArgument('version');
+        $patchVersion = $input->getOption('patch');
 
+        if ($input->getOption('github')) {
+            $Git = new GitWrapper('/usr/local/bin/git');
+            $Git->addLoggerEventSubscriber(new GitLoggerEventSubscriber($this->logger));
+            $this->prepareGitPrivateKey($Git);
+            $this->GitWorkingCopy = $Git->workingCopy(APP_ROOT);
 
-        $Git = new GitWrapper();
-        $Git->addLoggerEventSubscriber(new GitLoggerEventSubscriber($this->logger));
-//        $this->prepareGitPrivateKey($Git);
-        $this->GitWorkingCopy = $Git->workingCopy(APP_ROOT);
+            $this->checkOutBranch($version, $patchVersion);
+        }
 
+        $this->pullSwagger($version)
+            ->generateCode($output);
 
-        $this
-//            ->checkOutBranch($version)
-            ->pullSwagger($version)
-            ->generateCode($output)
-//            ->cleanUp()
-//            ->commitAndPush($version)
-        ;
+        if ($input->getOption('github')) {
+            $this->cleanUp()
+                ->commitAndPush($version, $patchVersion);
+        }
+
         return Command::SUCCESS;
     }
 
@@ -69,8 +78,10 @@ class RunCommand extends Command
     }
 
 
-    protected function checkOutBranch($version)
+    protected function checkOutBranch($version, $patchVersion)
     {
+        $version = $patchVersion ? "${version}-patch.${patchVersion}" : $version;
+
         $this->GitWorkingCopy->pull('origin', 'master');
         try {
             $this->GitWorkingCopy->run('rev-parse', ["--verify --quiet ${version}"]);
@@ -78,6 +89,16 @@ class RunCommand extends Command
         } catch (GitException $e) {
             $this->GitWorkingCopy->checkoutNewBranch($version);
         }
+
+        return $this;
+    }
+
+    protected function generateCode(OutputInterface $output)
+    {
+        $Conmmand = $this->getApplication()->find('generate');
+
+
+        $Conmmand->run(new ArrayInput(['command' => 'generate']), $output);
 
         return $this;
     }
@@ -98,12 +119,15 @@ class RunCommand extends Command
         return $this;
     }
 
-    protected function generateCode(OutputInterface $output)
+    protected function commitAndPush($version, $patchVersion)
     {
-        $Conmmand = $this->getApplication()->find('generate');
+        $version = $patchVersion ? "${version}-patch.${patchVersion}" : $version;
 
-
-        $Conmmand->run(new ArrayInput(['command' => 'generate']), $output);
+        $this->GitWorkingCopy->run('add', ['-A']);
+        $this->GitWorkingCopy->commit("Generated against Kubernetes version ${version}");
+        $this->GitWorkingCopy->tag($version);
+        $this->GitWorkingCopy->push('origin', $version, "--set-upstream-to=origin");
+        $this->GitWorkingCopy->pushTag($version);
 
         return $this;
     }
@@ -113,17 +137,6 @@ class RunCommand extends Command
         if (isset($_ENV['GITHUB_DEPLOY_KEY'])) {
             unlink($this->githubDeployKeyFile);
         }
-
-        return $this;
-    }
-
-    protected function commitAndPush($version)
-    {
-        $this->GitWorkingCopy->run('add', ['-A']);
-        $this->GitWorkingCopy->commit("Generated against Kubernetes version ${version}");
-        $this->GitWorkingCopy->tag($version);
-        $this->GitWorkingCopy->push('origin', $version, "--set-upstream-to=origin");
-        $this->GitWorkingCopy->pushTag($version);
 
         return $this;
     }
