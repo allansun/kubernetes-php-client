@@ -272,6 +272,9 @@ class JSONSchemaProps extends AbstractModel
      * extension set to "map". Also, the values specified for this attribute must be a
      * scalar typed field of the child structure (no nesting is supported).
      *
+     * The properties specified must either be required or have a default value, to
+     * ensure those properties are present for all list items.
+     *
      * @var string[]
      */
     public $x-kubernetes-list-map-keys = null;

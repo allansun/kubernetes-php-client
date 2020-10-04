@@ -32,6 +32,16 @@ class Secret extends AbstractModel
     public $data = null;
 
     /**
+     * Immutable, if set to true, ensures that data stored in the Secret cannot be
+     * updated (only object metadata can be modified). If not set to true, the field
+     * can be modified at any time. Defaulted to nil. This is an alpha field enabled by
+     * ImmutableEphemeralVolumes feature gate.
+     *
+     * @var boolean
+     */
+    public $immutable = null;
+
+    /**
      * Kind is a string value representing the REST resource this object represents.
      * Servers may infer this from the endpoint the client submits requests to. Cannot
      * be updated. In CamelCase. More info:

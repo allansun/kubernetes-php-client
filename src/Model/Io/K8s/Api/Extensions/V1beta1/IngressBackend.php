@@ -11,6 +11,15 @@ class IngressBackend extends AbstractModel
 {
 
     /**
+     * Resource is an ObjectRef to another Kubernetes resource in the namespace of the
+     * Ingress object. If resource is specified, serviceName and servicePort must not
+     * be specified.
+     *
+     * @var \Kubernetes\Model\Io\K8s\Api\Core\V1\TypedLocalObjectReference
+     */
+    public $resource = null;
+
+    /**
      * Specifies the name of the referenced service.
      *
      * @var string

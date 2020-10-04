@@ -344,7 +344,7 @@ class VolumeAttachment extends AbstractAPI
      * 'pretty'	string
      * If 'true', then the output is pretty printed.
      *
-     * @return Status|mixed
+     * @return TheVolumeAttachment|mixed
      */
     public function delete(string $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries = [])
     {
@@ -1002,7 +1002,7 @@ class VolumeAttachment extends AbstractAPI
      * 'pretty'	string
      * If 'true', then the output is pretty printed.
      *
-     * @return Status|mixed
+     * @return TheVolumeAttachmentV1alpha1|mixed
      */
     public function deleteStorageV1alpha1(string $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries = [])
     {
@@ -1563,7 +1563,7 @@ class VolumeAttachment extends AbstractAPI
      * 'pretty'	string
      * If 'true', then the output is pretty printed.
      *
-     * @return Status|mixed
+     * @return TheVolumeAttachmentV1beta1|mixed
      */
     public function deleteStorageV1beta1(string $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries = [])
     {

@@ -342,7 +342,7 @@ class CSINode extends AbstractAPI
      * 'pretty'	string
      * If 'true', then the output is pretty printed.
      *
-     * @return Status|mixed
+     * @return TheCSINode|mixed
      */
     public function delete(string $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries = [])
     {
@@ -903,7 +903,7 @@ class CSINode extends AbstractAPI
      * 'pretty'	string
      * If 'true', then the output is pretty printed.
      *
-     * @return Status|mixed
+     * @return TheCSINodeV1beta1|mixed
      */
     public function deleteStorageV1beta1(string $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries = [])
     {

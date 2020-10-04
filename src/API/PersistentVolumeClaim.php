@@ -352,7 +352,7 @@ class PersistentVolumeClaim extends AbstractAPI
      * 'pretty'	string
      * If 'true', then the output is pretty printed.
      *
-     * @return Status|mixed
+     * @return ThePersistentVolumeClaim|mixed
      */
     public function delete(string $namespace, string $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries = [])
     {

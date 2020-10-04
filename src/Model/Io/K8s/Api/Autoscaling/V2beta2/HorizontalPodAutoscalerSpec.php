@@ -12,6 +12,15 @@ class HorizontalPodAutoscalerSpec extends AbstractModel
 {
 
     /**
+     * behavior configures the scaling behavior of the target in both Up and Down
+     * directions (scaleUp and scaleDown fields respectively). If not set, the default
+     * HPAScalingRules for scale up and scale down are used.
+     *
+     * @var HorizontalPodAutoscalerBehavior
+     */
+    public $behavior = null;
+
+    /**
      * maxReplicas is the upper limit for the number of replicas to which the
      * autoscaler can scale up. It cannot be less that minReplicas.
      *

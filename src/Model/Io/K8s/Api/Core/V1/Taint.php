@@ -35,7 +35,7 @@ class Taint extends AbstractModel
     public $timeAdded = null;
 
     /**
-     * Required. The taint value corresponding to the taint key.
+     * The taint value corresponding to the taint key.
      *
      * @var string
      */

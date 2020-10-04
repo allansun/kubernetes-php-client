@@ -205,8 +205,7 @@ class EphemeralContainer extends AbstractModel
     public $tty = null;
 
     /**
-     * volumeDevices is the list of block devices to be used by the container. This is
-     * a beta feature.
+     * volumeDevices is the list of block devices to be used by the container.
      *
      * @var VolumeDevice[]
      */

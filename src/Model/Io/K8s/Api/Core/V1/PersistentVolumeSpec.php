@@ -247,7 +247,7 @@ class PersistentVolumeSpec extends AbstractModel
     /**
      * volumeMode defines if a volume is intended to be used with a formatted
      * filesystem or to remain in raw block state. Value of Filesystem is implied when
-     * not included in spec. This is a beta feature.
+     * not included in spec.
      *
      * @var string
      */
