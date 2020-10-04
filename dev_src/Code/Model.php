@@ -41,7 +41,8 @@ class Model extends AbstractClassFile
             ->setNamespaceName($this->namespace)
             ->setName($objectClassname)
             ->addProperties($this->parseProperties())
-            ->setExtendedClass('\KubernetesRuntime\AbstractModel');
+            ->addUse('\KubernetesRuntime\AbstractModel')
+            ->setExtendedClass('AbstractModel');
 
         $this->setClass($this->ClassGenerator);
 
