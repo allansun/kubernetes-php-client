@@ -16,17 +16,17 @@
   ],
   "require": {
     "php": ">=7.2",
-    "kubernetes/php-runtime": "~1"
+    "kubernetes/php-runtime": "^1"
   },
   "require-dev": {
-    "phpunit/phpunit": "~7",
-    "allansun/openapi-parser": "~1",
+    "phpunit/phpunit": "^7|^8|^9",
+    "allansun/openapi-parser": "^1",
     "zendframework/zend-code": "3.3.*",
-    "symfony/console": "4.1.*",
+    "symfony/console": "^4|^5",
     "mattketmo/camel": "^1.1",
-    "symfony/filesystem": "4.1.*",
+    "symfony/filesystem": "^4|^5",
     "cpliakas/git-wrapper": "^2.0",
-    "symfony/monolog-bridge": "4.1.*",
+    "symfony/monolog-bridge": "^4|^5",
     "ext-json": "*"
   },
   "autoload": {
