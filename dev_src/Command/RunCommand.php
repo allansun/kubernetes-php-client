@@ -80,7 +80,7 @@ class RunCommand extends Command
 
     protected function checkOutBranch($version, $patchVersion)
     {
-        $version = (null === $patchVersion) ? "${version}-patch.${patchVersion}" : $version;
+        $version = (null === $patchVersion) ? $version : "${version}-patch.${patchVersion}";
 
         $this->GitWorkingCopy->pull('origin', 'master');
         try {
@@ -121,7 +121,7 @@ class RunCommand extends Command
 
     protected function commitAndPush($version, $patchVersion)
     {
-        $version = (null === $patchVersion) ? "${version}-patch.${patchVersion}" : $version;
+        $version = (null === $patchVersion) ? $version : "${version}-patch.${patchVersion}";
 
         $this->GitWorkingCopy->run('add', ['-A']);
         $this->GitWorkingCopy->commit("Generated against Kubernetes version ${version}");
