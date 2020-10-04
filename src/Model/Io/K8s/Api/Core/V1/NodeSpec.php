@@ -34,6 +34,15 @@ class NodeSpec extends AbstractModel
     public $podCIDR = null;
 
     /**
+     * podCIDRs represents the IP ranges assigned to the node for usage by Pods on that
+     * node. If this field is specified, the 0th entry must match the podCIDR field. It
+     * may contain at most 1 value for each of IPv4 and IPv6.
+     *
+     * @var string[]
+     */
+    public $podCIDRs = null;
+
+    /**
      * ID of the node assigned by the cloud provider in the format:
      * <ProviderName>://<ProviderSpecificNodeID>
      *

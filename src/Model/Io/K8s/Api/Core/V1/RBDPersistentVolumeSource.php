@@ -23,7 +23,7 @@ class RBDPersistentVolumeSource extends AbstractModel
 
     /**
      * The rados image name. More info:
-     * https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it
+     * https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
      *
      * @var string
      */
@@ -31,7 +31,7 @@ class RBDPersistentVolumeSource extends AbstractModel
 
     /**
      * Keyring is the path to key ring for RBDUser. Default is /etc/ceph/keyring. More
-     * info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it
+     * info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
      *
      * @var string
      */
@@ -39,7 +39,7 @@ class RBDPersistentVolumeSource extends AbstractModel
 
     /**
      * A collection of Ceph monitors. More info:
-     * https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it
+     * https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
      *
      * @var string[]
      */
@@ -47,7 +47,7 @@ class RBDPersistentVolumeSource extends AbstractModel
 
     /**
      * The rados pool name. Default is rbd. More info:
-     * https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it
+     * https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
      *
      * @var string
      */
@@ -55,8 +55,7 @@ class RBDPersistentVolumeSource extends AbstractModel
 
     /**
      * ReadOnly here will force the ReadOnly setting in VolumeMounts. Defaults to
-     * false. More info:
-     * https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it
+     * false. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
      *
      * @var boolean
      */
@@ -65,7 +64,7 @@ class RBDPersistentVolumeSource extends AbstractModel
     /**
      * SecretRef is name of the authentication secret for RBDUser. If provided
      * overrides keyring. Default is nil. More info:
-     * https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it
+     * https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
      *
      * @var SecretReference
      */
@@ -73,7 +72,7 @@ class RBDPersistentVolumeSource extends AbstractModel
 
     /**
      * The rados user name. Default is admin. More info:
-     * https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it
+     * https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
      *
      * @var string
      */

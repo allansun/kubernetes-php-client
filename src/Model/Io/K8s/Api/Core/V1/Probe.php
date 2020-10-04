@@ -53,7 +53,8 @@ class Probe extends AbstractModel
 
     /**
      * Minimum consecutive successes for the probe to be considered successful after
-     * having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1.
+     * having failed. Defaults to 1. Must be 1 for liveness and startup. Minimum value
+     * is 1.
      *
      * @var integer
      */

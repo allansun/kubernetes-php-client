@@ -42,9 +42,10 @@ class JSONSchemaProps extends AbstractModel
     public $anyOf = null;
 
     /**
-     * default is a default value for undefined object fields. Defaulting is an alpha
-     * feature under the CustomResourceDefaulting feature gate. Defaulting requires
-     * spec.preserveUnknownFields to be false.
+     * default is a default value for undefined object fields. Defaulting is a beta
+     * feature under the CustomResourceDefaulting feature gate.
+     * CustomResourceDefinitions with defaults must be created using the v1 (or newer)
+     * CustomResourceDefinition API.
      *
      * @var JSON
      */
@@ -229,6 +230,39 @@ class JSONSchemaProps extends AbstractModel
      * @var boolean
      */
     public $x-kubernetes-int-or-string = null;
+
+    /**
+     * x-kubernetes-list-map-keys annotates an array with the x-kubernetes-list-type
+     * `map` by specifying the keys used as the index of the map.
+     *
+     * This tag MUST only be used on lists that have the "x-kubernetes-list-type"
+     * extension set to "map". Also, the values specified for this attribute must be a
+     * scalar typed field of the child structure (no nesting is supported).
+     *
+     * @var string[]
+     */
+    public $x-kubernetes-list-map-keys = null;
+
+    /**
+     * x-kubernetes-list-type annotates an array to further describe its topology. This
+     * extension must only be used on lists and may have 3 possible values:
+     *
+     * 1) `atomic`: the list is treated as a single entity, like a scalar.
+     *      Atomic lists will be entirely replaced when updated. This extension
+     *      may be used on any type of list (struct, scalar, ...).
+     * 2) `set`:
+     *      Sets are lists that must not have multiple items with the same value. Each
+     *      value must be a scalar, an object with x-kubernetes-map-type `atomic` or an
+     *      array with x-kubernetes-list-type `atomic`.
+     * 3) `map`:
+     *      These lists are like maps in that their elements have a non-index key
+     *      used to identify them. Order is preserved upon merge. The map tag
+     *      must only be used on a list with elements of type object.
+     * Defaults to atomic for arrays.
+     *
+     * @var string
+     */
+    public $x-kubernetes-list-type = null;
 
     /**
      * x-kubernetes-preserve-unknown-fields stops the API server decoding step from

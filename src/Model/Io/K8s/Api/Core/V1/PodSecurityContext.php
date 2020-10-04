@@ -90,7 +90,10 @@ class PodSecurityContext extends AbstractModel
     public $sysctls = null;
 
     /**
-     * Windows security options.
+     * The Windows specific settings applied to all containers. If unspecified, the
+     * options within a container's SecurityContext will be used. If set in both
+     * SecurityContext and PodSecurityContext, the value specified in SecurityContext
+     * takes precedence.
      *
      * @var WindowsSecurityContextOptions
      */

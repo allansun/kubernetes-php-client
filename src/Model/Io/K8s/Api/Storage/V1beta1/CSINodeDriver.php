@@ -12,6 +12,14 @@ class CSINodeDriver extends AbstractModel
 {
 
     /**
+     * allocatable represents the volume resources of a node that are available for
+     * scheduling.
+     *
+     * @var VolumeNodeResources
+     */
+    public $allocatable = null;
+
+    /**
      * This is the name of the CSI driver that this object refers to. This MUST be the
      * same name returned by the CSI GetPluginName() call for that driver.
      *

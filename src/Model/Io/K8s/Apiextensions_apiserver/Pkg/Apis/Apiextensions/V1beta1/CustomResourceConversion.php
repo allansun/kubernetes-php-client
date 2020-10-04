@@ -11,33 +11,33 @@ class CustomResourceConversion extends AbstractModel
 {
 
     /**
-     * ConversionReviewVersions is an ordered list of preferred `ConversionReview`
-     * versions the Webhook expects. API server will try to use first version in the
-     * list which it supports. If none of the versions specified in this list supported
-     * by API server, conversion will fail for this object. If a persisted Webhook
-     * configuration specifies allowed versions and does not include any versions known
-     * to the API Server, calls to the webhook will fail. Default to `['v1beta1']`.
+     * conversionReviewVersions is an ordered list of preferred `ConversionReview`
+     * versions the Webhook expects. The API server will use the first version in the
+     * list which it supports. If none of the versions specified in this list are
+     * supported by API server, conversion will fail for the custom resource. If a
+     * persisted Webhook configuration specifies allowed versions and does not include
+     * any versions known to the API Server, calls to the webhook will fail. Defaults
+     * to `["v1beta1"]`.
      *
      * @var string[]
      */
     public $conversionReviewVersions = null;
 
     /**
-     * `strategy` specifies the conversion strategy. Allowed values are: - `None`: The
-     * converter only change the apiVersion and would not touch any other field in the
-     * CR. - `Webhook`: API Server will call to an external webhook to do the
-     * conversion. Additional information
+     * strategy specifies how custom resources are converted between versions. Allowed
+     * values are: - `None`: The converter only change the apiVersion and would not
+     * touch any other field in the custom resource. - `Webhook`: API Server will call
+     * to an external webhook to do the conversion. Additional information
      *   is needed for this option. This requires spec.preserveUnknownFields to be
-     * false.
+     * false, and spec.conversion.webhookClientConfig to be set.
      *
      * @var string
      */
     public $strategy = null;
 
     /**
-     * `webhookClientConfig` is the instructions for how to call the webhook if
-     * strategy is `Webhook`. This field is alpha-level and is only honored by servers
-     * that enable the CustomResourceWebhookConversion feature.
+     * webhookClientConfig is the instructions for how to call the webhook if strategy
+     * is `Webhook`. Required when `strategy` is set to `Webhook`.
      *
      * @var WebhookClientConfig
      */

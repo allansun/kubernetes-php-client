@@ -22,11 +22,20 @@ class ManagedFieldsEntry extends AbstractModel
     public $apiVersion = null;
 
     /**
-     * Fields identifies a set of fields.
+     * FieldsType is the discriminator for the different fields format and version.
+     * There is currently only one possible value: "FieldsV1"
      *
-     * @var Fields
+     * @var string
      */
-    public $fields = null;
+    public $fieldsType = null;
+
+    /**
+     * FieldsV1 holds the first JSON version format as described in the "FieldsV1"
+     * type.
+     *
+     * @var FieldsV1
+     */
+    public $fieldsV1 = null;
 
     /**
      * Manager is an identifier of the workflow managing these fields.

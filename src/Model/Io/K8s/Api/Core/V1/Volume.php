@@ -44,8 +44,8 @@ class Volume extends AbstractModel
     public $cephfs = null;
 
     /**
-     * Cinder represents a cinder volume attached and mounted on kubelets host machine
-     * More info: https://releases.k8s.io/HEAD/examples/mysql-cinder-pd/README.md
+     * Cinder represents a cinder volume attached and mounted on kubelets host machine.
+     * More info: https://examples.k8s.io/mysql-cinder-pd/README.md
      *
      * @var CinderVolumeSource
      */
@@ -127,7 +127,7 @@ class Volume extends AbstractModel
 
     /**
      * Glusterfs represents a Glusterfs mount on the host that shares a pod's lifetime.
-     * More info: https://releases.k8s.io/HEAD/examples/volumes/glusterfs/README.md
+     * More info: https://examples.k8s.io/volumes/glusterfs/README.md
      *
      * @var GlusterfsVolumeSource
      */
@@ -147,7 +147,7 @@ class Volume extends AbstractModel
     /**
      * ISCSI represents an ISCSI Disk resource that is attached to a kubelet's host
      * machine and then exposed to the pod. More info:
-     * https://releases.k8s.io/HEAD/examples/volumes/iscsi/README.md
+     * https://examples.k8s.io/volumes/iscsi/README.md
      *
      * @var ISCSIVolumeSource
      */
@@ -210,7 +210,7 @@ class Volume extends AbstractModel
 
     /**
      * RBD represents a Rados Block Device mount on the host that shares a pod's
-     * lifetime. More info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md
+     * lifetime. More info: https://examples.k8s.io/volumes/rbd/README.md
      *
      * @var RBDVolumeSource
      */

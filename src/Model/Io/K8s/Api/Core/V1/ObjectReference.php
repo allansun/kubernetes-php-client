@@ -34,7 +34,7 @@ class ObjectReference extends AbstractModel
 
     /**
      * Kind of the referent. More info:
-     * https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds
+     * https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
      *
      * @var string
      */
@@ -58,7 +58,7 @@ class ObjectReference extends AbstractModel
 
     /**
      * Specific resourceVersion to which this reference is made, if any. More info:
-     * https://git.k8s.io/community/contributors/devel/api-conventions.md#concurrency-control-and-consistency
+     * https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
      *
      * @var string
      */

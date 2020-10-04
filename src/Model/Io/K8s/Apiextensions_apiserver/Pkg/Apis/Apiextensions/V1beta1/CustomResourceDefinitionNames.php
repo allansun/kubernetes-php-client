@@ -12,32 +12,35 @@ class CustomResourceDefinitionNames extends AbstractModel
 {
 
     /**
-     * Categories is a list of grouped resources custom resources belong to (e.g.
-     * 'all')
+     * categories is a list of grouped resources this custom resource belongs to (e.g.
+     * 'all'). This is published in API discovery documents, and used by clients to
+     * support invocations like `kubectl get all`.
      *
      * @var string[]
      */
     public $categories = null;
 
     /**
-     * Kind is the serialized kind of the resource.  It is normally CamelCase and
-     * singular.
+     * kind is the serialized kind of the resource. It is normally CamelCase and
+     * singular. Custom resource instances will use this value as the `kind` attribute
+     * in API calls.
      *
      * @var string
      */
     public $kind = null;
 
     /**
-     * ListKind is the serialized kind of the list for this resource.  Defaults to
-     * <kind>List.
+     * listKind is the serialized kind of the list for this resource. Defaults to
+     * "`kind`List".
      *
      * @var string
      */
     public $listKind = null;
 
     /**
-     * Plural is the plural name of the resource to serve.  It must match the name of
-     * the CustomResourceDefinition-registration too: plural.group and it must be all
+     * plural is the plural name of the resource to serve. The custom resources are
+     * served under `/apis/<group>/<version>/.../<plural>`. Must match the name of the
+     * CustomResourceDefinition (in the form `<names.plural>.<group>`). Must be all
      * lowercase.
      *
      * @var string
@@ -45,15 +48,17 @@ class CustomResourceDefinitionNames extends AbstractModel
     public $plural = null;
 
     /**
-     * ShortNames are short names for the resource.  It must be all lowercase.
+     * shortNames are short names for the resource, exposed in API discovery documents,
+     * and used by clients to support invocations like `kubectl get <shortname>`. It
+     * must be all lowercase.
      *
      * @var string[]
      */
     public $shortNames = null;
 
     /**
-     * Singular is the singular name of the resource.  It must be all lowercase 
-     * Defaults to lowercased <kind>
+     * singular is the singular name of the resource. It must be all lowercase.
+     * Defaults to lowercased `kind`.
      *
      * @var string
      */

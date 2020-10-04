@@ -30,6 +30,15 @@ class PodStatus extends AbstractModel
     public $containerStatuses = null;
 
     /**
+     * Status for any ephemeral containers that have run in this pod. This field is
+     * alpha-level and is only populated by servers that enable the EphemeralContainers
+     * feature.
+     *
+     * @var ContainerStatus[]
+     */
+    public $ephemeralContainerStatuses = null;
+
+    /**
      * IP address of the host to which the pod is assigned. Empty if not yet scheduled.
      *
      * @var string
@@ -100,6 +109,15 @@ class PodStatus extends AbstractModel
      * @var string
      */
     public $podIP = null;
+
+    /**
+     * podIPs holds the IP addresses allocated to the pod. If this field is specified,
+     * the 0th entry must match the podIP field. Pods may be allocated at most 1 value
+     * for each of IPv4 and IPv6. This list is empty if no IPs have been allocated yet.
+     *
+     * @var PodIP[]
+     */
+    public $podIPs = null;
 
     /**
      * The Quality of Service (QOS) classification assigned to the pod based on

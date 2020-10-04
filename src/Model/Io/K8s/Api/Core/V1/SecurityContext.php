@@ -97,7 +97,9 @@ class SecurityContext extends AbstractModel
     public $seLinuxOptions = null;
 
     /**
-     * Windows security options.
+     * The Windows specific settings applied to all containers. If unspecified, the
+     * options from the PodSecurityContext will be used. If set in both SecurityContext
+     * and PodSecurityContext, the value specified in SecurityContext takes precedence.
      *
      * @var WindowsSecurityContextOptions
      */

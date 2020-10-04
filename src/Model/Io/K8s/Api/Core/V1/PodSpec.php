@@ -71,6 +71,18 @@ class PodSpec extends AbstractModel
     public $enableServiceLinks = null;
 
     /**
+     * List of ephemeral containers run in this pod. Ephemeral containers may be run in
+     * an existing pod to perform user-initiated actions such as debugging. This list
+     * cannot be specified when creating a pod, and it cannot be modified by updating
+     * the pod spec. In order to add an ephemeral container to an existing pod, use the
+     * pod's ephemeralcontainers subresource. This field is alpha-level and is only
+     * honored by servers that enable the EphemeralContainers feature.
+     *
+     * @var EphemeralContainer[]
+     */
+    public $ephemeralContainers = null;
+
+    /**
      * HostAliases is an optional list of hosts and IPs that will be injected into the
      * pod's hosts file if specified. This is only valid for non-hostNetwork pods.
      *
@@ -127,12 +139,13 @@ class PodSpec extends AbstractModel
      * fails, the pod is considered to have failed and is handled according to its
      * restartPolicy. The name for an init container or normal container must be unique
      * among all containers. Init containers may not have Lifecycle actions, Readiness
-     * probes, or Liveness probes. The resourceRequirements of an init container are
-     * taken into account during scheduling by finding the highest request/limit for
-     * each resource type, and then using the max of of that value or the sum of the
-     * normal containers. Limits are applied to init containers in a similar fashion.
-     * Init containers cannot currently be added or removed. Cannot be updated. More
-     * info: https://kubernetes.io/docs/concepts/workloads/pods/init-containers/
+     * probes, Liveness probes, or Startup probes. The resourceRequirements of an init
+     * container are taken into account during scheduling by finding the highest
+     * request/limit for each resource type, and then using the max of of that value or
+     * the sum of the normal containers. Limits are applied to init containers in a
+     * similar fashion. Init containers cannot currently be added or removed. Cannot be
+     * updated. More info:
+     * https://kubernetes.io/docs/concepts/workloads/pods/init-containers/
      *
      * @var Container[]
      */
@@ -156,6 +169,23 @@ class PodSpec extends AbstractModel
      * @var object
      */
     public $nodeSelector = null;
+
+    /**
+     * Overhead represents the resource overhead associated with running a pod for a
+     * given RuntimeClass. This field will be autopopulated at admission time by the
+     * RuntimeClass admission controller. If the RuntimeClass admission controller is
+     * enabled, overhead must not be set in Pod create requests. The RuntimeClass
+     * admission controller will reject Pod create requests which have the overhead
+     * already set. If RuntimeClass is configured and selected in the PodSpec, Overhead
+     * will be set to the value defined in the corresponding RuntimeClass, otherwise it
+     * will remain unset and treated as zero. More info:
+     * https://git.k8s.io/enhancements/keps/sig-node/20190226-pod-overhead.md This
+     * field is alpha-level as of Kubernetes v1.16, and is only honored by servers that
+     * enable the PodOverhead feature.
+     *
+     * @var object
+     */
+    public $overhead = null;
 
     /**
      * PreemptionPolicy is the Policy for preempting pods with lower priority. One of
@@ -294,6 +324,16 @@ class PodSpec extends AbstractModel
      * @var Toleration[]
      */
     public $tolerations = null;
+
+    /**
+     * TopologySpreadConstraints describes how a group of pods ought to spread across
+     * topology domains. Scheduler will schedule pods in a way which abides by the
+     * constraints. This field is alpha-level and is only honored by clusters that
+     * enables the EvenPodsSpread feature. All topologySpreadConstraints are ANDed.
+     *
+     * @var TopologySpreadConstraint[]
+     */
+    public $topologySpreadConstraints = null;
 
     /**
      * List of volumes that can be mounted by containers belonging to the pod. More

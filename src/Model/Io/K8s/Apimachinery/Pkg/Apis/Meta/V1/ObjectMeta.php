@@ -38,7 +38,7 @@ class ObjectMeta extends AbstractModel
      * RFC3339 form and is in UTC.
      *
      * Populated by the system. Read-only. Null for lists. More info:
-     * https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+     * https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      *
      * @var Time
      */
@@ -73,7 +73,7 @@ class ObjectMeta extends AbstractModel
      *
      * Populated by the system when a graceful deletion is requested. Read-only. More
      * info:
-     * https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+     * https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      *
      * @var Time
      */
@@ -104,7 +104,7 @@ class ObjectMeta extends AbstractModel
      * Retry-After header).
      *
      * Applied only if Name is not specified. More info:
-     * https://git.k8s.io/community/contributors/devel/api-conventions.md#idempotency
+     * https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#idempotency
      *
      * @var string
      */
@@ -117,24 +117,6 @@ class ObjectMeta extends AbstractModel
      * @var integer
      */
     public $generation = null;
-
-    /**
-     * An initializer is a controller which enforces some system invariant at object
-     * creation time. This field is a list of initializers that have not yet acted on
-     * this object. If nil or empty, this object has been completely initialized.
-     * Otherwise, the object is considered uninitialized and is hidden (in list/watch
-     * and get calls) from clients that haven't explicitly asked to observe
-     * uninitialized objects.
-     *
-     * When an object is created, the system will populate this list with the current
-     * set of initializers. Only privileged users may set or modify this list. Once it
-     * is empty, it may not be modified further by any user.
-     *
-     * DEPRECATED - initializers are an alpha field and will be removed in v1.15.
-     *
-     * @var Initializers
-     */
-    public $initializers = null;
 
     /**
      * Map of string keys and values that can be used to organize and categorize (scope
@@ -152,8 +134,6 @@ class ObjectMeta extends AbstractModel
      * name, a controller's name, or the name of a specific apply path like "ci-cd".
      * The set of fields is always in the version that the workflow used when modifying
      * the object.
-     *
-     * This field is alpha and can be changed or removed without notice.
      *
      * @var ManagedFieldsEntry[]
      */
@@ -203,7 +183,7 @@ class ObjectMeta extends AbstractModel
      *
      * Populated by the system. Read-only. Value must be treated as opaque by clients
      * and . More info:
-     * https://git.k8s.io/community/contributors/devel/api-conventions.md#concurrency-control-and-consistency
+     * https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
      *
      * @var string
      */
@@ -211,6 +191,9 @@ class ObjectMeta extends AbstractModel
 
     /**
      * SelfLink is a URL representing this object. Populated by the system. Read-only.
+     *
+     * DEPRECATED Kubernetes will stop propagating this field in 1.20 release and the
+     * field is planned to be removed in 1.21 release.
      *
      * @var string
      */

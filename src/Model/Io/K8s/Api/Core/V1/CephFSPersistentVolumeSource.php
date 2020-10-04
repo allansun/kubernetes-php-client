@@ -13,7 +13,7 @@ class CephFSPersistentVolumeSource extends AbstractModel
 
     /**
      * Required: Monitors is a collection of Ceph monitors More info:
-     * https://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it
+     * https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
      *
      * @var string[]
      */
@@ -29,7 +29,7 @@ class CephFSPersistentVolumeSource extends AbstractModel
     /**
      * Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly
      * setting in VolumeMounts. More info:
-     * https://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it
+     * https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
      *
      * @var boolean
      */
@@ -38,7 +38,7 @@ class CephFSPersistentVolumeSource extends AbstractModel
     /**
      * Optional: SecretFile is the path to key ring for User, default is
      * /etc/ceph/user.secret More info:
-     * https://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it
+     * https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
      *
      * @var string
      */
@@ -47,7 +47,7 @@ class CephFSPersistentVolumeSource extends AbstractModel
     /**
      * Optional: SecretRef is reference to the authentication secret for User, default
      * is empty. More info:
-     * https://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it
+     * https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
      *
      * @var SecretReference
      */
@@ -55,7 +55,7 @@ class CephFSPersistentVolumeSource extends AbstractModel
 
     /**
      * Optional: User is the rados user name, default is admin More info:
-     * https://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it
+     * https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
      *
      * @var string
      */

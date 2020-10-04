@@ -13,7 +13,7 @@ class PodTemplateSpec extends AbstractModel
 
     /**
      * Standard object's metadata. More info:
-     * https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+     * https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      *
      * @var \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\ObjectMeta
      */
@@ -21,7 +21,7 @@ class PodTemplateSpec extends AbstractModel
 
     /**
      * Specification of the desired behavior of the pod. More info:
-     * https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status
+     * https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
      *
      * @var PodSpec
      */

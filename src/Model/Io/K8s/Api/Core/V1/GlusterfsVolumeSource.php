@@ -13,7 +13,7 @@ class GlusterfsVolumeSource extends AbstractModel
 
     /**
      * EndpointsName is the endpoint name that details Glusterfs topology. More info:
-     * https://releases.k8s.io/HEAD/examples/volumes/glusterfs/README.md#create-a-pod
+     * https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod
      *
      * @var string
      */
@@ -21,7 +21,7 @@ class GlusterfsVolumeSource extends AbstractModel
 
     /**
      * Path is the Glusterfs volume path. More info:
-     * https://releases.k8s.io/HEAD/examples/volumes/glusterfs/README.md#create-a-pod
+     * https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod
      *
      * @var string
      */
@@ -30,7 +30,7 @@ class GlusterfsVolumeSource extends AbstractModel
     /**
      * ReadOnly here will force the Glusterfs volume to be mounted with read-only
      * permissions. Defaults to false. More info:
-     * https://releases.k8s.io/HEAD/examples/volumes/glusterfs/README.md#create-a-pod
+     * https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod
      *
      * @var boolean
      */

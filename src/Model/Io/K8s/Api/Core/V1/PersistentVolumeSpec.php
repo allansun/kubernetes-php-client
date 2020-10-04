@@ -59,8 +59,8 @@ class PersistentVolumeSpec extends AbstractModel
     public $cephfs = null;
 
     /**
-     * Cinder represents a cinder volume attached and mounted on kubelets host machine
-     * More info: https://releases.k8s.io/HEAD/examples/mysql-cinder-pd/README.md
+     * Cinder represents a cinder volume attached and mounted on kubelets host machine.
+     * More info: https://examples.k8s.io/mysql-cinder-pd/README.md
      *
      * @var CinderPersistentVolumeSource
      */
@@ -120,7 +120,7 @@ class PersistentVolumeSpec extends AbstractModel
     /**
      * Glusterfs represents a Glusterfs volume that is attached to a host and exposed
      * to the pod. Provisioned by an admin. More info:
-     * https://releases.k8s.io/HEAD/examples/volumes/glusterfs/README.md
+     * https://examples.k8s.io/volumes/glusterfs/README.md
      *
      * @var GlusterfsPersistentVolumeSource
      */
@@ -213,7 +213,7 @@ class PersistentVolumeSpec extends AbstractModel
 
     /**
      * RBD represents a Rados Block Device mount on the host that shares a pod's
-     * lifetime. More info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md
+     * lifetime. More info: https://examples.k8s.io/volumes/rbd/README.md
      *
      * @var RBDPersistentVolumeSource
      */
@@ -238,7 +238,7 @@ class PersistentVolumeSpec extends AbstractModel
     /**
      * StorageOS represents a StorageOS volume that is attached to the kubelet's host
      * machine and mounted into the pod More info:
-     * https://releases.k8s.io/HEAD/examples/volumes/storageos/README.md
+     * https://examples.k8s.io/volumes/storageos/README.md
      *
      * @var StorageOSPersistentVolumeSource
      */

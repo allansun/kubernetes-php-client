@@ -14,7 +14,7 @@ class ResourceQuota extends AbstractModel
      * APIVersion defines the versioned schema of this representation of an object.
      * Servers should convert recognized schemas to the latest internal value, and may
      * reject unrecognized values. More info:
-     * https://git.k8s.io/community/contributors/devel/api-conventions.md#resources
+     * https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
      *
      * @var string
      */
@@ -24,7 +24,7 @@ class ResourceQuota extends AbstractModel
      * Kind is a string value representing the REST resource this object represents.
      * Servers may infer this from the endpoint the client submits requests to. Cannot
      * be updated. In CamelCase. More info:
-     * https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds
+     * https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
      *
      * @var string
      */
@@ -32,7 +32,7 @@ class ResourceQuota extends AbstractModel
 
     /**
      * Standard object's metadata. More info:
-     * https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+     * https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      *
      * @var \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\ObjectMeta
      */
@@ -40,7 +40,7 @@ class ResourceQuota extends AbstractModel
 
     /**
      * Spec defines the desired quota.
-     * https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status
+     * https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
      *
      * @var ResourceQuotaSpec
      */
@@ -48,7 +48,7 @@ class ResourceQuota extends AbstractModel
 
     /**
      * Status defines the actual enforced quota and its current usage.
-     * https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status
+     * https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
      *
      * @var ResourceQuotaStatus
      */

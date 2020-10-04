@@ -45,13 +45,6 @@ use \KubernetesRuntime\AbstractModel;
 class RawExtension extends AbstractModel
 {
 
-    /**
-     * Raw is the underlying serialization of this object.
-     *
-     * @var string
-     */
-    public $Raw = null;
-
 
 }
 

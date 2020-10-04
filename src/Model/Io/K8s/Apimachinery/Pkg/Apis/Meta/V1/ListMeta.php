@@ -37,8 +37,6 @@ class ListMeta extends AbstractModel
      * of the remainingItemCount is *estimating* the size of a collection. Clients
      * should not rely on the remainingItemCount to be set or to be exact.
      *
-     * This field is alpha and can be changed or removed without notice.
-     *
      * @var integer
      */
     public $remainingItemCount = null;
@@ -48,7 +46,7 @@ class ListMeta extends AbstractModel
      * used by clients to determine when objects have changed. Value must be treated as
      * opaque by clients and passed unmodified back to the server. Populated by the
      * system. Read-only. More info:
-     * https://git.k8s.io/community/contributors/devel/api-conventions.md#concurrency-control-and-consistency
+     * https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
      *
      * @var string
      */
@@ -56,6 +54,9 @@ class ListMeta extends AbstractModel
 
     /**
      * selfLink is a URL representing this object. Populated by the system. Read-only.
+     *
+     * DEPRECATED Kubernetes will stop propagating this field in 1.20 release and the
+     * field is planned to be removed in 1.21 release.
      *
      * @var string
      */
