@@ -36,6 +36,14 @@ class QuobyteVolumeSource extends AbstractModel
     public $registry = null;
 
     /**
+     * Tenant owning the given Quobyte volume in the Backend Used with dynamically
+     * provisioned Quobyte volumes, value is set by the plugin
+     *
+     * @var string
+     */
+    public $tenant = null;
+
+    /**
      * User to map volume access to Defaults to serivceaccount user
      *
      * @var string

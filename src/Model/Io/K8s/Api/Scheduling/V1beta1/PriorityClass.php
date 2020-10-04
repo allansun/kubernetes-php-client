@@ -5,8 +5,12 @@ namespace Kubernetes\Model\Io\K8s\Api\Scheduling\V1beta1;
 use \KubernetesRuntime\AbstractModel;
 
 /**
- * PriorityClass defines mapping from a priority class name to the priority integer
- * value. The value can be any valid integer.
+ * DEPRECATED - This group version of PriorityClass is deprecated by
+ * scheduling.k8s.io/v1/PriorityClass. PriorityClass defines mapping from a
+ * priority class name to the priority integer value. The value can be any valid
+ * integer.
+ *
+ * @deprecated
  */
 class PriorityClass extends AbstractModel
 {
@@ -53,7 +57,7 @@ class PriorityClass extends AbstractModel
 
     /**
      * Standard object's metadata. More info:
-     * https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+     * https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      *
      * @var \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\ObjectMeta
      */

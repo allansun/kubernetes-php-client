@@ -43,8 +43,6 @@ class DaemonSet extends AbstractAPI
      * 'fieldSelector'	string
      * A selector to restrict the list of returned objects by their fields. Defaults to
      * everything.
-     * 'includeUninitialized'	boolean
-     * If true, partially initialized resources are included in the response.
      * 'labelSelector'	string
      * A selector to restrict the list of returned objects by their labels. Defaults to
      * everything.
@@ -163,8 +161,6 @@ class DaemonSet extends AbstractAPI
      * 'watch'	boolean
      * Watch for changes to the described resources and return them as a stream of add,
      * update, and remove notifications. Specify resourceVersion.
-     * 'includeUninitialized'	boolean
-     * If true, partially initialized resources are included in the response.
      * 'pretty'	string
      * If 'true', then the output is pretty printed.
      *
@@ -195,8 +191,10 @@ class DaemonSet extends AbstractAPI
      * or unrecognized dryRun directive will result in an error response and no further
      * processing of the request. Valid values are: - All: all dry run stages will be
      * processed
-     * 'includeUninitialized'	boolean
-     * If true, partially initialized resources are included in the response.
+     * 'fieldManager'	string
+     * fieldManager is a name associated with the actor or entity that is making these
+     * changes. The value must be less than or 128 characters long, and only contain
+     * printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
      * 'pretty'	string
      * If 'true', then the output is pretty printed.
      *
@@ -280,8 +278,6 @@ class DaemonSet extends AbstractAPI
      * 'watch'	boolean
      * Watch for changes to the described resources and return them as a stream of add,
      * update, and remove notifications. Specify resourceVersion.
-     * 'includeUninitialized'	boolean
-     * If true, partially initialized resources are included in the response.
      * 'pretty'	string
      * If 'true', then the output is pretty printed.
      *
@@ -309,10 +305,10 @@ class DaemonSet extends AbstractAPI
      * @param array $queries options:
      * 'exact'	boolean
      * Should the export be exact.  Exact export maintains cluster-specific fields like
-     * 'Namespace'.
+     * 'Namespace'. Deprecated. Planned for removal in 1.18.
      * 'export'	boolean
      * Should this value be exported.  Export strips fields that a user can not
-     * specify.
+     * specify. Deprecated. Planned for removal in 1.18.
      * 'pretty'	string
      * If 'true', then the output is pretty printed.
      *
@@ -344,6 +340,10 @@ class DaemonSet extends AbstractAPI
      * or unrecognized dryRun directive will result in an error response and no further
      * processing of the request. Valid values are: - All: all dry run stages will be
      * processed
+     * 'fieldManager'	string
+     * fieldManager is a name associated with the actor or entity that is making these
+     * changes. The value must be less than or 128 characters long, and only contain
+     * printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
      * 'pretty'	string
      * If 'true', then the output is pretty printed.
      *
@@ -426,6 +426,16 @@ class DaemonSet extends AbstractAPI
      * or unrecognized dryRun directive will result in an error response and no further
      * processing of the request. Valid values are: - All: all dry run stages will be
      * processed
+     * 'fieldManager'	string
+     * fieldManager is a name associated with the actor or entity that is making these
+     * changes. The value must be less than or 128 characters long, and only contain
+     * printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+     * This field is required for apply requests (application/apply-patch) but optional
+     * for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
+     * 'force'	boolean
+     * Force is going to "force" Apply requests. It means user will re-acquire
+     * conflicting fields owned by other people. Force flag must be unset for non-apply
+     * patch requests.
      * 'pretty'	string
      * If 'true', then the output is pretty printed.
      *
@@ -483,6 +493,10 @@ class DaemonSet extends AbstractAPI
      * or unrecognized dryRun directive will result in an error response and no further
      * processing of the request. Valid values are: - All: all dry run stages will be
      * processed
+     * 'fieldManager'	string
+     * fieldManager is a name associated with the actor or entity that is making these
+     * changes. The value must be less than or 128 characters long, and only contain
+     * printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
      * 'pretty'	string
      * If 'true', then the output is pretty printed.
      *
@@ -515,6 +529,16 @@ class DaemonSet extends AbstractAPI
      * or unrecognized dryRun directive will result in an error response and no further
      * processing of the request. Valid values are: - All: all dry run stages will be
      * processed
+     * 'fieldManager'	string
+     * fieldManager is a name associated with the actor or entity that is making these
+     * changes. The value must be less than or 128 characters long, and only contain
+     * printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+     * This field is required for apply requests (application/apply-patch) but optional
+     * for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
+     * 'force'	boolean
+     * Force is going to "force" Apply requests. It means user will re-acquire
+     * conflicting fields owned by other people. Force flag must be unset for non-apply
+     * patch requests.
      * 'pretty'	string
      * If 'true', then the output is pretty printed.
      *
@@ -561,8 +585,6 @@ class DaemonSet extends AbstractAPI
      * 'fieldSelector'	string
      * A selector to restrict the list of returned objects by their fields. Defaults to
      * everything.
-     * 'includeUninitialized'	boolean
-     * If true, partially initialized resources are included in the response.
      * 'labelSelector'	string
      * A selector to restrict the list of returned objects by their labels. Defaults to
      * everything.
@@ -646,8 +668,6 @@ class DaemonSet extends AbstractAPI
      * 'fieldSelector'	string
      * A selector to restrict the list of returned objects by their fields. Defaults to
      * everything.
-     * 'includeUninitialized'	boolean
-     * If true, partially initialized resources are included in the response.
      * 'labelSelector'	string
      * A selector to restrict the list of returned objects by their labels. Defaults to
      * everything.
@@ -733,8 +753,6 @@ class DaemonSet extends AbstractAPI
      * 'fieldSelector'	string
      * A selector to restrict the list of returned objects by their fields. Defaults to
      * everything.
-     * 'includeUninitialized'	boolean
-     * If true, partially initialized resources are included in the response.
      * 'labelSelector'	string
      * A selector to restrict the list of returned objects by their labels. Defaults to
      * everything.
@@ -815,8 +833,6 @@ class DaemonSet extends AbstractAPI
      * 'fieldSelector'	string
      * A selector to restrict the list of returned objects by their fields. Defaults to
      * everything.
-     * 'includeUninitialized'	boolean
-     * If true, partially initialized resources are included in the response.
      * 'labelSelector'	string
      * A selector to restrict the list of returned objects by their labels. Defaults to
      * everything.
@@ -935,8 +951,6 @@ class DaemonSet extends AbstractAPI
      * 'watch'	boolean
      * Watch for changes to the described resources and return them as a stream of add,
      * update, and remove notifications. Specify resourceVersion.
-     * 'includeUninitialized'	boolean
-     * If true, partially initialized resources are included in the response.
      * 'pretty'	string
      * If 'true', then the output is pretty printed.
      *
@@ -967,8 +981,10 @@ class DaemonSet extends AbstractAPI
      * or unrecognized dryRun directive will result in an error response and no further
      * processing of the request. Valid values are: - All: all dry run stages will be
      * processed
-     * 'includeUninitialized'	boolean
-     * If true, partially initialized resources are included in the response.
+     * 'fieldManager'	string
+     * fieldManager is a name associated with the actor or entity that is making these
+     * changes. The value must be less than or 128 characters long, and only contain
+     * printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
      * 'pretty'	string
      * If 'true', then the output is pretty printed.
      *
@@ -1052,8 +1068,6 @@ class DaemonSet extends AbstractAPI
      * 'watch'	boolean
      * Watch for changes to the described resources and return them as a stream of add,
      * update, and remove notifications. Specify resourceVersion.
-     * 'includeUninitialized'	boolean
-     * If true, partially initialized resources are included in the response.
      * 'pretty'	string
      * If 'true', then the output is pretty printed.
      *
@@ -1081,10 +1095,10 @@ class DaemonSet extends AbstractAPI
      * @param array $queries options:
      * 'exact'	boolean
      * Should the export be exact.  Exact export maintains cluster-specific fields like
-     * 'Namespace'.
+     * 'Namespace'. Deprecated. Planned for removal in 1.18.
      * 'export'	boolean
      * Should this value be exported.  Export strips fields that a user can not
-     * specify.
+     * specify. Deprecated. Planned for removal in 1.18.
      * 'pretty'	string
      * If 'true', then the output is pretty printed.
      *
@@ -1116,6 +1130,10 @@ class DaemonSet extends AbstractAPI
      * or unrecognized dryRun directive will result in an error response and no further
      * processing of the request. Valid values are: - All: all dry run stages will be
      * processed
+     * 'fieldManager'	string
+     * fieldManager is a name associated with the actor or entity that is making these
+     * changes. The value must be less than or 128 characters long, and only contain
+     * printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
      * 'pretty'	string
      * If 'true', then the output is pretty printed.
      *
@@ -1198,6 +1216,16 @@ class DaemonSet extends AbstractAPI
      * or unrecognized dryRun directive will result in an error response and no further
      * processing of the request. Valid values are: - All: all dry run stages will be
      * processed
+     * 'fieldManager'	string
+     * fieldManager is a name associated with the actor or entity that is making these
+     * changes. The value must be less than or 128 characters long, and only contain
+     * printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+     * This field is required for apply requests (application/apply-patch) but optional
+     * for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
+     * 'force'	boolean
+     * Force is going to "force" Apply requests. It means user will re-acquire
+     * conflicting fields owned by other people. Force flag must be unset for non-apply
+     * patch requests.
      * 'pretty'	string
      * If 'true', then the output is pretty printed.
      *
@@ -1255,6 +1283,10 @@ class DaemonSet extends AbstractAPI
      * or unrecognized dryRun directive will result in an error response and no further
      * processing of the request. Valid values are: - All: all dry run stages will be
      * processed
+     * 'fieldManager'	string
+     * fieldManager is a name associated with the actor or entity that is making these
+     * changes. The value must be less than or 128 characters long, and only contain
+     * printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
      * 'pretty'	string
      * If 'true', then the output is pretty printed.
      *
@@ -1287,6 +1319,16 @@ class DaemonSet extends AbstractAPI
      * or unrecognized dryRun directive will result in an error response and no further
      * processing of the request. Valid values are: - All: all dry run stages will be
      * processed
+     * 'fieldManager'	string
+     * fieldManager is a name associated with the actor or entity that is making these
+     * changes. The value must be less than or 128 characters long, and only contain
+     * printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+     * This field is required for apply requests (application/apply-patch) but optional
+     * for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
+     * 'force'	boolean
+     * Force is going to "force" Apply requests. It means user will re-acquire
+     * conflicting fields owned by other people. Force flag must be unset for non-apply
+     * patch requests.
      * 'pretty'	string
      * If 'true', then the output is pretty printed.
      *
@@ -1333,8 +1375,6 @@ class DaemonSet extends AbstractAPI
      * 'fieldSelector'	string
      * A selector to restrict the list of returned objects by their fields. Defaults to
      * everything.
-     * 'includeUninitialized'	boolean
-     * If true, partially initialized resources are included in the response.
      * 'labelSelector'	string
      * A selector to restrict the list of returned objects by their labels. Defaults to
      * everything.
@@ -1418,8 +1458,6 @@ class DaemonSet extends AbstractAPI
      * 'fieldSelector'	string
      * A selector to restrict the list of returned objects by their fields. Defaults to
      * everything.
-     * 'includeUninitialized'	boolean
-     * If true, partially initialized resources are included in the response.
      * 'labelSelector'	string
      * A selector to restrict the list of returned objects by their labels. Defaults to
      * everything.
@@ -1505,8 +1543,6 @@ class DaemonSet extends AbstractAPI
      * 'fieldSelector'	string
      * A selector to restrict the list of returned objects by their fields. Defaults to
      * everything.
-     * 'includeUninitialized'	boolean
-     * If true, partially initialized resources are included in the response.
      * 'labelSelector'	string
      * A selector to restrict the list of returned objects by their labels. Defaults to
      * everything.
@@ -1587,8 +1623,6 @@ class DaemonSet extends AbstractAPI
      * 'fieldSelector'	string
      * A selector to restrict the list of returned objects by their fields. Defaults to
      * everything.
-     * 'includeUninitialized'	boolean
-     * If true, partially initialized resources are included in the response.
      * 'labelSelector'	string
      * A selector to restrict the list of returned objects by their labels. Defaults to
      * everything.
@@ -1707,8 +1741,6 @@ class DaemonSet extends AbstractAPI
      * 'watch'	boolean
      * Watch for changes to the described resources and return them as a stream of add,
      * update, and remove notifications. Specify resourceVersion.
-     * 'includeUninitialized'	boolean
-     * If true, partially initialized resources are included in the response.
      * 'pretty'	string
      * If 'true', then the output is pretty printed.
      *
@@ -1739,8 +1771,10 @@ class DaemonSet extends AbstractAPI
      * or unrecognized dryRun directive will result in an error response and no further
      * processing of the request. Valid values are: - All: all dry run stages will be
      * processed
-     * 'includeUninitialized'	boolean
-     * If true, partially initialized resources are included in the response.
+     * 'fieldManager'	string
+     * fieldManager is a name associated with the actor or entity that is making these
+     * changes. The value must be less than or 128 characters long, and only contain
+     * printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
      * 'pretty'	string
      * If 'true', then the output is pretty printed.
      *
@@ -1824,8 +1858,6 @@ class DaemonSet extends AbstractAPI
      * 'watch'	boolean
      * Watch for changes to the described resources and return them as a stream of add,
      * update, and remove notifications. Specify resourceVersion.
-     * 'includeUninitialized'	boolean
-     * If true, partially initialized resources are included in the response.
      * 'pretty'	string
      * If 'true', then the output is pretty printed.
      *
@@ -1853,10 +1885,10 @@ class DaemonSet extends AbstractAPI
      * @param array $queries options:
      * 'exact'	boolean
      * Should the export be exact.  Exact export maintains cluster-specific fields like
-     * 'Namespace'.
+     * 'Namespace'. Deprecated. Planned for removal in 1.18.
      * 'export'	boolean
      * Should this value be exported.  Export strips fields that a user can not
-     * specify.
+     * specify. Deprecated. Planned for removal in 1.18.
      * 'pretty'	string
      * If 'true', then the output is pretty printed.
      *
@@ -1888,6 +1920,10 @@ class DaemonSet extends AbstractAPI
      * or unrecognized dryRun directive will result in an error response and no further
      * processing of the request. Valid values are: - All: all dry run stages will be
      * processed
+     * 'fieldManager'	string
+     * fieldManager is a name associated with the actor or entity that is making these
+     * changes. The value must be less than or 128 characters long, and only contain
+     * printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
      * 'pretty'	string
      * If 'true', then the output is pretty printed.
      *
@@ -1970,6 +2006,16 @@ class DaemonSet extends AbstractAPI
      * or unrecognized dryRun directive will result in an error response and no further
      * processing of the request. Valid values are: - All: all dry run stages will be
      * processed
+     * 'fieldManager'	string
+     * fieldManager is a name associated with the actor or entity that is making these
+     * changes. The value must be less than or 128 characters long, and only contain
+     * printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+     * This field is required for apply requests (application/apply-patch) but optional
+     * for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
+     * 'force'	boolean
+     * Force is going to "force" Apply requests. It means user will re-acquire
+     * conflicting fields owned by other people. Force flag must be unset for non-apply
+     * patch requests.
      * 'pretty'	string
      * If 'true', then the output is pretty printed.
      *
@@ -2027,6 +2073,10 @@ class DaemonSet extends AbstractAPI
      * or unrecognized dryRun directive will result in an error response and no further
      * processing of the request. Valid values are: - All: all dry run stages will be
      * processed
+     * 'fieldManager'	string
+     * fieldManager is a name associated with the actor or entity that is making these
+     * changes. The value must be less than or 128 characters long, and only contain
+     * printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
      * 'pretty'	string
      * If 'true', then the output is pretty printed.
      *
@@ -2059,6 +2109,16 @@ class DaemonSet extends AbstractAPI
      * or unrecognized dryRun directive will result in an error response and no further
      * processing of the request. Valid values are: - All: all dry run stages will be
      * processed
+     * 'fieldManager'	string
+     * fieldManager is a name associated with the actor or entity that is making these
+     * changes. The value must be less than or 128 characters long, and only contain
+     * printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+     * This field is required for apply requests (application/apply-patch) but optional
+     * for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
+     * 'force'	boolean
+     * Force is going to "force" Apply requests. It means user will re-acquire
+     * conflicting fields owned by other people. Force flag must be unset for non-apply
+     * patch requests.
      * 'pretty'	string
      * If 'true', then the output is pretty printed.
      *
@@ -2105,8 +2165,6 @@ class DaemonSet extends AbstractAPI
      * 'fieldSelector'	string
      * A selector to restrict the list of returned objects by their fields. Defaults to
      * everything.
-     * 'includeUninitialized'	boolean
-     * If true, partially initialized resources are included in the response.
      * 'labelSelector'	string
      * A selector to restrict the list of returned objects by their labels. Defaults to
      * everything.
@@ -2190,8 +2248,6 @@ class DaemonSet extends AbstractAPI
      * 'fieldSelector'	string
      * A selector to restrict the list of returned objects by their fields. Defaults to
      * everything.
-     * 'includeUninitialized'	boolean
-     * If true, partially initialized resources are included in the response.
      * 'labelSelector'	string
      * A selector to restrict the list of returned objects by their labels. Defaults to
      * everything.
@@ -2277,8 +2333,6 @@ class DaemonSet extends AbstractAPI
      * 'fieldSelector'	string
      * A selector to restrict the list of returned objects by their fields. Defaults to
      * everything.
-     * 'includeUninitialized'	boolean
-     * If true, partially initialized resources are included in the response.
      * 'labelSelector'	string
      * A selector to restrict the list of returned objects by their labels. Defaults to
      * everything.

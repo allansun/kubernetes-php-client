@@ -152,6 +152,11 @@ class JSONSchemaProps extends AbstractModel
     public $not = null;
 
     /**
+     * @var boolean
+     */
+    public $nullable = null;
+
+    /**
      * @var JSONSchemaProps[]
      */
     public $oneOf = null;

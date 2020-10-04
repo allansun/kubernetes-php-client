@@ -77,7 +77,7 @@ class PersistentVolumeSpec extends AbstractModel
     public $claimRef = null;
 
     /**
-     * CSI represents storage that handled by an external CSI driver (Beta feature).
+     * CSI represents storage that is handled by an external CSI driver (Beta feature).
      *
      * @var CSIPersistentVolumeSource
      */

@@ -12,7 +12,7 @@ class VolumeError extends AbstractModel
 
     /**
      * String detailing the error encountered during Attach or Detach operation. This
-     * string maybe logged, so it should not contain sensitive information.
+     * string may be logged, so it should not contain sensitive information.
      *
      * @var string
      */

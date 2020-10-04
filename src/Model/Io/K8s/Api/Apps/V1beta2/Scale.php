@@ -32,7 +32,7 @@ class Scale extends AbstractModel
 
     /**
      * Standard object metadata; More info:
-     * https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata.
+     * https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata.
      *
      * @var \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\ObjectMeta
      */
@@ -40,7 +40,7 @@ class Scale extends AbstractModel
 
     /**
      * defines the behavior of the scale. More info:
-     * https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status.
+     * https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status.
      *
      * @var ScaleSpec
      */
@@ -48,7 +48,7 @@ class Scale extends AbstractModel
 
     /**
      * current status of the scale. More info:
-     * https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status.
+     * https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status.
      * Read-only.
      *
      * @var ScaleStatus

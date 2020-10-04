@@ -37,7 +37,7 @@ class ReplicaSet extends AbstractModel
     /**
      * If the Labels of a ReplicaSet are empty, they are defaulted to be the same as
      * the Pod(s) that the ReplicaSet manages. Standard object's metadata. More info:
-     * https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+     * https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      *
      * @var \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\ObjectMeta
      */
@@ -46,7 +46,7 @@ class ReplicaSet extends AbstractModel
     /**
      * Spec defines the specification of the desired behavior of the ReplicaSet. More
      * info:
-     * https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status
+     * https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
      *
      * @var ReplicaSetSpec
      */
@@ -56,7 +56,7 @@ class ReplicaSet extends AbstractModel
      * Status is the most recently observed status of the ReplicaSet. This data may be
      * out of date by some window of time. Populated by the system. Read-only. More
      * info:
-     * https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status
+     * https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
      *
      * @var ReplicaSetStatus
      */

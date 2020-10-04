@@ -8,7 +8,10 @@ use \KubernetesRuntime\AbstractModel;
  * Ingress is a collection of rules that allow inbound connections to reach the
  * endpoints defined by a backend. An Ingress can be configured to give services
  * externally-reachable urls, load balance traffic, terminate SSL, offer name based
- * virtual hosting etc.
+ * virtual hosting etc. DEPRECATED - This group version of Ingress is deprecated by
+ * networking.k8s.io/v1beta1 Ingress. See the release notes for more information.
+ *
+ * @deprecated
  */
 class Ingress extends AbstractModel
 {
@@ -35,7 +38,7 @@ class Ingress extends AbstractModel
 
     /**
      * Standard object's metadata. More info:
-     * https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+     * https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      *
      * @var \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\ObjectMeta
      */
@@ -43,7 +46,7 @@ class Ingress extends AbstractModel
 
     /**
      * Spec is the desired state of the Ingress. More info:
-     * https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status
+     * https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
      *
      * @var IngressSpec
      */
@@ -51,7 +54,7 @@ class Ingress extends AbstractModel
 
     /**
      * Status is the current state of the Ingress. More info:
-     * https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status
+     * https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
      *
      * @var IngressStatus
      */

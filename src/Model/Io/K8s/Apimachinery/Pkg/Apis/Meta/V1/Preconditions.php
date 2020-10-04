@@ -12,6 +12,13 @@ class Preconditions extends AbstractModel
 {
 
     /**
+     * Specifies the target ResourceVersion
+     *
+     * @var string
+     */
+    public $resourceVersion = null;
+
+    /**
      * Specifies the target UID.
      *
      * @var string

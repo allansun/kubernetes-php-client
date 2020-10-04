@@ -50,6 +50,10 @@ class Scale extends AbstractAPI
      * or unrecognized dryRun directive will result in an error response and no further
      * processing of the request. Valid values are: - All: all dry run stages will be
      * processed
+     * 'fieldManager'	string
+     * fieldManager is a name associated with the actor or entity that is making these
+     * changes. The value must be less than or 128 characters long, and only contain
+     * printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
      * 'pretty'	string
      * If 'true', then the output is pretty printed.
      *
@@ -82,6 +86,16 @@ class Scale extends AbstractAPI
      * or unrecognized dryRun directive will result in an error response and no further
      * processing of the request. Valid values are: - All: all dry run stages will be
      * processed
+     * 'fieldManager'	string
+     * fieldManager is a name associated with the actor or entity that is making these
+     * changes. The value must be less than or 128 characters long, and only contain
+     * printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+     * This field is required for apply requests (application/apply-patch) but optional
+     * for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
+     * 'force'	boolean
+     * Force is going to "force" Apply requests. It means user will re-acquire
+     * conflicting fields owned by other people. Force flag must be unset for non-apply
+     * patch requests.
      * 'pretty'	string
      * If 'true', then the output is pretty printed.
      *
@@ -139,6 +153,10 @@ class Scale extends AbstractAPI
      * or unrecognized dryRun directive will result in an error response and no further
      * processing of the request. Valid values are: - All: all dry run stages will be
      * processed
+     * 'fieldManager'	string
+     * fieldManager is a name associated with the actor or entity that is making these
+     * changes. The value must be less than or 128 characters long, and only contain
+     * printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
      * 'pretty'	string
      * If 'true', then the output is pretty printed.
      *
@@ -171,6 +189,16 @@ class Scale extends AbstractAPI
      * or unrecognized dryRun directive will result in an error response and no further
      * processing of the request. Valid values are: - All: all dry run stages will be
      * processed
+     * 'fieldManager'	string
+     * fieldManager is a name associated with the actor or entity that is making these
+     * changes. The value must be less than or 128 characters long, and only contain
+     * printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+     * This field is required for apply requests (application/apply-patch) but optional
+     * for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
+     * 'force'	boolean
+     * Force is going to "force" Apply requests. It means user will re-acquire
+     * conflicting fields owned by other people. Force flag must be unset for non-apply
+     * patch requests.
      * 'pretty'	string
      * If 'true', then the output is pretty printed.
      *
@@ -228,6 +256,10 @@ class Scale extends AbstractAPI
      * or unrecognized dryRun directive will result in an error response and no further
      * processing of the request. Valid values are: - All: all dry run stages will be
      * processed
+     * 'fieldManager'	string
+     * fieldManager is a name associated with the actor or entity that is making these
+     * changes. The value must be less than or 128 characters long, and only contain
+     * printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
      * 'pretty'	string
      * If 'true', then the output is pretty printed.
      *
@@ -260,6 +292,16 @@ class Scale extends AbstractAPI
      * or unrecognized dryRun directive will result in an error response and no further
      * processing of the request. Valid values are: - All: all dry run stages will be
      * processed
+     * 'fieldManager'	string
+     * fieldManager is a name associated with the actor or entity that is making these
+     * changes. The value must be less than or 128 characters long, and only contain
+     * printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+     * This field is required for apply requests (application/apply-patch) but optional
+     * for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
+     * 'force'	boolean
+     * Force is going to "force" Apply requests. It means user will re-acquire
+     * conflicting fields owned by other people. Force flag must be unset for non-apply
+     * patch requests.
      * 'pretty'	string
      * If 'true', then the output is pretty printed.
      *
@@ -317,6 +359,10 @@ class Scale extends AbstractAPI
      * or unrecognized dryRun directive will result in an error response and no further
      * processing of the request. Valid values are: - All: all dry run stages will be
      * processed
+     * 'fieldManager'	string
+     * fieldManager is a name associated with the actor or entity that is making these
+     * changes. The value must be less than or 128 characters long, and only contain
+     * printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
      * 'pretty'	string
      * If 'true', then the output is pretty printed.
      *
@@ -349,6 +395,16 @@ class Scale extends AbstractAPI
      * or unrecognized dryRun directive will result in an error response and no further
      * processing of the request. Valid values are: - All: all dry run stages will be
      * processed
+     * 'fieldManager'	string
+     * fieldManager is a name associated with the actor or entity that is making these
+     * changes. The value must be less than or 128 characters long, and only contain
+     * printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+     * This field is required for apply requests (application/apply-patch) but optional
+     * for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
+     * 'force'	boolean
+     * Force is going to "force" Apply requests. It means user will re-acquire
+     * conflicting fields owned by other people. Force flag must be unset for non-apply
+     * patch requests.
      * 'pretty'	string
      * If 'true', then the output is pretty printed.
      *
@@ -406,6 +462,10 @@ class Scale extends AbstractAPI
      * or unrecognized dryRun directive will result in an error response and no further
      * processing of the request. Valid values are: - All: all dry run stages will be
      * processed
+     * 'fieldManager'	string
+     * fieldManager is a name associated with the actor or entity that is making these
+     * changes. The value must be less than or 128 characters long, and only contain
+     * printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
      * 'pretty'	string
      * If 'true', then the output is pretty printed.
      *
@@ -438,6 +498,16 @@ class Scale extends AbstractAPI
      * or unrecognized dryRun directive will result in an error response and no further
      * processing of the request. Valid values are: - All: all dry run stages will be
      * processed
+     * 'fieldManager'	string
+     * fieldManager is a name associated with the actor or entity that is making these
+     * changes. The value must be less than or 128 characters long, and only contain
+     * printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+     * This field is required for apply requests (application/apply-patch) but optional
+     * for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
+     * 'force'	boolean
+     * Force is going to "force" Apply requests. It means user will re-acquire
+     * conflicting fields owned by other people. Force flag must be unset for non-apply
+     * patch requests.
      * 'pretty'	string
      * If 'true', then the output is pretty printed.
      *
@@ -495,6 +565,10 @@ class Scale extends AbstractAPI
      * or unrecognized dryRun directive will result in an error response and no further
      * processing of the request. Valid values are: - All: all dry run stages will be
      * processed
+     * 'fieldManager'	string
+     * fieldManager is a name associated with the actor or entity that is making these
+     * changes. The value must be less than or 128 characters long, and only contain
+     * printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
      * 'pretty'	string
      * If 'true', then the output is pretty printed.
      *
@@ -527,6 +601,16 @@ class Scale extends AbstractAPI
      * or unrecognized dryRun directive will result in an error response and no further
      * processing of the request. Valid values are: - All: all dry run stages will be
      * processed
+     * 'fieldManager'	string
+     * fieldManager is a name associated with the actor or entity that is making these
+     * changes. The value must be less than or 128 characters long, and only contain
+     * printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+     * This field is required for apply requests (application/apply-patch) but optional
+     * for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
+     * 'force'	boolean
+     * Force is going to "force" Apply requests. It means user will re-acquire
+     * conflicting fields owned by other people. Force flag must be unset for non-apply
+     * patch requests.
      * 'pretty'	string
      * If 'true', then the output is pretty printed.
      *
@@ -584,6 +668,10 @@ class Scale extends AbstractAPI
      * or unrecognized dryRun directive will result in an error response and no further
      * processing of the request. Valid values are: - All: all dry run stages will be
      * processed
+     * 'fieldManager'	string
+     * fieldManager is a name associated with the actor or entity that is making these
+     * changes. The value must be less than or 128 characters long, and only contain
+     * printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
      * 'pretty'	string
      * If 'true', then the output is pretty printed.
      *
@@ -616,6 +704,16 @@ class Scale extends AbstractAPI
      * or unrecognized dryRun directive will result in an error response and no further
      * processing of the request. Valid values are: - All: all dry run stages will be
      * processed
+     * 'fieldManager'	string
+     * fieldManager is a name associated with the actor or entity that is making these
+     * changes. The value must be less than or 128 characters long, and only contain
+     * printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+     * This field is required for apply requests (application/apply-patch) but optional
+     * for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
+     * 'force'	boolean
+     * Force is going to "force" Apply requests. It means user will re-acquire
+     * conflicting fields owned by other people. Force flag must be unset for non-apply
+     * patch requests.
      * 'pretty'	string
      * If 'true', then the output is pretty printed.
      *
@@ -673,6 +771,10 @@ class Scale extends AbstractAPI
      * or unrecognized dryRun directive will result in an error response and no further
      * processing of the request. Valid values are: - All: all dry run stages will be
      * processed
+     * 'fieldManager'	string
+     * fieldManager is a name associated with the actor or entity that is making these
+     * changes. The value must be less than or 128 characters long, and only contain
+     * printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
      * 'pretty'	string
      * If 'true', then the output is pretty printed.
      *
@@ -705,6 +807,16 @@ class Scale extends AbstractAPI
      * or unrecognized dryRun directive will result in an error response and no further
      * processing of the request. Valid values are: - All: all dry run stages will be
      * processed
+     * 'fieldManager'	string
+     * fieldManager is a name associated with the actor or entity that is making these
+     * changes. The value must be less than or 128 characters long, and only contain
+     * printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+     * This field is required for apply requests (application/apply-patch) but optional
+     * for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
+     * 'force'	boolean
+     * Force is going to "force" Apply requests. It means user will re-acquire
+     * conflicting fields owned by other people. Force flag must be unset for non-apply
+     * patch requests.
      * 'pretty'	string
      * If 'true', then the output is pretty printed.
      *
@@ -762,6 +874,10 @@ class Scale extends AbstractAPI
      * or unrecognized dryRun directive will result in an error response and no further
      * processing of the request. Valid values are: - All: all dry run stages will be
      * processed
+     * 'fieldManager'	string
+     * fieldManager is a name associated with the actor or entity that is making these
+     * changes. The value must be less than or 128 characters long, and only contain
+     * printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
      * 'pretty'	string
      * If 'true', then the output is pretty printed.
      *
@@ -794,6 +910,16 @@ class Scale extends AbstractAPI
      * or unrecognized dryRun directive will result in an error response and no further
      * processing of the request. Valid values are: - All: all dry run stages will be
      * processed
+     * 'fieldManager'	string
+     * fieldManager is a name associated with the actor or entity that is making these
+     * changes. The value must be less than or 128 characters long, and only contain
+     * printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+     * This field is required for apply requests (application/apply-patch) but optional
+     * for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
+     * 'force'	boolean
+     * Force is going to "force" Apply requests. It means user will re-acquire
+     * conflicting fields owned by other people. Force flag must be unset for non-apply
+     * patch requests.
      * 'pretty'	string
      * If 'true', then the output is pretty printed.
      *
@@ -851,6 +977,10 @@ class Scale extends AbstractAPI
      * or unrecognized dryRun directive will result in an error response and no further
      * processing of the request. Valid values are: - All: all dry run stages will be
      * processed
+     * 'fieldManager'	string
+     * fieldManager is a name associated with the actor or entity that is making these
+     * changes. The value must be less than or 128 characters long, and only contain
+     * printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
      * 'pretty'	string
      * If 'true', then the output is pretty printed.
      *
@@ -883,6 +1013,16 @@ class Scale extends AbstractAPI
      * or unrecognized dryRun directive will result in an error response and no further
      * processing of the request. Valid values are: - All: all dry run stages will be
      * processed
+     * 'fieldManager'	string
+     * fieldManager is a name associated with the actor or entity that is making these
+     * changes. The value must be less than or 128 characters long, and only contain
+     * printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+     * This field is required for apply requests (application/apply-patch) but optional
+     * for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
+     * 'force'	boolean
+     * Force is going to "force" Apply requests. It means user will re-acquire
+     * conflicting fields owned by other people. Force flag must be unset for non-apply
+     * patch requests.
      * 'pretty'	string
      * If 'true', then the output is pretty printed.
      *
@@ -940,6 +1080,10 @@ class Scale extends AbstractAPI
      * or unrecognized dryRun directive will result in an error response and no further
      * processing of the request. Valid values are: - All: all dry run stages will be
      * processed
+     * 'fieldManager'	string
+     * fieldManager is a name associated with the actor or entity that is making these
+     * changes. The value must be less than or 128 characters long, and only contain
+     * printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
      * 'pretty'	string
      * If 'true', then the output is pretty printed.
      *
@@ -972,6 +1116,16 @@ class Scale extends AbstractAPI
      * or unrecognized dryRun directive will result in an error response and no further
      * processing of the request. Valid values are: - All: all dry run stages will be
      * processed
+     * 'fieldManager'	string
+     * fieldManager is a name associated with the actor or entity that is making these
+     * changes. The value must be less than or 128 characters long, and only contain
+     * printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+     * This field is required for apply requests (application/apply-patch) but optional
+     * for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
+     * 'force'	boolean
+     * Force is going to "force" Apply requests. It means user will re-acquire
+     * conflicting fields owned by other people. Force flag must be unset for non-apply
+     * patch requests.
      * 'pretty'	string
      * If 'true', then the output is pretty printed.
      *
@@ -1029,6 +1183,10 @@ class Scale extends AbstractAPI
      * or unrecognized dryRun directive will result in an error response and no further
      * processing of the request. Valid values are: - All: all dry run stages will be
      * processed
+     * 'fieldManager'	string
+     * fieldManager is a name associated with the actor or entity that is making these
+     * changes. The value must be less than or 128 characters long, and only contain
+     * printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
      * 'pretty'	string
      * If 'true', then the output is pretty printed.
      *
@@ -1061,6 +1219,16 @@ class Scale extends AbstractAPI
      * or unrecognized dryRun directive will result in an error response and no further
      * processing of the request. Valid values are: - All: all dry run stages will be
      * processed
+     * 'fieldManager'	string
+     * fieldManager is a name associated with the actor or entity that is making these
+     * changes. The value must be less than or 128 characters long, and only contain
+     * printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+     * This field is required for apply requests (application/apply-patch) but optional
+     * for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
+     * 'force'	boolean
+     * Force is going to "force" Apply requests. It means user will re-acquire
+     * conflicting fields owned by other people. Force flag must be unset for non-apply
+     * patch requests.
      * 'pretty'	string
      * If 'true', then the output is pretty printed.
      *

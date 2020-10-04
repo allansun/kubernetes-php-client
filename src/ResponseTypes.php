@@ -664,40 +664,6 @@ class ResponseTypes
         'getAdmissionregistrationAPIGroup' => [
             '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\APIGroup',
         ],
-        'getAdmissionregistrationV1alpha1APIResources' => [
-            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\APIResourceList',
-        ],
-        'listAdmissionregistrationV1alpha1InitializerConfiguration' => [
-            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Admissionregistration\\V1alpha1\\InitializerConfigurationList',
-        ],
-        'createAdmissionregistrationV1alpha1InitializerConfiguration' => [
-            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Admissionregistration\\V1alpha1\\InitializerConfiguration',
-            '201.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Admissionregistration\\V1alpha1\\InitializerConfiguration',
-            '202.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Admissionregistration\\V1alpha1\\InitializerConfiguration',
-        ],
-        'deleteAdmissionregistrationV1alpha1CollectionInitializerConfiguration' => [
-            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\Status',
-        ],
-        'readAdmissionregistrationV1alpha1InitializerConfiguration' => [
-            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Admissionregistration\\V1alpha1\\InitializerConfiguration',
-        ],
-        'replaceAdmissionregistrationV1alpha1InitializerConfiguration' => [
-            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Admissionregistration\\V1alpha1\\InitializerConfiguration',
-            '201.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Admissionregistration\\V1alpha1\\InitializerConfiguration',
-        ],
-        'deleteAdmissionregistrationV1alpha1InitializerConfiguration' => [
-            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\Status',
-            '202.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\Status',
-        ],
-        'patchAdmissionregistrationV1alpha1InitializerConfiguration' => [
-            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Admissionregistration\\V1alpha1\\InitializerConfiguration',
-        ],
-        'watchAdmissionregistrationV1alpha1InitializerConfigurationList' => [
-            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\WatchEvent',
-        ],
-        'watchAdmissionregistrationV1alpha1InitializerConfiguration' => [
-            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\WatchEvent',
-        ],
         'getAdmissionregistrationV1beta1APIResources' => [
             '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\APIResourceList',
         ],
@@ -2044,6 +2010,46 @@ class ResponseTypes
         'getCoordinationAPIGroup' => [
             '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\APIGroup',
         ],
+        'getCoordinationV1APIResources' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\APIResourceList',
+        ],
+        'listCoordinationV1LeaseForAllNamespaces' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Coordination\\V1\\LeaseList',
+        ],
+        'listCoordinationV1NamespacedLease' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Coordination\\V1\\LeaseList',
+        ],
+        'createCoordinationV1NamespacedLease' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Coordination\\V1\\Lease',
+            '201.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Coordination\\V1\\Lease',
+            '202.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Coordination\\V1\\Lease',
+        ],
+        'deleteCoordinationV1CollectionNamespacedLease' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\Status',
+        ],
+        'readCoordinationV1NamespacedLease' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Coordination\\V1\\Lease',
+        ],
+        'replaceCoordinationV1NamespacedLease' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Coordination\\V1\\Lease',
+            '201.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Coordination\\V1\\Lease',
+        ],
+        'deleteCoordinationV1NamespacedLease' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\Status',
+            '202.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\Status',
+        ],
+        'patchCoordinationV1NamespacedLease' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Coordination\\V1\\Lease',
+        ],
+        'watchCoordinationV1LeaseListForAllNamespaces' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\WatchEvent',
+        ],
+        'watchCoordinationV1NamespacedLeaseList' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\WatchEvent',
+        ],
+        'watchCoordinationV1NamespacedLease' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\WatchEvent',
+        ],
         'getCoordinationV1beta1APIResources' => [
             '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\APIResourceList',
         ],
@@ -2465,6 +2471,127 @@ class ResponseTypes
             '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\WatchEvent',
         ],
         'watchNetworkingV1NetworkPolicyListForAllNamespaces' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\WatchEvent',
+        ],
+        'getNetworkingV1beta1APIResources' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\APIResourceList',
+        ],
+        'listNetworkingV1beta1IngressForAllNamespaces' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Networking\\V1beta1\\IngressList',
+        ],
+        'listNetworkingV1beta1NamespacedIngress' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Networking\\V1beta1\\IngressList',
+        ],
+        'createNetworkingV1beta1NamespacedIngress' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Networking\\V1beta1\\Ingress',
+            '201.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Networking\\V1beta1\\Ingress',
+            '202.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Networking\\V1beta1\\Ingress',
+        ],
+        'deleteNetworkingV1beta1CollectionNamespacedIngress' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\Status',
+        ],
+        'readNetworkingV1beta1NamespacedIngress' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Networking\\V1beta1\\Ingress',
+        ],
+        'replaceNetworkingV1beta1NamespacedIngress' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Networking\\V1beta1\\Ingress',
+            '201.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Networking\\V1beta1\\Ingress',
+        ],
+        'deleteNetworkingV1beta1NamespacedIngress' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\Status',
+            '202.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\Status',
+        ],
+        'patchNetworkingV1beta1NamespacedIngress' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Networking\\V1beta1\\Ingress',
+        ],
+        'readNetworkingV1beta1NamespacedIngressStatus' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Networking\\V1beta1\\Ingress',
+        ],
+        'replaceNetworkingV1beta1NamespacedIngressStatus' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Networking\\V1beta1\\Ingress',
+            '201.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Networking\\V1beta1\\Ingress',
+        ],
+        'patchNetworkingV1beta1NamespacedIngressStatus' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Networking\\V1beta1\\Ingress',
+        ],
+        'watchNetworkingV1beta1IngressListForAllNamespaces' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\WatchEvent',
+        ],
+        'watchNetworkingV1beta1NamespacedIngressList' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\WatchEvent',
+        ],
+        'watchNetworkingV1beta1NamespacedIngress' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\WatchEvent',
+        ],
+        'getNodeAPIGroup' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\APIGroup',
+        ],
+        'getNodeV1alpha1APIResources' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\APIResourceList',
+        ],
+        'listNodeV1alpha1RuntimeClass' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Node\\V1alpha1\\RuntimeClassList',
+        ],
+        'createNodeV1alpha1RuntimeClass' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Node\\V1alpha1\\RuntimeClass',
+            '201.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Node\\V1alpha1\\RuntimeClass',
+            '202.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Node\\V1alpha1\\RuntimeClass',
+        ],
+        'deleteNodeV1alpha1CollectionRuntimeClass' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\Status',
+        ],
+        'readNodeV1alpha1RuntimeClass' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Node\\V1alpha1\\RuntimeClass',
+        ],
+        'replaceNodeV1alpha1RuntimeClass' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Node\\V1alpha1\\RuntimeClass',
+            '201.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Node\\V1alpha1\\RuntimeClass',
+        ],
+        'deleteNodeV1alpha1RuntimeClass' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\Status',
+            '202.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\Status',
+        ],
+        'patchNodeV1alpha1RuntimeClass' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Node\\V1alpha1\\RuntimeClass',
+        ],
+        'watchNodeV1alpha1RuntimeClassList' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\WatchEvent',
+        ],
+        'watchNodeV1alpha1RuntimeClass' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\WatchEvent',
+        ],
+        'getNodeV1beta1APIResources' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\APIResourceList',
+        ],
+        'listNodeV1beta1RuntimeClass' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Node\\V1beta1\\RuntimeClassList',
+        ],
+        'createNodeV1beta1RuntimeClass' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Node\\V1beta1\\RuntimeClass',
+            '201.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Node\\V1beta1\\RuntimeClass',
+            '202.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Node\\V1beta1\\RuntimeClass',
+        ],
+        'deleteNodeV1beta1CollectionRuntimeClass' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\Status',
+        ],
+        'readNodeV1beta1RuntimeClass' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Node\\V1beta1\\RuntimeClass',
+        ],
+        'replaceNodeV1beta1RuntimeClass' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Node\\V1beta1\\RuntimeClass',
+            '201.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Node\\V1beta1\\RuntimeClass',
+        ],
+        'deleteNodeV1beta1RuntimeClass' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\Status',
+            '202.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\Status',
+        ],
+        'patchNodeV1beta1RuntimeClass' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Node\\V1beta1\\RuntimeClass',
+        ],
+        'watchNodeV1beta1RuntimeClassList' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\WatchEvent',
+        ],
+        'watchNodeV1beta1RuntimeClass' => [
             '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\WatchEvent',
         ],
         'getPolicyAPIGroup' => [
@@ -2974,6 +3101,40 @@ class ResponseTypes
         'getSchedulingAPIGroup' => [
             '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\APIGroup',
         ],
+        'getSchedulingV1APIResources' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\APIResourceList',
+        ],
+        'listSchedulingV1PriorityClass' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Scheduling\\V1\\PriorityClassList',
+        ],
+        'createSchedulingV1PriorityClass' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Scheduling\\V1\\PriorityClass',
+            '201.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Scheduling\\V1\\PriorityClass',
+            '202.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Scheduling\\V1\\PriorityClass',
+        ],
+        'deleteSchedulingV1CollectionPriorityClass' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\Status',
+        ],
+        'readSchedulingV1PriorityClass' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Scheduling\\V1\\PriorityClass',
+        ],
+        'replaceSchedulingV1PriorityClass' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Scheduling\\V1\\PriorityClass',
+            '201.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Scheduling\\V1\\PriorityClass',
+        ],
+        'deleteSchedulingV1PriorityClass' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\Status',
+            '202.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\Status',
+        ],
+        'patchSchedulingV1PriorityClass' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Scheduling\\V1\\PriorityClass',
+        ],
+        'watchSchedulingV1PriorityClassList' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\WatchEvent',
+        ],
+        'watchSchedulingV1PriorityClass' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\WatchEvent',
+        ],
         'getSchedulingV1alpha1APIResources' => [
             '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\APIResourceList',
         ],
@@ -3200,6 +3361,56 @@ class ResponseTypes
         'getStorageV1beta1APIResources' => [
             '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\APIResourceList',
         ],
+        'listStorageV1beta1CSIDriver' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Storage\\V1beta1\\CSIDriverList',
+        ],
+        'createStorageV1beta1CSIDriver' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Storage\\V1beta1\\CSIDriver',
+            '201.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Storage\\V1beta1\\CSIDriver',
+            '202.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Storage\\V1beta1\\CSIDriver',
+        ],
+        'deleteStorageV1beta1CollectionCSIDriver' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\Status',
+        ],
+        'readStorageV1beta1CSIDriver' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Storage\\V1beta1\\CSIDriver',
+        ],
+        'replaceStorageV1beta1CSIDriver' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Storage\\V1beta1\\CSIDriver',
+            '201.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Storage\\V1beta1\\CSIDriver',
+        ],
+        'deleteStorageV1beta1CSIDriver' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\Status',
+            '202.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\Status',
+        ],
+        'patchStorageV1beta1CSIDriver' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Storage\\V1beta1\\CSIDriver',
+        ],
+        'listStorageV1beta1CSINode' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Storage\\V1beta1\\CSINodeList',
+        ],
+        'createStorageV1beta1CSINode' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Storage\\V1beta1\\CSINode',
+            '201.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Storage\\V1beta1\\CSINode',
+            '202.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Storage\\V1beta1\\CSINode',
+        ],
+        'deleteStorageV1beta1CollectionCSINode' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\Status',
+        ],
+        'readStorageV1beta1CSINode' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Storage\\V1beta1\\CSINode',
+        ],
+        'replaceStorageV1beta1CSINode' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Storage\\V1beta1\\CSINode',
+            '201.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Storage\\V1beta1\\CSINode',
+        ],
+        'deleteStorageV1beta1CSINode' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\Status',
+            '202.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\Status',
+        ],
+        'patchStorageV1beta1CSINode' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Storage\\V1beta1\\CSINode',
+        ],
         'listStorageV1beta1StorageClass' => [
             '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Storage\\V1beta1\\StorageClassList',
         ],
@@ -3249,6 +3460,18 @@ class ResponseTypes
         ],
         'patchStorageV1beta1VolumeAttachment' => [
             '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Api\\Storage\\V1beta1\\VolumeAttachment',
+        ],
+        'watchStorageV1beta1CSIDriverList' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\WatchEvent',
+        ],
+        'watchStorageV1beta1CSIDriver' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\WatchEvent',
+        ],
+        'watchStorageV1beta1CSINodeList' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\WatchEvent',
+        ],
+        'watchStorageV1beta1CSINode' => [
+            '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\WatchEvent',
         ],
         'watchStorageV1beta1StorageClassList' => [
             '200.' => '\\Kubernetes\\Model\\Io\\K8s\\Apimachinery\\Pkg\\Apis\\Meta\\V1\\WatchEvent',

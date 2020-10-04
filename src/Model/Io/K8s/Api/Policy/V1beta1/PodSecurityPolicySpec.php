@@ -19,6 +19,15 @@ class PodSecurityPolicySpec extends AbstractModel
     public $allowPrivilegeEscalation = null;
 
     /**
+     * AllowedCSIDrivers is a whitelist of inline CSI drivers that must be explicitly
+     * set to be embedded within a pod spec. An empty value means no CSI drivers can
+     * run inline within a pod spec.
+     *
+     * @var AllowedCSIDriver[]
+     */
+    public $allowedCSIDrivers = null;
+
+    /**
      * allowedCapabilities is a list of capabilities that can be requested to add to
      * the container. Capabilities in this field may be added at the pod author's
      * discretion. You must not list a capability in both allowedCapabilities and

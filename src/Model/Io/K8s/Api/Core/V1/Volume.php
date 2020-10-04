@@ -59,6 +59,14 @@ class Volume extends AbstractModel
     public $configMap = null;
 
     /**
+     * CSI (Container Storage Interface) represents storage that is handled by an
+     * external CSI driver (Alpha feature).
+     *
+     * @var CSIVolumeSource
+     */
+    public $csi = null;
+
+    /**
      * DownwardAPI represents downward API about the pod that should populate this
      * volume
      *

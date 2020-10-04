@@ -35,8 +35,6 @@ class ComponentStatus extends AbstractAPI
      * 'fieldSelector'	string
      * A selector to restrict the list of returned objects by their fields. Defaults to
      * everything.
-     * 'includeUninitialized'	boolean
-     * If true, partially initialized resources are included in the response.
      * 'labelSelector'	string
      * A selector to restrict the list of returned objects by their labels. Defaults to
      * everything.

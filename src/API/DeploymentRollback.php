@@ -23,9 +23,10 @@ class DeploymentRollback extends AbstractAPI
      * or unrecognized dryRun directive will result in an error response and no further
      * processing of the request. Valid values are: - All: all dry run stages will be
      * processed
-     * 'includeUninitialized'	boolean
-     * If IncludeUninitialized is specified, the object may be returned without
-     * completing initialization.
+     * 'fieldManager'	string
+     * fieldManager is a name associated with the actor or entity that is making these
+     * changes. The value must be less than or 128 characters long, and only contain
+     * printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
      * 'pretty'	string
      * If 'true', then the output is pretty printed.
      *
@@ -58,9 +59,10 @@ class DeploymentRollback extends AbstractAPI
      * or unrecognized dryRun directive will result in an error response and no further
      * processing of the request. Valid values are: - All: all dry run stages will be
      * processed
-     * 'includeUninitialized'	boolean
-     * If IncludeUninitialized is specified, the object may be returned without
-     * completing initialization.
+     * 'fieldManager'	string
+     * fieldManager is a name associated with the actor or entity that is making these
+     * changes. The value must be less than or 128 characters long, and only contain
+     * printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
      * 'pretty'	string
      * If 'true', then the output is pretty printed.
      *

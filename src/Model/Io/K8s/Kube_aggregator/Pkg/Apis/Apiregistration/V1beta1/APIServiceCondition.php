@@ -4,6 +4,9 @@ namespace Kubernetes\Model\Io\K8s\Kube_aggregator\Pkg\Apis\Apiregistration\V1bet
 
 use \KubernetesRuntime\AbstractModel;
 
+/**
+ * APIServiceCondition describes the state of an APIService at a particular point
+ */
 class APIServiceCondition extends AbstractModel
 {
 
