@@ -1,0 +1,37 @@
+<?php
+
+namespace Kubernetes\Model\Io\K8s\Api\Core\V1;
+
+use \KubernetesRuntime\AbstractModel;
+
+/**
+ * EndpointPort is a tuple that describes a single port.
+ */
+class EndpointPort extends AbstractModel
+{
+
+    /**
+     * The name of this port.  This must match the 'name' field in the corresponding
+     * ServicePort. Must be a DNS_LABEL. Optional only if one port is defined.
+     *
+     * @var string
+     */
+    public $name = null;
+
+    /**
+     * The port number of the endpoint.
+     *
+     * @var integer
+     */
+    public $port = null;
+
+    /**
+     * The IP protocol for this port. Must be UDP, TCP, or SCTP. Default is TCP.
+     *
+     * @var string
+     */
+    public $protocol = null;
+
+
+}
+
