@@ -20,7 +20,7 @@
   },
   "require-dev": {
     "phpunit/phpunit": "^7|^8|^9",
-    "allansun/openapi-parser": "^1",
+    "allansun/openapi-parser": "^2",
     "zendframework/zend-code": "3.3.*",
     "symfony/console": "^4|^5",
     "mattketmo/camel": "^1.1",
