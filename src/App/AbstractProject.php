@@ -1,13 +1,10 @@
 <?php
 
-namespace Kubernetes\App\Project;
+namespace Kubernetes\App;
 
 
 use Kubernetes\API;
 use Kubernetes\App\Deployment\AbstractDeployment;
-use Kubernetes\App\GitBranch;
-use Kubernetes\App\LabelGenerator;
-use Kubernetes\App\ProjectBranchBasedTrait;
 use Kubernetes\Model;
 use Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions;
 use Psr\Log\LoggerInterface;
@@ -153,7 +150,7 @@ abstract class AbstractProject
 
                 $labelSelector = LabelGenerator::generateProjectBranchServiceJobSelector($this->project, $this->branch,
                     $Job->metadata->name);
-                $PodAPI->deleteCollection($this->namespace, ['labelSelector' => $labelSelector]);
+                $PodAPI->deleteCollection($this->namespace, new DeleteOptions(['labelSelector' => $labelSelector]));
 
                 sleep(5);
             }
@@ -247,7 +244,7 @@ abstract class AbstractProject
                                 'labelSelector' => [
                                     'matchLabels' => $Deployment->metadata->labels
                                 ],
-                                'topologyKey'   => 'kubernetes.io/hostname'
+                                'topologyKey' => 'kubernetes.io/hostname'
                             ]
                         ]
                     ]
@@ -280,7 +277,7 @@ abstract class AbstractProject
     }
 
     /**
-     * @param LoggerInterface $logger
+     * @param  LoggerInterface  $logger
      *
      * @return $this
      */

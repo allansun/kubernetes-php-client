@@ -114,7 +114,7 @@ class RunCommand extends Command
         $kubernetesSwaggerURL =
             "https://raw.githubusercontent.com/kubernetes/kubernetes/${version}/api/openapi-spec/swagger.json";
 
-        $Guzzle->get($kubernetesSwaggerURL, ['save_to' => $file]);
+        $Guzzle->get($kubernetesSwaggerURL, ['sink' => $file, 'debug' => true]);
 
         return $this;
     }
