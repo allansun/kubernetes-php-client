@@ -25,7 +25,7 @@
     "symfony/console": "^4|^5",
     "mattketmo/camel": "^1.1",
     "symfony/filesystem": "^4|^5",
-    "cpliakas/git-wrapper": "^2.0",
+    "cpliakas/git-wrapper": "^3.1",
     "symfony/monolog-bridge": "^4|^5",
     "ext-json": "*"
   },
