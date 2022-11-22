@@ -4,10 +4,10 @@ namespace App\Kubernetes\Ingress;
 
 use Kubernetes\App\GitBranch;
 use Kubernetes\Model\Io\K8s\Api\Extensions\V1beta1\HTTPIngressPath;
-use Kubernetes\Model\Io\K8s\Api\Extensions\V1beta1\Ingress;
+use Kubernetes\Model\Io\K8s\Api\Extensions\V1beta1\Ingress as Base;
 use Kubernetes\Model\Io\K8s\Api\Extensions\V1beta1\IngressTLS;
 
-abstract class AbstractIngress extends Ingress
+abstract class AbstractIngress extends Base
 {
     public function __construct($host, $isUseHttps = false)
     {

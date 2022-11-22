@@ -3,10 +3,10 @@
 namespace App\Kubernetes\Container;
 
 
-use Kubernetes\Model\Io\K8s\Api\Core\V1\Container;
+use Kubernetes\Model\Io\K8s\Api\Core\V1\Container as Base;
 use Kubernetes\Model\Io\K8s\Api\Core\V1\EnvVar;
 
-abstract class AbstractContainer extends Container
+abstract class AbstractContainer extends Base
 {
 
     const DEFAULT_IMAGE_TAG = 'master';
