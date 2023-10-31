@@ -161,7 +161,7 @@ Should you need to modify your Client to meet your Kubernetes cluster requiremen
 documentation](http://docs.guzzlephp.org/en/stable/request-options.html) to pass any extra configuration parameters 
 you might need in the `$authentication` array.
 
-### Class naming convension
+### Class naming convention
 
 Kubernetes is written in GoLang, hence its swagger field follows Go naming convention. 
 
