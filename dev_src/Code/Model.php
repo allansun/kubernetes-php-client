@@ -3,19 +3,19 @@
 namespace CodeGenerator\Code;
 
 use CodeGenerator\Utility;
-use OpenAPI\Schema\V2\DataTypes;
-use OpenAPI\Schema\V2\SchemaObject;
-use Zend\Code\Generator\ClassGenerator;
-use Zend\Code\Generator\DocBlock\Tag\VarTag;
-use Zend\Code\Generator\DocBlockGenerator;
-use Zend\Code\Generator\PropertyGenerator;
+use OpenAPI\Schema\DataTypes;
+use OpenAPI\Schema\V2\Schema;
+use Laminas\Code\Generator\ClassGenerator;
+use Laminas\Code\Generator\DocBlock\Tag\VarTag;
+use Laminas\Code\Generator\DocBlockGenerator;
+use Laminas\Code\Generator\PropertyGenerator;
 
 class Model extends AbstractClassFile
 {
     protected $kubernetesNamespace = 'Kubernetes\\Model\\';
 
     /**
-     * @var SchemaObject
+     * @var Schema
      */
     protected $SchemaObject;
 
@@ -23,11 +23,11 @@ class Model extends AbstractClassFile
      * Model constructor.
      *
      * @param string       $classname
-     * @param SchemaObject $SchemaObject
+     * @param Schema $SchemaObject
      *
      * @throws \Exception
      */
-    public function __construct(string $classname, SchemaObject $SchemaObject)
+    public function __construct(string $classname, Schema $SchemaObject)
     {
         parent::__construct([]);
 

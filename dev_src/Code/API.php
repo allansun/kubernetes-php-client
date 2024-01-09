@@ -7,15 +7,15 @@ use Camel\CaseTransformer;
 use Camel\Format\CamelCase;
 use Camel\Format\SnakeCase;
 use CodeGenerator\Utility;
-use OpenAPI\Schema\V2\OperationObject;
-use OpenAPI\Schema\V2\ParameterObject;
-use OpenAPI\Schema\V2\ResponseObject;
-use Zend\Code\Generator\ClassGenerator;
-use Zend\Code\Generator\DocBlock\Tag\ParamTag;
-use Zend\Code\Generator\DocBlock\Tag\ReturnTag;
-use Zend\Code\Generator\DocBlockGenerator;
-use Zend\Code\Generator\MethodGenerator;
-use Zend\Code\Generator\ParameterGenerator;
+use OpenAPI\Schema\V2\Operation;
+use OpenAPI\Schema\V2\Parameter;
+use OpenAPI\Schema\V2\Response;
+use Laminas\Code\Generator\ClassGenerator;
+use Laminas\Code\Generator\DocBlock\Tag\ParamTag;
+use Laminas\Code\Generator\DocBlock\Tag\ReturnTag;
+use Laminas\Code\Generator\DocBlockGenerator;
+use Laminas\Code\Generator\MethodGenerator;
+use Laminas\Code\Generator\ParameterGenerator;
 
 class API extends AbstractClassFile
 {
@@ -44,13 +44,13 @@ class API extends AbstractClassFile
     }
 
     /**
-     * @param  OperationObject    $OperationObject
+     * @param  Operation    $OperationObject
      * @param  string             $path
      * @param  string             $operation
-     * @param  ParameterObject[]  $pathItemParameters
+     * @param  Parameter[]  $pathItemParameters
      */
     public function parseMethod(
-        OperationObject $OperationObject,
+        Operation $OperationObject,
         string $path,
         string $operation,
         array $pathItemParameters =
@@ -133,7 +133,7 @@ class API extends AbstractClassFile
 
         $responseTypes = [];
         foreach ($OperationObject->responses->getPatternedFields() as $ResponseObject) {
-            /** @var ResponseObject $ResponseObject */
+            /** @var Response $ResponseObject */
             if ($ResponseObject->schema) {
                 if ($ResponseObject->schema->_ref) {
                     $responseTypes[$ResponseObject->schema->_ref] =
@@ -152,7 +152,7 @@ class API extends AbstractClassFile
         $this->ClassGenerator->addMethodFromGenerator($MethodGenerator);
     }
 
-    protected function parseApiAction(OperationObject $OperationObject, string $apiKind): string
+    protected function parseApiAction(Operation $OperationObject, string $apiKind): string
     {
         $apiAction = $OperationObject->operationId;
 
@@ -171,13 +171,13 @@ class API extends AbstractClassFile
     }
 
     /**
-     * @param  OperationObject    $OperationObject
-     * @param  ParameterObject[]  $pathItemParameters
+     * @param  Operation    $OperationObject
+     * @param  Parameter[]  $pathItemParameters
      *
      * @return array[]
      */
     protected function parseParameters(
-        OperationObject $OperationObject,
+        Operation $OperationObject,
         array $pathItemParameters = []
     ) {
         $parameters = [
@@ -216,7 +216,7 @@ class API extends AbstractClassFile
     }
 
     protected function generateMethodBody(
-        OperationObject $OperationObject,
+        Operation $OperationObject,
         string $path,
         string $operation,
         array $parameters
@@ -232,7 +232,7 @@ class API extends AbstractClassFile
         }
 
         foreach ($parameters[self::PARAMETER_IN_PATH] as $Parameter) {
-            /** @var ParameterObject $Parameter */
+            /** @var Parameter $Parameter */
             $path = str_replace('{' . $Parameter->name . '}', '{$' . $Parameter->name . '}', $path);
         }
 
@@ -256,9 +256,9 @@ class API extends AbstractClassFile
     /**
      * Sort method parameters to enforce the order of ($namepsace, $name)
      *
-     * @param  ParameterObject[]  $parameters
+     * @param  Parameter[]  $parameters
      *
-     * @return ParameterObject[]
+     * @return Parameter[]
      */
     private function sortMethodParameters(array $parameters){
         $sortedParameters=[];

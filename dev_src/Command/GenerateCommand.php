@@ -4,7 +4,7 @@ namespace CodeGenerator\Command;
 
 
 use CodeGenerator\CodeGenerator;
-use OpenAPI\SwaggerParser;
+use OpenAPI\Parser\SwaggerParser;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;

@@ -19,13 +19,13 @@ class CodeGenerator
      */
     private $Swagger;
 
-    public function __construct(Schema\SwaggerObject $Swagger)
+    public function __construct(Schema\Swagger $Swagger)
     {
         $this->Swagger = $Swagger;
     }
 
     /**
-     * @param Schema\SchemaObject[] $definitions
+     * @param Schema\Schema[] $definitions
      *
      * @throws \Exception
      */
@@ -39,7 +39,7 @@ class CodeGenerator
     }
 
     /**
-     * @param Schema\PathItemObject[] $pathItems
+     * @param Schema\PathItem[] $pathItems
      */
     public function generateApis($pathItems)
     {
@@ -52,7 +52,7 @@ class CodeGenerator
 
             foreach (KubernetesOperations::OPERATIONS as $operation) {
                 $OperationObject = $PathItemObject->$operation;
-                if ($OperationObject instanceof Schema\OperationObject) {
+                if ($OperationObject instanceof Schema\Operation) {
                     /** @var Schema\OperationObject $OperationObject */
                     if (key_exists(KubernetesExtentions::ACTION, $OperationObject->getPatternedFields())
                         && key_exists(KubernetesExtentions::GROUP_VERSION_KIND, $OperationObject->getPatternedFields())
@@ -83,7 +83,7 @@ class CodeGenerator
     }
 
     /**
-     * @param Schema\PathItemObject[] $pathItems
+     * @param Schema\PathItem[] $pathItems
      */
     public function generateResponseTypes($pathItems)
     {
@@ -92,7 +92,7 @@ class CodeGenerator
             foreach (KubernetesOperations::OPERATIONS as $operation) {
                 $OperationObject = $PathItemObject->$operation;
                 if ($OperationObject instanceof Schema\OperationObject) {
-                    $ResponseTypes->parseReseponseTypes($OperationObject);
+                    $ResponseTypes->parseResponseTypes($OperationObject);
                 }
             }
         }
