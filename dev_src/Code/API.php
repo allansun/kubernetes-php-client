@@ -83,7 +83,7 @@ class API extends AbstractClassFile
             foreach ($methodParameters as $Parameter) {
                 $ParameterGenerator = new ParameterGenerator($Parameter->name, $Parameter->type, $Parameter->default);
                 if ('namespace' == $Parameter->name) {
-                    $ParameterGenerator->setPosition(1);
+                    $ParameterGenerator->setPosition(0);
                 }
                 $MethodGenerator->setParameter($ParameterGenerator);
 
