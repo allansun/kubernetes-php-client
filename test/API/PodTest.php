@@ -38,7 +38,7 @@ class PodTest extends AbstractTest
      */
     public $Model;
 
-    public function setUp()
+    public function setUp(): void
     {
         $DeploymentAPI = new DeployementAPI($this->k8sNamespace);
         $Deployment    = $DeploymentAPI->read(DeploymentTest::NAME);

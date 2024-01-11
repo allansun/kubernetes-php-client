@@ -5,9 +5,9 @@ namespace CodeGenerator\Code;
 
 
 use CodeGenerator\Utility;
-use OpenAPI\Schema\V2\OperationObject;
-use OpenAPI\Schema\V2\ResponseObject;
-use Zend\Code\Generator\ClassGenerator;
+use OpenAPI\Schema\V2\Operation;
+use OpenAPI\Schema\V2\Response;
+use Laminas\Code\Generator\ClassGenerator;
 
 class ResponseTypes extends AbstractClassFile
 {
@@ -32,10 +32,10 @@ class ResponseTypes extends AbstractClassFile
         $this->initFilename();
     }
 
-    public function parseReseponseTypes(OperationObject $OperationObject)
+    public function parseResponseTypes(Operation $OperationObject)
     {
-        foreach ((array)$OperationObject->responses->getPatternedFields() as $statusCode => $ResponseObject) {
-            /** @var ResponseObject $ResponseObject */
+        foreach ($OperationObject->responses->getPatternedFields() as $statusCode => $ResponseObject) {
+            /** @var Response $ResponseObject */
             if ($ResponseObject->schema && $ResponseObject->schema->_ref) {
                 $this->responseTypes[$OperationObject->operationId]["{$statusCode}."] =
                     '\\Kubernetes\\Model\\' . Utility::convertRefToClass($ResponseObject->schema->_ref);

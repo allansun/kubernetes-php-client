@@ -11,7 +11,7 @@
 namespace Kubernetes\Test\API;
 
 use Kubernetes\API\Deployment as API;
-use Kubernetes\API\NamespaceAPI;
+use Kubernetes\API\KubernetesNamespace as NamespaceAPI;
 use Kubernetes\Model\Container;
 use Kubernetes\Model\Deployment as Model;
 use Kubernetes\Model\DeploymentSpec;
@@ -25,7 +25,7 @@ class DeploymentTest extends AbstractTest
 {
     const NAME = 'test-deployment';
 
-    public function setUp()
+    public function setUp(): void
     {
         $NamespaceAPI = new NamespaceAPI();
         $Namespace    = $NamespaceAPI->read($this->k8sNamespace);

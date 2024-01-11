@@ -11,8 +11,8 @@
 namespace Kubernetes\Test\API;
 
 use Kubernetes\API\AbstractAPI as API;
-use Kubernetes\Client;
 use Kubernetes\Model\AbstractModel as Model;
+use KubernetesRuntime\Client;
 use PHPUnit\Framework\TestCase;
 
 abstract class AbstractTest extends TestCase
@@ -29,7 +29,7 @@ abstract class AbstractTest extends TestCase
 
     protected $k8sNamespace = 'unit-test-namespace';
 
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass(): void
     {
         Client::configure('https://192.168.99.100:8443', [
             'caCert' => __DIR__ . '/../fixture/authentication.ca.crt',

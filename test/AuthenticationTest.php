@@ -10,8 +10,9 @@
 
 namespace Kubernetes;
 
-use Kubernetes\Exception\CommonException;
-use Kubernetes\Exception\InvalidParameterException;
+use KubernetesRuntime\Authentication;
+use KubernetesRuntime\Exception\CommonException;
+use KubernetesRuntime\Exception\InvalidParameterException;
 use PHPUnit\Framework\TestCase;
 
 class AuthenticationTest extends TestCase

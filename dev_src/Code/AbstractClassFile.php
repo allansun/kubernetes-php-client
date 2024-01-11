@@ -5,10 +5,10 @@ namespace CodeGenerator\Code;
 
 
 use Symfony\Component\Filesystem\Filesystem;
-use Zend\Code\Generator\ClassGenerator;
-use Zend\Code\Generator\DocBlock\Tag\GenericTag;
-use Zend\Code\Generator\DocBlockGenerator;
-use Zend\Code\Generator\FileGenerator;
+use Laminas\Code\Generator\ClassGenerator;
+use Laminas\Code\Generator\DocBlock\Tag\GenericTag;
+use Laminas\Code\Generator\DocBlockGenerator;
+use Laminas\Code\Generator\FileGenerator;
 
 abstract class AbstractClassFile extends FileGenerator
 {
