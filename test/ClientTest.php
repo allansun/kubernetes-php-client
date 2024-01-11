@@ -10,8 +10,8 @@
 
 namespace Kubernetes\Test;
 
-use Kubernetes\Authentication;
-use Kubernetes\Client;
+use KubernetesRuntime\Authentication;
+use KubernetesRuntime\Client;
 use PHPUnit\Framework\TestCase;
 
 class ClientTest extends TestCase

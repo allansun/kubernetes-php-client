@@ -44,7 +44,7 @@ class LocalSubjectAccessReview extends AbstractAPI
      *
      * @return TheLocalSubjectAccessReview|mixed
      */
-    public function create(\Kubernetes\Model\Io\K8s\Api\Authorization\V1\LocalSubjectAccessReview $Model, array $queries = [], string $namespace)
+    public function create(string $namespace, \Kubernetes\Model\Io\K8s\Api\Authorization\V1\LocalSubjectAccessReview $Model, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('post',

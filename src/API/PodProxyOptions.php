@@ -18,7 +18,7 @@ class PodProxyOptions extends AbstractAPI
      *
      * @return string|mixed
      */
-    public function connectGetPodProxy(string $name, array $queries = [], string $namespace)
+    public function connectGetPodProxy(string $namespace, string $name, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -43,7 +43,7 @@ class PodProxyOptions extends AbstractAPI
      *
      * @return string|mixed
      */
-    public function connectPutPodProxy(string $name, array $queries = [], string $namespace)
+    public function connectPutPodProxy(string $namespace, string $name, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -68,7 +68,7 @@ class PodProxyOptions extends AbstractAPI
      *
      * @return string|mixed
      */
-    public function connectPostPodProxy(string $name, array $queries = [], string $namespace)
+    public function connectPostPodProxy(string $namespace, string $name, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('post',
@@ -93,7 +93,7 @@ class PodProxyOptions extends AbstractAPI
      *
      * @return string|mixed
      */
-    public function connectDeletePodProxy(string $name, array $queries = [], string $namespace)
+    public function connectDeletePodProxy(string $namespace, string $name, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -118,7 +118,7 @@ class PodProxyOptions extends AbstractAPI
      *
      * @return string|mixed
      */
-    public function connectOptionsPodProxy(string $name, array $queries = [], string $namespace)
+    public function connectOptionsPodProxy(string $namespace, string $name, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('options',
@@ -143,7 +143,7 @@ class PodProxyOptions extends AbstractAPI
      *
      * @return string|mixed
      */
-    public function connectHeadPodProxy(string $name, array $queries = [], string $namespace)
+    public function connectHeadPodProxy(string $namespace, string $name, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('head',
@@ -168,7 +168,7 @@ class PodProxyOptions extends AbstractAPI
      *
      * @return string|mixed
      */
-    public function connectPatchPodProxy(string $name, array $queries = [], string $namespace)
+    public function connectPatchPodProxy(string $namespace, string $name, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -194,7 +194,7 @@ class PodProxyOptions extends AbstractAPI
      *
      * @return string|mixed
      */
-    public function connectGetPodProxyWithPath(string $name, string $path, array $queries = [], string $namespace)
+    public function connectGetPodProxyWithPath(string $namespace, string $name, string $path, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -220,7 +220,7 @@ class PodProxyOptions extends AbstractAPI
      *
      * @return string|mixed
      */
-    public function connectPutPodProxyWithPath(string $name, string $path, array $queries = [], string $namespace)
+    public function connectPutPodProxyWithPath(string $namespace, string $name, string $path, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -246,7 +246,7 @@ class PodProxyOptions extends AbstractAPI
      *
      * @return string|mixed
      */
-    public function connectPostPodProxyWithPath(string $name, string $path, array $queries = [], string $namespace)
+    public function connectPostPodProxyWithPath(string $namespace, string $name, string $path, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('post',
@@ -272,7 +272,7 @@ class PodProxyOptions extends AbstractAPI
      *
      * @return string|mixed
      */
-    public function connectDeletePodProxyWithPath(string $name, string $path, array $queries = [], string $namespace)
+    public function connectDeletePodProxyWithPath(string $namespace, string $name, string $path, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -298,7 +298,7 @@ class PodProxyOptions extends AbstractAPI
      *
      * @return string|mixed
      */
-    public function connectOptionsPodProxyWithPath(string $name, string $path, array $queries = [], string $namespace)
+    public function connectOptionsPodProxyWithPath(string $namespace, string $name, string $path, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('options',
@@ -324,7 +324,7 @@ class PodProxyOptions extends AbstractAPI
      *
      * @return string|mixed
      */
-    public function connectHeadPodProxyWithPath(string $name, string $path, array $queries = [], string $namespace)
+    public function connectHeadPodProxyWithPath(string $namespace, string $name, string $path, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('head',
@@ -350,7 +350,7 @@ class PodProxyOptions extends AbstractAPI
      *
      * @return string|mixed
      */
-    public function connectPatchPodProxyWithPath(string $name, string $path, array $queries = [], string $namespace)
+    public function connectPatchPodProxyWithPath(string $namespace, string $name, string $path, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('patch',

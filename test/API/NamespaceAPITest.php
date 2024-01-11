@@ -16,7 +16,7 @@ use Kubernetes\Model\ObjectMeta;
 
 class NamespaceAPITest extends AbstractTest
 {
-    public function setUp()
+    public function setUp(): void
     {
         $this->API   = new API($this->k8sNamespace);
 

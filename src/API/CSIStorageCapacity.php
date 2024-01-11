@@ -191,7 +191,7 @@ class CSIStorageCapacity extends AbstractAPI
      *
      * @return CSIStorageCapacityList|mixed
      */
-    public function list(array $queries = [], string $namespace)
+    public function list(string $namespace, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -241,7 +241,7 @@ class CSIStorageCapacity extends AbstractAPI
      *
      * @return TheCSIStorageCapacity|mixed
      */
-    public function create(\Kubernetes\Model\Io\K8s\Api\Storage\V1\CSIStorageCapacity $Model, array $queries = [], string $namespace)
+    public function create(string $namespace, \Kubernetes\Model\Io\K8s\Api\Storage\V1\CSIStorageCapacity $Model, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('post',
@@ -353,7 +353,7 @@ class CSIStorageCapacity extends AbstractAPI
      *
      * @return Status|mixed
      */
-    public function deleteCollection(\Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries = [], string $namespace)
+    public function deleteCollection(string $namespace, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -379,7 +379,7 @@ class CSIStorageCapacity extends AbstractAPI
      *
      * @return TheCSIStorageCapacity|mixed
      */
-    public function read(string $name, array $queries = [], string $namespace)
+    public function read(string $namespace, string $name, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -430,7 +430,7 @@ class CSIStorageCapacity extends AbstractAPI
      *
      * @return TheCSIStorageCapacity|mixed
      */
-    public function replace(string $name, \Kubernetes\Model\Io\K8s\Api\Storage\V1\CSIStorageCapacity $Model, array $queries = [], string $namespace)
+    public function replace(string $namespace, string $name, \Kubernetes\Model\Io\K8s\Api\Storage\V1\CSIStorageCapacity $Model, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -480,7 +480,7 @@ class CSIStorageCapacity extends AbstractAPI
      *
      * @return Status|mixed
      */
-    public function delete(string $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries = [], string $namespace)
+    public function delete(string $namespace, string $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -538,7 +538,7 @@ class CSIStorageCapacity extends AbstractAPI
      *
      * @return TheCSIStorageCapacity|mixed
      */
-    public function patch(string $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model, array $queries = [], string $namespace)
+    public function patch(string $namespace, string $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -731,7 +731,7 @@ class CSIStorageCapacity extends AbstractAPI
      *
      * @return WatchEvent|mixed
      */
-    public function watchList(array $queries = [], string $namespace)
+    public function watchList(string $namespace, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -830,7 +830,7 @@ class CSIStorageCapacity extends AbstractAPI
      *
      * @return WatchEvent|mixed
      */
-    public function watch(string $name, array $queries = [], string $namespace)
+    public function watch(string $namespace, string $name, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -1020,7 +1020,7 @@ class CSIStorageCapacity extends AbstractAPI
      *
      * @return CSIStorageCapacityListV1beta1|mixed
      */
-    public function listStorageV1beta1(array $queries = [], string $namespace)
+    public function listStorageV1beta1(string $namespace, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -1070,7 +1070,7 @@ class CSIStorageCapacity extends AbstractAPI
      *
      * @return TheCSIStorageCapacityV1beta1|mixed
      */
-    public function createStorageV1beta1(\Kubernetes\Model\Io\K8s\Api\Storage\V1beta1\CSIStorageCapacity $Model, array $queries = [], string $namespace)
+    public function createStorageV1beta1(string $namespace, \Kubernetes\Model\Io\K8s\Api\Storage\V1beta1\CSIStorageCapacity $Model, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('post',
@@ -1182,7 +1182,7 @@ class CSIStorageCapacity extends AbstractAPI
      *
      * @return Status|mixed
      */
-    public function deleteCollectionStorageV1beta1(\Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries = [], string $namespace)
+    public function deleteCollectionStorageV1beta1(string $namespace, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -1208,7 +1208,7 @@ class CSIStorageCapacity extends AbstractAPI
      *
      * @return TheCSIStorageCapacityV1beta1|mixed
      */
-    public function readStorageV1beta1(string $name, array $queries = [], string $namespace)
+    public function readStorageV1beta1(string $namespace, string $name, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -1259,7 +1259,7 @@ class CSIStorageCapacity extends AbstractAPI
      *
      * @return TheCSIStorageCapacityV1beta1|mixed
      */
-    public function replaceStorageV1beta1(string $name, \Kubernetes\Model\Io\K8s\Api\Storage\V1beta1\CSIStorageCapacity $Model, array $queries = [], string $namespace)
+    public function replaceStorageV1beta1(string $namespace, string $name, \Kubernetes\Model\Io\K8s\Api\Storage\V1beta1\CSIStorageCapacity $Model, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -1309,7 +1309,7 @@ class CSIStorageCapacity extends AbstractAPI
      *
      * @return Status|mixed
      */
-    public function deleteStorageV1beta1(string $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries = [], string $namespace)
+    public function deleteStorageV1beta1(string $namespace, string $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -1367,7 +1367,7 @@ class CSIStorageCapacity extends AbstractAPI
      *
      * @return TheCSIStorageCapacityV1beta1|mixed
      */
-    public function patchStorageV1beta1(string $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model, array $queries = [], string $namespace)
+    public function patchStorageV1beta1(string $namespace, string $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -1560,7 +1560,7 @@ class CSIStorageCapacity extends AbstractAPI
      *
      * @return WatchEvent|mixed
      */
-    public function watchListStorageV1beta1(array $queries = [], string $namespace)
+    public function watchListStorageV1beta1(string $namespace, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -1659,7 +1659,7 @@ class CSIStorageCapacity extends AbstractAPI
      *
      * @return WatchEvent|mixed
      */
-    public function watchStorageV1beta1(string $name, array $queries = [], string $namespace)
+    public function watchStorageV1beta1(string $namespace, string $name, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('get',

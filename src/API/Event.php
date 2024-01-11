@@ -191,7 +191,7 @@ class Event extends AbstractAPI
      *
      * @return EventList|mixed
      */
-    public function list(array $queries = [], string $namespace)
+    public function list(string $namespace, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -241,7 +241,7 @@ class Event extends AbstractAPI
      *
      * @return TheEvent|mixed
      */
-    public function create(\Kubernetes\Model\Io\K8s\Api\Core\V1\Event $Model, array $queries = [], string $namespace)
+    public function create(string $namespace, \Kubernetes\Model\Io\K8s\Api\Core\V1\Event $Model, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('post',
@@ -353,7 +353,7 @@ class Event extends AbstractAPI
      *
      * @return Status|mixed
      */
-    public function deleteCollection(\Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries = [], string $namespace)
+    public function deleteCollection(string $namespace, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -379,7 +379,7 @@ class Event extends AbstractAPI
      *
      * @return TheEvent|mixed
      */
-    public function read(string $name, array $queries = [], string $namespace)
+    public function read(string $namespace, string $name, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -430,7 +430,7 @@ class Event extends AbstractAPI
      *
      * @return TheEvent|mixed
      */
-    public function replace(string $name, \Kubernetes\Model\Io\K8s\Api\Core\V1\Event $Model, array $queries = [], string $namespace)
+    public function replace(string $namespace, string $name, \Kubernetes\Model\Io\K8s\Api\Core\V1\Event $Model, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -480,7 +480,7 @@ class Event extends AbstractAPI
      *
      * @return Status|mixed
      */
-    public function delete(string $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries = [], string $namespace)
+    public function delete(string $namespace, string $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -538,7 +538,7 @@ class Event extends AbstractAPI
      *
      * @return TheEvent|mixed
      */
-    public function patch(string $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model, array $queries = [], string $namespace)
+    public function patch(string $namespace, string $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -731,7 +731,7 @@ class Event extends AbstractAPI
      *
      * @return WatchEvent|mixed
      */
-    public function watchList(array $queries = [], string $namespace)
+    public function watchList(string $namespace, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -830,7 +830,7 @@ class Event extends AbstractAPI
      *
      * @return WatchEvent|mixed
      */
-    public function watch(string $name, array $queries = [], string $namespace)
+    public function watch(string $namespace, string $name, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -1020,7 +1020,7 @@ class Event extends AbstractAPI
      *
      * @return EventListV1|mixed
      */
-    public function listEventsV1(array $queries = [], string $namespace)
+    public function listEventsV1(string $namespace, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -1070,7 +1070,7 @@ class Event extends AbstractAPI
      *
      * @return TheEventV1|mixed
      */
-    public function createEventsV1(\Kubernetes\Model\Io\K8s\Api\Events\V1\Event $Model, array $queries = [], string $namespace)
+    public function createEventsV1(string $namespace, \Kubernetes\Model\Io\K8s\Api\Events\V1\Event $Model, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('post',
@@ -1182,7 +1182,7 @@ class Event extends AbstractAPI
      *
      * @return Status|mixed
      */
-    public function deleteCollectionEventsV1(\Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries = [], string $namespace)
+    public function deleteCollectionEventsV1(string $namespace, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -1208,7 +1208,7 @@ class Event extends AbstractAPI
      *
      * @return TheEventV1|mixed
      */
-    public function readEventsV1(string $name, array $queries = [], string $namespace)
+    public function readEventsV1(string $namespace, string $name, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -1259,7 +1259,7 @@ class Event extends AbstractAPI
      *
      * @return TheEventV1|mixed
      */
-    public function replaceEventsV1(string $name, \Kubernetes\Model\Io\K8s\Api\Events\V1\Event $Model, array $queries = [], string $namespace)
+    public function replaceEventsV1(string $namespace, string $name, \Kubernetes\Model\Io\K8s\Api\Events\V1\Event $Model, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -1309,7 +1309,7 @@ class Event extends AbstractAPI
      *
      * @return Status|mixed
      */
-    public function deleteEventsV1(string $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries = [], string $namespace)
+    public function deleteEventsV1(string $namespace, string $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -1367,7 +1367,7 @@ class Event extends AbstractAPI
      *
      * @return TheEventV1|mixed
      */
-    public function patchEventsV1(string $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model, array $queries = [], string $namespace)
+    public function patchEventsV1(string $namespace, string $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -1560,7 +1560,7 @@ class Event extends AbstractAPI
      *
      * @return WatchEvent|mixed
      */
-    public function watchListEventsV1(array $queries = [], string $namespace)
+    public function watchListEventsV1(string $namespace, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -1659,7 +1659,7 @@ class Event extends AbstractAPI
      *
      * @return WatchEvent|mixed
      */
-    public function watchEventsV1(string $name, array $queries = [], string $namespace)
+    public function watchEventsV1(string $namespace, string $name, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('get',

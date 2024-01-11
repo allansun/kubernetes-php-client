@@ -44,7 +44,7 @@ class Binding extends AbstractAPI
      *
      * @return TheBinding|mixed
      */
-    public function create(\Kubernetes\Model\Io\K8s\Api\Core\V1\Binding $Model, array $queries = [], string $namespace)
+    public function create(string $namespace, \Kubernetes\Model\Io\K8s\Api\Core\V1\Binding $Model, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('post',
@@ -96,7 +96,7 @@ class Binding extends AbstractAPI
      *
      * @return TheBinding|mixed
      */
-    public function createPod(string $name, \Kubernetes\Model\Io\K8s\Api\Core\V1\Binding $Model, array $queries = [], string $namespace)
+    public function createPod(string $namespace, string $name, \Kubernetes\Model\Io\K8s\Api\Core\V1\Binding $Model, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('post',

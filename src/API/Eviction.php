@@ -45,7 +45,7 @@ class Eviction extends AbstractAPI
      *
      * @return TheEviction|mixed
      */
-    public function createPod(string $name, \Kubernetes\Model\Io\K8s\Api\Policy\V1\Eviction $Model, array $queries = [], string $namespace)
+    public function createPod(string $namespace, string $name, \Kubernetes\Model\Io\K8s\Api\Policy\V1\Eviction $Model, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('post',

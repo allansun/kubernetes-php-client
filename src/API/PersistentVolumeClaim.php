@@ -95,7 +95,7 @@ class PersistentVolumeClaim extends AbstractAPI
      *
      * @return PersistentVolumeClaimList|mixed
      */
-    public function list(array $queries = [], string $namespace)
+    public function list(string $namespace, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -145,7 +145,7 @@ class PersistentVolumeClaim extends AbstractAPI
      *
      * @return ThePersistentVolumeClaim|mixed
      */
-    public function create(\Kubernetes\Model\Io\K8s\Api\Core\V1\PersistentVolumeClaim $Model, array $queries = [], string $namespace)
+    public function create(string $namespace, \Kubernetes\Model\Io\K8s\Api\Core\V1\PersistentVolumeClaim $Model, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('post',
@@ -257,7 +257,7 @@ class PersistentVolumeClaim extends AbstractAPI
      *
      * @return Status|mixed
      */
-    public function deleteCollection(\Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries = [], string $namespace)
+    public function deleteCollection(string $namespace, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -283,7 +283,7 @@ class PersistentVolumeClaim extends AbstractAPI
      *
      * @return ThePersistentVolumeClaim|mixed
      */
-    public function read(string $name, array $queries = [], string $namespace)
+    public function read(string $namespace, string $name, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -334,7 +334,7 @@ class PersistentVolumeClaim extends AbstractAPI
      *
      * @return ThePersistentVolumeClaim|mixed
      */
-    public function replace(string $name, \Kubernetes\Model\Io\K8s\Api\Core\V1\PersistentVolumeClaim $Model, array $queries = [], string $namespace)
+    public function replace(string $namespace, string $name, \Kubernetes\Model\Io\K8s\Api\Core\V1\PersistentVolumeClaim $Model, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -384,7 +384,7 @@ class PersistentVolumeClaim extends AbstractAPI
      *
      * @return ThePersistentVolumeClaim|mixed
      */
-    public function delete(string $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries = [], string $namespace)
+    public function delete(string $namespace, string $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\DeleteOptions $Model, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -442,7 +442,7 @@ class PersistentVolumeClaim extends AbstractAPI
      *
      * @return ThePersistentVolumeClaim|mixed
      */
-    public function patch(string $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model, array $queries = [], string $namespace)
+    public function patch(string $namespace, string $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -468,7 +468,7 @@ class PersistentVolumeClaim extends AbstractAPI
      *
      * @return ThePersistentVolumeClaim|mixed
      */
-    public function readStatus(string $name, array $queries = [], string $namespace)
+    public function readStatus(string $namespace, string $name, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -519,7 +519,7 @@ class PersistentVolumeClaim extends AbstractAPI
      *
      * @return ThePersistentVolumeClaim|mixed
      */
-    public function replaceStatus(string $name, \Kubernetes\Model\Io\K8s\Api\Core\V1\PersistentVolumeClaim $Model, array $queries = [], string $namespace)
+    public function replaceStatus(string $namespace, string $name, \Kubernetes\Model\Io\K8s\Api\Core\V1\PersistentVolumeClaim $Model, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -577,7 +577,7 @@ class PersistentVolumeClaim extends AbstractAPI
      *
      * @return ThePersistentVolumeClaim|mixed
      */
-    public function patchStatus(string $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model, array $queries = [], string $namespace)
+    public function patchStatus(string $namespace, string $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -769,7 +769,7 @@ class PersistentVolumeClaim extends AbstractAPI
      *
      * @return WatchEvent|mixed
      */
-    public function watchList(array $queries = [], string $namespace)
+    public function watchList(string $namespace, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -868,7 +868,7 @@ class PersistentVolumeClaim extends AbstractAPI
      *
      * @return WatchEvent|mixed
      */
-    public function watch(string $name, array $queries = [], string $namespace)
+    public function watch(string $namespace, string $name, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('get',

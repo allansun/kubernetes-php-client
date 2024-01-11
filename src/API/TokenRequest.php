@@ -45,7 +45,7 @@ class TokenRequest extends AbstractAPI
      *
      * @return TheTokenRequest|mixed
      */
-    public function createServiceAccountToken(string $name, \Kubernetes\Model\Io\K8s\Api\Authentication\V1\TokenRequest $Model, array $queries = [], string $namespace)
+    public function createServiceAccountToken(string $namespace, string $name, \Kubernetes\Model\Io\K8s\Api\Authentication\V1\TokenRequest $Model, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('post',

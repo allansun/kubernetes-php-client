@@ -20,7 +20,7 @@ class Scale extends AbstractAPI
      *
      * @return TheScale|mixed
      */
-    public function readReplicationController(string $name, array $queries = [], string $namespace)
+    public function readReplicationController(string $namespace, string $name, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -71,7 +71,7 @@ class Scale extends AbstractAPI
      *
      * @return TheScale|mixed
      */
-    public function replaceReplicationController(string $name, \Kubernetes\Model\Io\K8s\Api\Autoscaling\V1\Scale $Model, array $queries = [], string $namespace)
+    public function replaceReplicationController(string $namespace, string $name, \Kubernetes\Model\Io\K8s\Api\Autoscaling\V1\Scale $Model, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -129,7 +129,7 @@ class Scale extends AbstractAPI
      *
      * @return TheScale|mixed
      */
-    public function patchReplicationController(string $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model, array $queries = [], string $namespace)
+    public function patchReplicationController(string $namespace, string $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -155,7 +155,7 @@ class Scale extends AbstractAPI
      *
      * @return TheScale|mixed
      */
-    public function readDeployment(string $name, array $queries = [], string $namespace)
+    public function readDeployment(string $namespace, string $name, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -206,7 +206,7 @@ class Scale extends AbstractAPI
      *
      * @return TheScale|mixed
      */
-    public function replaceDeployment(string $name, \Kubernetes\Model\Io\K8s\Api\Autoscaling\V1\Scale $Model, array $queries = [], string $namespace)
+    public function replaceDeployment(string $namespace, string $name, \Kubernetes\Model\Io\K8s\Api\Autoscaling\V1\Scale $Model, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -264,7 +264,7 @@ class Scale extends AbstractAPI
      *
      * @return TheScale|mixed
      */
-    public function patchDeployment(string $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model, array $queries = [], string $namespace)
+    public function patchDeployment(string $namespace, string $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -290,7 +290,7 @@ class Scale extends AbstractAPI
      *
      * @return TheScale|mixed
      */
-    public function readReplicaSet(string $name, array $queries = [], string $namespace)
+    public function readReplicaSet(string $namespace, string $name, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -341,7 +341,7 @@ class Scale extends AbstractAPI
      *
      * @return TheScale|mixed
      */
-    public function replaceReplicaSet(string $name, \Kubernetes\Model\Io\K8s\Api\Autoscaling\V1\Scale $Model, array $queries = [], string $namespace)
+    public function replaceReplicaSet(string $namespace, string $name, \Kubernetes\Model\Io\K8s\Api\Autoscaling\V1\Scale $Model, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -399,7 +399,7 @@ class Scale extends AbstractAPI
      *
      * @return TheScale|mixed
      */
-    public function patchReplicaSet(string $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model, array $queries = [], string $namespace)
+    public function patchReplicaSet(string $namespace, string $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -425,7 +425,7 @@ class Scale extends AbstractAPI
      *
      * @return TheScale|mixed
      */
-    public function readStatefulSet(string $name, array $queries = [], string $namespace)
+    public function readStatefulSet(string $namespace, string $name, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -476,7 +476,7 @@ class Scale extends AbstractAPI
      *
      * @return TheScale|mixed
      */
-    public function replaceStatefulSet(string $name, \Kubernetes\Model\Io\K8s\Api\Autoscaling\V1\Scale $Model, array $queries = [], string $namespace)
+    public function replaceStatefulSet(string $namespace, string $name, \Kubernetes\Model\Io\K8s\Api\Autoscaling\V1\Scale $Model, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -534,7 +534,7 @@ class Scale extends AbstractAPI
      *
      * @return TheScale|mixed
      */
-    public function patchStatefulSet(string $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model, array $queries = [], string $namespace)
+    public function patchStatefulSet(string $namespace, string $name, \Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\Patch $Model, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('patch',

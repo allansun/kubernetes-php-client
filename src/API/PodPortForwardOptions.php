@@ -18,7 +18,7 @@ class PodPortForwardOptions extends AbstractAPI
      *
      * @return string|mixed
      */
-    public function connectGetPodPortforward(string $name, array $queries = [], string $namespace)
+    public function connectGetPodPortforward(string $namespace, string $name, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -43,7 +43,7 @@ class PodPortForwardOptions extends AbstractAPI
      *
      * @return string|mixed
      */
-    public function connectPostPodPortforward(string $name, array $queries = [], string $namespace)
+    public function connectPostPodPortforward(string $namespace, string $name, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('post',

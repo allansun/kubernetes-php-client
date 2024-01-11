@@ -10,9 +10,9 @@
 
 namespace Kubernetes\Test\Model\Apps;
 
-use Kubernetes\Logger;
 use Kubernetes\Model\Io\K8s\Api\Apps\V1\Deployment;
 use Kubernetes\Model\Io\K8s\Apimachinery\Pkg\Apis\Meta\V1\ObjectMeta;
+use KubernetesRuntime\Logger;
 use PHPUnit\Framework\TestCase;
 
 class DeploymentTest extends TestCase

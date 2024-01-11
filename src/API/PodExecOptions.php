@@ -31,7 +31,7 @@ class PodExecOptions extends AbstractAPI
      *
      * @return string|mixed
      */
-    public function connectGetPodExec(string $name, array $queries = [], string $namespace)
+    public function connectGetPodExec(string $namespace, string $name, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -69,7 +69,7 @@ class PodExecOptions extends AbstractAPI
      *
      * @return string|mixed
      */
-    public function connectPostPodExec(string $name, array $queries = [], string $namespace)
+    public function connectPostPodExec(string $namespace, string $name, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('post',

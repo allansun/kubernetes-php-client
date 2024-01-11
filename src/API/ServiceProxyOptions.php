@@ -22,7 +22,7 @@ class ServiceProxyOptions extends AbstractAPI
      *
      * @return string|mixed
      */
-    public function connectGetServiceProxy(string $name, array $queries = [], string $namespace)
+    public function connectGetServiceProxy(string $namespace, string $name, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -51,7 +51,7 @@ class ServiceProxyOptions extends AbstractAPI
      *
      * @return string|mixed
      */
-    public function connectPutServiceProxy(string $name, array $queries = [], string $namespace)
+    public function connectPutServiceProxy(string $namespace, string $name, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -80,7 +80,7 @@ class ServiceProxyOptions extends AbstractAPI
      *
      * @return string|mixed
      */
-    public function connectPostServiceProxy(string $name, array $queries = [], string $namespace)
+    public function connectPostServiceProxy(string $namespace, string $name, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('post',
@@ -109,7 +109,7 @@ class ServiceProxyOptions extends AbstractAPI
      *
      * @return string|mixed
      */
-    public function connectDeleteServiceProxy(string $name, array $queries = [], string $namespace)
+    public function connectDeleteServiceProxy(string $namespace, string $name, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -138,7 +138,7 @@ class ServiceProxyOptions extends AbstractAPI
      *
      * @return string|mixed
      */
-    public function connectOptionsServiceProxy(string $name, array $queries = [], string $namespace)
+    public function connectOptionsServiceProxy(string $namespace, string $name, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('options',
@@ -167,7 +167,7 @@ class ServiceProxyOptions extends AbstractAPI
      *
      * @return string|mixed
      */
-    public function connectHeadServiceProxy(string $name, array $queries = [], string $namespace)
+    public function connectHeadServiceProxy(string $namespace, string $name, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('head',
@@ -196,7 +196,7 @@ class ServiceProxyOptions extends AbstractAPI
      *
      * @return string|mixed
      */
-    public function connectPatchServiceProxy(string $name, array $queries = [], string $namespace)
+    public function connectPatchServiceProxy(string $namespace, string $name, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('patch',
@@ -226,7 +226,7 @@ class ServiceProxyOptions extends AbstractAPI
      *
      * @return string|mixed
      */
-    public function connectGetServiceProxyWithPath(string $name, string $path, array $queries = [], string $namespace)
+    public function connectGetServiceProxyWithPath(string $namespace, string $name, string $path, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -256,7 +256,7 @@ class ServiceProxyOptions extends AbstractAPI
      *
      * @return string|mixed
      */
-    public function connectPutServiceProxyWithPath(string $name, string $path, array $queries = [], string $namespace)
+    public function connectPutServiceProxyWithPath(string $namespace, string $name, string $path, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('put',
@@ -286,7 +286,7 @@ class ServiceProxyOptions extends AbstractAPI
      *
      * @return string|mixed
      */
-    public function connectPostServiceProxyWithPath(string $name, string $path, array $queries = [], string $namespace)
+    public function connectPostServiceProxyWithPath(string $namespace, string $name, string $path, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('post',
@@ -316,7 +316,7 @@ class ServiceProxyOptions extends AbstractAPI
      *
      * @return string|mixed
      */
-    public function connectDeleteServiceProxyWithPath(string $name, string $path, array $queries = [], string $namespace)
+    public function connectDeleteServiceProxyWithPath(string $namespace, string $name, string $path, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('delete',
@@ -346,7 +346,7 @@ class ServiceProxyOptions extends AbstractAPI
      *
      * @return string|mixed
      */
-    public function connectOptionsServiceProxyWithPath(string $name, string $path, array $queries = [], string $namespace)
+    public function connectOptionsServiceProxyWithPath(string $namespace, string $name, string $path, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('options',
@@ -376,7 +376,7 @@ class ServiceProxyOptions extends AbstractAPI
      *
      * @return string|mixed
      */
-    public function connectHeadServiceProxyWithPath(string $name, string $path, array $queries = [], string $namespace)
+    public function connectHeadServiceProxyWithPath(string $namespace, string $name, string $path, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('head',
@@ -406,7 +406,7 @@ class ServiceProxyOptions extends AbstractAPI
      *
      * @return string|mixed
      */
-    public function connectPatchServiceProxyWithPath(string $name, string $path, array $queries = [], string $namespace)
+    public function connectPatchServiceProxyWithPath(string $namespace, string $name, string $path, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('patch',

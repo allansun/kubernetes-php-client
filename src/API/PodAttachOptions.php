@@ -32,7 +32,7 @@ class PodAttachOptions extends AbstractAPI
      *
      * @return string|mixed
      */
-    public function connectGetPodAttach(string $name, array $queries = [], string $namespace)
+    public function connectGetPodAttach(string $namespace, string $name, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('get',
@@ -71,7 +71,7 @@ class PodAttachOptions extends AbstractAPI
      *
      * @return string|mixed
      */
-    public function connectPostPodAttach(string $name, array $queries = [], string $namespace)
+    public function connectPostPodAttach(string $namespace, string $name, array $queries = [])
     {
         return $this->parseResponse(
         	$this->client->request('post',
