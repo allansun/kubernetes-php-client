@@ -2,7 +2,6 @@
 
 namespace CodeGenerator\Command;
 
-
 use GitWrapper\Event\GitLoggerEventSubscriber;
 use GitWrapper\GitException;
 use GitWrapper\GitWorkingCopy;
@@ -32,10 +31,20 @@ class RunCommand extends Command
         $this->setName('run')
             ->setDescription('Pull Swagger file from Kubernetes github, generate new code and commit.')
             ->addArgument('version', InputArgument::REQUIRED, 'Kubernetes version number')
-            ->addOption('github', 'g', InputOption::VALUE_OPTIONAL,
-                'Push to GitHub, if true then `GITHUB_DEPLOY_KEY` environment variable should be set', false)
-            ->addOption('patch', 'p', InputOption::VALUE_OPTIONAL,
-                'Addtional patch version number on top of existing Kubernetes version number.', null);
+            ->addOption(
+                'github',
+                'g',
+                InputOption::VALUE_OPTIONAL,
+                'Push to GitHub, if true then `GITHUB_DEPLOY_KEY` environment variable should be set',
+                false,
+            )
+            ->addOption(
+                'patch',
+                'p',
+                InputOption::VALUE_OPTIONAL,
+                'Addtional patch version number on top of existing Kubernetes version number.',
+                null,
+            );
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -80,7 +89,7 @@ class RunCommand extends Command
 
     protected function checkOutBranch($version, $patchVersion)
     {
-        $version = (null === $patchVersion) ? $version : "${version}-patch.${patchVersion}";
+        $version = ($patchVersion === null) ? $version : "${version}-patch.${patchVersion}";
 
         $this->GitWorkingCopy->pull('origin', 'master');
         try {
@@ -96,7 +105,6 @@ class RunCommand extends Command
     protected function generateCode(OutputInterface $output)
     {
         $Conmmand = $this->getApplication()->find('generate');
-
 
         $Conmmand->run(new ArrayInput(['command' => 'generate']), $output);
 
@@ -121,7 +129,7 @@ class RunCommand extends Command
 
     protected function commitAndPush($version, $patchVersion)
     {
-        $version = (null === $patchVersion) ? $version : "${version}-patch.${patchVersion}";
+        $version = ($patchVersion === null) ? $version : "${version}-patch.${patchVersion}";
 
         $this->GitWorkingCopy->run('add', ['-A']);
         $this->GitWorkingCopy->commit("Generated against Kubernetes version ${version}");

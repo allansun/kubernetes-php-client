@@ -3,7 +3,6 @@
 
 namespace CodeGenerator;
 
-
 use Camel\CaseTransformer;
 use CodeGenerator\Camel\Format\GolangPackageCase;
 use CodeGenerator\Camel\Format\PhpPackageCase;
@@ -13,7 +12,7 @@ final class Utility
     /**
      * @var CaseTransformer
      */
-    static private $GolangToPhpTransformer;
+    private static $GolangToPhpTransformer;
 
     static function convertDefinitionToClass(string $definition): string
     {
@@ -29,7 +28,6 @@ final class Utility
         $ref = str_replace('#/definitions/', '', $ref);
 
         return self::convertDefinitionToClass($ref);
-
     }
 
     static function parseClassInfo(string $fullClass): array
@@ -46,7 +44,7 @@ final class Utility
         $word = str_replace('-', '_', $word);
 
         // Change 'Namespace' package to 'ANamespace', because 'namespace' is a PHP reservced keyword
-        $word = 'Namespace' == $word ? 'Kubernetes' . $word : $word;
+        $word = $word == 'Namespace' ? 'Kubernetes' . $word : $word;
 
         return $word;
     }

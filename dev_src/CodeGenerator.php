@@ -68,7 +68,6 @@ class CodeGenerator
                         }
 
                         $API->parseMethod($OperationObject, $path, $operation, $pathParameters);
-
                     } else {
                         $ungroupedApis[$path][$operation] = $OperationObject;
                     }

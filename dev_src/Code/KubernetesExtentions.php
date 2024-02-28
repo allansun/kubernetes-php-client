@@ -1,7 +1,6 @@
 <?php
 namespace CodeGenerator\Code;
 
-
 final class KubernetesExtentions
 {
     const ACTION = 'x-kubernetes-action';
