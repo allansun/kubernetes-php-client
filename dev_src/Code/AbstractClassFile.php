@@ -60,7 +60,7 @@ abstract class AbstractClassFile extends FileGenerator
         $classInfo = explode('\\', $fullClassName);
         $className = array_pop($classInfo);
 
-        if ($className == $this->ClassGenerator->getName()) {
+        if ($className === $this->ClassGenerator->getName()) {
             $className = 'The' . $className;
         }
 

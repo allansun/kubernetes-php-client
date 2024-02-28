@@ -55,12 +55,12 @@ class Model extends AbstractClassFile
             $this->ClassGenerator->setDocBlock($DocBlockGenerator);
         }
 
-        if ($SchemaObject->type && $SchemaObject->type != 'object') {
+        if ($SchemaObject->type && $SchemaObject->type !== 'object') {
             $this->ClassGenerator->addProperty('isRawObject', true, PropertyGenerator::FLAG_PROTECTED);
         }
 
         # Patch object should be dealt specially
-        if ($objectClassname == 'Patch') {
+        if ($objectClassname === 'Patch') {
             $this->ClassGenerator->setExtendedClass('\KubernetesRuntime\AbstractPatchModel');
         }
 
@@ -117,16 +117,16 @@ class Model extends AbstractClassFile
 
             // Parse value for special kubernetes keywords such as kind and apiversion
             $groupVersionKind = $this->SchemaObject->getPatternedField(KubernetesExtentions::GROUP_VERSION_KIND);
-            if ($key == 'kind' &&
+            if ($key === 'kind' &&
                 is_array($groupVersionKind) &&
                 array_key_exists(KubernetesExtentions::KIND, $groupVersionKind[0])) {
                 $PropertyGenerator->setDefaultValue($groupVersionKind[0][KubernetesExtentions::KIND]);
             }
-            if ($key == 'apiVersion') {
+            if ($key === 'apiVersion') {
                 $apiVersion = '';
                 if (is_array($groupVersionKind) &&
                     array_key_exists(KubernetesExtentions::GROUP, $groupVersionKind[0]) &&
-                    $groupVersionKind[0][KubernetesExtentions::GROUP] != ''
+                    $groupVersionKind[0][KubernetesExtentions::GROUP] !== ''
                 ) {
                     $apiVersion .= $groupVersionKind[0][KubernetesExtentions::GROUP] . '/';
                 }
@@ -137,7 +137,7 @@ class Model extends AbstractClassFile
                 ) {
                     $apiVersion .= $groupVersionKind[0][KubernetesExtentions::VERSION];
                 }
-                if ($apiVersion != '') {
+                if ($apiVersion !== '') {
                     $PropertyGenerator->setDefaultValue($apiVersion);
                 }
             }

@@ -44,7 +44,7 @@ final class Utility
         $word = str_replace('-', '_', $word);
 
         // Change 'Namespace' package to 'ANamespace', because 'namespace' is a PHP reservced keyword
-        $word = $word == 'Namespace' ? 'Kubernetes' . $word : $word;
+        $word = $word === 'Namespace' ? 'Kubernetes' . $word : $word;
 
         return $word;
     }

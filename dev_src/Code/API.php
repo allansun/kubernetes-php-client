@@ -78,7 +78,7 @@ class API extends AbstractClassFile
         if (0 < count($methodParameters)) {
             foreach ($methodParameters as $Parameter) {
                 $ParameterGenerator = new ParameterGenerator($Parameter->name, $Parameter->type, $Parameter->default);
-                if ($Parameter->name == 'namespace') {
+                if ($Parameter->name === 'namespace') {
                     $ParameterGenerator->setPosition(0);
                 }
                 $MethodGenerator->setParameter($ParameterGenerator);
@@ -264,7 +264,7 @@ class API extends AbstractClassFile
         //Find items by expected name and put them into $sortedParameters in order
         foreach ($sortKeyOrder as $sortKey) {
             foreach ($parameters as $key => $Parameter) {
-                if ($sortKey == $Parameter->name) {
+                if ($sortKey === $Parameter->name) {
                     $sortedParameters[] = $Parameter;
                     unset($parameters[$key]);
                 }
