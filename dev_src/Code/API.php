@@ -19,9 +19,9 @@ use Laminas\Code\Generator\ParameterGenerator;
 
 class API extends AbstractClassFile
 {
-    const PARAMETER_IN_PATH = 'path';
-    const PARAMETER_IN_QUERY = 'query';
-    const PARAMETER_IN_BODY = 'body';
+    private const PARAMETER_IN_PATH = 'path';
+    private const PARAMETER_IN_QUERY = 'query';
+    private const PARAMETER_IN_BODY = 'body';
     protected $kubernetesNamespace = 'Kubernetes\\API';
 
     public function __construct(string $classname)

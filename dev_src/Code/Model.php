@@ -72,7 +72,7 @@ class Model extends AbstractClassFile
      *
      * @throws \Exception
      */
-    function parseProperties()
+    private function parseProperties()
     {
         $properties = [];
 

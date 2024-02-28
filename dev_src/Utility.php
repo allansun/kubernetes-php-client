@@ -14,7 +14,7 @@ final class Utility
      */
     private static $GolangToPhpTransformer;
 
-    static function convertDefinitionToClass(string $definition): string
+    private static function convertDefinitionToClass(string $definition): string
     {
         if (!self::$GolangToPhpTransformer) {
             self::$GolangToPhpTransformer = new CaseTransformer(new GolangPackageCase(), new PhpPackageCase());
@@ -23,14 +23,14 @@ final class Utility
         return self::$GolangToPhpTransformer->transform($definition);
     }
 
-    static function convertRefToClass(string $ref): string
+    public static function convertRefToClass(string $ref): string
     {
         $ref = str_replace('#/definitions/', '', $ref);
 
         return self::convertDefinitionToClass($ref);
     }
 
-    static function parseClassInfo(string $fullClass): array
+    public static function parseClassInfo(string $fullClass): array
     {
         $classInfo = explode('\\', $fullClass);
         $className = array_pop($classInfo);
@@ -38,7 +38,7 @@ final class Utility
         return [implode('\\', $classInfo), $className];
     }
 
-    static function filterSpecialWord(string $word): string
+    public static function filterSpecialWord(string $word): string
     {
         // Convert '-' to '_' to follow PHP language naming convention
         $word = str_replace('-', '_', $word);

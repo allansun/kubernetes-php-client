@@ -6,13 +6,13 @@ namespace CodeGenerator\Code;
 final class KubernetesOperations
 {
 
-    const GET = 'get';
-    const PUT = 'put';
-    const POST = 'post';
-    const DELETE = 'delete';
-    const OPTIONS = 'options';
-    const HEAD = 'head';
-    const PATCH = 'patch';
+    public const GET = 'get';
+    public const PUT = 'put';
+    public const POST = 'post';
+    public const DELETE = 'delete';
+    public const OPTIONS = 'options';
+    public const HEAD = 'head';
+    public const PATCH = 'patch';
 
-    const OPERATIONS = [self::GET, self::PUT, self::POST, self::DELETE, self::OPTIONS, self::HEAD, self::PATCH];
+    public const OPERATIONS = [self::GET, self::PUT, self::POST, self::DELETE, self::OPTIONS, self::HEAD, self::PATCH];
 }
