@@ -14,8 +14,7 @@ use OpenAPI\Schema\V2 as Schema;
 class CodeGenerator
 {
     /**
-     * @var
-     * Schema\SwaggerObject
+     * @var Schema\Swagger
      */
     private $Swagger;
 
@@ -53,7 +52,7 @@ class CodeGenerator
             foreach (KubernetesOperations::OPERATIONS as $operation) {
                 $OperationObject = $PathItemObject->$operation;
                 if ($OperationObject instanceof Schema\Operation) {
-                    /** @var Schema\OperationObject $OperationObject */
+                    /** @var Schema\Operation $OperationObject */
                     if (key_exists(KubernetesExtentions::ACTION, $OperationObject->getPatternedFields())
                         && key_exists(KubernetesExtentions::GROUP_VERSION_KIND, $OperationObject->getPatternedFields())
                     ) {
@@ -90,7 +89,7 @@ class CodeGenerator
         foreach ($pathItems as $path => $PathItemObject) {
             foreach (KubernetesOperations::OPERATIONS as $operation) {
                 $OperationObject = $PathItemObject->$operation;
-                if ($OperationObject instanceof Schema\OperationObject) {
+                if ($OperationObject instanceof Schema\Operation) {
                     $ResponseTypes->parseResponseTypes($OperationObject);
                 }
             }
