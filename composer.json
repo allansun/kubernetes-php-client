@@ -15,7 +15,7 @@
     }
   ],
   "require": {
-    "php": ">=7.2",
+    "php": ">=8.2",
     "kubernetes/php-runtime": "^1"
   },
   "require-dev": {
