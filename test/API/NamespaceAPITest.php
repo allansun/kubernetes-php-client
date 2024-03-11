@@ -48,6 +48,6 @@ class NamespaceAPITest extends AbstractTest
     public function testList(){
         $response = $this->API->list();
 
-        $this->assertObjectHasAttribute('kind',$response);
+        $this->assertObjectHasProperty('kind',$response);
     }
 }
