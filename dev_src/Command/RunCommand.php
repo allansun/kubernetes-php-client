@@ -19,8 +19,8 @@ use Symfony\Component\Filesystem\Filesystem;
 
 class RunCommand extends Command
 {
-    protected $githubDeployKeyFile = APP_ROOT . '/github_deploy_key';
-    protected $swaggerFile = APP_ROOT . '/openapi/swagger.json';
+    protected $githubDeployKeyFile = __DIR__ . '/../../github_deploy_key';
+    protected $swaggerFile = __DIR__ . '/../../openapi/swagger.json';
     /** @var GitWorkingCopy */
     protected $GitWorkingCopy;
     /** @var LoggerInterface */
@@ -58,7 +58,7 @@ class RunCommand extends Command
             $Git = new GitWrapper('/usr/local/bin/git');
             $Git->addLoggerEventSubscriber(new GitLoggerEventSubscriber($this->logger));
             $this->prepareGitPrivateKey($Git);
-            $this->GitWorkingCopy = $Git->workingCopy(APP_ROOT);
+            $this->GitWorkingCopy = $Git->workingCopy(__DIR__ . '/../../');
 
             $this->checkOutBranch($version, $patchVersion);
         }
