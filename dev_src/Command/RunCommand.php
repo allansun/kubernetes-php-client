@@ -2,8 +2,8 @@
 
 namespace CodeGenerator\Command;
 
-use GitWrapper\Event\GitLoggerEventSubscriber;
-use GitWrapper\GitException;
+use GitWrapper\EventSubscriber\GitLoggerEventSubscriber;
+use GitWrapper\Exception\GitException;
 use GitWrapper\GitWorkingCopy;
 use GitWrapper\GitWrapper;
 use GuzzleHttp\Client;
