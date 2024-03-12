@@ -2,7 +2,6 @@
 
 namespace CodeGenerator\Command;
 
-
 use CodeGenerator\CodeGenerator;
 use OpenAPI\Parser\SwaggerParser;
 use Symfony\Component\Console\Command\Command;
@@ -32,5 +31,4 @@ class GenerateCommand extends Command
 
         return Command::SUCCESS;
     }
-
 }

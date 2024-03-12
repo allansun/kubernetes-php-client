@@ -3,12 +3,12 @@
 namespace CodeGenerator\Code;
 
 use CodeGenerator\Utility;
-use OpenAPI\Schema\DataTypes;
-use OpenAPI\Schema\V2\Schema;
 use Laminas\Code\Generator\ClassGenerator;
 use Laminas\Code\Generator\DocBlock\Tag\VarTag;
 use Laminas\Code\Generator\DocBlockGenerator;
 use Laminas\Code\Generator\PropertyGenerator;
+use OpenAPI\Schema\DataTypes;
+use OpenAPI\Schema\V2\Schema;
 
 class Model extends AbstractClassFile
 {
@@ -46,7 +46,6 @@ class Model extends AbstractClassFile
 
         $this->setClass($this->ClassGenerator);
 
-
         if ($SchemaObject->description) {
             $SchemaObject->description = $this->parseDescription($SchemaObject->description);
 
@@ -56,12 +55,12 @@ class Model extends AbstractClassFile
             $this->ClassGenerator->setDocBlock($DocBlockGenerator);
         }
 
-        if ($SchemaObject->type && 'object' != $SchemaObject->type) {
+        if ($SchemaObject->type && $SchemaObject->type !== 'object') {
             $this->ClassGenerator->addProperty('isRawObject', true, PropertyGenerator::FLAG_PROTECTED);
         }
 
         # Patch object should be dealt specially
-        if('Patch' == $objectClassname){
+        if ($objectClassname === 'Patch') {
             $this->ClassGenerator->setExtendedClass('\KubernetesRuntime\AbstractPatchModel');
         }
 
@@ -73,13 +72,12 @@ class Model extends AbstractClassFile
      *
      * @throws \Exception
      */
-    function parseProperties()
+    private function parseProperties()
     {
         $properties = [];
 
-        foreach ((array)$this->SchemaObject->properties as $key => $property) {
-
-            if (false !== strpos($key, '$')) {
+        foreach ((array) $this->SchemaObject->properties as $key => $property) {
+            if (strpos($key, '$') !== false) {
                 $key = str_replace('$', '_', $key);
             }
 
@@ -119,18 +117,18 @@ class Model extends AbstractClassFile
 
             // Parse value for special kubernetes keywords such as kind and apiversion
             $groupVersionKind = $this->SchemaObject->getPatternedField(KubernetesExtentions::GROUP_VERSION_KIND);
-            if ('kind' == $key &&
+            if ($key === 'kind' &&
                 is_array($groupVersionKind) &&
                 array_key_exists(KubernetesExtentions::KIND, $groupVersionKind[0])) {
                 $PropertyGenerator->setDefaultValue($groupVersionKind[0][KubernetesExtentions::KIND]);
             }
-            if ('apiVersion' == $key) {
+            if ($key === 'apiVersion') {
                 $apiVersion = '';
                 if (is_array($groupVersionKind) &&
                     array_key_exists(KubernetesExtentions::GROUP, $groupVersionKind[0]) &&
-                    '' != $groupVersionKind[0][KubernetesExtentions::GROUP]
+                    $groupVersionKind[0][KubernetesExtentions::GROUP] !== ''
                 ) {
-                    $apiVersion .= $groupVersionKind[0][KubernetesExtentions::GROUP] . "/";
+                    $apiVersion .= $groupVersionKind[0][KubernetesExtentions::GROUP] . '/';
                 }
 
                 if (is_array($groupVersionKind) &&
@@ -139,7 +137,7 @@ class Model extends AbstractClassFile
                 ) {
                     $apiVersion .= $groupVersionKind[0][KubernetesExtentions::VERSION];
                 }
-                if ('' != $apiVersion) {
+                if ($apiVersion !== '') {
                     $PropertyGenerator->setDefaultValue($apiVersion);
                 }
             }
@@ -157,16 +155,15 @@ class Model extends AbstractClassFile
      * @return string
      * @throws \Exception
      */
-    protected
-    function parseDataType(
+    protected function parseDataType(
         string $dataType,
-        $isArray = false
+        $isArray = false,
     ): string {
-        if (0 === strpos($dataType, '#')) {
+        if (strpos($dataType, '#') === 0) {
             $dataType = '\\' . $this->kubernetesNamespace . Utility::convertRefToClass($dataType);
 
             // If referenced datatype is within the same namespace, we don't need to import full namespace
-            if (1 === strpos($dataType, $this->getNamespace())) {
+            if (strpos($dataType, $this->getNamespace()) === 1) {
                 $dataType = str_replace('\\' . $this->getNamespace() . '\\', '', $dataType);
             }
         } else {
@@ -181,6 +178,4 @@ class Model extends AbstractClassFile
 
         return $dataType;
     }
-
-
 }

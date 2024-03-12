@@ -2,26 +2,25 @@
 
 namespace CodeGenerator\Code;
 
-
 use Camel\CaseTransformer;
 use Camel\Format\CamelCase;
 use Camel\Format\SnakeCase;
 use CodeGenerator\Utility;
-use OpenAPI\Schema\V2\Operation;
-use OpenAPI\Schema\V2\Parameter;
-use OpenAPI\Schema\V2\Response;
 use Laminas\Code\Generator\ClassGenerator;
 use Laminas\Code\Generator\DocBlock\Tag\ParamTag;
 use Laminas\Code\Generator\DocBlock\Tag\ReturnTag;
 use Laminas\Code\Generator\DocBlockGenerator;
 use Laminas\Code\Generator\MethodGenerator;
 use Laminas\Code\Generator\ParameterGenerator;
+use OpenAPI\Schema\V2\Operation;
+use OpenAPI\Schema\V2\Parameter;
+use OpenAPI\Schema\V2\Response;
 
 class API extends AbstractClassFile
 {
-    const PARAMETER_IN_PATH = 'path';
-    const PARAMETER_IN_QUERY = 'query';
-    const PARAMETER_IN_BODY = 'body';
+    private const PARAMETER_IN_PATH = 'path';
+    private const PARAMETER_IN_QUERY = 'query';
+    private const PARAMETER_IN_BODY = 'body';
     protected $kubernetesNamespace = 'Kubernetes\\API';
 
     public function __construct(string $classname)
@@ -29,7 +28,6 @@ class API extends AbstractClassFile
         parent::__construct([]);
 
         $this->setNamespace($this->kubernetesNamespace);
-
 
         $this->ClassGenerator = new ClassGenerator();
         $this->ClassGenerator
@@ -53,8 +51,7 @@ class API extends AbstractClassFile
         Operation $OperationObject,
         string $path,
         string $operation,
-        array $pathItemParameters =
-        []
+        array $pathItemParameters = [],
     ) {
         $apiKind   = $OperationObject->getPatternedFields()
                      [KubernetesExtentions::GROUP_VERSION_KIND][KubernetesExtentions::KIND];
@@ -78,21 +75,21 @@ class API extends AbstractClassFile
         $queryParameters = $parameters[self::PARAMETER_IN_QUERY];
         $tags            = [];
 
-
         if (0 < count($methodParameters)) {
             foreach ($methodParameters as $Parameter) {
                 $ParameterGenerator = new ParameterGenerator($Parameter->name, $Parameter->type, $Parameter->default);
-                if ('namespace' == $Parameter->name) {
+                if ($Parameter->name === 'namespace') {
                     $ParameterGenerator->setPosition(0);
                 }
                 $MethodGenerator->setParameter($ParameterGenerator);
 
-                $tags[] = new ParamTag($ParameterGenerator->getName(),
+                $tags[] = new ParamTag(
+                    $ParameterGenerator->getName(),
                     (!$ParameterGenerator->getType() ||
                      in_array($ParameterGenerator->getType(), self::$internalPhpTypes))
                         ? $ParameterGenerator->getType()
-                        : $this->getUseAlias($ParameterGenerator->getType()),
-                    $Parameter->description
+                            : $this->getUseAlias($ParameterGenerator->getType()),
+                    $Parameter->description,
                 );
             }
         }
@@ -101,18 +98,21 @@ class API extends AbstractClassFile
             foreach ($payloadParameters as $Parameter) {
                 if ($Parameter->schema) {
                     $ParameterGenerator =
-                        new ParameterGenerator('Model',
-                            '\\Kubernetes\\Model\\' . Utility::convertRefToClass($Parameter->schema->_ref)
-                            , $Parameter->type, $Parameter->default
+                        new ParameterGenerator(
+                            'Model',
+                            '\\Kubernetes\\Model\\' . Utility::convertRefToClass($Parameter->schema->_ref),
+                            $Parameter->type,
+                            $Parameter->default,
                         );
                     $MethodGenerator->setParameter($ParameterGenerator);
 
-                    $tags[] = new ParamTag($ParameterGenerator->getName(),
+                    $tags[] = new ParamTag(
+                        $ParameterGenerator->getName(),
                         (!$ParameterGenerator->getType() ||
                          in_array($ParameterGenerator->getType(), self::$internalPhpTypes))
                             ? $ParameterGenerator->getType()
-                            : $this->getUseAlias($ParameterGenerator->getType()),
-                        $Parameter->description
+                                : $this->getUseAlias($ParameterGenerator->getType()),
+                        $Parameter->description,
                     );
                 }
             }
@@ -129,7 +129,6 @@ class API extends AbstractClassFile
             $tags[] = new ParamTag('queries', ['array'], $queryOptionsDescription);
             $MethodGenerator->setParameter(new ParameterGenerator('queries', 'array', []));
         }
-
 
         $responseTypes = [];
         foreach ($OperationObject->responses->getPatternedFields() as $ResponseObject) {
@@ -178,7 +177,7 @@ class API extends AbstractClassFile
      */
     protected function parseParameters(
         Operation $OperationObject,
-        array $pathItemParameters = []
+        array $pathItemParameters = [],
     ) {
         $parameters = [
             self::PARAMETER_IN_PATH  => [],
@@ -186,11 +185,11 @@ class API extends AbstractClassFile
             self::PARAMETER_IN_QUERY => [],
         ];
 
-        foreach ((array)$OperationObject->parameters as $Parameter) {
+        foreach ((array) $OperationObject->parameters as $Parameter) {
             $this->parseParameter($parameters, $Parameter);
         }
 
-        foreach ((array)$pathItemParameters as $Parameter) {
+        foreach ((array) $pathItemParameters as $Parameter) {
             $this->parseParameter($parameters, $Parameter);
         }
 
@@ -219,10 +218,9 @@ class API extends AbstractClassFile
         Operation $OperationObject,
         string $path,
         string $operation,
-        array $parameters
-    ):
-    string {
-        $body               = '';
+        array $parameters,
+    ): string {
+        $body = '';
         $queryParameterBody = "\t\t[" . PHP_EOL;
 
         foreach ($parameters[self::PARAMETER_IN_BODY] as $Parameter) {
@@ -235,7 +233,6 @@ class API extends AbstractClassFile
             /** @var Parameter $Parameter */
             $path = str_replace('{' . $Parameter->name . '}', '{$' . $Parameter->name . '}', $path);
         }
-
 
         if (0 < count($parameters[self::PARAMETER_IN_QUERY])) {
             $queryParameterBody .= "\t\t\t'query' => \$queries," . PHP_EOL;
@@ -260,13 +257,14 @@ class API extends AbstractClassFile
      *
      * @return Parameter[]
      */
-    private function sortMethodParameters(array $parameters){
+    private function sortMethodParameters(array $parameters)
+    {
         $sortedParameters=[];
         $sortKeyOrder=['namespace','name'];
         //Find items by expected name and put them into $sortedParameters in order
-        foreach($sortKeyOrder as $sortKey) {
+        foreach ($sortKeyOrder as $sortKey) {
             foreach ($parameters as $key => $Parameter) {
-                if($sortKey == $Parameter->name){
+                if ($sortKey === $Parameter->name) {
                     $sortedParameters[] = $Parameter;
                     unset($parameters[$key]);
                 }
@@ -274,10 +272,9 @@ class API extends AbstractClassFile
         }
 
         //Put remaining items into $sortedParameters
-        foreach($parameters as $Parameter){
+        foreach ($parameters as $Parameter) {
             $sortedParameters[] = $Parameter;
         }
         return $sortedParameters;
     }
-
 }

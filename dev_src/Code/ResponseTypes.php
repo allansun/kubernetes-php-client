@@ -3,11 +3,10 @@
 
 namespace CodeGenerator\Code;
 
-
 use CodeGenerator\Utility;
+use Laminas\Code\Generator\ClassGenerator;
 use OpenAPI\Schema\V2\Operation;
 use OpenAPI\Schema\V2\Response;
-use Laminas\Code\Generator\ClassGenerator;
 
 class ResponseTypes extends AbstractClassFile
 {
@@ -20,7 +19,6 @@ class ResponseTypes extends AbstractClassFile
         parent::__construct([]);
 
         $this->setNamespace($this->kubernetesNamespace);
-
 
         $this->ClassGenerator = new ClassGenerator();
         $this->ClassGenerator
@@ -41,7 +39,6 @@ class ResponseTypes extends AbstractClassFile
                     '\\Kubernetes\\Model\\' . Utility::convertRefToClass($ResponseObject->schema->_ref);
             }
         }
-
     }
 
     public function write()
@@ -50,6 +47,4 @@ class ResponseTypes extends AbstractClassFile
 
         return parent::write();
     }
-
-
 }

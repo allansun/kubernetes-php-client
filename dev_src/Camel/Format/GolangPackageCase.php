@@ -3,7 +3,6 @@
 
 namespace CodeGenerator\Camel\Format;
 
-
 use Camel\Format\FormatInterface;
 
 class GolangPackageCase implements FormatInterface
@@ -20,5 +19,4 @@ class GolangPackageCase implements FormatInterface
 
         return implode('.', $words);
     }
-
 }

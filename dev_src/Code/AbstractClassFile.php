@@ -3,12 +3,11 @@
 
 namespace CodeGenerator\Code;
 
-
-use Symfony\Component\Filesystem\Filesystem;
 use Laminas\Code\Generator\ClassGenerator;
 use Laminas\Code\Generator\DocBlock\Tag\GenericTag;
 use Laminas\Code\Generator\DocBlockGenerator;
 use Laminas\Code\Generator\FileGenerator;
+use Symfony\Component\Filesystem\Filesystem;
 
 abstract class AbstractClassFile extends FileGenerator
 {
@@ -36,7 +35,7 @@ abstract class AbstractClassFile extends FileGenerator
         'array',
         'callable',
         'iterable',
-        'object'
+        'object',
     ];
 
 
@@ -54,14 +53,14 @@ abstract class AbstractClassFile extends FileGenerator
 
     protected function getUseAlias(string $fullClassName): string
     {
-        if (0 !== strpos($fullClassName, '\\')) {
+        if (strpos($fullClassName, '\\') !== 0) {
             $fullClassName = '\\' . $fullClassName;
         }
 
         $classInfo = explode('\\', $fullClassName);
         $className = array_pop($classInfo);
 
-        if ($className == $this->ClassGenerator->getName()) {
+        if ($className === $this->ClassGenerator->getName()) {
             $className = 'The' . $className;
         }
 
@@ -71,7 +70,7 @@ abstract class AbstractClassFile extends FileGenerator
         foreach ($classGeneratorUses as $use) {
             $useInfo = explode(' as ', $use);
 
-            if(!isset($useInfo[1])){
+            if (!isset($useInfo[1])) {
                 $useInfo[1] = $useInfo[0];
             }
 
@@ -113,9 +112,6 @@ abstract class AbstractClassFile extends FileGenerator
     }
 
 
-    /**
-     * @return string
-     */
     public function getSourceFileDirectory(): string
     {
         if (!$this->sourceFileDirectory) {
@@ -142,6 +138,4 @@ abstract class AbstractClassFile extends FileGenerator
         return str_replace('\\', DIRECTORY_SEPARATOR, ltrim($this->getNamespace(), '\\Kubernetes\\')) .
                DIRECTORY_SEPARATOR;
     }
-
-
 }

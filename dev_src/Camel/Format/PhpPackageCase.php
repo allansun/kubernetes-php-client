@@ -3,7 +3,6 @@
 
 namespace CodeGenerator\Camel\Format;
 
-
 use Camel\Format\FormatInterface;
 use CodeGenerator\Utility;
 
@@ -30,5 +29,4 @@ class PhpPackageCase implements FormatInterface
 
         return implode('\\', $words);
     }
-
 }

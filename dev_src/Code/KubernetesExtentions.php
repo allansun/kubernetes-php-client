@@ -1,16 +1,15 @@
 <?php
 namespace CodeGenerator\Code;
 
-
 final class KubernetesExtentions
 {
-    const ACTION = 'x-kubernetes-action';
+    public const ACTION = 'x-kubernetes-action';
 
-    const GROUP_VERSION_KIND = 'x-kubernetes-group-version-kind';
+    public const GROUP_VERSION_KIND = 'x-kubernetes-group-version-kind';
 
-    const GROUP = 'group';
+    public const GROUP = 'group';
 
-    const KIND = 'kind';
+    public const KIND = 'kind';
 
-    const VERSION = 'version';
+    public const VERSION = 'version';
 }
