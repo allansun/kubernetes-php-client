@@ -49,7 +49,7 @@ class ReplicaSetStatus extends AbstractModel
     public $readyReplicas = null;
 
     /**
-     * Replicas is the most recently oberved number of replicas. More info:
+     * Replicas is the most recently observed number of replicas. More info:
      * https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller/#what-is-a-replicationcontroller
      *
      * @var integer

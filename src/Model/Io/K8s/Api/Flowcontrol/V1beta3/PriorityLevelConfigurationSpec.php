@@ -10,16 +10,6 @@ use \KubernetesRuntime\AbstractModel;
 class PriorityLevelConfigurationSpec extends AbstractModel
 {
     /**
-     * `exempt` specifies how requests are handled for an exempt priority level. This
-     * field MUST be empty if `type` is `"Limited"`. This field MAY be non-empty if
-     * `type` is `"Exempt"`. If empty and `type` is `"Exempt"` then the default values
-     * for `ExemptPriorityLevelConfiguration` apply.
-     *
-     * @var ExemptPriorityLevelConfiguration
-     */
-    public $exempt = null;
-
-    /**
      * `limited` specifies how requests are handled for a Limited priority level. This
      * field must be non-empty if and only if `type` is `"Limited"`.
      *

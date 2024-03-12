@@ -19,6 +19,16 @@ class StatefulSetSpec extends AbstractModel
     public $minReadySeconds = null;
 
     /**
+     * ordinals controls the numbering of replica indices in a StatefulSet. The default
+     * ordinals behavior assigns a "0" index to the first replica and increments the
+     * index by one for each additional replica requested. Using the ordinals field
+     * requires the StatefulSetStartOrdinal feature gate to be enabled, which is alpha.
+     *
+     * @var StatefulSetOrdinals
+     */
+    public $ordinals = null;
+
+    /**
      * persistentVolumeClaimRetentionPolicy describes the lifecycle of persistent
      * volume claims created from volumeClaimTemplates. By default, all persistent
      * volume claims are created as needed and retained until manually deleted. This
@@ -90,7 +100,9 @@ class StatefulSetSpec extends AbstractModel
      * template is the object that describes the pod that will be created if
      * insufficient replicas are detected. Each pod stamped out by the StatefulSet will
      * fulfill this Template, but have a unique identity from the rest of the
-     * StatefulSet.
+     * StatefulSet. Each pod will be named with the format
+     * <statefulsetname>-<podindex>. For example, a pod in a StatefulSet named "web"
+     * with index number "3" would be named "web-3".
      *
      * @var \Kubernetes\Model\Io\K8s\Api\Core\V1\PodTemplateSpec
      */

@@ -11,21 +11,21 @@ use \KubernetesRuntime\AbstractModel;
 class IngressLoadBalancerIngress extends AbstractModel
 {
     /**
-     * hostname is set for load-balancer ingress points that are DNS based.
+     * Hostname is set for load-balancer ingress points that are DNS based.
      *
      * @var string
      */
     public $hostname = null;
 
     /**
-     * ip is set for load-balancer ingress points that are IP based.
+     * IP is set for load-balancer ingress points that are IP based.
      *
      * @var string
      */
     public $ip = null;
 
     /**
-     * ports provides information about the ports exposed by this LoadBalancer.
+     * Ports provides information about the ports exposed by this LoadBalancer.
      *
      * @var IngressPortStatus[]
      */

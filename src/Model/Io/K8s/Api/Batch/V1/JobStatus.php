@@ -96,9 +96,7 @@ class JobStatus extends AbstractModel
      * corresponding
      *     counter.
      *
-     * This field is beta-level. The job controller only makes use of this field when
-     * the feature gate JobTrackingWithFinalizers is enabled (enabled by default). Old
-     * jobs might not be tracked using this field, in which case the field remains
+     * Old jobs might not be tracked using this field, in which case the field remains
      * null.
      *
      * @var UncountedTerminatedPods

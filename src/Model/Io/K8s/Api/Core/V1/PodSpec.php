@@ -266,6 +266,20 @@ class PodSpec extends AbstractModel
     public $readinessGates = null;
 
     /**
+     * ResourceClaims defines which ResourceClaims must be allocated and reserved
+     * before the Pod is allowed to start. The resources will be made available to
+     * those containers which consume them by name.
+     *
+     * This is an alpha field and requires enabling the DynamicResourceAllocation
+     * feature gate.
+     *
+     * This field is immutable.
+     *
+     * @var PodResourceClaim[]
+     */
+    public $resourceClaims = null;
+
+    /**
      * Restart policy for all containers within the pod. One of Always, OnFailure,
      * Never. Default to Always. More info:
      * https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#restart-policy
@@ -295,6 +309,17 @@ class PodSpec extends AbstractModel
      * @var string
      */
     public $schedulerName = null;
+
+    /**
+     * SchedulingGates is an opaque list of values that if specified will block
+     * scheduling the pod. More info: 
+     * https://git.k8s.io/enhancements/keps/sig-scheduling/3521-pod-scheduling-readiness.
+     *
+     * This is an alpha-level feature enabled by PodSchedulingReadiness feature gate.
+     *
+     * @var PodSchedulingGate[]
+     */
+    public $schedulingGates = null;
 
     /**
      * SecurityContext holds pod-level security attributes and common container

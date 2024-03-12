@@ -85,7 +85,7 @@ class TopologySpreadConstraint extends AbstractModel
      * calculations.
      *
      * If this value is nil, the behavior is equivalent to the Honor policy. This is a
-     * alpha-level feature enabled by the NodeInclusionPolicyInPodTopologySpread
+     * beta-level feature default enabled by the NodeInclusionPolicyInPodTopologySpread
      * feature flag.
      *
      * @var string
@@ -99,7 +99,7 @@ class TopologySpreadConstraint extends AbstractModel
      * Ignore: node taints are ignored. All nodes are included.
      *
      * If this value is nil, the behavior is equivalent to the Ignore policy. This is a
-     * alpha-level feature enabled by the NodeInclusionPolicyInPodTopologySpread
+     * beta-level feature default enabled by the NodeInclusionPolicyInPodTopologySpread
      * feature flag.
      *
      * @var string

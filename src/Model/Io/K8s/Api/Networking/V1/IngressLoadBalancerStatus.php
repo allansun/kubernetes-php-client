@@ -10,7 +10,7 @@ use \KubernetesRuntime\AbstractModel;
 class IngressLoadBalancerStatus extends AbstractModel
 {
     /**
-     * ingress is a list containing ingress points for the load-balancer.
+     * Ingress is a list containing ingress points for the load-balancer.
      *
      * @var IngressLoadBalancerIngress[]
      */

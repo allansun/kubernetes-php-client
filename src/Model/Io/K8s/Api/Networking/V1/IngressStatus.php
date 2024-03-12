@@ -12,7 +12,7 @@ class IngressStatus extends AbstractModel
     /**
      * LoadBalancer contains the current status of the load-balancer.
      *
-     * @var \Kubernetes\Model\Io\K8s\Api\Core\V1\LoadBalancerStatus
+     * @var IngressLoadBalancerStatus
      */
     public $loadBalancer = null;
 }

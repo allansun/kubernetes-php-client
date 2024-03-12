@@ -44,14 +44,5 @@ class ValidatingAdmissionPolicy extends AbstractModel
      * @var ValidatingAdmissionPolicySpec
      */
     public $spec = null;
-
-    /**
-     * The status of the ValidatingAdmissionPolicy, including warnings that are useful
-     * to determine if the policy behaves in the expected way. Populated by the system.
-     * Read-only.
-     *
-     * @var ValidatingAdmissionPolicyStatus
-     */
-    public $status = null;
 }
 

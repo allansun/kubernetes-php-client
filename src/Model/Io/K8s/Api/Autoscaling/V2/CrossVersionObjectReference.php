@@ -19,7 +19,7 @@ class CrossVersionObjectReference extends AbstractModel
 
     /**
      * Kind of the referent; More info:
-     * https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds"
+     * https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
      *
      * @var string
      */

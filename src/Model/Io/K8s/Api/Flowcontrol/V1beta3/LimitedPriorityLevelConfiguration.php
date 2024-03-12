@@ -62,11 +62,11 @@ class LimitedPriorityLevelConfiguration extends AbstractModel
      * (ServerCL) is divided among the Limited priority levels in proportion to their
      * NCS values:
      *
-     * NominalCL(i)  = ceil( ServerCL * NCS(i) / sum_ncs ) sum_ncs = sum[priority level
-     * k] NCS(k)
+     * NominalCL(i)  = ceil( ServerCL * NCS(i) / sum_ncs ) sum_ncs = sum[limited
+     * priority level k] NCS(k)
      *
      * Bigger numbers mean a larger nominal concurrency limit, at the expense of every
-     * other priority level. This field has a default value of 30.
+     * other Limited priority level. This field has a default value of 30.
      *
      * @var integer
      */
